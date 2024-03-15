@@ -3,7 +3,11 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Slime King
+  - Ice Slime
+  - Explosive Slime
+  - Hungry Slime
   layers:
   - Default
   - TransparentFX
