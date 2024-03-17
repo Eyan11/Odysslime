@@ -115,6 +115,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   iceCubeTemplate: {fileID: 8684171417627582877, guid: 8205996345d2267498e663371df717e1,
     type: 3}
+  orientation: {fileID: 787742763717332419}
   interactionDist: 1.2
 --- !u!114 &4362966882715022011
 MonoBehaviour:

@@ -7,6 +7,7 @@ public class IceSlimeAbilities : SlimeAbilities
 {
     [Header("Settings")]
     [SerializeField] private GameObject iceCubeTemplate;
+    [SerializeField] private GameObject orientation;
     [SerializeField] private float interactionDist = 1.2f;
     private RaycastHit raycastHit;
     private int layerMask = 1<<8; // 8 points towards "Ice" layer
@@ -16,7 +17,7 @@ public class IceSlimeAbilities : SlimeAbilities
 
     private void FixedUpdate() {
         // Checks if an ice block is in front
-        foundIce = Physics.Raycast(transform.position, transform.forward, out raycastHit, interactionDist, layerMask);
+        foundIce = Physics.Raycast(transform.position, orientation.transform.forward, out raycastHit, interactionDist, layerMask);
 
         if (foundIce) {
             Debug.Log("Ice cube!!!!!!");
