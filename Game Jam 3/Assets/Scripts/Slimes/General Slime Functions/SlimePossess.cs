@@ -12,16 +12,21 @@ public class SlimePossess : MonoBehaviour
     private Ray ray;
     private RaycastHit hit;
 
-    private void Start() {
+    private void Awake() {
         // finds the first instance of a slimeAbility component
         slimeAbility = gameObject.GetComponent<SlimeAbilities>();
 
         // finds the first instance of a slimeMovement component
         slimeMovement = gameObject.GetComponent<SlimeMovement>();
-    }
-    private void Awake() {
+
         //disable this script on start if not the slime king
         if (slimeKingPlayer != gameObject) {
+            if (slimeAbility) {
+                slimeAbility.enabled = false;
+            }
+            if (slimeMovement) {
+                slimeMovement.enabled = false;
+            }
             this.enabled = false;
         }
     }

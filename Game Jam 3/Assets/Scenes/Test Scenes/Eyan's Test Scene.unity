@@ -141,18 +141,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 8577362900339117126}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &260681937 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7288786237735499031, guid: 7403cbb299f416844a9873c303408760,
-    type: 3}
-  m_PrefabInstance: {fileID: 8577362900339117126}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 260681932}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 13e1f0dc34b9d144b8cf72c4809372d4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &311921106 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4373339295143982460, guid: 7403cbb299f416844a9873c303408760,
@@ -344,6 +332,85 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1575727699 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4727379432342310180, guid: 8205996345d2267498e663371df717e1,
+    type: 3}
+  m_PrefabInstance: {fileID: 1813823752}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1813823752
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 3057132275020888762, guid: 8205996345d2267498e663371df717e1,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.085
+      objectReference: {fileID: 0}
+    - target: {fileID: 3057132275020888762, guid: 8205996345d2267498e663371df717e1,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3057132275020888762, guid: 8205996345d2267498e663371df717e1,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 1.528
+      objectReference: {fileID: 0}
+    - target: {fileID: 3057132275020888762, guid: 8205996345d2267498e663371df717e1,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3057132275020888762, guid: 8205996345d2267498e663371df717e1,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3057132275020888762, guid: 8205996345d2267498e663371df717e1,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3057132275020888762, guid: 8205996345d2267498e663371df717e1,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3057132275020888762, guid: 8205996345d2267498e663371df717e1,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3057132275020888762, guid: 8205996345d2267498e663371df717e1,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3057132275020888762, guid: 8205996345d2267498e663371df717e1,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6861072479397677543, guid: 8205996345d2267498e663371df717e1,
+        type: 3}
+      propertyPath: iceModel
+      value: 
+      objectReference: {fileID: 1575727699}
+    - target: {fileID: 8684171417627582877, guid: 8205996345d2267498e663371df717e1,
+        type: 3}
+      propertyPath: m_Name
+      value: Ice Cube
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 8205996345d2267498e663371df717e1, type: 3}
 --- !u!1 &1890628017
 GameObject:
   m_ObjectHideFlags: 0
@@ -526,7 +593,7 @@ PrefabInstance:
         type: 3}
       propertyPath: kingPossessScript
       value: 
-      objectReference: {fileID: 260681937}
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -543,22 +610,22 @@ PrefabInstance:
     - target: {fileID: 555929445965367561, guid: 75c7dd668b96da549aeda55cd8b2602f,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.000000021954929
+      value: -0.00000002195493
       objectReference: {fileID: 0}
     - target: {fileID: 555929445965367561, guid: 75c7dd668b96da549aeda55cd8b2602f,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.000000013568892
+      value: 0.000000013568893
       objectReference: {fileID: 0}
     - target: {fileID: 1404563249740134900, guid: 75c7dd668b96da549aeda55cd8b2602f,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.000000030082507
+      value: -0.000000030082507
       objectReference: {fileID: 0}
     - target: {fileID: 1404563249740134900, guid: 75c7dd668b96da549aeda55cd8b2602f,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.000000016711699
+      value: 0.000000016711699
       objectReference: {fileID: 0}
     - target: {fileID: 2033794371433252276, guid: 75c7dd668b96da549aeda55cd8b2602f,
         type: 3}
@@ -712,7 +779,7 @@ PrefabInstance:
         type: 3}
       propertyPath: kingPossessScript
       value: 
-      objectReference: {fileID: 260681937}
+      objectReference: {fileID: 0}
     - target: {fileID: 8191742797127445780, guid: c7e2200d9aa32314985f51cdf9a741ea,
         type: 3}
       propertyPath: m_Name
@@ -836,7 +903,7 @@ PrefabInstance:
       propertyPath: m_Name
       value: Slime King Player
       objectReference: {fileID: 0}
-    - target: {fileID: 7288786237735499031, guid: 7403cbb299f416844a9873c303408760,
+    - target: {fileID: 7084102939287826575, guid: 7403cbb299f416844a9873c303408760,
         type: 3}
       propertyPath: cameraScript
       value: 
@@ -857,3 +924,4 @@ SceneRoots:
   - {fileID: 8577362900339117126}
   - {fileID: 286022025086376989}
   - {fileID: 8052775199241077710}
+  - {fileID: 1813823752}

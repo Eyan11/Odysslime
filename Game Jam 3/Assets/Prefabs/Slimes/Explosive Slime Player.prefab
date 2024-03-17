@@ -210,6 +210,8 @@ GameObject:
   - component: {fileID: 1476052901591219229}
   - component: {fileID: 5806126875086029291}
   - component: {fileID: 4402304703344493799}
+  - component: {fileID: -2710927735541009254}
+  - component: {fileID: 4019593360167590981}
   m_Layer: 0
   m_Name: Explosive Slime Player
   m_TagString: Slime Follower
@@ -297,3 +299,27 @@ MonoBehaviour:
   cameraScript: {fileID: 0}
   slimeKingPlayer: {fileID: 6164710366797321215, guid: 7403cbb299f416844a9873c303408760,
     type: 3}
+--- !u!114 &-2710927735541009254
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8191742797127445780}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 97585442301fbf64abb58edf84d770af, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &4019593360167590981
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8191742797127445780}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c462a42c90a53f44b8410aef81a13ea1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

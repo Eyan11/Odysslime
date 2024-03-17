@@ -3,17 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 
 // Acts as a parent for specific slime abilities
-public class SlimeAbilities : MonoBehaviour
+abstract public class SlimeAbilities : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
     // Update is called once per frame
     void Update()
     {
-        
+        // Checks if the key 'q' is down; if so, trigger ability
+        if (Input.GetKey(KeyCode.Q)) {
+            UseAbility();
+        }
     }
+
+    public abstract void UseAbility();
 }
