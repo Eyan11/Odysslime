@@ -179,7 +179,7 @@ GameObject:
   - component: {fileID: 4936191834832421782}
   - component: {fileID: 3940326359731544003}
   - component: {fileID: 5272022723827586172}
-  - component: {fileID: 7288786237735499031}
+  - component: {fileID: 7084102939287826575}
   m_Layer: 0
   m_Name: Slime King Player
   m_TagString: Slime King
@@ -267,7 +267,7 @@ MonoBehaviour:
   moveSpeed: 8
   orientation: {fileID: 4373339295143982460}
   kingObj: {fileID: 6969485696248743197}
---- !u!114 &7288786237735499031
+--- !u!114 &7084102939287826575
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -276,11 +276,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 6164710366797321215}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 13e1f0dc34b9d144b8cf72c4809372d4, type: 3}
+  m_Script: {fileID: 11500000, guid: ab6d04f55dc15974abc386e778efa254, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   cameraScript: {fileID: 0}
-  kingMoveScript: {fileID: 5272022723827586172}
+  slimeKingPlayer: {fileID: 6164710366797321215}
 --- !u!1 &6911802953856179491
 GameObject:
   m_ObjectHideFlags: 0

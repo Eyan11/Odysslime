@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class KingMovement : MonoBehaviour
+public class KingMovement : SlimeMovement
 {
     [Header("Movement")]
     [SerializeField] private float moveSpeed;
@@ -46,6 +46,11 @@ public class KingMovement : MonoBehaviour
         //find direction of input based on player orientation (relative to camera)
         moveDir = (orientation.forward * zInput) + (kingObj.up * yInput) + (orientation.right * xInput);
         //y axis moveDir is based on obj because I want king to move up/down relative to the obj not the camera direction
+    }
+
+    private void OnDisable() {
+        // turns off movement (so the king slime doesn't drift off if already moving)
+        rb.velocity = Vector3.zero;
     }
 
 }

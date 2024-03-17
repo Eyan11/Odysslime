@@ -17,9 +17,10 @@ public class KingPossess : MonoBehaviour
     private void Update() {
         
         //if input "E", try to possess a slime
-        if(Input.GetKeyDown(KeyCode.E))
+        if(Input.GetKeyDown(KeyCode.E)) {
             //Only possess a slime when raycast hits a slime
             TryToPossessSlime();
+        }
     }
 
     private void TryToPossessSlime() {
@@ -36,13 +37,14 @@ public class KingPossess : MonoBehaviour
             if(hit.collider.gameObject.CompareTag("Slime Follower")) {
 
                 //Testing
-                Debug.Log("Possessing slime follower!");
+                Debug.Log("Possessing slime follower from " + gameObject.name + "!");
 
                 //switch camera
                 cameraScript.SwitchCamera(hit.collider.gameObject);
 
-                //allow slime to possess others
+                //allow slime to possess others (but not itself)
                 hit.collider.gameObject.GetComponent<SlimePossess>().enabled = true;
+                hit.collider.gameObject.layer = 2;
                 //disable this script
                 this.enabled = false;
             }

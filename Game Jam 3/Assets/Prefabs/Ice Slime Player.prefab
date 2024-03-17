@@ -97,8 +97,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cameraScript: {fileID: 0}
-  slimeKingPlayer: {fileID: 0}
-  kingPossessScript: {fileID: 0}
+  slimeKingPlayer: {fileID: 6164710366797321215, guid: 7403cbb299f416844a9873c303408760,
+    type: 3}
 --- !u!1 &787742763717332419
 GameObject:
   m_ObjectHideFlags: 0
