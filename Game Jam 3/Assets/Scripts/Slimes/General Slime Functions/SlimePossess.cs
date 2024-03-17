@@ -33,18 +33,27 @@ public class SlimePossess : MonoBehaviour
 
     private void Update() {
 
-        //press Z to return to king slime
-        if(Input.GetKeyDown(KeyCode.Z)) {
+        //if press "Z" and not the king, return to king slime
+        if(Input.GetKeyDown(KeyCode.Z) && gameObject != slimeKingPlayer) {
             //Testing
             Debug.Log("Z input, possessing king!");
 
             PosessSlime(slimeKingPlayer);
         }
 
-        //press E to possess another slime
-        if(Input.GetKeyDown(KeyCode.E)) {
+
+        //if right mouse is held (camera is locked)
+        if(cameraScript.CamIsLocked()) {
+            Debug.Log("Camera is LOCKED!");
+            //check for a slime to possess
             RaycastForSlime();
+            slimeMovement.enabled = false;
         }
+        else {
+            Debug.Log("Camera is UNLOCKED!");
+            slimeMovement.enabled = true;
+        }
+
     }
 
     private void PosessSlime(GameObject otherSlime) {
@@ -68,16 +77,21 @@ public class SlimePossess : MonoBehaviour
         if(Physics.Raycast(ray, out hit)) {
 
             //Testing
-            Debug.Log("Mouse raycast hit: " + hit.collider.name);
+            //Debug.Log("Mouse raycast hit: " + hit.collider.name);
 
-            // checks if its a valid slime (whether follower or king)
+            //store hit object in otherObject
             GameObject otherObject = hit.collider.gameObject;
             bool isSlime = false;
-            if (otherObject.CompareTag("Slime Follower")) { isSlime = true; }
-            if (otherObject.CompareTag("Slime King")) { isSlime = true; }
 
-            //if it is a slime, then change possession
-            if(isSlime && otherObject != gameObject) {
+            //if ray cast hit any slime
+            if (otherObject.CompareTag("Slime Follower") || otherObject.CompareTag("Slime King")) {
+                isSlime = true;
+
+                //INSERT METHOD CALL FOR SWITCHING SLIMES UI
+            }
+
+            //if pressing "E" and it is a different slime, then change possession
+            if(Input.GetKeyDown(KeyCode.E) && isSlime && otherObject != gameObject) {
                 PosessSlime(otherObject);
             }
         }
@@ -87,14 +101,14 @@ public class SlimePossess : MonoBehaviour
 
     //run every time this script is disabled in inspector
     private void OnDisable() {
-        // reallows raycast to hit slime
+        //reallows raycast to hit slime
         gameObject.layer = 0;
 
         //disable slime's ability if one exists
         if (slimeAbility) {
             slimeAbility.enabled = false;
         }
-        // disable slime's movement if it exists
+        //disable slime's movement if it exists
         if (slimeMovement) {
             slimeMovement.enabled = false;
         }
@@ -102,13 +116,13 @@ public class SlimePossess : MonoBehaviour
 
     //run every time this script is enabled in inspector
     private void OnEnable() {
-        // prevents raycast from hitting oneself
+        //prevents raycast from hitting oneself
         gameObject.layer = 2;
         //enable slime's ability if one exists
         if (slimeAbility) {
             slimeAbility.enabled = true;
         }
-        // disable slime's movement if it exists
+        //enable slime's movement if it exists
         if (slimeMovement) {
             slimeMovement.enabled = true;
         }

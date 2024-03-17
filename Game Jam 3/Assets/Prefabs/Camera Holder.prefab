@@ -1016,7 +1016,11 @@ MonoBehaviour:
   thirdPersonCam: {fileID: 1656750894535342929}
   thirdPersonFreeLookCam: {fileID: 2231116000922384594}
   topDownCam: {fileID: 6666131534159369315}
+  topDownFreeLookCam: {fileID: 3207851831316445057}
   rotationSpeed: 7
+  camUnlockedTime: 2
+  mouseSensX: 300
+  mouseSensY: 2
 --- !u!1 &3784233599110521264
 GameObject:
   m_ObjectHideFlags: 0
