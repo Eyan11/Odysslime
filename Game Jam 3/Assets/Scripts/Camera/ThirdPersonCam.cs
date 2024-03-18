@@ -68,15 +68,18 @@ public class ThirdPersonCam : MonoBehaviour
             UnlockCamera();
     }
 
-    //turn camera sensitivity to 0
+    
     private void LockCamera() {
         //don't lock camera if still transitioning to another slime
         if(camUnlockedTimer > 0)
             return;
 
-        //thirdPersonFreeLookCam.enabled = false;
-        //topDownFreeLookCam.enabled = false;
+        //lock cursor to game window
+        Cursor.lockState = CursorLockMode.Confined;
+        //make cursor visible
+        Cursor.visible = true;
 
+        //turn camera sensitivity to 0
         thirdPersonFreeLookCam.m_XAxis.m_MaxSpeed = 0f;
         thirdPersonFreeLookCam.m_YAxis.m_MaxSpeed = 0f;
         topDownFreeLookCam.m_XAxis.m_MaxSpeed = 0f;
@@ -84,11 +87,14 @@ public class ThirdPersonCam : MonoBehaviour
         camIsLocked = true;
     }
 
-    //return camera sensitivity to original values
     private void UnlockCamera() {
-        //thirdPersonFreeLookCam.enabled = true;
-        //topDownFreeLookCam.enabled = true;
 
+        //lock cursor to center of game view
+        Cursor.lockState = CursorLockMode.Locked;
+        //make cursor invisible
+        Cursor.visible = false;
+
+        //return camera sensitivity to original values
         thirdPersonFreeLookCam.m_XAxis.m_MaxSpeed = mouseSensX;
         thirdPersonFreeLookCam.m_YAxis.m_MaxSpeed = mouseSensY;
         topDownFreeLookCam.m_XAxis.m_MaxSpeed = mouseSensX;

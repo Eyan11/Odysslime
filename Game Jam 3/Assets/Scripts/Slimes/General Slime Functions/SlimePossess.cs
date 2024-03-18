@@ -8,6 +8,7 @@ public class SlimePossess : MonoBehaviour
     [Header("References")]
     [SerializeField] private ThirdPersonCam cameraScript;
     [SerializeField] private GameObject slimeKingPlayer;
+    [SerializeField] private Transform raycastTestObj;
     private SlimeAbilities slimeAbility;
     private SlimeMovement slimeMovement;
     private SlimeFollow slimeFollow;
@@ -59,7 +60,7 @@ public class SlimePossess : MonoBehaviour
 
     }
 
-    private void PosessSlime(GameObject otherSlime) {
+    public void PosessSlime(GameObject otherSlime) {
         //Testing
         Debug.Log("Possessing " + otherSlime.name  + " from " + gameObject.name + "!");
 
@@ -75,9 +76,12 @@ public class SlimePossess : MonoBehaviour
     private void RaycastForSlime() {
         //spawn ray from screen to cursor position in world
         ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        Debug.DrawRay(ray.origin, ray.direction * 20, Color.red);
         
         //if ray hit something
         if(Physics.Raycast(ray, out hit)) {
+            
+            raycastTestObj.position = hit.point;
 
             //Testing
             Debug.Log("Mouse raycast hit: " + hit.collider.name);
