@@ -629,6 +629,11 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2272448730742439019, guid: 0b7029b107bd7624e96ad898a7331113,
+        type: 3}
+      propertyPath: m_IsKinematic
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4362966882715022011, guid: 0b7029b107bd7624e96ad898a7331113,
         type: 3}
       propertyPath: jumpPower
@@ -691,6 +696,11 @@ PrefabInstance:
       objectReference: {fileID: 330585549}
     - target: {fileID: 6145706820333691184, guid: 0b7029b107bd7624e96ad898a7331113,
         type: 3}
+      propertyPath: raycastTestObj
+      value: 
+      objectReference: {fileID: 844566958}
+    - target: {fileID: 6145706820333691184, guid: 0b7029b107bd7624e96ad898a7331113,
+        type: 3}
       propertyPath: slimeKingPlayer
       value: 
       objectReference: {fileID: 260681932}
@@ -730,12 +740,12 @@ PrefabInstance:
     - target: {fileID: 555929445965367561, guid: 75c7dd668b96da549aeda55cd8b2602f,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.000000021954929
+      value: -0.000000021954934
       objectReference: {fileID: 0}
     - target: {fileID: 555929445965367561, guid: 75c7dd668b96da549aeda55cd8b2602f,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.000000013568892
+      value: 0.000000013568895
       objectReference: {fileID: 0}
     - target: {fileID: 1404563249740134900, guid: 75c7dd668b96da549aeda55cd8b2602f,
         type: 3}
@@ -975,8 +985,7 @@ PrefabInstance:
       propertyPath: m_Name
       value: Raycast Test Obj
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 1325548389108219955, guid: f86c6ee04ba6d5347b250274fb5c60f0, type: 3}
+    m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -1001,6 +1010,11 @@ PrefabInstance:
       objectReference: {fileID: 330585549}
     - target: {fileID: 4402304703344493799, guid: c7e2200d9aa32314985f51cdf9a741ea,
         type: 3}
+      propertyPath: raycastTestObj
+      value: 
+      objectReference: {fileID: 844566958}
+    - target: {fileID: 4402304703344493799, guid: c7e2200d9aa32314985f51cdf9a741ea,
+        type: 3}
       propertyPath: slimeKingPlayer
       value: 
       objectReference: {fileID: 260681932}
@@ -1014,6 +1028,11 @@ PrefabInstance:
       propertyPath: king
       value: 
       objectReference: {fileID: 260681935}
+    - target: {fileID: 5806126875086029291, guid: c7e2200d9aa32314985f51cdf9a741ea,
+        type: 3}
+      propertyPath: m_IsKinematic
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8191742797127445780, guid: c7e2200d9aa32314985f51cdf9a741ea,
         type: 3}
       propertyPath: m_Name
@@ -1135,6 +1154,11 @@ PrefabInstance:
     - target: {fileID: 1510699747074693710, guid: 7403cbb299f416844a9873c303408760,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3940326359731544003, guid: 7403cbb299f416844a9873c303408760,
+        type: 3}
+      propertyPath: m_IsKinematic
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5272022723827586172, guid: 7403cbb299f416844a9873c303408760,

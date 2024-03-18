@@ -30,6 +30,7 @@ public class SlimePossess : MonoBehaviour
             if (slimeMovement) {
                 slimeMovement.enabled = false;
             }
+            GetComponent<Rigidbody>().isKinematic = true;
             this.enabled = false;
         }
     }
@@ -122,6 +123,10 @@ public class SlimePossess : MonoBehaviour
 
         if (slimeFollow)
             slimeFollow.enabled = true;
+
+        if(gameObject.CompareTag("Slime Follower"))
+            GetComponent<Rigidbody>().isKinematic = true;
+
     }
 
     //run every time this script is enabled in inspector
@@ -134,7 +139,10 @@ public class SlimePossess : MonoBehaviour
             slimeMovement.enabled = true;
         
         if (slimeFollow)
-            slimeFollow.enabled = false;    
+            slimeFollow.enabled = false;   
+
+        if(gameObject.CompareTag("Slime Follower"))
+            GetComponent<Rigidbody>().isKinematic = false; 
     }
 
 }
