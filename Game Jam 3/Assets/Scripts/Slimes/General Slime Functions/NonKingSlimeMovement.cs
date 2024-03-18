@@ -14,11 +14,13 @@ public class NonKingSlimeMovement : SlimeMovement
     [SerializeField] private float movementSpeed = 1;
     [SerializeField] private float groundDrag = 3;
     [SerializeField] private float jumpPower = 10;
+    [SerializeField] private float jumpCooldown = 0.2f;
     
     private Rigidbody rb;
     private float xInput;
     private float zInput;
     private float yInput;
+    private float lastJumpTime = 0f;
     private bool onGround = false;
     private float jumpStart;
     private Vector3 moveDir;
@@ -42,7 +44,7 @@ public class NonKingSlimeMovement : SlimeMovement
         ApplyHorizontalMovement();
 
         // Applies jump if on ground
-        if (yInput == 1) {
+        if (yInput == 1 && lastJumpTime + jumpCooldown < Time.deltaTime) {
             Jump();
         }
 
@@ -71,6 +73,9 @@ public class NonKingSlimeMovement : SlimeMovement
     }
 
     private void Jump() {
+        // Sets last jump variable to current time
+        lastJumpTime = Time.deltaTime;
+
         // Resets y-velocity
         rb.velocity = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
 
