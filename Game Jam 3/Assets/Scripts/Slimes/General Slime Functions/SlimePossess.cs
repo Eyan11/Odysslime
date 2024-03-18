@@ -1,12 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class SlimePossess : MonoBehaviour
 {
     [Header("References")]
     [SerializeField] private ThirdPersonCam cameraScript;
     [SerializeField] private GameObject slimeKingPlayer;
+    [SerializeField] private Transform raycastTestObj;
     private SlimeAbilities slimeAbility;
     private SlimeMovement slimeMovement;
     private SlimeFollow slimeFollow;
@@ -28,11 +30,12 @@ public class SlimePossess : MonoBehaviour
             if (slimeMovement) {
                 slimeMovement.enabled = false;
             }
+            GetComponent<Rigidbody>().isKinematic = true;
             this.enabled = false;
         }
     }
 
-    private void Update() {
+    private void FixedUpdate() {
 
         //if press "Z" and not the king, return to king slime
         if(Input.GetKeyDown(KeyCode.Z) && gameObject != slimeKingPlayer) {
@@ -45,26 +48,27 @@ public class SlimePossess : MonoBehaviour
 
         //if right mouse is held (camera is locked)
         if(cameraScript.CamIsLocked()) {
-            Debug.Log("Camera is LOCKED!");
+            //Debug.Log("Camera is LOCKED!");
             //check for a slime to possess
             RaycastForSlime();
+
             slimeMovement.enabled = false;
         }
         else {
-            Debug.Log("Camera is UNLOCKED!");
+            //Debug.Log("Camera is UNLOCKED!");
             slimeMovement.enabled = true;
         }
 
     }
 
-    private void PosessSlime(GameObject otherSlime) {
+    public void PosessSlime(GameObject otherSlime) {
         //Testing
         Debug.Log("Possessing " + otherSlime.name  + " from " + gameObject.name + "!");
 
         //switch camera
         cameraScript.SwitchCamera(otherSlime);
 
-        //allow slime to possess others (but not ieslf)
+        //allow slime to possess others (but not iteslf)
         otherSlime.GetComponent<SlimePossess>().enabled = true;
         //disable this script
         this.enabled = false;
@@ -73,9 +77,12 @@ public class SlimePossess : MonoBehaviour
     private void RaycastForSlime() {
         //spawn ray from screen to cursor position in world
         ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        Debug.DrawRay(ray.origin, ray.direction * 20, Color.red);
         
         //if ray hit something
         if(Physics.Raycast(ray, out hit)) {
+            
+            raycastTestObj.position = hit.point;
 
             //Testing
             Debug.Log("Mouse raycast hit: " + hit.collider.name);
@@ -84,7 +91,12 @@ public class SlimePossess : MonoBehaviour
             GameObject otherObject = hit.collider.gameObject;
             bool isSlime = false;
 
-            //if ray cast hit any slime
+            // throw out results if self
+            if (otherObject == gameObject) {
+                return;
+            }
+
+            //if ray cast hit any slime (except oneself)
             if (otherObject.CompareTag("Slime Follower") || otherObject.CompareTag("Slime King")) {
                 isSlime = true;
 
@@ -92,7 +104,7 @@ public class SlimePossess : MonoBehaviour
             }
 
             //if pressing "E" and it is a different slime, then change possession
-            if(Input.GetKeyDown(KeyCode.E) && isSlime && otherObject != gameObject) {
+            if(Input.GetKeyDown(KeyCode.E) && isSlime) {
                 PosessSlime(otherObject);
             }
         }
@@ -102,9 +114,6 @@ public class SlimePossess : MonoBehaviour
 
     //run every time this script is disabled in inspector
     private void OnDisable() {
-        //reallows raycast to hit slime
-        gameObject.layer = 0;
-
         //disable scripts if they exists
         if (slimeAbility)
             slimeAbility.enabled = false;
@@ -114,13 +123,14 @@ public class SlimePossess : MonoBehaviour
 
         if (slimeFollow)
             slimeFollow.enabled = true;
+
+        if(gameObject.CompareTag("Slime Follower"))
+            GetComponent<Rigidbody>().isKinematic = true;
+
     }
 
     //run every time this script is enabled in inspector
     private void OnEnable() {
-        //prevents raycast from hitting oneself
-        gameObject.layer = 2;
-
         //enable scripts if they exists
         if (slimeAbility)
             slimeAbility.enabled = true;
@@ -129,7 +139,10 @@ public class SlimePossess : MonoBehaviour
             slimeMovement.enabled = true;
         
         if (slimeFollow)
-            slimeFollow.enabled = false;    
+            slimeFollow.enabled = false;   
+
+        if(gameObject.CompareTag("Slime Follower"))
+            GetComponent<Rigidbody>().isKinematic = false; 
     }
 
 }

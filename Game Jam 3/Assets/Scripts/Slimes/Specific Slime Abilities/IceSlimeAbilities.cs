@@ -16,14 +16,17 @@ public class IceSlimeAbilities : SlimeAbilities
     private bool triggered = false;
 
     private void FixedUpdate() {
+        CheckForIceObject();
+    }
+
+    private void CheckForIceObject() {
         // Checks if an ice block is in front
         foundIce = Physics.Raycast(transform.position, orientation.transform.forward, out raycastHit, interactionDist, layerMask);
 
-        if (foundIce) {
-            Debug.Log("Ice cube!!!!!!");
-        }
+        if (foundIce) { return; }
 
         // Check if an ice puddle is below
+        foundIce = Physics.Raycast(transform.position, Vector3.down, out raycastHit, interactionDist, layerMask);
     }
     
     public override void UseAbility()
@@ -35,14 +38,19 @@ public class IceSlimeAbilities : SlimeAbilities
         triggered = true;
 
         if (foundIce) {
-            Debug.Log("Snow zone time");
-
             GameObject iceObj = raycastHit.collider.gameObject;
 
             // Ice cube growth
             IceCube iceBlock = iceObj.GetComponent<IceCube>();
             if (iceBlock) {
                 iceBlock.GrowCube();
+
+                return;
+            }
+
+            IcePlatform icePuddle = iceObj.GetComponent<IcePlatform>();
+            if (icePuddle) {
+                
             }
 
             return;
