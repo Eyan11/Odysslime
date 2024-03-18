@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class SlimePossess : MonoBehaviour
 {
@@ -32,7 +33,7 @@ public class SlimePossess : MonoBehaviour
         }
     }
 
-    private void Update() {
+    private void FixedUpdate() {
 
         //if press "Z" and not the king, return to king slime
         if(Input.GetKeyDown(KeyCode.Z) && gameObject != slimeKingPlayer) {
@@ -45,13 +46,14 @@ public class SlimePossess : MonoBehaviour
 
         //if right mouse is held (camera is locked)
         if(cameraScript.CamIsLocked()) {
-            Debug.Log("Camera is LOCKED!");
+            //Debug.Log("Camera is LOCKED!");
             //check for a slime to possess
             RaycastForSlime();
+
             slimeMovement.enabled = false;
         }
         else {
-            Debug.Log("Camera is UNLOCKED!");
+            //Debug.Log("Camera is UNLOCKED!");
             slimeMovement.enabled = true;
         }
 
@@ -64,7 +66,7 @@ public class SlimePossess : MonoBehaviour
         //switch camera
         cameraScript.SwitchCamera(otherSlime);
 
-        //allow slime to possess others (but not ieslf)
+        //allow slime to possess others (but not iteslf)
         otherSlime.GetComponent<SlimePossess>().enabled = true;
         //disable this script
         this.enabled = false;

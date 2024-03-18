@@ -86,7 +86,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 80
   m_CollisionDetection: 0
 --- !u!195 &9079238447393325622
 NavMeshAgent:
@@ -167,6 +167,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c462a42c90a53f44b8410aef81a13ea1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  orientation: {fileID: 3743201115591625188}
+  slimeObj: {fileID: 4849913531010385169}
+  bodyRadius: 0.5
+  movementSpeed: 1
+  groundDrag: 3
+  jumpPower: 10
 --- !u!1 &787742763717332419
 GameObject:
   m_ObjectHideFlags: 0

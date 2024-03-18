@@ -32,5 +32,13 @@ public class SlimeFollow : MonoBehaviour
         agent.destination = king.position;
     }
 
+    private void OnDisable() {
+        agent.enabled = false;
+    }
+
+    private void OnEnable() {
+        agent.enabled = true;
+    }
+
 
 }
