@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 6145706820333691184}
   - component: {fileID: -7131254884126679211}
   - component: {fileID: 4362966882715022011}
+  - component: {fileID: -2627454649028561501}
   m_Layer: 0
   m_Name: Ice Slime Player
   m_TagString: Slime Follower
@@ -173,6 +174,20 @@ MonoBehaviour:
   movementSpeed: 1
   groundDrag: 3
   jumpPower: 10
+  jumpCooldown: 0.2
+--- !u!114 &-2627454649028561501
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 465292363649802967}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c06470c6cce9284ca3888a18eef3949, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  slimeKing: {fileID: 0}
 --- !u!1 &787742763717332419
 GameObject:
   m_ObjectHideFlags: 0

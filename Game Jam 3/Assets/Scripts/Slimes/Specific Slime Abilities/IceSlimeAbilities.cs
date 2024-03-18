@@ -26,10 +26,7 @@ public class IceSlimeAbilities : SlimeAbilities
         if (foundIce) { return; }
 
         // Check if an ice puddle is below
-        // TODO: needs own layer
-        //foundIce = Physics.Raycast(transform.position, Vector3.down, out raycastHit, interactionDist, layerMask);
-
-        //if (foundIce) { return; }
+        foundIce = Physics.Raycast(transform.position, Vector3.down, out raycastHit, interactionDist, layerMask);
     }
     
     public override void UseAbility()
@@ -47,6 +44,13 @@ public class IceSlimeAbilities : SlimeAbilities
             IceCube iceBlock = iceObj.GetComponent<IceCube>();
             if (iceBlock) {
                 iceBlock.GrowCube();
+
+                return;
+            }
+
+            IcePlatform icePuddle = iceObj.GetComponent<IcePlatform>();
+            if (icePuddle) {
+                
             }
 
             return;
