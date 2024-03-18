@@ -4,15 +4,6 @@ using UnityEngine;
 
 public class Pushable : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    [Header("Statistics")]
+    public int size = 1;
 }

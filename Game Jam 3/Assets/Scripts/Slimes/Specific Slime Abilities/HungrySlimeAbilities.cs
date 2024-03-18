@@ -2,17 +2,22 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HungrySlimeAbilities : MonoBehaviour
+public class HungrySlimeAbilities : SlimeAbilities
 {
-    // Start is called before the first frame update
-    void Start()
-    {
+    [Header("Settings")]
+    public int slimeSize = 1;
+    private float interactionDistance = 1.2f;
+    private int pushablesMask;
+
+    private void Awake() {
+        pushablesMask = 1 << 9;
+        pushablesMask |= pushablesMask << 8;
+    }
+    
+    private void FixedUpdate() {
         
     }
+    public override void UseAbility() {
 
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }

@@ -10,7 +10,7 @@ public class IceSlimeAbilities : SlimeAbilities
     [SerializeField] private GameObject iceCubeTemplate;
     [SerializeField] private GameObject icePuddleTemplate;
     [SerializeField] private GameObject orientation;
-    [SerializeField] private float interactionDist = 1.2f;
+    [SerializeField] private float interactionDistance = 1.2f;
     private RaycastHit raycastHit;
     private SlimeVitality slimeVitality;
     private int iceLayerMask = 1<<8; // 8 points towards "Ice" layer
@@ -29,12 +29,12 @@ public class IceSlimeAbilities : SlimeAbilities
 
     private void CheckForIceObject() {
         // Checks if an ice block is in front
-        foundIce = Physics.Raycast(transform.position, orientation.transform.forward, out raycastHit, interactionDist, iceLayerMask);
+        foundIce = Physics.Raycast(transform.position, orientation.transform.forward, out raycastHit, interactionDistance, iceLayerMask);
 
         if (foundIce) { return; }
 
         // Check if an ice puddle is below
-        foundIce = Physics.Raycast(transform.position, Vector3.down, out raycastHit, interactionDist, iceLayerMask);
+        foundIce = Physics.Raycast(transform.position, Vector3.down, out raycastHit, interactionDistance, iceLayerMask);
     }
 
     public void GenerateIcePuddle() {

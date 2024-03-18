@@ -7,8 +7,8 @@ public class SlimePossess : MonoBehaviour
 {
     [Header("References")]
     [SerializeField] private ThirdPersonCam cameraScript;
-    [SerializeField] private GameObject slimeKingPlayer;
     [SerializeField] private Transform raycastTestObj;
+    private GameObject slimeKingPlayer;
     private SlimeAbilities slimeAbility;
     private SlimeMovement slimeMovement;
     private SlimeFollow slimeFollow;
@@ -16,6 +16,9 @@ public class SlimePossess : MonoBehaviour
     private RaycastHit hit;
 
     private void Awake() {
+        // Retrieve slime king player
+        slimeKingPlayer = GameObject.FindObjectOfType<KingMovement>().gameObject;
+
         // finds the first instance of script
         slimeAbility = gameObject.GetComponent<SlimeAbilities>();
         slimeMovement = gameObject.GetComponent<SlimeMovement>();
@@ -84,7 +87,10 @@ public class SlimePossess : MonoBehaviour
         //if ray hit something
         if(Physics.Raycast(ray, out hit)) {
             
-            raycastTestObj.position = hit.point;
+            // For raycast debugging
+            if (raycastTestObj) {
+                raycastTestObj.position = hit.point;
+            }
 
             //Testing
             Debug.Log("Mouse raycast hit: " + hit.collider.name);

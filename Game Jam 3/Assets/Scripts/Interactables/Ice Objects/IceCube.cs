@@ -3,15 +3,12 @@ using System.Collections.Generic;
 using JetBrains.Annotations;
 using UnityEngine;
 
-public class IceCube : MonoBehaviour
+public class IceCube : Pushable
 {
     [Header("Settings")]
     // Represents the visualization
     [SerializeField] private GameObject iceModel;
     public int sizeLimit = 6;
-
-    [Header("Statistics")]
-    public int size = 1;
 
     private BoxCollider boxCollider;
 

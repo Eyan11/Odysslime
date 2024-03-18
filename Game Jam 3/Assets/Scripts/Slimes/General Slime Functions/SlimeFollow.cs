@@ -5,8 +5,7 @@ using UnityEngine.AI;
 
 public class SlimeFollow : MonoBehaviour
 {
-    [Header("References")]
-    [SerializeField] private Transform king;
+    private Transform king;
     private NavMeshAgent agent;
 
     [Header("Settings")]
@@ -16,6 +15,8 @@ public class SlimeFollow : MonoBehaviour
     private void Awake() {
         agent = GetComponent<UnityEngine.AI.NavMeshAgent>();
         updateFollowCounter = updateFollowTime;
+
+        king = GameObject.FindObjectOfType<KingMovement>().gameObject.transform;
     }
 
     private void FixedUpdate() {
