@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 8594337090744085919}
   - component: {fileID: 7716829228858555166}
   - component: {fileID: 877335529589393163}
+  - component: {fileID: -6315231870595629746}
   m_Layer: 0
   m_Name: Explodable Rock
   m_TagString: Untagged
@@ -107,6 +108,18 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -7310643072688355705, guid: 38e2e172da7ad634ba130815fdad2bd4, type: 3}
+--- !u!114 &-6315231870595629746
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3625906575758509916}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 137ac4d4418151e4898e7f5beca70eff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6393673619766942602
 GameObject:
   m_ObjectHideFlags: 0
