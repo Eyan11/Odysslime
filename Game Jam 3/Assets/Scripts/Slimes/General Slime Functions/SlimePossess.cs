@@ -86,7 +86,12 @@ public class SlimePossess : MonoBehaviour
             GameObject otherObject = hit.collider.gameObject;
             bool isSlime = false;
 
-            //if ray cast hit any slime
+            // throw out results if self
+            if (otherObject == gameObject) {
+                return;
+            }
+
+            //if ray cast hit any slime (except oneself)
             if (otherObject.CompareTag("Slime Follower") || otherObject.CompareTag("Slime King")) {
                 isSlime = true;
 
@@ -94,7 +99,7 @@ public class SlimePossess : MonoBehaviour
             }
 
             //if pressing "E" and it is a different slime, then change possession
-            if(Input.GetKeyDown(KeyCode.E) && isSlime && otherObject != gameObject) {
+            if(Input.GetKeyDown(KeyCode.E) && isSlime) {
                 PosessSlime(otherObject);
             }
         }
@@ -104,9 +109,6 @@ public class SlimePossess : MonoBehaviour
 
     //run every time this script is disabled in inspector
     private void OnDisable() {
-        //reallows raycast to hit slime
-        gameObject.layer = 0;
-
         //disable scripts if they exists
         if (slimeAbility)
             slimeAbility.enabled = false;
@@ -120,9 +122,6 @@ public class SlimePossess : MonoBehaviour
 
     //run every time this script is enabled in inspector
     private void OnEnable() {
-        //prevents raycast from hitting oneself
-        gameObject.layer = 2;
-
         //enable scripts if they exists
         if (slimeAbility)
             slimeAbility.enabled = true;
