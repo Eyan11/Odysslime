@@ -9,21 +9,22 @@ public class SlimePossess : MonoBehaviour
     [SerializeField] private GameObject slimeKingPlayer;
     private SlimeAbilities slimeAbility;
     private SlimeMovement slimeMovement;
+    private SlimeFollow slimeFollow;
     private Ray ray;
     private RaycastHit hit;
 
     private void Awake() {
-        // finds the first instance of a slimeAbility component
+        // finds the first instance of script
         slimeAbility = gameObject.GetComponent<SlimeAbilities>();
-
-        // finds the first instance of a slimeMovement component
         slimeMovement = gameObject.GetComponent<SlimeMovement>();
+        slimeFollow = gameObject.GetComponent<SlimeFollow>();
 
-        //disable this script on start if not the slime king
+        //if this script is NOT on king obj
         if (slimeKingPlayer != gameObject) {
-            if (slimeAbility) {
+            //disable slime abilities
+            if (slimeAbility)
                 slimeAbility.enabled = false;
-            }
+            //disable slime movement
             if (slimeMovement) {
                 slimeMovement.enabled = false;
             }
@@ -77,7 +78,7 @@ public class SlimePossess : MonoBehaviour
         if(Physics.Raycast(ray, out hit)) {
 
             //Testing
-            //Debug.Log("Mouse raycast hit: " + hit.collider.name);
+            Debug.Log("Mouse raycast hit: " + hit.collider.name);
 
             //store hit object in otherObject
             GameObject otherObject = hit.collider.gameObject;
@@ -104,28 +105,31 @@ public class SlimePossess : MonoBehaviour
         //reallows raycast to hit slime
         gameObject.layer = 0;
 
-        //disable slime's ability if one exists
-        if (slimeAbility) {
+        //disable scripts if they exists
+        if (slimeAbility)
             slimeAbility.enabled = false;
-        }
-        //disable slime's movement if it exists
-        if (slimeMovement) {
+        
+        if (slimeMovement)
             slimeMovement.enabled = false;
-        }
+
+        if (slimeFollow)
+            slimeFollow.enabled = true;
     }
 
     //run every time this script is enabled in inspector
     private void OnEnable() {
         //prevents raycast from hitting oneself
         gameObject.layer = 2;
-        //enable slime's ability if one exists
-        if (slimeAbility) {
+
+        //enable scripts if they exists
+        if (slimeAbility)
             slimeAbility.enabled = true;
-        }
-        //enable slime's movement if it exists
-        if (slimeMovement) {
+
+        if (slimeMovement)
             slimeMovement.enabled = true;
-        }
+        
+        if (slimeFollow)
+            slimeFollow.enabled = false;    
     }
 
 }
