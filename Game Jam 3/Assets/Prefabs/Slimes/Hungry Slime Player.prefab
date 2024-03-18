@@ -123,7 +123,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c50d2a53d642006498ba68745987362e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  king: {fileID: 0}
   updateFollowTime: 0.5
 --- !u!114 &6145706820333691184
 MonoBehaviour:
@@ -138,9 +137,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cameraScript: {fileID: 0}
-  slimeKingPlayer: {fileID: 6164710366797321215, guid: 7403cbb299f416844a9873c303408760,
-    type: 3}
-  raycastTestObj: {fileID: 0}
+  raycastTestObj: {fileID: 4849913531010385169}
 --- !u!114 &2496106213619333897
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -153,6 +150,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42a58c0cc21809349808aabadf8b98bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  orientation: {fileID: 3743201115591625188}
+  slimeModel: {fileID: 8796622082082593248}
+  slimeSize: 1
 --- !u!114 &4362966882715022011
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -43,7 +43,7 @@ public class SlimePossess : MonoBehaviour
         //if press "Z" and not the king, return to king slime
         if(Input.GetKeyDown(KeyCode.Z) && gameObject != slimeKingPlayer) {
             //Testing
-            Debug.Log("Z input, possessing king!");
+            //Debug.Log("Z input, possessing king!");
 
             PosessSlime(slimeKingPlayer);
         }
@@ -67,7 +67,7 @@ public class SlimePossess : MonoBehaviour
     public void PosessSlime(GameObject otherSlime) {
         if (otherSlime != gameObject) {
             //Testing
-            Debug.Log("Possessing " + otherSlime.name  + " from " + gameObject.name + "!");
+            //Debug.Log("Possessing " + otherSlime.name  + " from " + gameObject.name + "!");
 
             //switch camera
             cameraScript.SwitchCamera(otherSlime);
@@ -93,7 +93,7 @@ public class SlimePossess : MonoBehaviour
             }
 
             //Testing
-            Debug.Log("Mouse raycast hit: " + hit.collider.name);
+            //Debug.Log("Mouse raycast hit: " + hit.collider.name);
 
             //store hit object in otherObject
             GameObject otherObject = hit.collider.gameObject;
