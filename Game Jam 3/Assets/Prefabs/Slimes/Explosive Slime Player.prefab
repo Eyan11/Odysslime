@@ -338,6 +338,7 @@ MonoBehaviour:
   cameraScript: {fileID: 0}
   slimeKingPlayer: {fileID: 6164710366797321215, guid: 7403cbb299f416844a9873c303408760,
     type: 3}
+  raycastTestObj: {fileID: 0}
 --- !u!114 &-2710927735541009254
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -367,7 +368,7 @@ MonoBehaviour:
   bodyRadius: 0.5
   movementSpeed: 1
   groundDrag: 3
-  jumpPower: 10
+  jumpPower: 7
   jumpCooldown: 0.2
 --- !u!114 &-5661098779021773053
 MonoBehaviour:
@@ -381,4 +382,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c06470c6cce9284ca3888a18eef3949, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  slimeKing: {fileID: 0}

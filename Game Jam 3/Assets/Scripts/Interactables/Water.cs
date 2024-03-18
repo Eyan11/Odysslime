@@ -4,15 +4,16 @@ using UnityEngine;
 
 public class Water : Lethal
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    protected override void OnTriggerEnter(Collider collider) {
+        // Ice slime check
+        GameObject gameObj = collider.gameObject;
+        IceSlimeAbilities iceSlimeAbilities = gameObj.GetComponent<IceSlimeAbilities>();
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        if (iceSlimeAbilities) {
+            // Generates a puddle on death on water
+            iceSlimeAbilities.GenerateIcePuddle();
+        }
+
+        base.OnTriggerEnter(collider);
     }
 }

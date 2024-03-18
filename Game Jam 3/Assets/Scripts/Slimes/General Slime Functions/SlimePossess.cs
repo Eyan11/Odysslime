@@ -62,16 +62,18 @@ public class SlimePossess : MonoBehaviour
     }
 
     public void PosessSlime(GameObject otherSlime) {
-        //Testing
-        Debug.Log("Possessing " + otherSlime.name  + " from " + gameObject.name + "!");
+        if (otherSlime != gameObject) {
+            //Testing
+            Debug.Log("Possessing " + otherSlime.name  + " from " + gameObject.name + "!");
 
-        //switch camera
-        cameraScript.SwitchCamera(otherSlime);
+            //switch camera
+            cameraScript.SwitchCamera(otherSlime);
 
-        //allow slime to possess others (but not iteslf)
-        otherSlime.GetComponent<SlimePossess>().enabled = true;
-        //disable this script
-        this.enabled = false;
+            //allow slime to possess others (but not iteslf)
+            otherSlime.GetComponent<SlimePossess>().enabled = true;
+            //disable this script
+            this.enabled = false;
+        }
     }
 
     private void RaycastForSlime() {
