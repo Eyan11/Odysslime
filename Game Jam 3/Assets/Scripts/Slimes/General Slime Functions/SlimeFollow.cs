@@ -10,7 +10,7 @@ public class SlimeFollow : MonoBehaviour
     private NavMeshAgent agent;
 
     [Header("Settings")]
-    [SerializeField] private float updateFollowTime = 0.2f;
+    [SerializeField] private float updateFollowTime = 1f;
     private float updateFollowCounter = 0;
 
     private void Awake() {
@@ -18,7 +18,7 @@ public class SlimeFollow : MonoBehaviour
         updateFollowCounter = updateFollowTime;
     }
 
-    private void Update() {
+    private void FixedUpdate() {
         updateFollowCounter -= Time.deltaTime;
 
         //only update follow target periodically
@@ -31,5 +31,6 @@ public class SlimeFollow : MonoBehaviour
 
         agent.destination = king.position;
     }
+
 
 }
