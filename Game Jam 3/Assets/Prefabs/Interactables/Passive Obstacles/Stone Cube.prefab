@@ -93,9 +93,9 @@ GameObject:
   m_Component:
   - component: {fileID: 3057132275020888762}
   - component: {fileID: 1054252023114115809}
-  - component: {fileID: 6861072479397677543}
   - component: {fileID: 951491166357643337}
-  m_Layer: 8
+  - component: {fileID: -1300302888796901849}
+  m_Layer: 9
   m_Name: Stone Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -141,25 +141,10 @@ Rigidbody:
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
   m_UseGravity: 1
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &6861072479397677543
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8684171417627582877}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 75ec2e20dc9d0a742a13b32a26bdd04f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  iceModel: {fileID: 0}
-  sizeLimit: 6
-  size: 1
 --- !u!65 &951491166357643337
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -181,3 +166,16 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &-1300302888796901849
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8684171417627582877}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a787684ce7da494f91c93680ec3f371, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  size: 1

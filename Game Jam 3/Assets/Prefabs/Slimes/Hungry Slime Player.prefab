@@ -14,11 +14,11 @@ GameObject:
   - component: {fileID: 9079238447393325622}
   - component: {fileID: 7035312251222220459}
   - component: {fileID: 6145706820333691184}
-  - component: {fileID: -7131254884126679211}
+  - component: {fileID: 2496106213619333897}
   - component: {fileID: 4362966882715022011}
   - component: {fileID: -2627454649028561501}
   m_Layer: 0
-  m_Name: Ice Slime Player
+  m_Name: Hungry Slime Player
   m_TagString: Slime Follower
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -123,7 +123,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c50d2a53d642006498ba68745987362e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  king: {fileID: 0}
   updateFollowTime: 0.5
 --- !u!114 &6145706820333691184
 MonoBehaviour:
@@ -138,27 +137,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cameraScript: {fileID: 0}
-  slimeKingPlayer: {fileID: 6164710366797321215, guid: 7403cbb299f416844a9873c303408760,
-    type: 3}
-  raycastTestObj: {fileID: 0}
---- !u!114 &-7131254884126679211
+  raycastTestObj: {fileID: 4849913531010385169}
+--- !u!114 &2496106213619333897
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 465292363649802967}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3e56d3752c2d0bf43945c7aa3ccf40c6, type: 3}
+  m_Script: {fileID: 11500000, guid: 42a58c0cc21809349808aabadf8b98bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  iceCubeTemplate: {fileID: 8684171417627582877, guid: 8205996345d2267498e663371df717e1,
-    type: 3}
-  icePuddleTemplate: {fileID: 8196443612886343464, guid: 4af233ac404577840adaaa4f7c475cbe,
-    type: 3}
-  orientation: {fileID: 787742763717332419}
-  interactionDist: 1.2
+  orientation: {fileID: 3743201115591625188}
+  slimeModel: {fileID: 8796622082082593248}
+  slimeSize: 1
 --- !u!114 &4362966882715022011
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -282,7 +276,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 18b70626315be874a8622c712794214c, type: 2}
+  - {fileID: 2100000, guid: ce5a1652300b93d40a17f9c4295e184b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -366,7 +360,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 18b70626315be874a8622c712794214c, type: 2}
+  - {fileID: 2100000, guid: ce5a1652300b93d40a17f9c4295e184b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

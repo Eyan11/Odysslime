@@ -7,8 +7,8 @@ public class SlimePossess : MonoBehaviour
 {
     [Header("References")]
     [SerializeField] private ThirdPersonCam cameraScript;
-    [SerializeField] private GameObject slimeKingPlayer;
     [SerializeField] private Transform raycastTestObj;
+    private GameObject slimeKingPlayer;
     private SlimeAbilities slimeAbility;
     private SlimeMovement slimeMovement;
     private SlimeFollow slimeFollow;
@@ -16,6 +16,9 @@ public class SlimePossess : MonoBehaviour
     private RaycastHit hit;
 
     private void Awake() {
+        // Retrieve slime king player
+        slimeKingPlayer = GameObject.FindObjectOfType<KingMovement>().gameObject;
+
         // finds the first instance of script
         slimeAbility = gameObject.GetComponent<SlimeAbilities>();
         slimeMovement = gameObject.GetComponent<SlimeMovement>();
@@ -40,7 +43,7 @@ public class SlimePossess : MonoBehaviour
         //if press "Z" and not the king, return to king slime
         if(Input.GetKeyDown(KeyCode.Z) && gameObject != slimeKingPlayer) {
             //Testing
-            Debug.Log("Z input, possessing king!");
+            //Debug.Log("Z input, possessing king!");
 
             PosessSlime(slimeKingPlayer);
         }
@@ -62,16 +65,18 @@ public class SlimePossess : MonoBehaviour
     }
 
     public void PosessSlime(GameObject otherSlime) {
-        //Testing
-        Debug.Log("Possessing " + otherSlime.name  + " from " + gameObject.name + "!");
+        if (otherSlime != gameObject) {
+            //Testing
+            //Debug.Log("Possessing " + otherSlime.name  + " from " + gameObject.name + "!");
 
-        //switch camera
-        cameraScript.SwitchCamera(otherSlime);
+            //switch camera
+            cameraScript.SwitchCamera(otherSlime);
 
-        //allow slime to possess others (but not iteslf)
-        otherSlime.GetComponent<SlimePossess>().enabled = true;
-        //disable this script
-        this.enabled = false;
+            //allow slime to possess others (but not iteslf)
+            otherSlime.GetComponent<SlimePossess>().enabled = true;
+            //disable this script
+            this.enabled = false;
+        }
     }
 
     private void RaycastForSlime() {
@@ -82,10 +87,13 @@ public class SlimePossess : MonoBehaviour
         //if ray hit something
         if(Physics.Raycast(ray, out hit)) {
             
-            raycastTestObj.position = hit.point;
+            // For raycast debugging
+            if (raycastTestObj) {
+                raycastTestObj.position = hit.point;
+            }
 
             //Testing
-            Debug.Log("Mouse raycast hit: " + hit.collider.name);
+            //Debug.Log("Mouse raycast hit: " + hit.collider.name);
 
             //store hit object in otherObject
             GameObject otherObject = hit.collider.gameObject;

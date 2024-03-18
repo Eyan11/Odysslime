@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class SlimeVitality : MonoBehaviour
 {
+    [Header("Settings")]
+    private bool enableResetKeybind = true; // Press R to die
     private GameObject slimeKing;
     private SlimePossess slimePossess;
 
@@ -19,6 +21,12 @@ public class SlimeVitality : MonoBehaviour
 
             // Destroys slime
             Destroy(gameObject);
+        }
+    }
+
+    private void FixedUpdate() {
+        if (slimePossess.enabled && Input.GetKey(KeyCode.R) && enableResetKeybind) {
+            this.enabled = false;
         }
     }
 }

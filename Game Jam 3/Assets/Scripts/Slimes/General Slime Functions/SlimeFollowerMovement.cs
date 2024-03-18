@@ -13,7 +13,7 @@ public class SlimeFollowerMovement : SlimeMovement
     [Header("Movement Settings")]
     [SerializeField] private float movementSpeed = 1;
     [SerializeField] private float groundDrag = 3;
-    [SerializeField] private float jumpPower = 10;
+    [SerializeField] private float jumpPower = 5;
     [SerializeField] private float jumpCooldown = 0.2f;
     
     private Rigidbody rb;

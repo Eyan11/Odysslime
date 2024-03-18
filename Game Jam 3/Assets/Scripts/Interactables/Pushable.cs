@@ -1,18 +1,25 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Pushable : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
+    [Header("Statistics")]
+    public int size = 1;
+
+    private new Rigidbody rigidbody;
+
+    private void Awake() {
+        rigidbody = GetComponent<Rigidbody>();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+    private void FixedUpdate() {
+        bool isSleeping = rigidbody.IsSleeping();
+
+        // Prevents the object from being moved unless by a slime
+        if (isSleeping) {
+            rigidbody.isKinematic = false;
+        }
     }
 }

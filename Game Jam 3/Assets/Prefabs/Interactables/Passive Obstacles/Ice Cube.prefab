@@ -112,7 +112,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 3, y: 3, z: 3}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 8639530921316042566}
@@ -141,7 +141,7 @@ Rigidbody:
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
   m_UseGravity: 1
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
@@ -157,9 +157,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75ec2e20dc9d0a742a13b32a26bdd04f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  iceModel: {fileID: 0}
-  sizeLimit: 6
   size: 1
+  iceModel: {fileID: 4727379432342310180}
+  sizeLimit: 6
 --- !u!65 &951491166357643337
 BoxCollider:
   m_ObjectHideFlags: 0
