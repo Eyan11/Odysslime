@@ -4,7 +4,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class NonKingSlimeMovement : SlimeMovement
+public class SlimeFollowerMovement : SlimeMovement
 {
     [Header("Settings")]
     [SerializeField] private Transform orientation;
@@ -44,7 +44,7 @@ public class NonKingSlimeMovement : SlimeMovement
         ApplyHorizontalMovement();
 
         // Applies jump if on ground
-        if (yInput == 1 && lastJumpTime + jumpCooldown < Time.deltaTime) {
+        if (yInput == 1 && lastJumpTime + jumpCooldown < Time.fixedTime) {
             Jump();
         }
 
@@ -74,7 +74,7 @@ public class NonKingSlimeMovement : SlimeMovement
 
     private void Jump() {
         // Sets last jump variable to current time
-        lastJumpTime = Time.deltaTime;
+        lastJumpTime = Time.fixedTime;
 
         // Resets y-velocity
         rb.velocity = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
