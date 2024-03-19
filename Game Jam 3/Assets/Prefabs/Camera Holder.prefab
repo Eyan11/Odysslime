@@ -1018,7 +1018,7 @@ MonoBehaviour:
   topDownCam: {fileID: 6666131534159369315}
   topDownFreeLookCam: {fileID: 3207851831316445057}
   rotationSpeed: 7
-  camUnlockedTime: 2
+  camUnlockedTime: 1
   mouseSensX: 300
   mouseSensY: 2
 --- !u!1 &3784233599110521264

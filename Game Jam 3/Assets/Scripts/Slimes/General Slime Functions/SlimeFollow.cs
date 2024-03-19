@@ -5,15 +5,16 @@ using UnityEngine.AI;
 
 public class SlimeFollow : MonoBehaviour
 {
-    [Header("References")]
-    [SerializeField] private Transform orientation;
-    private Transform king;
-    private NavMeshAgent agent;
-
     [Header("Settings")]
     [SerializeField] private float updateFollowTime = 1f;
+    [SerializeField] private float rotationSpeed;
     private float updateFollowCounter = 0;
+    private Transform king;
+    private NavMeshAgent agent;
+    private Vector3 kingDir;
+    private Quaternion rotation;
     private Rigidbody rb;
+
 
     private void Awake() {
         agent = GetComponent<UnityEngine.AI.NavMeshAgent>();
@@ -28,9 +29,12 @@ public class SlimeFollow : MonoBehaviour
         updateFollowCounter -= Time.deltaTime;
 
         //calculates direction to king (vector on XZ plane from slime to king)
-        Vector3 viewDir = king.position - new Vector3(transform.position.x, king.position.y, transform.position.z);
-        //sets the forward direction to the vector calculated (forward is the direction slime is moving)
-        orientation.forward = viewDir.normalized;
+        kingDir = king.position - transform.position;
+        kingDir.y = 0;
+
+        //smoothly change (Slerp) player orientation to match the input direction
+        rotation = Quaternion.LookRotation(kingDir);
+        transform.rotation = Quaternion.Slerp(transform.rotation, rotation, Time.deltaTime * rotationSpeed);
     }
 
     private void FixedUpdate() {

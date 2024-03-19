@@ -323,6 +323,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   orientation: {fileID: 2860819215200976625}
   updateFollowTime: 0.5
+  rotationSpeed: 7
 --- !u!114 &4402304703344493799
 MonoBehaviour:
   m_ObjectHideFlags: 0
