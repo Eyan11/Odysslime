@@ -33,9 +33,18 @@ public class HungrySlimeAbilities : SlimeAbilities
         // Checks if its a pushable block
         Pushable pushable = obj.GetComponent<Pushable>();
         if (!pushable) { return; }
+        // Continues the pushable state if big enough
+        if ((pushable.size - slimeSize) > 0.01) { return; }
+        pushable.ContinuePush();
+    }
 
-        Debug.Log(obj.name + " is pushable!");
-        obj.transform.parent = orientation.transform;
+    private void OnCollisionExit(Collision collision) {
+        GameObject obj = collision.gameObject;
+        // Checks if its a pushable block
+        Pushable pushable = obj.GetComponent<Pushable>();
+        if (!pushable) { return; }
+        // 'Ends' push
+        pushable.EndPush();
     }
 
     public override void UseAbility() {

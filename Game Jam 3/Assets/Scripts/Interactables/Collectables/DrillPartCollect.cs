@@ -11,7 +11,7 @@ public class DrillPartCollect : MonoBehaviour
 
             //INSERT ADD DRILL PART METHOD CALL HERE
 
-            Destroy(gameObejct);
+            Destroy(gameObject);
         }
     }
 

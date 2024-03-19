@@ -29,7 +29,7 @@ public class KingMovement : SlimeMovement
         discoverSlimesScript = GetComponent<DiscoverSlimes>();
     }
 
-    private void Update() {
+    private void FixedUpdate() {
         GetInput();
         ConstrainMovement();
 

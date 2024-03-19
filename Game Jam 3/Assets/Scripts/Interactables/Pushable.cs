@@ -1,25 +1,44 @@
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
+using Unity.VisualScripting.Dependencies.Sqlite;
 using UnityEngine;
+using UnityEngine.Timeline;
 
 public class Pushable : MonoBehaviour
 {
     [Header("Statistics")]
     public int size = 1;
-
-    private new Rigidbody rigidbody;
+    private Collider internalHitbox;
+    private GameObject pushableObj;
+    private Collider pushableHitbox;
 
     private void Awake() {
-        rigidbody = GetComponent<Rigidbody>();
+        internalHitbox = GetComponent<Collider>();
+        if (!internalHitbox) {
+            Debug.LogError(gameObject.name + " is missing a \"Rigidbody\"!");
+            return;
+        }
+
+        pushableObj = transform.Find("Strength Hitbox").gameObject;
+        if (!pushableObj) {
+            Debug.LogError(gameObject.name + " is missing a \"Strength Hitbox\"!");
+            return;
+        }
+
+        pushableHitbox = pushableObj.GetComponent<Collider>();
+        if (!pushableHitbox) {
+            Debug.LogError("\"Strength Hitbox\" is missing a BoxCollider!");
+        }
+
+        Physics.IgnoreCollision(internalHitbox, pushableHitbox, true);
     }
 
-    private void FixedUpdate() {
-        bool isSleeping = rigidbody.IsSleeping();
+    public void ContinuePush() {
+        pushableHitbox.isTrigger = true;
+    }
 
-        // Prevents the object from being moved unless by a slime
-        if (isSleeping) {
-            rigidbody.isKinematic = true;
-        }
+    public void EndPush() {
+        pushableHitbox.isTrigger = false;
     }
 }
