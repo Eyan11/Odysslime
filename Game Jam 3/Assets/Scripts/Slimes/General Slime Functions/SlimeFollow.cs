@@ -5,6 +5,8 @@ using UnityEngine.AI;
 
 public class SlimeFollow : MonoBehaviour
 {
+    [Header("References")]
+    [SerializeField] private Transform orientation;
     private Transform king;
     private NavMeshAgent agent;
 
@@ -19,11 +21,19 @@ public class SlimeFollow : MonoBehaviour
         rb = GetComponent<Rigidbody>();
 
         king = GameObject.FindObjectOfType<KingMovement>().gameObject.transform;
+        this.enabled = false;
+    }
+
+    private void Update() {
+        updateFollowCounter -= Time.deltaTime;
+
+        //calculates direction to king (vector on XZ plane from slime to king)
+        Vector3 viewDir = king.position - new Vector3(transform.position.x, king.position.y, transform.position.z);
+        //sets the forward direction to the vector calculated (forward is the direction slime is moving)
+        orientation.forward = viewDir.normalized;
     }
 
     private void FixedUpdate() {
-        updateFollowCounter -= Time.deltaTime;
-
         //only update follow target periodically
         if(updateFollowCounter < 0)
             FollowKing();

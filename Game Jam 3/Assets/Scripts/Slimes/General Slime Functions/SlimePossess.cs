@@ -9,6 +9,7 @@ public class SlimePossess : MonoBehaviour
     [SerializeField] private ThirdPersonCam cameraScript;
     [SerializeField] private Transform raycastTestObj;
     private GameObject slimeKingPlayer;
+    private DiscoverSlimes discoverSlimesScript;
     private SlimeAbilities slimeAbility;
     private SlimeMovement slimeMovement;
     private SlimeFollow slimeFollow;
@@ -23,6 +24,7 @@ public class SlimePossess : MonoBehaviour
         slimeAbility = gameObject.GetComponent<SlimeAbilities>();
         slimeMovement = gameObject.GetComponent<SlimeMovement>();
         slimeFollow = gameObject.GetComponent<SlimeFollow>();
+        discoverSlimesScript = slimeKingPlayer.GetComponent<DiscoverSlimes>();
 
         //if this script is NOT on king obj
         if (slimeKingPlayer != gameObject) {
@@ -68,6 +70,10 @@ public class SlimePossess : MonoBehaviour
         if (otherSlime != gameObject) {
             //Testing
             //Debug.Log("Possessing " + otherSlime.name  + " from " + gameObject.name + "!");
+
+            //if otherSlime is not king and not currently a slime follower, do NOT possess them
+            if(!otherSlime.CompareTag("Slime King") && discoverSlimesScript.FindSlimeFollower(otherSlime) == -1)
+                return;
 
             //switch camera
             cameraScript.SwitchCamera(otherSlime);

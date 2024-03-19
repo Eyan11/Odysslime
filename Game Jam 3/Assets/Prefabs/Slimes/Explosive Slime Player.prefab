@@ -321,6 +321,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c50d2a53d642006498ba68745987362e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  orientation: {fileID: 2860819215200976625}
   updateFollowTime: 0.5
 --- !u!114 &4402304703344493799
 MonoBehaviour:

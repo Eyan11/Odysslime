@@ -180,6 +180,7 @@ GameObject:
   - component: {fileID: 3940326359731544003}
   - component: {fileID: 5272022723827586172}
   - component: {fileID: 7084102939287826575}
+  - component: {fileID: 6993081812106580522}
   m_Layer: 0
   m_Name: Slime King Player
   m_TagString: Slime King
@@ -268,7 +269,6 @@ MonoBehaviour:
   kingObj: {fileID: 6969485696248743197}
   moveSpeed: 6
   maxDistToSlime: 25
-  maxDistCheckTime: 1
 --- !u!114 &7084102939287826575
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -282,7 +282,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cameraScript: {fileID: 0}
-  slimeKingPlayer: {fileID: 6164710366797321215}
+  raycastTestObj: {fileID: 0}
+--- !u!114 &6993081812106580522
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6164710366797321215}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b52e0f5c8a08be4095df52210a0bb03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  searchRadius: 20
+  searchInterval: 1
 --- !u!1 &6911802953856179491
 GameObject:
   m_ObjectHideFlags: 0

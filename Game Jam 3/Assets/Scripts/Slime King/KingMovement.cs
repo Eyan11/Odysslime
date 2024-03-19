@@ -7,14 +7,14 @@ public class KingMovement : SlimeMovement
     [Header("References")]
     [SerializeField] private Transform orientation;
     [SerializeField] private Transform kingObj;
+    private DiscoverSlimes discoverSlimesScript;
     private Rigidbody rb;
 
     [Header("Settings")]
     [SerializeField] private float moveSpeed;
     [SerializeField] private float maxDistToSlime;
-    [SerializeField] private float maxDistCheckTime;
-    private Transform anySlime;
-    private float maxDistCheckCounter = 0;
+    private Transform trackedSlime = null;
+    private bool isTooFar = false;
     private float xInput;
     private float zInput;
     private float yInput;
@@ -25,7 +25,8 @@ public class KingMovement : SlimeMovement
         //grab rigidbody reference and make sure body doesn't fall over
         rb = GetComponent<Rigidbody>();
         rb.freezeRotation = true;
-        maxDistCheckCounter = maxDistCheckTime;
+
+        discoverSlimesScript = GetComponent<DiscoverSlimes>();
     }
 
     private void Update() {
@@ -54,37 +55,26 @@ public class KingMovement : SlimeMovement
     }
 
     private void ConstrainMovement() {
-        maxDistCheckCounter -= Time.deltaTime;
-
-        //if no slime currently tracked, find another
-        if(anySlime == null)
-            FindAnySlimeFollower();
-
 
         //find direction of input based on player orientation (relative to camera)
         moveDir = (orientation.forward * zInput) + (kingObj.up * yInput) + (orientation.right * xInput);
-        //y axis moveDir is based on obj because I want king to move up/down relative to the obj not the camera direction
+
+        //if tracked slime does NOT exist
+        if(trackedSlime == null) {
+            //check if there are any other slime followers, if so track it
+            if(discoverSlimesScript.GetSlimeFollower() != null)
+                trackedSlime = discoverSlimesScript.GetSlimeFollower().transform;
+            //if no slime followers, do NOT restrict movement
+            else
+                return;
+        }
+
+        Debug.Log("Slime Follower EXISTS");
 
         //if the direction the king is moving in is too far from slimes, don't move
-        if(Vector3.Distance((transform.position + (moveDir*3)), anySlime.position) > maxDistToSlime)
+        if(Vector3.Distance((transform.position + (moveDir*3)), trackedSlime.position) > maxDistToSlime)
             moveDir = Vector3.zero;
         
-    }
-
-    private void FindAnySlimeFollower() {
-
-        //collect all colliders in radius of king
-        Collider[] hitColliders = Physics.OverlapSphere(transform.position, maxDistToSlime * 2);
-
-        //loop through each collider in array
-        foreach (var hitCollider in hitColliders) {
-
-            //if collider belongs to slime follower, set slime as anySlime
-            if(hitCollider.gameObject.CompareTag("Slime Follower")) {
-                anySlime = hitCollider.gameObject.transform;
-                return;
-            }
-        }
     }
 
     private void OnDisable() {

@@ -22,6 +22,11 @@ public class SlimeVitality : MonoBehaviour
                 slimePossess.PosessSlime(slimeKing);
             }
 
+            //if currently following the king (and therefore in slime follower array)
+            if(GetComponent<SlimeFollow>().enabled == true)
+                //remove this slime from slime follower array
+                slimeKing.GetComponent<DiscoverSlimes>().RemoveSlimeFollower(this.gameObject);
+
             // Destroys slime
             Destroy(gameObject);
         }
