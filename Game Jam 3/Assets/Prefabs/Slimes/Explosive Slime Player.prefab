@@ -210,6 +210,7 @@ GameObject:
   - component: {fileID: 1476052901591219229}
   - component: {fileID: 5806126875086029291}
   - component: {fileID: 3001593086182794599}
+  - component: {fileID: 4752647678451660807}
   - component: {fileID: 4637330693087508986}
   - component: {fileID: 4402304703344493799}
   - component: {fileID: -2710927735541009254}
@@ -309,6 +310,25 @@ NavMeshAgent:
   m_BaseOffset: 0.5
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &4752647678451660807
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8191742797127445780}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e3fdca004f2d45fe8abbed571a8abd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_OverrideArea: 0
+  m_Area: 0
+  m_OverrideGenerateLinks: 0
+  m_GenerateLinks: 0
+  m_IgnoreFromBuild: 1
+  m_ApplyToChildren: 1
+  m_AffectedAgents: ffffffff
 --- !u!114 &4637330693087508986
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -321,7 +341,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c50d2a53d642006498ba68745987362e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  orientation: {fileID: 2860819215200976625}
   updateFollowTime: 0.5
   rotationSpeed: 7
 --- !u!114 &4402304703344493799

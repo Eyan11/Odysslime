@@ -8,6 +8,7 @@ TagManager:
   - Slime Follower
   - Orientation
   - Obj
+  - NavMesh Surface
   layers:
   - Default
   - TransparentFX
