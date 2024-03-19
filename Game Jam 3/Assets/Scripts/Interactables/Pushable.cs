@@ -12,6 +12,7 @@ public class Pushable : MonoBehaviour
     private Collider internalHitbox;
     private GameObject pushableObj;
     private Collider pushableHitbox;
+    private BuildNavMeshSurface buildNavMeshScript;
 
     private void Awake() {
         internalHitbox = GetComponent<Collider>();
@@ -32,6 +33,9 @@ public class Pushable : MonoBehaviour
         }
 
         Physics.IgnoreCollision(internalHitbox, pushableHitbox, true);
+
+        //Find nav mesh object and get script
+        buildNavMeshScript = GameObject.FindWithTag("NavMesh Surface").GetComponent<BuildNavMeshSurface>();
     }
 
     public void ContinuePush() {
@@ -40,5 +44,8 @@ public class Pushable : MonoBehaviour
 
     public void EndPush() {
         pushableHitbox.isTrigger = false;
+        
+        //update walkable surfaces after moving object
+        buildNavMeshScript.UpdateNavMesh();
     }
 }
