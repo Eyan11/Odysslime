@@ -10,8 +10,23 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 4a68fff3c769742dd92800e23789d315,
         type: 3}
+      propertyPath: m_LocalScale.x
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 4a68fff3c769742dd92800e23789d315,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 4a68fff3c769742dd92800e23789d315,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 4a68fff3c769742dd92800e23789d315,
+        type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.385
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 4a68fff3c769742dd92800e23789d315,
         type: 3}
@@ -21,7 +36,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 4a68fff3c769742dd92800e23789d315,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.08821726
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 4a68fff3c769742dd92800e23789d315,
         type: 3}
@@ -58,6 +73,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 4a68fff3c769742dd92800e23789d315,
+        type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: -8136533559348807809, guid: 4a68fff3c769742dd92800e23789d315,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -71,7 +91,7 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 4a68fff3c769742dd92800e23789d315,
         type: 3}
       propertyPath: m_Name
-      value: DrillCustom
+      value: Drill Visuals Prefab
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

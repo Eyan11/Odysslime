@@ -50,6 +50,8 @@ public class DiscoverSlimes : MonoBehaviour
 
         //allow slime to follow king
         newFollower.GetComponent<SlimeFollow>().enabled = true;
+
+        Debug.Log("Added Follower: " + newFollower.gameObject.name);
     }
 
     public void RemoveSlimeFollower(GameObject removedFollower) {
@@ -72,6 +74,7 @@ public class DiscoverSlimes : MonoBehaviour
             slimeFollowerArray[numSlimeFollowers] = null;
         }
 
+        Debug.Log("Removed Follower: " + removedFollower.gameObject.name);
     }
 
     //returns index of slime follower, if not found returns -1

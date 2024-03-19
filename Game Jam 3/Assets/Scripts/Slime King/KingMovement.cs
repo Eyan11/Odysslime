@@ -51,7 +51,6 @@ public class KingMovement : SlimeMovement
             yInput = -1;
         else
             yInput = 0;
-
     }
 
     private void ConstrainMovement() {
@@ -69,12 +68,9 @@ public class KingMovement : SlimeMovement
                 return;
         }
 
-        Debug.Log("Slime Follower EXISTS");
-
         //if the direction the king is moving in is too far from slimes, don't move
         if(Vector3.Distance((transform.position + (moveDir*3)), trackedSlime.position) > maxDistToSlime)
             moveDir = Vector3.zero;
-        
     }
 
     private void OnDisable() {
