@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.Mathematics;
@@ -14,10 +15,12 @@ public class HungrySlimeAbilities : SlimeAbilities
     public float slimeSize = 1;
     private float maxSlimeSize = 6;
     private float interactionDistance = 1.2f;
+    private float normalSpeed;
     private int pushablesMask;
     private RaycastHit raycastHit;
     private SphereCollider sphereCollider;
     private NavMeshAgent navMeshAgent;
+    private SlimeFollowerMovement slimeFollowerMovement;
 
 
     private void Awake() {
@@ -26,6 +29,8 @@ public class HungrySlimeAbilities : SlimeAbilities
 
         sphereCollider = GetComponent<SphereCollider>();
         navMeshAgent = GetComponent<NavMeshAgent>();
+        slimeFollowerMovement = GetComponent<SlimeFollowerMovement>();
+        normalSpeed = slimeFollowerMovement.movementSpeed;
     }
 
     private void OnCollisionStay(Collision collision) {
@@ -34,8 +39,10 @@ public class HungrySlimeAbilities : SlimeAbilities
         Pushable pushable = obj.GetComponent<Pushable>();
         if (!pushable) { return; }
         // Continues the pushable state if big enough
-        if ((pushable.size - slimeSize) > 0.01) { return; }
+        float sizeDif = pushable.size - slimeSize;
+        if (sizeDif > 0.01) { return; }
         pushable.ContinuePush();
+        slimeFollowerMovement.movementSpeed = normalSpeed * (MathF.Abs(sizeDif) > 0.01 ? 1 : 0.5f);
     }
 
     private void OnCollisionExit(Collision collision) {
@@ -45,6 +52,7 @@ public class HungrySlimeAbilities : SlimeAbilities
         if (!pushable) { return; }
         // 'Ends' push
         pushable.EndPush();
+        slimeFollowerMovement.movementSpeed = normalSpeed;
     }
 
     public override void UseAbility() {
