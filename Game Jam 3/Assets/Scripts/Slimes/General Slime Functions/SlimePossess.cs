@@ -6,8 +6,8 @@ using UnityEngine.AI;
 public class SlimePossess : MonoBehaviour
 {
     [Header("References")]
-    [SerializeField] private ThirdPersonCam cameraScript;
-    [SerializeField] private Transform raycastTestObj;
+    [SerializeField] private Transform raycastSpawnObj;
+    private ThirdPersonCam cameraScript;
     private GameObject slimeKingPlayer;
     private DiscoverSlimes discoverSlimesScript;
     private SlimeAbilities slimeAbility;
@@ -20,11 +20,14 @@ public class SlimePossess : MonoBehaviour
         // Retrieve slime king player
         slimeKingPlayer = GameObject.FindObjectOfType<KingMovement>().gameObject;
 
+        //script references
+        cameraScript = Camera.main.gameObject.GetComponent<ThirdPersonCam>();
+        discoverSlimesScript = slimeKingPlayer.GetComponent<DiscoverSlimes>();
+
         // finds the first instance of script
         slimeAbility = gameObject.GetComponent<SlimeAbilities>();
         slimeMovement = gameObject.GetComponent<SlimeMovement>();
         slimeFollow = gameObject.GetComponent<SlimeFollow>();
-        discoverSlimesScript = slimeKingPlayer.GetComponent<DiscoverSlimes>();
 
         //if this script is NOT on king obj
         if (slimeKingPlayer != gameObject) {
@@ -93,9 +96,9 @@ public class SlimePossess : MonoBehaviour
         //if ray hit something
         if(Physics.Raycast(ray, out hit)) {
             
-            // For raycast debugging
-            if (raycastTestObj) {
-                raycastTestObj.position = hit.point;
+            //Testing: move raycast obj to position of raycast collision
+            if (raycastSpawnObj) {
+                raycastSpawnObj.position = hit.point;
             }
 
             //Testing

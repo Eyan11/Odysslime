@@ -6,10 +6,14 @@ public class ExplosiveSlimeAbilities : SlimeAbilities
 {
     [Header("Settings")]
     [SerializeField] private float blastRadius = 3.5f;
-
     private SlimeVitality slimeVitality;
+    private BuildNavMeshSurface buildNavMeshScript;
+
     private void Awake() {
         slimeVitality = GetComponent<SlimeVitality>();
+
+        //Find nav mesh object and get script
+        buildNavMeshScript = GameObject.FindWithTag("NavMesh Surface").GetComponent<BuildNavMeshSurface>();
     }
     public override void UseAbility() {
         // Gets all objects within blast radius
@@ -32,6 +36,9 @@ public class ExplosiveSlimeAbilities : SlimeAbilities
                 continue;
             }
         }
+
+        //update walkable surfaces after deleting boulders 
+        buildNavMeshScript.UpdateNavMesh();
 
         // Kills slime
         slimeVitality.enabled = false;

@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: -6315231870595629746}
   - component: {fileID: -4534259845152728172}
   - component: {fileID: 5800422322671934718}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Explodable Rock
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -132,8 +132,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35e95dc5ff2b64380880dd7ac5922847, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Size: {x: 1.7137495, y: 0.12116647, z: 1.2678301}
-  m_Center: {x: 0.54814345, y: 0.93820953, z: -0.047569513}
+  m_Size: {x: 1.7137495, y: 1.3859853, z: 1.2678301}
+  m_Center: {x: 0.54814345, y: 0.32270533, z: -0.047569513}
   m_Area: 1
   m_AffectedAgents: ffffffff
 --- !u!1 &6393673619766942602
@@ -145,7 +145,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6366151699792666658}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: GameObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}

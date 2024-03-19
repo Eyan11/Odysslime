@@ -14,7 +14,6 @@ public class KingMovement : SlimeMovement
     [SerializeField] private float moveSpeed;
     [SerializeField] private float maxDistToSlime;
     private Transform trackedSlime = null;
-    private bool isTooFar = false;
     private float xInput;
     private float zInput;
     private float yInput;

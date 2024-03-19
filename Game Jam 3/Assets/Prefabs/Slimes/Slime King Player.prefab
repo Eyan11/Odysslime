@@ -199,8 +199,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 2, z: 2.25}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 1
+  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6969485696248743197}
   - {fileID: 4373339295143982460}
@@ -282,8 +282,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab6d04f55dc15974abc386e778efa254, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cameraScript: {fileID: 0}
-  raycastTestObj: {fileID: 0}
+  raycastSpawnObj: {fileID: 0}
 --- !u!114 &6993081812106580522
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -296,7 +295,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b52e0f5c8a08be4095df52210a0bb03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  searchRadius: 20
+  searchRadius: 5
   searchInterval: 1
 --- !u!114 &9185538821586508786
 MonoBehaviour:

@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 7623140831946275230}
   - component: {fileID: 4400685556318677119}
   - component: {fileID: 2834178248174217572}
+  - component: {fileID: 9046359623144979844}
   m_Layer: 0
   m_Name: Water Hitbox
   m_TagString: Untagged
@@ -118,3 +119,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c990c96b3371c048a9844f9ec741128, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &9046359623144979844
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4403681511492113135}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 35e95dc5ff2b64380880dd7ac5922847, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Size: {x: 1, y: 5, z: 1}
+  m_Center: {x: 0, y: -1.9, z: 0}
+  m_Area: 1
+  m_AffectedAgents: ffffffff
