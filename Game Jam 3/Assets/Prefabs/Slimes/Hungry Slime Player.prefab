@@ -168,7 +168,7 @@ MonoBehaviour:
   orientation: {fileID: 3743201115591625188}
   slimeObj: {fileID: 4849913531010385169}
   bodyRadius: 0.5
-  movementSpeed: 1
+  movementSpeed: 2
   groundDrag: 3
   jumpPower: 7
   jumpCooldown: 0.2

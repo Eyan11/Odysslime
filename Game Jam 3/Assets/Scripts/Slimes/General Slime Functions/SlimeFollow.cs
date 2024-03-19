@@ -11,10 +11,12 @@ public class SlimeFollow : MonoBehaviour
     [Header("Settings")]
     [SerializeField] private float updateFollowTime = 1f;
     private float updateFollowCounter = 0;
+    private Rigidbody rb;
 
     private void Awake() {
         agent = GetComponent<UnityEngine.AI.NavMeshAgent>();
         updateFollowCounter = updateFollowTime;
+        rb = GetComponent<Rigidbody>();
 
         king = GameObject.FindObjectOfType<KingMovement>().gameObject.transform;
     }
@@ -35,10 +37,12 @@ public class SlimeFollow : MonoBehaviour
 
     private void OnDisable() {
         agent.enabled = false;
+        rb.constraints = RigidbodyConstraints.FreezeRotation;
     }
 
     private void OnEnable() {
         agent.enabled = true;
+        rb.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ;
     }
 
 

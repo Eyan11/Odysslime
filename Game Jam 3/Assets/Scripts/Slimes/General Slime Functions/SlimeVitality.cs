@@ -16,8 +16,11 @@ public class SlimeVitality : MonoBehaviour
 
     private void OnDisable() {
         if (slimeKing) {
-            // Returns control back to slime king
-            slimePossess.PosessSlime(slimeKing);
+            // Return control back to king slime if currently possessed
+            if (slimePossess.enabled) {
+                // Returns control back to slime king
+                slimePossess.PosessSlime(slimeKing);
+            }
 
             // Destroys slime
             Destroy(gameObject);

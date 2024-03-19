@@ -335,8 +335,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cameraScript: {fileID: 0}
-  slimeKingPlayer: {fileID: 6164710366797321215, guid: 7403cbb299f416844a9873c303408760,
-    type: 3}
   raycastTestObj: {fileID: 0}
 --- !u!114 &-2710927735541009254
 MonoBehaviour:
@@ -366,7 +364,7 @@ MonoBehaviour:
   orientation: {fileID: 2860819215200976625}
   slimeObj: {fileID: 3828632915844900197}
   bodyRadius: 0.5
-  movementSpeed: 1
+  movementSpeed: 2
   groundDrag: 3
   jumpPower: 7
   jumpCooldown: 0.2

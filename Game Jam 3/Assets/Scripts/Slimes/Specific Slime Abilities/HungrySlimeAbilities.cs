@@ -1,25 +1,31 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Mathematics;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class HungrySlimeAbilities : SlimeAbilities
 {
     [Header("Settings")]
     [SerializeField] private Transform orientation;
     [SerializeField] private GameObject slimeModel;
-    public int slimeSize = 1;
-    private int maxSlimeSize = 6;
+    [SerializeField] private float radiusIncrease = 0.5f;
+    public float slimeSize = 1;
+    private float maxSlimeSize = 6;
     private float interactionDistance = 1.2f;
     private int pushablesMask;
     private RaycastHit raycastHit;
     private SphereCollider sphereCollider;
+    private NavMeshAgent navMeshAgent;
+
 
     private void Awake() {
         pushablesMask = 1 << 9;
         pushablesMask |= pushablesMask << 8;
 
         sphereCollider = GetComponent<SphereCollider>();
+        navMeshAgent = GetComponent<NavMeshAgent>();
     }
 
     private void OnCollisionStay(Collision collision) {
@@ -29,13 +35,13 @@ public class HungrySlimeAbilities : SlimeAbilities
         if (!pushable) { return; }
 
         Debug.Log(obj.name + " is pushable!");
+        obj.transform.parent = orientation.transform;
     }
 
     public override void UseAbility() {
         if (slimeSize < maxSlimeSize) {
             // Checks to see if there is an object in front
-            // CHANGED TO BLOCKCAST
-            if (!Physics.Raycast(transform.position, orientation.forward, out raycastHit, interactionDistance + slimeSize)) {
+            if (!Physics.BoxCast(transform.position, Vector3.one * slimeSize * 0.5f, orientation.forward, out raycastHit, orientation.transform.rotation , slimeSize + interactionDistance)) {
                 return;
             }
 
@@ -55,9 +61,11 @@ public class HungrySlimeAbilities : SlimeAbilities
             slimeVitality.enabled = false;
 
             // Increases size
-            slimeSize++;
-            slimeModel.transform.localScale += Vector3.one;
-            sphereCollider.radius += 0.5f;
+            slimeSize += radiusIncrease * 2;
+            slimeModel.transform.localScale += Vector3.one * radiusIncrease * 2;
+            sphereCollider.radius += radiusIncrease;
+            navMeshAgent.baseOffset += radiusIncrease;
+            navMeshAgent.radius += radiusIncrease;
         }
     }
 }

@@ -123,7 +123,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c50d2a53d642006498ba68745987362e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  king: {fileID: 0}
   updateFollowTime: 0.5
 --- !u!114 &6145706820333691184
 MonoBehaviour:
@@ -138,8 +137,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cameraScript: {fileID: 0}
-  slimeKingPlayer: {fileID: 6164710366797321215, guid: 7403cbb299f416844a9873c303408760,
-    type: 3}
   raycastTestObj: {fileID: 0}
 --- !u!114 &-7131254884126679211
 MonoBehaviour:
@@ -158,7 +155,7 @@ MonoBehaviour:
   icePuddleTemplate: {fileID: 8196443612886343464, guid: 4af233ac404577840adaaa4f7c475cbe,
     type: 3}
   orientation: {fileID: 787742763717332419}
-  interactionDist: 1.2
+  interactionDistance: 1.2
 --- !u!114 &4362966882715022011
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -174,7 +171,7 @@ MonoBehaviour:
   orientation: {fileID: 3743201115591625188}
   slimeObj: {fileID: 4849913531010385169}
   bodyRadius: 0.5
-  movementSpeed: 1
+  movementSpeed: 2
   groundDrag: 3
   jumpPower: 7
   jumpCooldown: 0.2

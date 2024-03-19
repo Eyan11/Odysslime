@@ -19,7 +19,7 @@ public class Pushable : MonoBehaviour
 
         // Prevents the object from being moved unless by a slime
         if (isSleeping) {
-            rigidbody.isKinematic = false;
+            rigidbody.isKinematic = true;
         }
     }
 }

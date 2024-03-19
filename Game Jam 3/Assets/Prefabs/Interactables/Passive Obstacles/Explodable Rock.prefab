@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 2574567056068198640}
   - component: {fileID: 8594337090744085919}
   - component: {fileID: 7716829228858555166}
-  - component: {fileID: 877335529589393163}
   - component: {fileID: -6315231870595629746}
+  - component: {fileID: -4534259845152728172}
   m_Layer: 0
   m_Name: Explodable Rock
   m_TagString: Untagged
@@ -28,14 +28,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3625906575758509916}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0.33018678, z: -0, w: 0.94391567}
-  m_LocalPosition: {x: 194.97, y: 19.99634, z: 521.7}
-  m_LocalScale: {x: 19.608616, y: 19.608616, z: 19.608616}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 20, y: 20, z: 20}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6366151699792666658}
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: -38.56, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &8594337090744085919
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -86,8 +86,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &877335529589393163
-MeshCollider:
+--- !u!114 &-6315231870595629746
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3625906575758509916}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 137ac4d4418151e4898e7f5beca70eff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!65 &-4534259845152728172
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -104,22 +116,9 @@ MeshCollider:
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -7310643072688355705, guid: 38e2e172da7ad634ba130815fdad2bd4, type: 3}
---- !u!114 &-6315231870595629746
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3625906575758509916}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 137ac4d4418151e4898e7f5beca70eff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  serializedVersion: 3
+  m_Size: {x: 1.6912951, y: 1.3062367, z: 1.2504579}
+  m_Center: {x: 0.5482785, y: 0.33436358, z: -0.049139373}
 --- !u!1 &6393673619766942602
 GameObject:
   m_ObjectHideFlags: 0
