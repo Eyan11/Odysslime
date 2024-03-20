@@ -46,18 +46,21 @@ public class IceSlimeAbilities : SlimeAbilities
     public void GenerateIcePuddle() {
         RaycastHit groundRaycastHit;
 
-        Physics.Raycast(transform.position, Vector3.down, out groundRaycastHit, Mathf.Infinity, waterLayerMask);
+        bool hit = Physics.Raycast(transform.position + Vector3.up * 5, Vector3.down, out groundRaycastHit, Mathf.Infinity, waterLayerMask);
 
         if (!icePuddleTemplate) {
             Debug.LogError("No ice puddle template provided!");
             return;
         }
 
-        Vector3 spawnPoint = groundRaycastHit.point + new Vector3(0, transform.localScale.y * 0.5f, 0);
+        Vector3 spawnPoint = groundRaycastHit.point + new Vector3(0, -3.4f, 0);
+        if (!hit) {
+            spawnPoint = transform.position + new Vector3(0, -3.4f, 0);
+        } 
 
         // Creates ice puddle at position
         //Instantiate(icePuddleTemplate, groundRaycastHit.point, quaternion.identity); //old
-        Instantiate(icePuddleTemplate, new Vector3(groundRaycastHit.point.x, 16, groundRaycastHit.point.z), quaternion.identity);
+        Instantiate(icePuddleTemplate, spawnPoint, quaternion.identity);
 
         //update walkable surfaces after spawning ice puddle 
         buildNavMeshScript.UpdateNavMesh();

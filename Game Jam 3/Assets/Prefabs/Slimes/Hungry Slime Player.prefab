@@ -158,6 +158,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   raycastSpawnObj: {fileID: 0}
+  scopeImage: {fileID: 2800000, guid: b3a74a9df4b1a0346928c95b52e92e37, type: 3}
 --- !u!114 &2496106213619333897
 MonoBehaviour:
   m_ObjectHideFlags: 0

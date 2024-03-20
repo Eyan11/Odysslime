@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Microsoft.Unity.VisualStudio.Editor;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -7,6 +8,7 @@ public class SlimePossess : MonoBehaviour
 {
     [Header("References")]
     [SerializeField] private Transform raycastSpawnObj;
+    [SerializeField] private Texture2D scopeImage;
     private ThirdPersonCam cameraScript;
     private GameObject slimeKingPlayer;
     private DiscoverSlimes discoverSlimesScript;
@@ -57,12 +59,18 @@ public class SlimePossess : MonoBehaviour
         //if right mouse is held (camera is locked)
         if(cameraScript.CamIsLocked()) {
             //Debug.Log("Camera is LOCKED!");
+            // changes mouse icon to scope
+            //Cursor.SetCursor(scopeImage, Vector2.zero, CursorMode.Auto);
+
             //check for a slime to possess
             RaycastForSlime();
 
             slimeMovement.enabled = false;
         }
         else {
+            // changes mouse icon back to normal
+            //Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
+
             //Debug.Log("Camera is UNLOCKED!");
             slimeMovement.enabled = true;
         }

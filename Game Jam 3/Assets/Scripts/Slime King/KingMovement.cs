@@ -44,12 +44,15 @@ public class KingMovement : SlimeMovement
         zInput = Input.GetAxisRaw("Vertical");
 
         //get y axis input (space is up, shift is down)
-        if(Input.GetKey(KeyCode.Space))
-            yInput = 1;
-        else if(Input.GetKey(KeyCode.LeftShift))
-            yInput = -1;
-        else
+        if(Input.GetKey(KeyCode.Space)) {
+            //yInput = 1;
+        }
+        else if(Input.GetKey(KeyCode.LeftShift)) {
+            //yInput = -1;
+        }
+        else {
             yInput = 0;
+        }
     }
 
     private void ConstrainMovement() {
