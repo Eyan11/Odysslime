@@ -21,6 +21,7 @@ public class HungrySlimeAbilities : SlimeAbilities
     private SphereCollider sphereCollider;
     private NavMeshAgent navMeshAgent;
     private SlimeFollowerMovement slimeFollowerMovement;
+    private SoundManager soundManager;
 
 
     private void Awake() {
@@ -31,6 +32,7 @@ public class HungrySlimeAbilities : SlimeAbilities
         navMeshAgent = GetComponent<NavMeshAgent>();
         slimeFollowerMovement = GetComponent<SlimeFollowerMovement>();
         normalSpeed = slimeFollowerMovement.movementSpeed;
+        soundManager = GameObject.FindObjectOfType<SoundManager>();
     }
 
     private void OnCollisionStay(Collision collision) {
@@ -83,6 +85,12 @@ public class HungrySlimeAbilities : SlimeAbilities
             sphereCollider.radius += radiusIncrease;
             navMeshAgent.baseOffset += radiusIncrease;
             navMeshAgent.radius += radiusIncrease;
+
+            // Done for this specific slime model mesh to correct visual offset
+            slimeModel.transform.localPosition = new Vector3(0, -0.5f, 0);
+
+            // Eat sound
+            soundManager.PlaySlimeEat();
         }
     }
 }

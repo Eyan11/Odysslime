@@ -8,10 +8,12 @@ public class SlimeVitality : MonoBehaviour
     private bool enableResetKeybind = true; // Press R to die
     private GameObject slimeKing;
     private SlimePossess slimePossess;
+    private SoundManager soundManager;
 
     private void Awake() {
         slimeKing = GameObject.FindObjectOfType<KingMovement>().gameObject;
         slimePossess = GetComponent<SlimePossess>();
+        soundManager = GameObject.FindObjectOfType<SoundManager>();
     }
 
     private void OnDisable() {
@@ -26,6 +28,8 @@ public class SlimeVitality : MonoBehaviour
             if(GetComponent<SlimeFollow>().enabled == true)
                 //remove this slime from slime follower array
                 slimeKing.GetComponent<DiscoverSlimes>().RemoveSlimeFollower(this.gameObject);
+
+            soundManager.PlaySlimeDeath();
 
             // Destroys slime
             Destroy(gameObject);

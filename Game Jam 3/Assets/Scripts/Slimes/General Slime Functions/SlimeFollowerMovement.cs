@@ -25,12 +25,14 @@ public class SlimeFollowerMovement : SlimeMovement
     private float jumpStart;
     private Vector3 moveDir;
     private RaycastHit raycastHit;
+    private SoundManager soundManager;
 
     void Awake()
     {
         //grab rigidbody reference and make sure body doesn't fall over
         rb = GetComponent<Rigidbody>();
         //rb.freezeRotation = true; // disabled as individual constraints
+        soundManager = GameObject.FindObjectOfType<SoundManager>();
     }
 
     private void Update() {
@@ -81,6 +83,9 @@ public class SlimeFollowerMovement : SlimeMovement
 
         // Applies jump force
         rb.AddForce(orientation.up * jumpPower, ForceMode.Impulse);
+
+        // Plays jump sound
+        soundManager.PlaySlimeJump();
     }
 
     private void ConstrainSpeed() {

@@ -8,9 +8,11 @@ public class ExplosiveSlimeAbilities : SlimeAbilities
     [SerializeField] private float blastRadius = 3.5f;
     private SlimeVitality slimeVitality;
     private BuildNavMeshSurface buildNavMeshScript;
+    private SoundManager soundManager;
 
     private void Awake() {
         slimeVitality = GetComponent<SlimeVitality>();
+        soundManager = GameObject.FindObjectOfType<SoundManager>();
 
         //Find nav mesh object and get script
         buildNavMeshScript = GameObject.FindWithTag("NavMesh Surface").GetComponent<BuildNavMeshSurface>();
@@ -39,6 +41,9 @@ public class ExplosiveSlimeAbilities : SlimeAbilities
 
         //update walkable surfaces after deleting boulders 
         buildNavMeshScript.UpdateNavMesh();
+
+        // Plays kaboomy
+        soundManager.PlayExplosion();
 
         // Kills slime
         slimeVitality.enabled = false;

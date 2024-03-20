@@ -14,6 +14,7 @@ public class IceSlimeAbilities : SlimeAbilities
     private BuildNavMeshSurface buildNavMeshScript;
     private RaycastHit raycastHit;
     private SlimeVitality slimeVitality;
+    private SoundManager soundManager;
     private int iceLayerMask = 1<<8; // 8 points towards "Ice" layer
     private int waterLayerMask = 1<<4; // 4 points towards "Water" layer
     private bool foundIce = false;
@@ -22,6 +23,7 @@ public class IceSlimeAbilities : SlimeAbilities
 
     private void Awake() {
         slimeVitality = GetComponent<SlimeVitality>();
+        soundManager = GameObject.FindObjectOfType<SoundManager>();
 
         //Find nav mesh object and get script
         buildNavMeshScript = GameObject.FindWithTag("NavMesh Surface").GetComponent<BuildNavMeshSurface>();
@@ -102,6 +104,9 @@ public class IceSlimeAbilities : SlimeAbilities
         else {
             GenerateIceCube();
         }
+
+        // Plays freeze sound
+        soundManager.PlaySlimeFreeze();
 
         // Always kills slime
         slimeVitality.enabled = false;
