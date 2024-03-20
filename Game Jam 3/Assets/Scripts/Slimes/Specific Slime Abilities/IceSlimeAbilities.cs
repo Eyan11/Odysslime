@@ -11,6 +11,7 @@ public class IceSlimeAbilities : SlimeAbilities
     [SerializeField] private GameObject icePuddleTemplate;
     [SerializeField] private GameObject orientation;
     [SerializeField] private float interactionDistance = 1.2f;
+    private BuildNavMeshSurface buildNavMeshScript;
     private RaycastHit raycastHit;
     private SlimeVitality slimeVitality;
     private int iceLayerMask = 1<<8; // 8 points towards "Ice" layer
@@ -21,6 +22,9 @@ public class IceSlimeAbilities : SlimeAbilities
 
     private void Awake() {
         slimeVitality = GetComponent<SlimeVitality>();
+
+        //Find nav mesh object and get script
+        buildNavMeshScript = GameObject.FindWithTag("NavMesh Surface").GetComponent<BuildNavMeshSurface>();
     }
     
     private void FixedUpdate() {
@@ -49,8 +53,11 @@ public class IceSlimeAbilities : SlimeAbilities
 
         Vector3 spawnPoint = groundRaycastHit.point + new Vector3(0, transform.localScale.y * 0.5f, 0);
 
-        // Creates ice cube at position
+        // Creates ice puddle at position
         Instantiate(icePuddleTemplate, groundRaycastHit.point, quaternion.identity);
+
+        //update walkable surfaces after spawning ice puddle 
+        buildNavMeshScript.UpdateNavMesh();
     }
 
     public void GenerateIceCube() {
@@ -61,6 +68,9 @@ public class IceSlimeAbilities : SlimeAbilities
 
         // Creates ice cube at position
         Instantiate(iceCubeTemplate, transform.position, quaternion.identity);
+
+        //update walkable surfaces after spawning ice cube 
+        buildNavMeshScript.UpdateNavMesh();
     }
     
     public override void UseAbility()
