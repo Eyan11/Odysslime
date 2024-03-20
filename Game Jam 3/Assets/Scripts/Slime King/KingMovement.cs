@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class KingMovement : SlimeMovement
 {
@@ -9,6 +10,7 @@ public class KingMovement : SlimeMovement
     [SerializeField] private Transform kingObj;
     private DiscoverSlimes discoverSlimesScript;
     private Rigidbody rb;
+    private TMP_Text promptText;
 
     [Header("Settings")]
     [SerializeField] private float moveSpeed;
@@ -26,6 +28,9 @@ public class KingMovement : SlimeMovement
         rb.freezeRotation = true;
 
         discoverSlimesScript = GetComponent<DiscoverSlimes>();
+
+        //TMP reference for UI
+        promptText = GameObject.Find("PromptText").GetComponent<TMP_Text>();
     }
 
     private void FixedUpdate() {
@@ -66,9 +71,13 @@ public class KingMovement : SlimeMovement
             if(discoverSlimesScript.GetSlimeFollower() != null)
                 trackedSlime = discoverSlimesScript.GetSlimeFollower().transform;
             //if no slime followers, do NOT restrict movement
-            else
+            else {
+                promptText.text = "";
                 return;
+            }
         }
+
+        promptText.text = "Stay with your slime followers!";
 
         //if the direction the king is moving in is too far from slimes, don't move
         if(Vector3.Distance((transform.position + (moveDir*3)), trackedSlime.position) > maxDistToSlime)

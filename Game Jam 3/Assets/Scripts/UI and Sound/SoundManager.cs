@@ -4,13 +4,10 @@ using UnityEngine;
 
 public class SoundManager : MonoBehaviour
 {
-    //this is the component that plays the sounds
     [Header("Audio Sources")]
     [SerializeField] private AudioSource source;
     [SerializeField] private AudioSource musicSource;
 
-    //this is the individual sound effect you are playing
-    //copy and paste this for each sound you want to play
     [Header("Sounds")]
     [SerializeField] private AudioClip explosionSound;
     [SerializeField] private AudioClip eatSound;
@@ -39,13 +36,6 @@ public class SoundManager : MonoBehaviour
         DontDestroyOnLoad(this.gameObject);
     }
 
-    //make a method exactly like this with each sound
-    // public void SoundExample() {
-    //     //second argument is priority level of sound (0-1)
-    //     source.PlayOneShot(soundExample, 0.6f);
-    // }
-
-        //make a method exactly like this with each sound
     public void PlayExplosion() {
         //second argument is priority level of sound (0-1)
         source.PlayOneShot(explosionSound, 0.6f);
@@ -90,22 +80,5 @@ public class SoundManager : MonoBehaviour
         //second argument is priority level of sound (0-1)
         musicSource.PlayOneShot(menuMusic, 0.5f);
     }
-    
-
-    //if you want background music that will always play, 
-    //make another audio source component and drag music clip into there and enable loop
-
-
-
-    //add this to the script that you call the public sound method from
-    /*
-    private SoundManager soundScript;
-    private void Awake() {
-        soundScript = GameObject.FindWithTag("Sound Manager").GetComponent<SoundManager>();
-    }
-
-    //when sound should be played put this:
-    soundScript.SoundExample();
-    */
 
 }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Microsoft.Unity.VisualStudio.Editor;
 using UnityEngine;
 using UnityEngine.AI;
+using TMPro;
 
 public class SlimePossess : MonoBehaviour
 {
@@ -17,6 +18,7 @@ public class SlimePossess : MonoBehaviour
     private SlimeFollow slimeFollow;
     private Ray ray;
     private RaycastHit hit;
+    private TMP_Text promptText;
 
     private void Awake() {
         // Retrieve slime king player
@@ -25,6 +27,8 @@ public class SlimePossess : MonoBehaviour
         //script references
         cameraScript = Camera.main.gameObject.GetComponent<ThirdPersonCam>();
         discoverSlimesScript = slimeKingPlayer.GetComponent<DiscoverSlimes>();
+        //TMP reference for UI
+        promptText = GameObject.Find("PromptText").GetComponent<TMP_Text>();
 
         // finds the first instance of script
         slimeAbility = gameObject.GetComponent<SlimeAbilities>();
@@ -73,6 +77,9 @@ public class SlimePossess : MonoBehaviour
 
             //Debug.Log("Camera is UNLOCKED!");
             slimeMovement.enabled = true;
+
+            //Turn off prompt when not possessing
+            promptText.text = "";
         }
 
     }
@@ -126,6 +133,10 @@ public class SlimePossess : MonoBehaviour
                 isSlime = true;
 
                 //INSERT METHOD CALL FOR SWITCHING SLIMES UI
+                promptText.text = "E to possess!";
+            }
+            else {
+                promptText.text = "Hover over slime to possess!";
             }
 
             //if pressing "E" and it is a different slime, then change possession
@@ -152,6 +163,8 @@ public class SlimePossess : MonoBehaviour
         if(gameObject.CompareTag("Slime Follower"))
             GetComponent<Rigidbody>().isKinematic = true;
 
+        //Turn off prompt text after possessing
+        promptText.text = "";
     }
 
     //run every time this script is enabled in inspector

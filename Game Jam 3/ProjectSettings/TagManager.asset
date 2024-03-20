@@ -10,6 +10,7 @@ TagManager:
   - Obj
   - NavMesh Surface
   - Sound Manager
+  - UI Manager
   layers:
   - Default
   - TransparentFX
