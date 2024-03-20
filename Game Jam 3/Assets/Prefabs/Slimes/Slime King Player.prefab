@@ -129,7 +129,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b52e0f5c8a08be4095df52210a0bb03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  searchRadius: 10
+  searchRadius: 15
   searchInterval: 1
 --- !u!114 &9185538821586508786
 MonoBehaviour:

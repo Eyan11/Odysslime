@@ -73,11 +73,13 @@ public class SoundManager : MonoBehaviour
 
     public void PlayWorldMusic() {
         //second argument is priority level of sound (0-1)
+        musicSource.Stop();
         musicSource.PlayOneShot(worldMusic, 0.5f);
     }
 
     public void PlayMenuMusic() {
         //second argument is priority level of sound (0-1)
+        musicSource.Stop();
         musicSource.PlayOneShot(menuMusic, 0.5f);
     }
 

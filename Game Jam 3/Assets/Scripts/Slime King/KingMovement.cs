@@ -77,11 +77,11 @@ public class KingMovement : SlimeMovement
             }
         }
 
-        promptText.text = "Stay with your slime followers!";
-
         //if the direction the king is moving in is too far from slimes, don't move
-        if(Vector3.Distance((transform.position + (moveDir*3)), trackedSlime.position) > maxDistToSlime)
+        if(Vector3.Distance((transform.position + (moveDir*3)), trackedSlime.position) > maxDistToSlime) {
             moveDir = Vector3.zero;
+            promptText.text = "Stay with your slime followers!";
+        }
     }
 
     private void OnDisable() {

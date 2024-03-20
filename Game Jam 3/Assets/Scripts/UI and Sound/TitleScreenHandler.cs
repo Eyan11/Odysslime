@@ -11,7 +11,13 @@ public class TitleScreenHandler : MonoBehaviour
     [SerializeField] private String worldScene;
     private bool buttonIsDown = false;
     private int state = 0;
+    private SoundManager soundManager;
     
+    private void Awake() {
+        soundManager = GameObject.FindObjectOfType<SoundManager>();
+        soundManager.PlayMenuMusic();
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -33,6 +39,7 @@ public class TitleScreenHandler : MonoBehaviour
 
         // Go to game
         if (state >= 2) {
+            soundManager.PlayWorldMusic();
             SceneManager.LoadScene(worldScene);
         }
     }

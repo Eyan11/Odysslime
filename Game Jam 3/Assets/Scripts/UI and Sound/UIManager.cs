@@ -9,8 +9,11 @@ public class UIManager : MonoBehaviour
     [SerializeField] private int totalDrillParts;
     [SerializeField] private string endSceneName;
     private int drillPartsCollected = 0;
-    private TMP_Text drillText;
+    [SerializeField] private TMP_Text drillText;
 
+    private void Awake() {
+        drillText.text = "Drill Parts: " + drillPartsCollected + " / " + totalDrillParts;
+    }
 
     public void AddDrillPart() {
 
