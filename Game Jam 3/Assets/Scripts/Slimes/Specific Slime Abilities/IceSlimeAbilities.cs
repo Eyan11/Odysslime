@@ -54,7 +54,8 @@ public class IceSlimeAbilities : SlimeAbilities
         Vector3 spawnPoint = groundRaycastHit.point + new Vector3(0, transform.localScale.y * 0.5f, 0);
 
         // Creates ice puddle at position
-        Instantiate(icePuddleTemplate, groundRaycastHit.point, quaternion.identity);
+        //Instantiate(icePuddleTemplate, groundRaycastHit.point, quaternion.identity); //old
+        Instantiate(icePuddleTemplate, new Vector3(groundRaycastHit.point.x, 16, groundRaycastHit.point.z), quaternion.identity);
 
         //update walkable surfaces after spawning ice puddle 
         buildNavMeshScript.UpdateNavMesh();
