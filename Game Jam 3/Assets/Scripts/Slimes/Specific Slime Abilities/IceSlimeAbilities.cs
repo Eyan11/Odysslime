@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using Unity.Mathematics;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -15,6 +16,8 @@ public class IceSlimeAbilities : SlimeAbilities
     private RaycastHit raycastHit;
     private SlimeVitality slimeVitality;
     private SoundManager soundManager;
+    private TMP_Text promptText;
+
     private int iceLayerMask = 1<<8; // 8 points towards "Ice" layer
     private int waterLayerMask = 1<<4; // 4 points towards "Water" layer
     private bool foundIce = false;
@@ -24,6 +27,7 @@ public class IceSlimeAbilities : SlimeAbilities
     private void Awake() {
         slimeVitality = GetComponent<SlimeVitality>();
         soundManager = GameObject.FindObjectOfType<SoundManager>();
+        promptText = GameObject.Find("PromptText").GetComponent<TMP_Text>();
 
         //Find nav mesh object and get script
         buildNavMeshScript = GameObject.FindWithTag("NavMesh Surface").GetComponent<BuildNavMeshSurface>();
@@ -31,6 +35,8 @@ public class IceSlimeAbilities : SlimeAbilities
     
     private void FixedUpdate() {
         CheckForIceObject();
+
+        promptText.text = "Press Q to turn into an ice cube or ice puddle over water!";
     }
 
     private void CheckForIceObject() {

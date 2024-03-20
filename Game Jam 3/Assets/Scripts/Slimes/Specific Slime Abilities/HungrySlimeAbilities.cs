@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using Unity.Mathematics;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
@@ -22,6 +23,7 @@ public class HungrySlimeAbilities : SlimeAbilities
     private NavMeshAgent navMeshAgent;
     private SlimeFollowerMovement slimeFollowerMovement;
     private SoundManager soundManager;
+    private TMP_Text promptText;
 
 
     private void Awake() {
@@ -33,6 +35,7 @@ public class HungrySlimeAbilities : SlimeAbilities
         slimeFollowerMovement = GetComponent<SlimeFollowerMovement>();
         normalSpeed = slimeFollowerMovement.movementSpeed;
         soundManager = GameObject.FindObjectOfType<SoundManager>();
+        promptText = GameObject.Find("PromptText").GetComponent<TMP_Text>();
     }
 
     private void OnCollisionStay(Collision collision) {
@@ -44,8 +47,10 @@ public class HungrySlimeAbilities : SlimeAbilities
         float sizeDif = pushable.size - slimeSize;
         if (sizeDif > 0.01) { return; }
         // Needs to be holding Q
+        promptText.text = "Q to push object!";
         if (!Input.GetKey(KeyCode.Q)) { 
             OnCollisionExit(collision); 
+            promptText.text = "Q to push object!";
             return;
         }
         pushable.ContinuePush();
@@ -58,6 +63,7 @@ public class HungrySlimeAbilities : SlimeAbilities
         Pushable pushable = obj.GetComponent<Pushable>();
         if (!pushable) { return; }
         // 'Ends' push
+        promptText.text = "";
         pushable.EndPush();
         slimeFollowerMovement.movementSpeed = normalSpeed;
     }

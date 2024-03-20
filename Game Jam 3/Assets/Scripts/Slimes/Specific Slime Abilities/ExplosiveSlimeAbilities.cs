@@ -1,5 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class ExplosiveSlimeAbilities : SlimeAbilities
@@ -9,6 +11,7 @@ public class ExplosiveSlimeAbilities : SlimeAbilities
     private SlimeVitality slimeVitality;
     private BuildNavMeshSurface buildNavMeshScript;
     private SoundManager soundManager;
+    private TMP_Text promptText;
 
     private void Awake() {
         slimeVitality = GetComponent<SlimeVitality>();
@@ -16,6 +19,7 @@ public class ExplosiveSlimeAbilities : SlimeAbilities
 
         //Find nav mesh object and get script
         buildNavMeshScript = GameObject.FindWithTag("NavMesh Surface").GetComponent<BuildNavMeshSurface>();
+        promptText = GameObject.Find("PromptText").GetComponent<TMP_Text>();
     }
     public override void UseAbility() {
         // Gets all objects within blast radius
@@ -47,5 +51,13 @@ public class ExplosiveSlimeAbilities : SlimeAbilities
 
         // Kills slime
         slimeVitality.enabled = false;
+    }
+
+    private void OnEnable() {
+        promptText.text = "Q to explode!";
+    }
+
+    private void OnDisable() {
+        promptText.text = "";
     }
 }
