@@ -43,6 +43,11 @@ public class HungrySlimeAbilities : SlimeAbilities
         // Continues the pushable state if big enough
         float sizeDif = pushable.size - slimeSize;
         if (sizeDif > 0.01) { return; }
+        // Needs to be holding Q
+        if (!Input.GetKey(KeyCode.Q)) { 
+            OnCollisionExit(collision); 
+            return;
+        }
         pushable.ContinuePush();
         slimeFollowerMovement.movementSpeed = normalSpeed * (MathF.Abs(sizeDif) > 0.01 ? 1 : 0.5f);
     }
