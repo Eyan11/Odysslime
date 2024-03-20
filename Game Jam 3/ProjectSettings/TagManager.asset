@@ -9,6 +9,7 @@ TagManager:
   - Orientation
   - Obj
   - NavMesh Surface
+  - Sound Manager
   layers:
   - Default
   - TransparentFX
