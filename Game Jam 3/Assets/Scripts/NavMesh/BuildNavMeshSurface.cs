@@ -8,14 +8,9 @@ public class BuildNavMeshSurface : MonoBehaviour
 {
     [SerializeField] private NavMeshSurface navSurface;
 
-    private void Update() {
-        //For testing: builds a new NavMesh when pressing "P"
-        if(Input.GetKeyDown(KeyCode.P)) {
-            //UpdateNavMesh();
-        }
-    }
     public void UpdateNavMesh() {
-        navSurface.BuildNavMesh();
+        Debug.Log("UpdateNavMesh called, but temporarily disabled");
+        //navSurface.BuildNavMesh();
     }
 
 }

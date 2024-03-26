@@ -12,11 +12,9 @@ public class IceSlimeAbilities : SlimeAbilities
     [SerializeField] private GameObject icePuddleTemplate;
     [SerializeField] private GameObject orientation;
     [SerializeField] private float interactionDistance = 1.2f;
-    private BuildNavMeshSurface buildNavMeshScript;
     private RaycastHit raycastHit;
     private SlimeVitality slimeVitality;
     private SoundManager soundManager;
-    private TMP_Text promptText;
 
     private int iceLayerMask = 1<<8; // 8 points towards "Ice" layer
     private int waterLayerMask = 1<<4; // 4 points towards "Water" layer
@@ -27,16 +25,10 @@ public class IceSlimeAbilities : SlimeAbilities
     private void Awake() {
         slimeVitality = GetComponent<SlimeVitality>();
         soundManager = GameObject.FindObjectOfType<SoundManager>();
-        promptText = GameObject.Find("PromptText").GetComponent<TMP_Text>();
-
-        //Find nav mesh object and get script
-        buildNavMeshScript = GameObject.FindWithTag("NavMesh Surface").GetComponent<BuildNavMeshSurface>();
     }
     
     private void FixedUpdate() {
         CheckForIceObject();
-
-        promptText.text = "Press Q to turn into an ice cube or ice puddle over water!";
     }
 
     private void CheckForIceObject() {
@@ -67,9 +59,6 @@ public class IceSlimeAbilities : SlimeAbilities
         // Creates ice puddle at position
         //Instantiate(icePuddleTemplate, groundRaycastHit.point, quaternion.identity); //old
         Instantiate(icePuddleTemplate, spawnPoint, quaternion.identity);
-
-        //update walkable surfaces after spawning ice puddle 
-        buildNavMeshScript.UpdateNavMesh();
     }
 
     public void GenerateIceCube() {
@@ -80,9 +69,6 @@ public class IceSlimeAbilities : SlimeAbilities
 
         // Creates ice cube at position
         Instantiate(iceCubeTemplate, transform.position, quaternion.identity);
-
-        //update walkable surfaces after spawning ice cube 
-        buildNavMeshScript.UpdateNavMesh();
     }
     
     public override void UseAbility()

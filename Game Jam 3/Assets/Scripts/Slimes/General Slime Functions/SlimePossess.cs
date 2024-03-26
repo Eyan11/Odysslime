@@ -10,6 +10,7 @@ public class SlimePossess : MonoBehaviour
     [Header("References")]
     [SerializeField] private Transform raycastSpawnObj;
     [SerializeField] private Texture2D scopeImage;
+    [SerializeField] private UIManager uiScript;
     private ThirdPersonCam cameraScript;
     private GameObject slimeKingPlayer;
     private DiscoverSlimes discoverSlimesScript;
@@ -18,7 +19,6 @@ public class SlimePossess : MonoBehaviour
     private SlimeFollow slimeFollow;
     private Ray ray;
     private RaycastHit hit;
-    private TMP_Text promptText;
 
     private void Awake() {
         // Retrieve slime king player
@@ -27,8 +27,6 @@ public class SlimePossess : MonoBehaviour
         //script references
         cameraScript = Camera.main.gameObject.GetComponent<ThirdPersonCam>();
         discoverSlimesScript = slimeKingPlayer.GetComponent<DiscoverSlimes>();
-        //TMP reference for UI
-        promptText = GameObject.Find("PromptText").GetComponent<TMP_Text>();
 
         // finds the first instance of script
         slimeAbility = gameObject.GetComponent<SlimeAbilities>();
@@ -77,9 +75,6 @@ public class SlimePossess : MonoBehaviour
 
             //Debug.Log("Camera is UNLOCKED!");
             slimeMovement.enabled = true;
-
-            //Turn off prompt when not possessing
-            promptText.text = "";
         }
 
     }
@@ -90,7 +85,7 @@ public class SlimePossess : MonoBehaviour
             //Debug.Log("Possessing " + otherSlime.name  + " from " + gameObject.name + "!");
 
             //if otherSlime is not king and not currently a slime follower, do NOT possess them
-            if(!otherSlime.CompareTag("Slime King") && discoverSlimesScript.FindSlimeFollower(otherSlime) == -1)
+            if(!otherSlime.CompareTag("King Slime") && discoverSlimesScript.FindSlimeFollower(otherSlime) == -1)
                 return;
 
             //switch camera
@@ -107,6 +102,9 @@ public class SlimePossess : MonoBehaviour
         //spawn ray from screen to cursor position in world
         ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         Debug.DrawRay(ray.origin, ray.direction * 20, Color.red);
+
+        //display prompt for 0.1 sec
+        uiScript.DisplayPrompt("Hover over slime to possess!", 0.1f);
         
         //if ray hit something
         if(Physics.Raycast(ray, out hit)) {
@@ -129,18 +127,15 @@ public class SlimePossess : MonoBehaviour
             }
 
             //if ray cast hit any slime (except oneself)
-            if (otherObject.CompareTag("Slime Follower") || otherObject.CompareTag("Slime King")) {
+            if (otherObject.CompareTag("Super Slime") || otherObject.CompareTag("King Slime")) {
                 isSlime = true;
 
-                //INSERT METHOD CALL FOR SWITCHING SLIMES UI
-                promptText.text = "E to possess!";
-            }
-            else {
-                promptText.text = "Hover over slime to possess!";
+                //display prompt for 0.1 sec
+                uiScript.DisplayPrompt("Left Mouse Button to possess!", 0.1f);
             }
 
-            //if pressing "E" and it is a different slime, then change possession
-            if(Input.GetKeyDown(KeyCode.E) && isSlime) {
+            //if pressing left mouse and it is a different slime, then change possession
+            if(Input.GetMouseButtonDown(0) && isSlime) {
                 PosessSlime(otherObject);
             }
         }
@@ -160,11 +155,8 @@ public class SlimePossess : MonoBehaviour
         if (slimeFollow)
             slimeFollow.enabled = true;
 
-        if(gameObject.CompareTag("Slime Follower"))
+        if(gameObject.CompareTag("Super Slime"))
             GetComponent<Rigidbody>().isKinematic = true;
-
-        //Turn off prompt text after possessing
-        promptText.text = "";
     }
 
     //run every time this script is enabled in inspector
@@ -179,7 +171,7 @@ public class SlimePossess : MonoBehaviour
         if (slimeFollow)
             slimeFollow.enabled = false;   
 
-        if(gameObject.CompareTag("Slime Follower"))
+        if(gameObject.CompareTag("Super Slime"))
             GetComponent<Rigidbody>().isKinematic = false; 
     }
 

@@ -4,13 +4,15 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Slime King
-  - Slime Follower
   - Orientation
   - Obj
   - NavMesh Surface
   - Sound Manager
   - UI Manager
+  - King Slime
+  - Super Slime
+  - Slimeling
+  - Game Manager
   layers:
   - Default
   - TransparentFX

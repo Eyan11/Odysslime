@@ -20,7 +20,7 @@ GameObject:
   - component: {fileID: -2627454649028561501}
   m_Layer: 0
   m_Name: Ice Slime Player
-  m_TagString: Slime Follower
+  m_TagString: Super Slime
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

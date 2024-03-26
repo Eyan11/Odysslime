@@ -34,7 +34,7 @@ public class DiscoverSlimes : MonoBehaviour
         foreach (var hitCollider in hitColliders) {
 
             //if collider belongs to slime follower and slime is not following leader
-            if(hitCollider.gameObject.CompareTag("Slime Follower") &&
+            if(hitCollider.gameObject.CompareTag("Super Slime") &&
                 hitCollider.gameObject.GetComponent<SlimeFollow>().enabled == false) {
 
                 //make slime a follower

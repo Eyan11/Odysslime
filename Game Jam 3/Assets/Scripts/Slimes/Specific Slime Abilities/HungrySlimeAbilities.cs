@@ -23,7 +23,6 @@ public class HungrySlimeAbilities : SlimeAbilities
     private NavMeshAgent navMeshAgent;
     private SlimeFollowerMovement slimeFollowerMovement;
     private SoundManager soundManager;
-    private TMP_Text promptText;
 
 
     private void Awake() {
@@ -35,7 +34,6 @@ public class HungrySlimeAbilities : SlimeAbilities
         slimeFollowerMovement = GetComponent<SlimeFollowerMovement>();
         normalSpeed = slimeFollowerMovement.movementSpeed;
         soundManager = GameObject.FindObjectOfType<SoundManager>();
-        promptText = GameObject.Find("PromptText").GetComponent<TMP_Text>();
     }
 
     private void OnCollisionStay(Collision collision) {
@@ -46,11 +44,10 @@ public class HungrySlimeAbilities : SlimeAbilities
         // Continues the pushable state if big enough
         float sizeDif = pushable.size - slimeSize;
         if (sizeDif > 0.01) { return; }
-        // Needs to be holding Q
-        promptText.text = "Q to push object!";
+        
+
         if (!Input.GetKey(KeyCode.Q)) { 
             OnCollisionExit(collision); 
-            promptText.text = "Q to push object!";
             return;
         }
         pushable.ContinuePush();
@@ -62,8 +59,7 @@ public class HungrySlimeAbilities : SlimeAbilities
         // Checks if its a pushable block
         Pushable pushable = obj.GetComponent<Pushable>();
         if (!pushable) { return; }
-        // 'Ends' push
-        promptText.text = "";
+
         pushable.EndPush();
         slimeFollowerMovement.movementSpeed = normalSpeed;
     }

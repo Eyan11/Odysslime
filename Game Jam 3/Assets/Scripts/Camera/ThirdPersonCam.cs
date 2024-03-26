@@ -59,12 +59,12 @@ public class ThirdPersonCam : MonoBehaviour
     private void CameraLockState() {
         camUnlockedTimer -= Time.deltaTime;
 
-        //lock cam on first frame right mouse is pressed
-        if(Input.GetMouseButtonDown(1)) {
+        //lock cam on first frame E is pressed
+        if(Input.GetKeyDown(KeyCode.E)) {
             LockCamera();
         }
-        //unlock cam on first frame right mouse is released
-        else if(Input.GetMouseButtonUp(1))
+        //unlock cam on when E is released
+        else if(Input.GetKeyUp(KeyCode.E))
             UnlockCamera();
     }
 
@@ -120,7 +120,7 @@ public class ThirdPersonCam : MonoBehaviour
         topDownCam.SetActive(false);
 
         //switch to king camera settings
-        if(slimePlayer.CompareTag("Slime King")) {
+        if(slimePlayer.CompareTag("King Slime")) {
             //enable top down cam
             topDownCam.SetActive(true);
         }
