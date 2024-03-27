@@ -10,8 +10,7 @@ public class Water : Lethal
         IceSlimeAbilities iceSlimeAbilities = gameObj.GetComponent<IceSlimeAbilities>();
 
         if (iceSlimeAbilities) {
-            // Generates a puddle on death on water
-            iceSlimeAbilities.GenerateIcePuddle();
+            iceSlimeAbilities.GenerateIceCube();
         }
 
         base.OnTriggerEnter(collider);

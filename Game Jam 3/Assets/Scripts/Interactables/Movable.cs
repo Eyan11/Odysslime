@@ -5,10 +5,9 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Timeline;
 
-public class Pushable : MonoBehaviour
+public class Movable : MonoBehaviour
 {
     [Header("Statistics")]
-    public int size = 1;
     private Collider internalHitbox;
     private GameObject pushableObj;
     private Collider pushableHitbox;

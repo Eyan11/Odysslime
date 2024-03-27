@@ -9,56 +9,14 @@ public class IceSlimeAbilities : SlimeAbilities
 {
     [Header("Settings")]
     [SerializeField] private GameObject iceCubeTemplate;
-    [SerializeField] private GameObject icePuddleTemplate;
-    [SerializeField] private GameObject orientation;
-    [SerializeField] private float interactionDistance = 1.2f;
-    private RaycastHit raycastHit;
     private SlimeVitality slimeVitality;
     private SoundManager soundManager;
-
-    private int iceLayerMask = 1<<8; // 8 points towards "Ice" layer
-    private int waterLayerMask = 1<<4; // 4 points towards "Water" layer
-    private bool foundIce = false;
 
     private bool triggered = false;
 
     private void Awake() {
         slimeVitality = GetComponent<SlimeVitality>();
         soundManager = GameObject.FindObjectOfType<SoundManager>();
-    }
-    
-    private void FixedUpdate() {
-        CheckForIceObject();
-    }
-
-    private void CheckForIceObject() {
-        // Checks if an ice block is in front
-        foundIce = Physics.Raycast(transform.position, orientation.transform.forward, out raycastHit, interactionDistance, iceLayerMask);
-
-        if (foundIce) { return; }
-
-        // Check if an ice puddle is below
-        foundIce = Physics.Raycast(transform.position, Vector3.down, out raycastHit, interactionDistance, iceLayerMask);
-    }
-
-    public void GenerateIcePuddle() {
-        RaycastHit groundRaycastHit;
-
-        bool hit = Physics.Raycast(transform.position + Vector3.up * 5, Vector3.down, out groundRaycastHit, Mathf.Infinity, waterLayerMask);
-
-        if (!icePuddleTemplate) {
-            Debug.LogError("No ice puddle template provided!");
-            return;
-        }
-
-        Vector3 spawnPoint = groundRaycastHit.point + new Vector3(0, -3.4f, 0);
-        if (!hit) {
-            spawnPoint = transform.position + new Vector3(0, -3.4f, 0);
-        } 
-
-        // Creates ice puddle at position
-        //Instantiate(icePuddleTemplate, groundRaycastHit.point, quaternion.identity); //old
-        Instantiate(icePuddleTemplate, spawnPoint, quaternion.identity);
     }
 
     public void GenerateIceCube() {
@@ -79,26 +37,7 @@ public class IceSlimeAbilities : SlimeAbilities
         }
         triggered = true;
 
-        if (foundIce) {
-            GameObject iceObj = raycastHit.collider.gameObject;
-
-            // Ice cube growth
-            IceCube iceBlock = iceObj.GetComponent<IceCube>();
-            if (iceBlock) {
-                // Grows club
-                iceBlock.GrowCube();
-                
-            }
-
-            // Creates puddle if standing on an existing puddle
-            IcePlatform icePuddle = iceObj.GetComponent<IcePlatform>();
-            if (icePuddle) {
-                GenerateIcePuddle();
-            }
-        }
-        else {
-            GenerateIceCube();
-        }
+        GenerateIceCube();
 
         // Plays freeze sound
         soundManager.PlaySlimeFreeze();
