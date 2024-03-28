@@ -18,7 +18,7 @@ GameObject:
   - component: {fileID: -7131254884126679211}
   - component: {fileID: 4362966882715022011}
   - component: {fileID: -2627454649028561501}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Ice Slime Player
   m_TagString: Super Slime
   m_Icon: {fileID: 0}
@@ -159,6 +159,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   raycastSpawnObj: {fileID: 0}
   scopeImage: {fileID: 2800000, guid: b3a74a9df4b1a0346928c95b52e92e37, type: 3}
+  uiScript: {fileID: 0}
 --- !u!114 &-7131254884126679211
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -173,10 +174,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   iceCubeTemplate: {fileID: 8684171417627582877, guid: 8205996345d2267498e663371df717e1,
     type: 3}
-  icePuddleTemplate: {fileID: 8196443612886343464, guid: 4af233ac404577840adaaa4f7c475cbe,
-    type: 3}
-  orientation: {fileID: 787742763717332419}
-  interactionDistance: 1.2
 --- !u!114 &4362966882715022011
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -217,7 +214,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3743201115591625188}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Orientation
   m_TagString: Orientation
   m_Icon: {fileID: 0}
@@ -251,6 +248,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Ice Slime Obj
+      objectReference: {fileID: 0}
+    - target: {fileID: 2376580233880366085, guid: 5f030341b66944f01bce4761c598416e,
+        type: 3}
+      propertyPath: m_Layer
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 2376580233880366085, guid: 5f030341b66944f01bce4761c598416e,
         type: 3}
@@ -306,6 +308,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6232667799982581373, guid: 5f030341b66944f01bce4761c598416e,
+        type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 6319646982013639626, guid: 5f030341b66944f01bce4761c598416e,
+        type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 8435763750750328254, guid: 5f030341b66944f01bce4761c598416e,
+        type: 3}
+      propertyPath: m_Layer
+      value: 11
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 7084102939287826575}
   - component: {fileID: 6993081812106580522}
   - component: {fileID: 9185538821586508786}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Slime King Player (No Cam)
   m_TagString: King Slime
   m_Icon: {fileID: 0}
@@ -161,7 +161,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4373339295143982460}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Orientation
   m_TagString: Orientation
   m_Icon: {fileID: 0}
@@ -191,6 +191,26 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1510699747074693710}
     m_Modifications:
+    - target: {fileID: 231742626077852911, guid: 7c3bc0bb1449341f682b3f45c903c592,
+        type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 453299569974657219, guid: 7c3bc0bb1449341f682b3f45c903c592,
+        type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 987908280184249879, guid: 7c3bc0bb1449341f682b3f45c903c592,
+        type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 1029583171490525332, guid: 7c3bc0bb1449341f682b3f45c903c592,
+        type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
     - target: {fileID: 1415628824464250569, guid: 7c3bc0bb1449341f682b3f45c903c592,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -248,8 +268,63 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1796516541836987507, guid: 7c3bc0bb1449341f682b3f45c903c592,
         type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 1796516541836987507, guid: 7c3bc0bb1449341f682b3f45c903c592,
+        type: 3}
       propertyPath: m_TagString
       value: Obj
+      objectReference: {fileID: 0}
+    - target: {fileID: 2733796844522740469, guid: 7c3bc0bb1449341f682b3f45c903c592,
+        type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 3417804020758997738, guid: 7c3bc0bb1449341f682b3f45c903c592,
+        type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 4927435645571322698, guid: 7c3bc0bb1449341f682b3f45c903c592,
+        type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 5044985786917122046, guid: 7c3bc0bb1449341f682b3f45c903c592,
+        type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 5461430902517579961, guid: 7c3bc0bb1449341f682b3f45c903c592,
+        type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 5763857387656039387, guid: 7c3bc0bb1449341f682b3f45c903c592,
+        type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 6070459003514427315, guid: 7c3bc0bb1449341f682b3f45c903c592,
+        type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 6786390268326194740, guid: 7c3bc0bb1449341f682b3f45c903c592,
+        type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 8176917772588644945, guid: 7c3bc0bb1449341f682b3f45c903c592,
+        type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 8484791931062192478, guid: 7c3bc0bb1449341f682b3f45c903c592,
+        type: 3}
+      propertyPath: m_Layer
+      value: 11
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
