@@ -4,14 +4,17 @@ using UnityEngine;
 
 public class PressurePlate : MonoBehaviour
 {
-    [Header("Choose how the pressure plate is activated: ")]
+    [Header("Choose How the Pressure Plate is Activated: ")]
     [SerializeField] private PlateType plateType;
+
+    [Header("References")]
+    [SerializeField] private GateOpen gateOpenScript;
 
     [Header("Slime Plate Settings: ")]
     [SerializeField] private int slimesToActivate;
     private int slimesOnPlate = 0;
     private int iceCubesOnPlate = 0;
-    private bool plateIsActive;
+    private bool plateIsActive = false;
     private int slimeLayer, iceLayer, colliderLayer;
 
     private void Awake() {
@@ -57,14 +60,18 @@ public class PressurePlate : MonoBehaviour
         if(!plateIsActive && slimesOnPlate >= slimesToActivate) {
             //activate plate
             plateIsActive = true;
-            Debug.Log("Plate is activated");
+            
+            if(gateOpenScript)
+                gateOpenScript.Activate();
         }
 
         //if plate IS activated and NOT enough slimes are on plate
         else if(plateIsActive && slimesOnPlate < slimesToActivate) {
             //DEactivate plate
             plateIsActive = false;
-            Debug.Log("Plate is deactivated");
+
+            if(gateOpenScript)
+                gateOpenScript.Deactivate();
         }
     }
 
@@ -78,6 +85,9 @@ public class PressurePlate : MonoBehaviour
             //activate plate
             plateIsActive = true;
             Debug.Log("Plate is activated");
+
+            if(gateOpenScript)
+                gateOpenScript.Activate();
         }
 
         //if plate IS activated and NOT enough ice cubes are on plate
@@ -85,6 +95,9 @@ public class PressurePlate : MonoBehaviour
             //deactivate plate
             plateIsActive = false;
             Debug.Log("Plate is deactivated");
+
+            if(gateOpenScript)
+                gateOpenScript.Deactivate();
         }
     }
 
