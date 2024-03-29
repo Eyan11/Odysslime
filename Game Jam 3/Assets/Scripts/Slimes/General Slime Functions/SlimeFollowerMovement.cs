@@ -8,7 +8,6 @@ public class SlimeFollowerMovement : SlimeMovement
 {
     [Header("Settings")]
     [SerializeField] private Transform orientation;
-    [SerializeField] private Transform slimeObj;
     [SerializeField] private float bodyRadius = 0.5f;
     [Header("Movement Settings")]
     public float movementSpeed = 2f;
@@ -24,7 +23,6 @@ public class SlimeFollowerMovement : SlimeMovement
     private bool onGround = false;
     private float jumpStart;
     private Vector3 moveDir;
-    private RaycastHit raycastHit;
     private SoundManager soundManager;
 
     void Awake()

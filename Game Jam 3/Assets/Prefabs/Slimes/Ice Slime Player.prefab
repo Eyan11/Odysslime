@@ -157,9 +157,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab6d04f55dc15974abc386e778efa254, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  raycastSpawnObj: {fileID: 0}
   scopeImage: {fileID: 2800000, guid: b3a74a9df4b1a0346928c95b52e92e37, type: 3}
-  uiScript: {fileID: 0}
 --- !u!114 &-7131254884126679211
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -187,7 +185,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   orientation: {fileID: 3743201115591625188}
-  slimeObj: {fileID: 5110595672616599100}
   bodyRadius: 0.5
   movementSpeed: 2
   groundDrag: 3
@@ -247,7 +244,7 @@ PrefabInstance:
     - target: {fileID: 2376580233880366085, guid: 5f030341b66944f01bce4761c598416e,
         type: 3}
       propertyPath: m_Name
-      value: Ice Slime Obj
+      value: Slime Model
       objectReference: {fileID: 0}
     - target: {fileID: 2376580233880366085, guid: 5f030341b66944f01bce4761c598416e,
         type: 3}

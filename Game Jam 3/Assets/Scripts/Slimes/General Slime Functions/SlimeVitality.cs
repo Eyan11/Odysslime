@@ -38,6 +38,12 @@ public class SlimeVitality : MonoBehaviour
     }
 
     private void FixedUpdate() {
+        // This is used to check if the slime is possessable
+        if (!slimePossess) {
+            return;
+        }
+
+        // If it is and it is currently in possession and can do the debug reset, then kill the slime
         if (slimePossess.enabled && Input.GetKey(KeyCode.R) && enableResetKeybind) {
             this.enabled = false;
         }

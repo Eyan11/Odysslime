@@ -32,13 +32,20 @@ public class DiscoverSlimes : MonoBehaviour
 
         //loop through each collider in array
         foreach (var hitCollider in hitColliders) {
+            GameObject colliderObj = hitCollider.gameObject;
+
+            // Tag check; skip object if it doesn't have the tag
+            if (!colliderObj.CompareTag("Super Slime") && 
+                !colliderObj.CompareTag("Slimeling")) 
+            {
+                continue;
+            }
 
             //if collider belongs to slime follower and slime is not following leader
-            if(hitCollider.gameObject.CompareTag("Super Slime") &&
-                hitCollider.gameObject.GetComponent<SlimeFollow>().enabled == false) {
+            if(colliderObj.GetComponent<SlimeFollow>().enabled == false) {
 
                 //make slime a follower
-                AddSlimeFollower(hitCollider.gameObject);
+                AddSlimeFollower(colliderObj);
             }
         }
     }

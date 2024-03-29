@@ -188,9 +188,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab6d04f55dc15974abc386e778efa254, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  raycastSpawnObj: {fileID: 0}
   scopeImage: {fileID: 2800000, guid: b3a74a9df4b1a0346928c95b52e92e37, type: 3}
-  uiScript: {fileID: 0}
 --- !u!114 &-2710927735541009254
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -217,7 +215,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   orientation: {fileID: 2860819215200976625}
-  slimeObj: {fileID: 1651849035401292476}
   bodyRadius: 0.5
   movementSpeed: 2
   groundDrag: 3
@@ -251,7 +248,7 @@ PrefabInstance:
     - target: {fileID: 1649222779776543490, guid: 6df2470fd133e4d568262fb7d1439f35,
         type: 3}
       propertyPath: m_Name
-      value: Explosive Slime Obj
+      value: Slime Model
       objectReference: {fileID: 0}
     - target: {fileID: 1649222779776543490, guid: 6df2470fd133e4d568262fb7d1439f35,
         type: 3}

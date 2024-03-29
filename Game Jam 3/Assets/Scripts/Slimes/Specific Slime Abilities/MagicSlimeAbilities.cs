@@ -15,7 +15,6 @@ public class MagicSlimeAbilities : SlimeAbilities
     private float interactionDistance = 1.2f;
     private float normalSpeed;
     private int movablesMask;
-    private RaycastHit raycastHit;
     private SphereCollider sphereCollider;
     private NavMeshAgent navMeshAgent;
     private SlimeFollowerMovement slimeFollowerMovement;
@@ -29,7 +28,7 @@ public class MagicSlimeAbilities : SlimeAbilities
         navMeshAgent = GetComponent<NavMeshAgent>();
         slimeFollowerMovement = GetComponent<SlimeFollowerMovement>();
         normalSpeed = slimeFollowerMovement.movementSpeed;
-        soundManager = GameObject.FindObjectOfType<SoundManager>();
+        soundManager = FindObjectOfType<SoundManager>();
     }
 
     private void OnCollisionStay(Collision collision) {

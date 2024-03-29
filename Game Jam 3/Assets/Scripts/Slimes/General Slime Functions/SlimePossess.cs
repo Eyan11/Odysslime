@@ -8,7 +8,6 @@ using TMPro;
 public class SlimePossess : MonoBehaviour
 {
     [Header("References")]
-    [SerializeField] private Transform raycastSpawnObj;
     [SerializeField] private Texture2D scopeImage;
     private UIManager UIScript;
     private ThirdPersonCam cameraScript;
@@ -109,12 +108,6 @@ public class SlimePossess : MonoBehaviour
         
         //if ray hit something
         if(Physics.Raycast(ray, out hit)) {
-            
-            //Testing: move raycast obj to position of raycast collision
-            if (raycastSpawnObj) {
-                raycastSpawnObj.position = hit.point;
-            }
-
             //Testing
             //Debug.Log("Mouse raycast hit: " + hit.collider.name);
 
