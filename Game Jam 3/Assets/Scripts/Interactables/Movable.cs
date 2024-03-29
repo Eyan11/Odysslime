@@ -19,15 +19,15 @@ public class Movable : MonoBehaviour
             return;
         }
 
-        pushableObj = transform.Find("Strength Hitbox").gameObject;
+        pushableObj = transform.Find("Pushable Hitbox").gameObject;
         if (!pushableObj) {
-            Debug.LogError(gameObject.name + " is missing a \"Strength Hitbox\"!");
+            Debug.LogError(gameObject.name + " is missing a \"Pushable Hitbox\"!");
             return;
         }
 
         pushableHitbox = pushableObj.GetComponent<Collider>();
         if (!pushableHitbox) {
-            Debug.LogError("\"Strength Hitbox\" is missing a BoxCollider!");
+            Debug.LogError("\"Pushable Hitbox\" is missing a BoxCollider!");
         }
 
         Physics.IgnoreCollision(internalHitbox, pushableHitbox, true);

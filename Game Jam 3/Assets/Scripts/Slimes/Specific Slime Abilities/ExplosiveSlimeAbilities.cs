@@ -20,13 +20,14 @@ public class ExplosiveSlimeAbilities : SlimeAbilities
         Collider[] objectsInRange = Physics.OverlapSphere(transform.position, blastRadius);
 
         foreach (var obj in objectsInRange) {
-            // Kills slimes in range (except king slime cuz they cool)
-            SlimeVitality objVitality = obj.GetComponent<SlimeVitality>();
-            if (objVitality) {
-                objVitality.enabled = false;
+            // Kills slimes in range (unless king slime or slime within range of king slime)
+            // TODO: do a distance check between object and king slime
+            // SlimeVitality objVitality = obj.GetComponent<SlimeVitality>();
+            // if (objVitality) {
+            //     objVitality.enabled = false;
 
-                continue;
-            }
+            //     continue;
+            // }
 
             // Destroys explodable objects
             Explodable objExplodable = obj.GetComponent<Explodable>();
