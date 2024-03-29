@@ -10,7 +10,7 @@ public class SlimePossess : MonoBehaviour
     [Header("References")]
     [SerializeField] private Transform raycastSpawnObj;
     [SerializeField] private Texture2D scopeImage;
-    [SerializeField] private UIManager uiScript;
+    private UIManager UIScript;
     private ThirdPersonCam cameraScript;
     private GameObject slimeKingPlayer;
     private DiscoverSlimes discoverSlimesScript;
@@ -27,6 +27,7 @@ public class SlimePossess : MonoBehaviour
         //script references
         cameraScript = Camera.main.gameObject.GetComponent<ThirdPersonCam>();
         discoverSlimesScript = slimeKingPlayer.GetComponent<DiscoverSlimes>();
+        UIScript = GameObject.FindWithTag("UI Manager").GetComponent<UIManager>();
 
         // finds the first instance of script
         slimeAbility = gameObject.GetComponent<SlimeAbilities>();
@@ -104,7 +105,7 @@ public class SlimePossess : MonoBehaviour
         Debug.DrawRay(ray.origin, ray.direction * 20, Color.red);
 
         //display prompt for 0.1 sec
-        uiScript.DisplayPrompt("Hover over slime to possess!", 0.1f);
+        UIScript.DisplayPrompt("Hover over slime to possess!", 0.1f);
         
         //if ray hit something
         if(Physics.Raycast(ray, out hit)) {
@@ -131,7 +132,7 @@ public class SlimePossess : MonoBehaviour
                 isSlime = true;
 
                 //display prompt for 0.1 sec
-                uiScript.DisplayPrompt("Left Mouse Button to possess!", 0.1f);
+                UIScript.DisplayPrompt("Left Mouse Button to possess!", 0.1f);
             }
 
             //if pressing left mouse and it is a different slime, then change possession

@@ -8,7 +8,7 @@ public class KingMovement : SlimeMovement
     [Header("References")]
     [SerializeField] private Transform orientation;
     [SerializeField] private Transform kingObj;
-    [SerializeField] private UIManager uiScript;
+    private UIManager UIScript;
     private DiscoverSlimes discoverSlimesScript;
     private Rigidbody rb;
 
@@ -28,6 +28,7 @@ public class KingMovement : SlimeMovement
         rb.freezeRotation = true;
 
         discoverSlimesScript = GetComponent<DiscoverSlimes>();
+        UIScript = GameObject.FindWithTag("UI Manager").GetComponent<UIManager>();
     }
 
     private void FixedUpdate() {
@@ -77,7 +78,7 @@ public class KingMovement : SlimeMovement
         if(Vector3.Distance((transform.position + (moveDir*3)), trackedSlime.position) > maxDistToSlime) {
             moveDir = Vector3.zero;
             //display prompt for 1 sec
-            uiScript.DisplayPrompt("Stay with your slime followers", 1f);
+            UIScript.DisplayPrompt("Stay with your slime followers", 1f);
         }
     }
 
