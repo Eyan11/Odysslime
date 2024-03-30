@@ -85,7 +85,7 @@ public class SlimePossess : MonoBehaviour
             //Debug.Log("Possessing " + otherSlime.name  + " from " + gameObject.name + "!");
 
             //if otherSlime is not king and not currently a slime follower, do NOT possess them
-            if(!otherSlime.CompareTag("King Slime") && discoverSlimesScript.FindSlimeFollower(otherSlime) == -1)
+            if(!otherSlime.CompareTag("King Slime") && discoverSlimesScript.FindSlimeFollower(otherSlime.transform) == -1)
                 return;
 
             //switch camera

@@ -5,95 +5,113 @@ using TMPro;
 
 public class KingMovement : SlimeMovement
 {
-    [Header("References")]
-    [SerializeField] private Transform orientation;
-    [SerializeField] private Transform kingObj;
+    private Transform kingObj;
+    private Transform orientation;
     private UIManager UIScript;
-    private DiscoverSlimes discoverSlimesScript;
+    private DiscoverSlimes discoverScript;
     private Rigidbody rb;
     private RaycastHit hit;
     private Ray ray;
-    private float currentHeight;
     private int floorLayer;
 
-    [Header("Settings")]
+    [Header("Horizontal Movement Settings")]
     [SerializeField] private float moveSpeed;
+    [SerializeField] private float maxDistToSlime;
+    [SerializeField] private int maxAngleToSlime;
+    private Transform closestSlime = null;
+    private Vector3 closestSlimeDir;
+    private float xInput;
+    private float zInput;
+    private Vector3 moveDir;
+    private Vector3 groundPos;
+    
+    [Header ("Vertical Movement Settings")]
     [SerializeField] private float hoverSpeed;
     [SerializeField] private float maxYPos;
     [SerializeField] private float minYPos;
-    [SerializeField] private float maxDistToSlime;
     [SerializeField] private float hoverHeight;
     [SerializeField] private float heightBuffer;
     [SerializeField] private float rayInterval;
     private float rayCountdown = 0;
-    private Transform trackedSlime = null;
-    private float xInput;
-    private float zInput;
+    private float currentHeight;
     private float vertSpeed;
-    private Vector3 moveDir;
 
 
     private void Awake() {
-        //grab rigidbody reference and make sure body doesn't fall over
+        kingObj = transform.GetChild(0);
+        orientation = transform.GetChild(1);
+
+        //send error message if accidentally switched order or children
+        if(kingObj.CompareTag("Obj") == false || orientation.CompareTag("Orientation") == false)
+            Debug.LogError("King Slime Obj needs to be first child and Orientation needs to be second child of King Slime Player");
+
+        //make sure rigidbody doesn't fall over
         rb = GetComponent<Rigidbody>();
         rb.freezeRotation = true;
 
-        discoverSlimesScript = GetComponent<DiscoverSlimes>();
+        discoverScript = GetComponent<DiscoverSlimes>();
         UIScript = GameObject.FindWithTag("UI Manager").GetComponent<UIManager>();
         floorLayer = LayerMask.NameToLayer("Floor");
     }
 
     private void FixedUpdate() {
-        ConstrainMovement();
-
         //set XZ velocity
         rb.velocity = new Vector3(moveDir.x * moveSpeed, vertSpeed, moveDir.z * moveSpeed);
+        
     }
 
     private void Update() {
-        GetInput();
-        VerticalMovementCalculations();
-    }
-
-    private void VerticalMovementCalculations() {
         rayCountdown -= Time.deltaTime;
 
-        //-----CHECK HEIGHT-----
-        //spawn a raycast every ray interval seconds
+        //every rayInterval seconds:
         if(rayCountdown < 0) {
             rayCountdown = rayInterval;
-
-            //spawn a ray down from current position
-            ray = new Ray(transform.position, -Vector3.up);
-            Debug.DrawRay(transform.position, Vector3.down * hoverHeight, Color.red);
             
-            //check the hit info of the raycast
-            if(Physics.Raycast(ray, out hit)) {
+            //find height above the ground
+            groundPos = RayCastDownPosition();
+            currentHeight = Vector3.Distance(transform.position, groundPos);
 
-                //if an object was hit, make the distance our current height
-                if(hit.collider.gameObject.layer == floorLayer)  {
-                    currentHeight = hit.distance;
-                    //Debug.Log(currentHeight);
-                }
-            }
+            //set the vertical speed based on current height
+            SetVerticalSpeed();
         }
 
-        //-----SET VERTICAL SPEED-----
+        GetInput();
+        ConstrainMovement();
+    }
+
+    //returns the point fo collision on a downwards raycast
+    public Vector3 RayCastDownPosition() {
+
+        //spawn a ray down from current position
+        ray = new Ray(transform.position, -Vector3.up);
+        Debug.DrawRay(transform.position, Vector3.down * hoverHeight, Color.red);
+        
+        //check the hit info of the raycast
+        if(Physics.Raycast(ray, out hit)) {
+
+            //if an object with "Floor" layer was hit, return it's position
+            if(hit.collider.gameObject.layer == floorLayer) 
+                return hit.point;
+        }
+
+        //if floor wasn't hit, return where the floor would be based on currentHeight
+        return transform.position - Vector3.up * currentHeight;
+    }
+
+    private void SetVerticalSpeed() {
+
         //if too low to ground, move upwards (cap at max height)
-        if(currentHeight < hoverHeight - heightBuffer && (transform.position.y < maxYPos)) {
+        if(currentHeight < hoverHeight - heightBuffer && (transform.position.y < maxYPos))
             vertSpeed = hoverSpeed;
-            Debug.Log("Moving Up!");
-        }
+
         //if too high to ground, move downwards (cap at min height)
-        else if(currentHeight > hoverHeight + heightBuffer && (transform.position.y > minYPos)) {
+        else if(currentHeight > hoverHeight + heightBuffer && (transform.position.y > minYPos))
             vertSpeed = -hoverSpeed;
-            Debug.Log("Moving Down!");
-        }
+
         //if correct height above ground, don't move vertically
-        else {
+        else
             vertSpeed = 0;
-            Debug.Log("Not Moving!");
-        }
+
     }
 
     private void GetInput() {
@@ -103,30 +121,36 @@ public class KingMovement : SlimeMovement
         //get z axis input
         zInput = Input.GetAxisRaw("Vertical");
 
+        //find direction of input based on player orientation (relative to camera)
+        moveDir = (orientation.forward * zInput) + (kingObj.up * 0) + (orientation.right * xInput);
     }
 
     private void ConstrainMovement() {
 
-        //find direction of input based on player orientation (relative to camera)
-        moveDir = (orientation.forward * zInput) + (kingObj.up * 0) + (orientation.right * xInput);
+        //if no slime followers, don't restrict movement
+        if(closestSlime == null)
+            return;
 
-        //if tracked slime does NOT exist
-        if(trackedSlime == null) {
-            //check if there are any other slime followers, if so track it
-            if(discoverSlimesScript.GetSlimeFollower() != null)
-                trackedSlime = discoverSlimesScript.GetSlimeFollower().transform;
-            //if no slime followers, do NOT restrict movement
-            else {
-                return;
+        //if the slime is moving in a direction that is too far from slimes
+        if(Vector3.Distance(groundPos + (moveDir*3), closestSlime.position) > maxDistToSlime) {
+
+            //calculate the direction to closest slime
+            closestSlimeDir = closestSlime.position - groundPos;
+
+            //if angle between closest slime and movement direction is too large
+            if(Vector3.Angle(closestSlimeDir, moveDir) > maxAngleToSlime) {
+
+                //restrict movement
+                moveDir.x = 0;
+                moveDir.z = 0;
+                //display prompt for 1 sec
+                UIScript.DisplayPrompt("Stay with your slime followers", 1f);
             }
         }
+    }
 
-        //if the direction the king is moving in is too far from slimes, don't move
-        if(Vector3.Distance((transform.position + (moveDir*3)), trackedSlime.position) > maxDistToSlime) {
-            moveDir = Vector3.zero;
-            //display prompt for 1 sec
-            UIScript.DisplayPrompt("Stay with your slime followers", 1f);
-        }
+    public void SetClosestSlime(Transform slime) {
+        closestSlime = slime;
     }
 
     private void OnDisable() {

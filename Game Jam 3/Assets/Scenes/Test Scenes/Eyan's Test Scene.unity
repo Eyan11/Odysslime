@@ -124,79 +124,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1001 &201526676
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 465292363649802967, guid: 0b7029b107bd7624e96ad898a7331113,
-        type: 3}
-      propertyPath: m_Name
-      value: Ice Slime Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 5047041864119589885, guid: 0b7029b107bd7624e96ad898a7331113,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 2.332046
-      objectReference: {fileID: 0}
-    - target: {fileID: 5047041864119589885, guid: 0b7029b107bd7624e96ad898a7331113,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 5047041864119589885, guid: 0b7029b107bd7624e96ad898a7331113,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 8.775087
-      objectReference: {fileID: 0}
-    - target: {fileID: 5047041864119589885, guid: 0b7029b107bd7624e96ad898a7331113,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5047041864119589885, guid: 0b7029b107bd7624e96ad898a7331113,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5047041864119589885, guid: 0b7029b107bd7624e96ad898a7331113,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5047041864119589885, guid: 0b7029b107bd7624e96ad898a7331113,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5047041864119589885, guid: 0b7029b107bd7624e96ad898a7331113,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5047041864119589885, guid: 0b7029b107bd7624e96ad898a7331113,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5047041864119589885, guid: 0b7029b107bd7624e96ad898a7331113,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6145706820333691184, guid: 0b7029b107bd7624e96ad898a7331113,
-        type: 3}
-      propertyPath: uiScript
-      value: 
-      objectReference: {fileID: 332017585}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 0b7029b107bd7624e96ad898a7331113, type: 3}
 --- !u!1 &313339821 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1544200444829933634, guid: be22204a2849d904e9580acbed9f549d,
@@ -1290,6 +1217,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 424907148052012875, guid: be22204a2849d904e9580acbed9f549d,
+        type: 3}
+      propertyPath: slimeLayer.m_Bits
+      value: 2048
+      objectReference: {fileID: 0}
     - target: {fileID: 479125389054885358, guid: be22204a2849d904e9580acbed9f549d,
         type: 3}
       propertyPath: uiScript
@@ -1360,6 +1292,11 @@ PrefabInstance:
       propertyPath: m_ComponentOwner
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 3296640062077688093, guid: be22204a2849d904e9580acbed9f549d,
+        type: 3}
+      propertyPath: allowMoveAngle
+      value: 45
+      objectReference: {fileID: 0}
     - target: {fileID: 3559122974750465694, guid: be22204a2849d904e9580acbed9f549d,
         type: 3}
       propertyPath: m_Name
@@ -1393,12 +1330,12 @@ PrefabInstance:
     - target: {fileID: 7239629344403783254, guid: be22204a2849d904e9580acbed9f549d,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.000002583152
+      value: 0.0000025891597
       objectReference: {fileID: 0}
     - target: {fileID: 7239629344403783254, guid: be22204a2849d904e9580acbed9f549d,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.0000014990613
+      value: 0.0000015025475
       objectReference: {fileID: 0}
     - target: {fileID: 7239629344403783254, guid: be22204a2849d904e9580acbed9f549d,
         type: 3}
@@ -1408,7 +1345,7 @@ PrefabInstance:
     - target: {fileID: 7239629344403783254, guid: be22204a2849d904e9580acbed9f549d,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.50192684
+      value: 0.5019268
       objectReference: {fileID: 0}
     - target: {fileID: 7983625084131542732, guid: be22204a2849d904e9580acbed9f549d,
         type: 3}
@@ -1719,5 +1656,4 @@ SceneRoots:
   - {fileID: 2131645011}
   - {fileID: 5825497796932183625}
   - {fileID: 1832463143}
-  - {fileID: 201526676}
   - {fileID: 539683407}

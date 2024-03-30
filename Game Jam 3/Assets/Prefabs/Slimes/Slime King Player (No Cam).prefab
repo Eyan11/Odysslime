@@ -99,13 +99,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67ad93af795fbbc4a8dcf7ba88b11f0d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  orientation: {fileID: 4373339295143982460}
-  kingObj: {fileID: 101788440878567703}
   moveSpeed: 6
+  maxDistToSlime: 25
+  maxAngleToSlime: 45
   hoverSpeed: 2
   maxYPos: 9999
   minYPos: -9999
-  maxDistToSlime: 25
   hoverHeight: 5
   heightBuffer: 1
   rayInterval: 0.3
@@ -136,6 +135,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   searchRadius: 15
   searchInterval: 1
+  findClosestSlimeInterval: 7
 --- !u!114 &9185538821586508786
 MonoBehaviour:
   m_ObjectHideFlags: 0
