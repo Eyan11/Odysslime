@@ -102,7 +102,13 @@ MonoBehaviour:
   orientation: {fileID: 4373339295143982460}
   kingObj: {fileID: 101788440878567703}
   moveSpeed: 6
+  hoverSpeed: 2
+  maxYPos: 9999
+  minYPos: -9999
   maxDistToSlime: 25
+  hoverHeight: 5
+  heightBuffer: 1
+  rayInterval: 0.3
 --- !u!114 &7084102939287826575
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -115,7 +121,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab6d04f55dc15974abc386e778efa254, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  raycastSpawnObj: {fileID: 0}
   scopeImage: {fileID: 2800000, guid: b3a74a9df4b1a0346928c95b52e92e37, type: 3}
 --- !u!114 &6993081812106580522
 MonoBehaviour:

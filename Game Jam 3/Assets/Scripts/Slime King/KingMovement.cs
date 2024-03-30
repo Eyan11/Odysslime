@@ -11,14 +11,25 @@ public class KingMovement : SlimeMovement
     private UIManager UIScript;
     private DiscoverSlimes discoverSlimesScript;
     private Rigidbody rb;
+    private RaycastHit hit;
+    private Ray ray;
+    private float currentHeight;
+    private int floorLayer;
 
     [Header("Settings")]
     [SerializeField] private float moveSpeed;
+    [SerializeField] private float hoverSpeed;
+    [SerializeField] private float maxYPos;
+    [SerializeField] private float minYPos;
     [SerializeField] private float maxDistToSlime;
+    [SerializeField] private float hoverHeight;
+    [SerializeField] private float heightBuffer;
+    [SerializeField] private float rayInterval;
+    private float rayCountdown = 0;
     private Transform trackedSlime = null;
     private float xInput;
     private float zInput;
-    private float yInput;
+    private float vertSpeed;
     private Vector3 moveDir;
 
 
@@ -29,14 +40,60 @@ public class KingMovement : SlimeMovement
 
         discoverSlimesScript = GetComponent<DiscoverSlimes>();
         UIScript = GameObject.FindWithTag("UI Manager").GetComponent<UIManager>();
+        floorLayer = LayerMask.NameToLayer("Floor");
     }
 
     private void FixedUpdate() {
-        GetInput();
         ConstrainMovement();
 
-        //set velocity
-        rb.velocity = moveDir * moveSpeed;
+        //set XZ velocity
+        rb.velocity = new Vector3(moveDir.x * moveSpeed, vertSpeed, moveDir.z * moveSpeed);
+    }
+
+    private void Update() {
+        GetInput();
+        VerticalMovementCalculations();
+    }
+
+    private void VerticalMovementCalculations() {
+        rayCountdown -= Time.deltaTime;
+
+        //-----CHECK HEIGHT-----
+        //spawn a raycast every ray interval seconds
+        if(rayCountdown < 0) {
+            rayCountdown = rayInterval;
+
+            //spawn a ray down from current position
+            ray = new Ray(transform.position, -Vector3.up);
+            Debug.DrawRay(transform.position, Vector3.down * hoverHeight, Color.red);
+            
+            //check the hit info of the raycast
+            if(Physics.Raycast(ray, out hit)) {
+
+                //if an object was hit, make the distance our current height
+                if(hit.collider.gameObject.layer == floorLayer)  {
+                    currentHeight = hit.distance;
+                    //Debug.Log(currentHeight);
+                }
+            }
+        }
+
+        //-----SET VERTICAL SPEED-----
+        //if too low to ground, move upwards (cap at max height)
+        if(currentHeight < hoverHeight - heightBuffer && (transform.position.y < maxYPos)) {
+            vertSpeed = hoverSpeed;
+            Debug.Log("Moving Up!");
+        }
+        //if too high to ground, move downwards (cap at min height)
+        else if(currentHeight > hoverHeight + heightBuffer && (transform.position.y > minYPos)) {
+            vertSpeed = -hoverSpeed;
+            Debug.Log("Moving Down!");
+        }
+        //if correct height above ground, don't move vertically
+        else {
+            vertSpeed = 0;
+            Debug.Log("Not Moving!");
+        }
     }
 
     private void GetInput() {
@@ -46,22 +103,12 @@ public class KingMovement : SlimeMovement
         //get z axis input
         zInput = Input.GetAxisRaw("Vertical");
 
-        //get y axis input (space is up, shift is down)
-        if(Input.GetKey(KeyCode.Space)) {
-            //yInput = 1;
-        }
-        else if(Input.GetKey(KeyCode.LeftShift)) {
-            //yInput = -1;
-        }
-        else {
-            yInput = 0;
-        }
     }
 
     private void ConstrainMovement() {
 
         //find direction of input based on player orientation (relative to camera)
-        moveDir = (orientation.forward * zInput) + (kingObj.up * yInput) + (orientation.right * xInput);
+        moveDir = (orientation.forward * zInput) + (kingObj.up * 0) + (orientation.right * xInput);
 
         //if tracked slime does NOT exist
         if(trackedSlime == null) {

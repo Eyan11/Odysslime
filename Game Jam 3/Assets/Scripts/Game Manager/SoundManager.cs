@@ -22,8 +22,9 @@ public class SoundManager : MonoBehaviour
     [SerializeField] private AudioClip worldMusic;
 
 
-
-
+    //Not making this object persistent as of now.
+    //I will update this script in week 3/4
+    /*
     //deletes all other sound manager objects so that there is only 1 in scene
     private void Awake() {
         GameObject[] objs = GameObject.FindGameObjectsWithTag("Sound Manager");
@@ -35,6 +36,7 @@ public class SoundManager : MonoBehaviour
         //stays from scene to scene
         DontDestroyOnLoad(this.gameObject);
     }
+    */
 
     public void PlayExplosion() {
         //second argument is priority level of sound (0-1)

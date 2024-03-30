@@ -7,12 +7,11 @@ public class MovingPlatform : MonoBehaviour
 
     private Vector3 endPos;
     private Vector3 startPos;
-    private Vector3 direction;
-    private float lerpPercent;
 
     [Header("Settings")]
     [SerializeField] private float pauseTime;
     [SerializeField] private float moveSpeed;
+    [SerializeField] private float bufferDistance;
     private float pauseCountdown = 0f;
     private bool isMovingToEnd = true;
 
@@ -27,10 +26,10 @@ public class MovingPlatform : MonoBehaviour
     private void Update() {
         pauseCountdown -= Time.deltaTime;
         
-        if(isMovingToEnd && pauseCountdown < 0 && lerpPercent < 1) {
+        if(isMovingToEnd && pauseCountdown < 0) {
             MoveToEnd();
         }
-        else if(!isMovingToEnd && pauseCountdown < 0 && lerpPercent > 0) {
+        else if(!isMovingToEnd && pauseCountdown < 0) {
             MoveToStart();
         }
     }
@@ -40,7 +39,7 @@ public class MovingPlatform : MonoBehaviour
         //move to end position
         transform.position = Vector3.MoveTowards(transform.position, endPos, moveSpeed * Time.deltaTime);
 
-        if(lerpPercent == 1) {
+        if(Vector3.Distance(transform.position, endPos) < bufferDistance) {
             isMovingToEnd = false;
             pauseCountdown = pauseTime;
         }
@@ -49,9 +48,9 @@ public class MovingPlatform : MonoBehaviour
     public void MoveToStart() {
 
         //move to start position
-        transform.position = Vector3.MoveTowards(startPos, startPos, moveSpeed * Time.deltaTime);
+        transform.position = Vector3.MoveTowards(transform.position, startPos, moveSpeed * Time.deltaTime);
 
-        if(lerpPercent == 0) {
+        if(Vector3.Distance(transform.position, startPos) < bufferDistance) {
             isMovingToEnd = true;
             pauseCountdown = pauseTime;
         }
