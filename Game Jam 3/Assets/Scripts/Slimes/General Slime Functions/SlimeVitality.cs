@@ -11,16 +11,16 @@ public class SlimeVitality : MonoBehaviour
     private SlimePossess slimePossess;
     private SoundManager soundManager;
     private void Awake() {
-        slimeKing = GameObject.FindObjectOfType<KingMovement>().gameObject;
+        slimeKing = GameObject.FindWithTag("King Slime");
         slimePossess = GetComponent<SlimePossess>();
-        soundManager = GameObject.FindObjectOfType<SoundManager>();
+        soundManager = GameObject.FindWithTag("Sound Manager").GetComponent<SoundManager>();
     }
 
     private void OnDisable() {
 
         if (slimeKing) {
             // Return control back to king slime if currently possessed
-            if (slimePossess.enabled) {
+            if (slimePossess != null && slimePossess.enabled) {
                 // Returns control back to slime king
                 slimePossess.PosessSlime(slimeKing);
             }

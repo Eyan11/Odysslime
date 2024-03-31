@@ -6,7 +6,7 @@ using Cinemachine;
 public class ThirdPersonCam : MonoBehaviour
 {
     [Header("References")]
-    //these is for the object you start the game as (slime king)
+    //these references are for the object you start the game as (King Slime)
     [SerializeField] private Transform orientation;
     [SerializeField] private Transform player;
     [SerializeField] private Transform obj;
