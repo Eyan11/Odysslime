@@ -18,6 +18,7 @@ GameObject:
   - component: {fileID: 5824881331840876379}
   - component: {fileID: 2319556402615896864}
   - component: {fileID: 6288437759167098439}
+  - component: {fileID: 8921121559405017056}
   m_Layer: 11
   m_Name: Magic Slime Player
   m_TagString: Super Slime
@@ -170,8 +171,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42a58c0cc21809349808aabadf8b98bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  orientation: {fileID: 6752934774642827073}
   slimeModel: {fileID: 4765926809845875891}
+  interactionDistance: 2
 --- !u!114 &2319556402615896864
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -200,6 +201,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8c06470c6cce9284ca3888a18eef3949, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &8921121559405017056
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 215746979824797854}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e9b95a49924f67428b8f8e663e23f9d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1256416675979661873

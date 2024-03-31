@@ -9,6 +9,7 @@ public class KingMovement : SlimeMovement
     private Transform orientation;
     private UIManager UIScript;
     private DiscoverSlimes discoverScript;
+    private SlimeInput inputScript;
     private Rigidbody rb;
     private RaycastHit hit;
     private Ray ray;
@@ -20,8 +21,7 @@ public class KingMovement : SlimeMovement
     [SerializeField] private int maxAngleToSlime;
     private Transform closestSlime = null;
     private Vector3 closestSlimeDir;
-    private float xInput;
-    private float zInput;
+    private Vector2 moveInput;
     private Vector3 moveDir;
     private Vector3 groundPos;
     
@@ -50,6 +50,7 @@ public class KingMovement : SlimeMovement
         rb.freezeRotation = true;
 
         discoverScript = GetComponent<DiscoverSlimes>();
+        inputScript = GetComponent<SlimeInput>();
         UIScript = GameObject.FindWithTag("UI Manager").GetComponent<UIManager>();
         floorLayer = LayerMask.NameToLayer("Floor");
     }
@@ -84,7 +85,6 @@ public class KingMovement : SlimeMovement
 
         //spawn a ray down from current position
         ray = new Ray(transform.position, -Vector3.up);
-        Debug.DrawRay(transform.position, Vector3.down * hoverHeight, Color.red);
         
         //check the hit info of the raycast
         if(Physics.Raycast(ray, out hit)) {
@@ -115,14 +115,11 @@ public class KingMovement : SlimeMovement
     }
 
     private void GetInput() {
-
-        //get X axis input
-        xInput = Input.GetAxisRaw("Horizontal");
-        //get z axis input
-        zInput = Input.GetAxisRaw("Vertical");
+        //get input from input map
+        moveInput = inputScript.GetMoveInput();
 
         //find direction of input based on player orientation (relative to camera)
-        moveDir = (orientation.forward * zInput) + (kingObj.up * 0) + (orientation.right * xInput);
+        moveDir = (orientation.forward * moveInput.y) + (kingObj.up * 0) + (orientation.right * moveInput.x);
     }
 
     private void ConstrainMovement() {

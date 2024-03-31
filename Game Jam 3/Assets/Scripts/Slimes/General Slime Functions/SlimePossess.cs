@@ -18,6 +18,7 @@ public class SlimePossess : MonoBehaviour
     private SlimeFollow slimeFollow;
     private Ray ray;
     private RaycastHit hit;
+    private SlimeInput inputScript;
 
     private void Awake() {
         // Retrieve slime king player
@@ -25,6 +26,7 @@ public class SlimePossess : MonoBehaviour
 
         //script references
         cameraScript = Camera.main.gameObject.GetComponent<ThirdPersonCam>();
+        inputScript = GetComponent<SlimeInput>();
         discoverScript = slimeKingPlayer.GetComponent<DiscoverSlimes>();
         UIScript = GameObject.FindWithTag("UI Manager").GetComponent<UIManager>();
 
@@ -49,53 +51,47 @@ public class SlimePossess : MonoBehaviour
 
     private void FixedUpdate() {
 
-        //if press "Z" and not the king, return to king slime
-        if(Input.GetKeyDown(KeyCode.Z) && gameObject != slimeKingPlayer) {
-            //Testing
-            //Debug.Log("Z input, possessing king!");
-
+        //if pressing return to King input and not the king
+        if(inputScript.GetReturnToKingInput() && gameObject != slimeKingPlayer) {
+            //return to king Slime
             PosessSlime(slimeKingPlayer);
         }
 
 
-        //if right mouse is held (camera is locked)
+        //if camera is locked in plcae
         if(cameraScript.CamIsLocked()) {
-            //Debug.Log("Camera is LOCKED!");
             // changes mouse icon to scope
             //Cursor.SetCursor(scopeImage, Vector2.zero, CursorMode.Auto);
 
             //check for a slime to possess
             RaycastForSlime();
-
             slimeMovement.enabled = false;
         }
         else {
             // changes mouse icon back to normal
             //Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
 
-            //Debug.Log("Camera is UNLOCKED!");
             slimeMovement.enabled = true;
         }
 
     }
 
     public void PosessSlime(GameObject otherSlime) {
-        if (otherSlime != gameObject) {
-            //Testing
-            //Debug.Log("Possessing " + otherSlime.name  + " from " + gameObject.name + "!");
+        //if trying to possess current slime, don't allow it
+        if (otherSlime == gameObject)
+            return;
 
-            //if otherSlime is not king and not currently a slime follower, do NOT possess them
-            if(!otherSlime.CompareTag("King Slime") && discoverScript.FindSlimeFollower(otherSlime.transform) == -1)
-                return;
+        //if otherSlime is not king and not currently a slime follower, do NOT possess them
+        if(!otherSlime.CompareTag("King Slime") && discoverScript.FindSlimeFollower(otherSlime.transform) == -1)
+            return;
 
-            //switch camera
-            cameraScript.SwitchCamera(otherSlime);
+        //switch camera
+        cameraScript.SwitchCamera(otherSlime);
 
-            //allow slime to possess others (but not iteslf)
-            otherSlime.GetComponent<SlimePossess>().enabled = true;
-            //disable this script
-            this.enabled = false;
-        }
+        //allow slime to possess others (but not iteslf)
+        otherSlime.GetComponent<SlimePossess>().enabled = true;
+        //disable this script
+        this.enabled = false;
     }
 
     private void RaycastForSlime() {
@@ -129,7 +125,7 @@ public class SlimePossess : MonoBehaviour
             }
 
             //if pressing left mouse and it is a different slime, then change possession
-            if(Input.GetMouseButtonDown(0) && isSlime) {
+            if(inputScript.GetPossessInput() && isSlime) {
                 PosessSlime(otherObject);
             }
         }

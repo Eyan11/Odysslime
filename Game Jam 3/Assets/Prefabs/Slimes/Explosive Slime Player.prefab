@@ -49,6 +49,7 @@ GameObject:
   - component: {fileID: -2710927735541009254}
   - component: {fileID: 4019593360167590981}
   - component: {fileID: -5661098779021773053}
+  - component: {fileID: 8682217368942971459}
   m_Layer: 11
   m_Name: Explosive Slime Player
   m_TagString: Super Slime
@@ -230,6 +231,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8c06470c6cce9284ca3888a18eef3949, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &8682217368942971459
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8191742797127445780}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e9b95a49924f67428b8f8e663e23f9d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &811892854481361668

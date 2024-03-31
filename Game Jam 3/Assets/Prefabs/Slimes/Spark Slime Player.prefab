@@ -101,6 +101,7 @@ GameObject:
   - component: {fileID: 4100208408204378269}
   - component: {fileID: 5128253687244523962}
   - component: {fileID: 6686251619390662144}
+  - component: {fileID: 884649934297375866}
   m_Layer: 11
   m_Name: Spark Slime Player
   m_TagString: Super Slime
@@ -281,6 +282,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8c06470c6cce9284ca3888a18eef3949, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &884649934297375866
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3003036508458467252}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e9b95a49924f67428b8f8e663e23f9d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &3612154479770807675

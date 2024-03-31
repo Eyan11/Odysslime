@@ -838,6 +838,7 @@ GameObject:
   - component: {fileID: 5418467116904755513}
   - component: {fileID: 6556455910412502200}
   - component: {fileID: 7806895936933980471}
+  - component: {fileID: 7344969645387210437}
   m_Layer: 0
   m_Name: Player Camera
   m_TagString: MainCamera
@@ -853,8 +854,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3665290919708885798}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: 0.000001322401, y: -0.8924279, z: 0.45119005, w: 0.0000026156329}
+  m_LocalPosition: {x: 0.000004744529, y: 1.4, z: 0.8}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1021,6 +1022,18 @@ MonoBehaviour:
   camUnlockedTime: 1
   mouseSensX: 300
   mouseSensY: 2
+--- !u!114 &7344969645387210437
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3665290919708885798}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e9b95a49924f67428b8f8e663e23f9d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3784233599110521264
 GameObject:
   m_ObjectHideFlags: 0

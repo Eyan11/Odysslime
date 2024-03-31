@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 5272022723827586172}
   - component: {fileID: 7084102939287826575}
   - component: {fileID: 6993081812106580522}
+  - component: {fileID: 3419740655066964938}
   - component: {fileID: 9185538821586508786}
   m_Layer: 11
   m_Name: Slime King Player (No Cam)
@@ -136,6 +137,18 @@ MonoBehaviour:
   searchRadius: 15
   searchInterval: 1
   findClosestSlimeInterval: 7
+--- !u!114 &3419740655066964938
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6164710366797321215}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e9b95a49924f67428b8f8e663e23f9d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &9185538821586508786
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -16,6 +16,8 @@ public class ThirdPersonCam : MonoBehaviour
     [SerializeField] private CinemachineFreeLook thirdPersonFreeLookCam;
     [SerializeField] private GameObject topDownCam;
     [SerializeField] private CinemachineFreeLook topDownFreeLookCam;
+    private SlimeInput inputScript;
+    private Vector2 moveInput;
 
     [Header("Settings")]
     [SerializeField] private float rotationSpeed;
@@ -31,6 +33,7 @@ public class ThirdPersonCam : MonoBehaviour
         //makes mouse invisible and locked in place
         //Cursor.lockState = CursorLockMode.Locked;
         //Cursor.visible = false;
+        inputScript = GetComponent<SlimeInput>();
     }
 
     private void Update() {
@@ -45,10 +48,14 @@ public class ThirdPersonCam : MonoBehaviour
         orientation.forward = viewDir.normalized;
 
         //get horizontal and vertical keyboard inputs
-        float horizontalInput = Input.GetAxis("Horizontal");
-        float verticalInput = Input.GetAxis("Vertical");
+        //float horizontalInput = Input.GetAxis("Horizontal");
+        //float verticalInput = Input.GetAxis("Vertical");
+
+        //get movement input from input map
+        moveInput = inputScript.GetMoveInput();
+        
         //make the input relative to the direction the camera is facing
-        Vector3 inputDir = orientation.forward * verticalInput + orientation.right * horizontalInput;
+        Vector3 inputDir = orientation.forward * moveInput.y + orientation.right * moveInput.x;
 
         //smoothly change (Slerp) player orientation to match the input direction
         if(inputDir != Vector3.zero)
@@ -59,17 +66,19 @@ public class ThirdPersonCam : MonoBehaviour
     private void CameraLockState() {
         camUnlockedTimer -= Time.deltaTime;
 
-        //lock cam on first frame E is pressed
-        if(Input.GetKeyDown(KeyCode.E)) {
+        //lock cam if unlocked and holding lock input
+        if(!camIsLocked && inputScript.GetLockCamInput()) {
             LockCamera();
         }
-        //unlock cam on when E is released
-        else if(Input.GetKeyUp(KeyCode.E))
+        //unlock cam if locked and NOT holding lock input
+        else if(camIsLocked && !inputScript.GetLockCamInput())
             UnlockCamera();
     }
 
     
     private void LockCamera() {
+        camIsLocked = true;
+
         //don't lock camera if still transitioning to another slime
         if(camUnlockedTimer > 0)
             return;
@@ -84,10 +93,10 @@ public class ThirdPersonCam : MonoBehaviour
         thirdPersonFreeLookCam.m_YAxis.m_MaxSpeed = 0f;
         topDownFreeLookCam.m_XAxis.m_MaxSpeed = 0f;
         topDownFreeLookCam.m_YAxis.m_MaxSpeed = 0f;
-        camIsLocked = true;
     }
 
     private void UnlockCamera() {
+        camIsLocked = false;
 
         //lock cursor to center of game view
         Cursor.lockState = CursorLockMode.Locked;
@@ -99,7 +108,6 @@ public class ThirdPersonCam : MonoBehaviour
         thirdPersonFreeLookCam.m_YAxis.m_MaxSpeed = mouseSensY;
         topDownFreeLookCam.m_XAxis.m_MaxSpeed = mouseSensX;
         topDownFreeLookCam.m_YAxis.m_MaxSpeed = mouseSensY;
-        camIsLocked = false;
     }
 
     //returns true if camera is locked (freelook component is disabled)
@@ -138,13 +146,16 @@ public class ThirdPersonCam : MonoBehaviour
         player = slimePlayer.transform;
         rb = slimePlayer.GetComponent<Rigidbody>();
 
+
+        //-----Getting reference to orientation and obj children-----\\
+
         //get obj, should be child(0), but checking both just in case someone moves it
         if(slimePlayer.gameObject.transform.GetChild(0).CompareTag("Obj"))
             obj = slimePlayer.gameObject.transform.GetChild(0);
         else if(slimePlayer.gameObject.transform.GetChild(1).CompareTag("Obj"))
             obj = slimePlayer.gameObject.transform.GetChild(1);
         else
-            Debug.Log("Can't get obj reference. Make sure Slime obj is first child of slime player!");
+            Debug.LogError("Make sure Slime obj is first child of slime player!");
         
         //get orientation, should be child(1), but checking both just in case someone moves it
         if(slimePlayer.gameObject.transform.GetChild(1).CompareTag("Orientation"))
@@ -152,7 +163,7 @@ public class ThirdPersonCam : MonoBehaviour
         else if(slimePlayer.gameObject.transform.GetChild(0).CompareTag("Orientation"))
             orientation = slimePlayer.gameObject.transform.GetChild(0);
         else
-            Debug.Log("Can't get orientation reference. Make sure Slime obj is second child of slime player!");
+            Debug.LogError("Make sure Slime orientation is second child of slime player!");
     }
 
 

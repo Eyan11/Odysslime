@@ -65,7 +65,7 @@ public class DiscoverSlimes : MonoBehaviour
         followerArray[numFollowers] = newFollower;
         numFollowers++;
 
-        Debug.Log("Added Follower: " + newFollower.gameObject.name);
+        //Debug.Log("Added Follower: " + newFollower.gameObject.name);
 
         //update closest slime follower
         CalculateClosestFollower();
@@ -95,7 +95,7 @@ public class DiscoverSlimes : MonoBehaviour
         //update closest slime follower
         CalculateClosestFollower();
 
-        Debug.Log("Removed Follower: " + removedFollower.gameObject.name);
+        //Debug.Log("Removed Follower: " + removedFollower.gameObject.name);
     }
 
     //returns index of given slime follower, if not found returns -1

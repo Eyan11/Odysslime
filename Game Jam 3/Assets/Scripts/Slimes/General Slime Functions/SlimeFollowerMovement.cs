@@ -9,16 +9,16 @@ public class SlimeFollowerMovement : SlimeMovement
     [Header("Settings")]
     [SerializeField] private Transform orientation;
     [SerializeField] private float bodyRadius = 0.5f;
+
     [Header("Movement Settings")]
     public float movementSpeed = 2f;
     [SerializeField] private float groundDrag = 3;
     [SerializeField] private float jumpPower = 5;
     [SerializeField] private float jumpCooldown = 0.2f;
-    
     private Rigidbody rb;
-    private float xInput;
-    private float zInput;
-    private float yInput;
+    private SlimeInput inputScript;
+    private Vector2 moveInput;
+    private bool jumpInput;
     private float lastJumpTime = 0f;
     private bool onGround = false;
     private float jumpStart;
@@ -31,6 +31,7 @@ public class SlimeFollowerMovement : SlimeMovement
         rb = GetComponent<Rigidbody>();
         //rb.freezeRotation = true; // disabled as individual constraints
         soundManager = GameObject.FindObjectOfType<SoundManager>();
+        inputScript = GetComponent<SlimeInput>();
     }
 
     private void Update() {
@@ -44,7 +45,7 @@ public class SlimeFollowerMovement : SlimeMovement
         ApplyHorizontalMovement();
 
         // Applies jump if on ground
-        if (yInput == 1 && lastJumpTime + jumpCooldown < Time.fixedTime) {
+        if (jumpInput && onGround && lastJumpTime + jumpCooldown < Time.fixedTime) {
             Jump();
         }
 
@@ -66,7 +67,7 @@ public class SlimeFollowerMovement : SlimeMovement
 
     private void ApplyHorizontalMovement() {
         // calculates movement
-        moveDir = (orientation.forward * zInput) + (orientation.right * xInput);
+        moveDir = (orientation.forward * moveInput.y) + (orientation.right * moveInput.x);
 
         // applies movement
         rb.AddForce(moveDir.normalized * movementSpeed, ForceMode.Impulse);
@@ -98,15 +99,8 @@ public class SlimeFollowerMovement : SlimeMovement
     }
 
     private void GetInput() {
-        //get X axis input
-        xInput = Input.GetAxisRaw("Horizontal");
-        //get z axis input
-        zInput = Input.GetAxisRaw("Vertical");
-
-        //get y axis input (space is up, shift is down)
-        if(Input.GetKey(KeyCode.Space) && onGround)
-            yInput = 1;
-        else
-            yInput = 0;
+        //get input from input map
+        moveInput = inputScript.GetMoveInput();
+        jumpInput = inputScript.GetJumpInput();
     }
 }
