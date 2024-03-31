@@ -12,7 +12,7 @@ public class SlimePossess : MonoBehaviour
     private UIManager UIScript;
     private ThirdPersonCam cameraScript;
     private GameObject slimeKingPlayer;
-    private DiscoverSlimes discoverSlimesScript;
+    private DiscoverSlimes discoverScript;
     private SlimeAbilities slimeAbility;
     private SlimeMovement slimeMovement;
     private SlimeFollow slimeFollow;
@@ -25,7 +25,7 @@ public class SlimePossess : MonoBehaviour
 
         //script references
         cameraScript = Camera.main.gameObject.GetComponent<ThirdPersonCam>();
-        discoverSlimesScript = slimeKingPlayer.GetComponent<DiscoverSlimes>();
+        discoverScript = slimeKingPlayer.GetComponent<DiscoverSlimes>();
         UIScript = GameObject.FindWithTag("UI Manager").GetComponent<UIManager>();
 
         // finds the first instance of script
@@ -85,7 +85,7 @@ public class SlimePossess : MonoBehaviour
             //Debug.Log("Possessing " + otherSlime.name  + " from " + gameObject.name + "!");
 
             //if otherSlime is not king and not currently a slime follower, do NOT possess them
-            if(!otherSlime.CompareTag("King Slime") && discoverSlimesScript.FindSlimeFollower(otherSlime.transform) == -1)
+            if(!otherSlime.CompareTag("King Slime") && discoverScript.FindSlimeFollower(otherSlime.transform) == -1)
                 return;
 
             //switch camera
@@ -146,8 +146,11 @@ public class SlimePossess : MonoBehaviour
         if (slimeMovement)
             slimeMovement.enabled = false;
 
-        if (slimeFollow)
-            slimeFollow.enabled = true;
+        //make slime "undiscoverd" after possessing
+        if (slimeFollow) {
+            slimeFollow.enabled = false;
+            discoverScript.RemoveSlimeFollower(this.transform);
+        }
 
         if(gameObject.CompareTag("Super Slime"))
             GetComponent<Rigidbody>().isKinematic = true;

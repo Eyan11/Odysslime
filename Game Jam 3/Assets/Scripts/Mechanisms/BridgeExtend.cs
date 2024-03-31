@@ -8,21 +8,25 @@ public class BridgeExtend : MonoBehaviour
     [SerializeField] private Transform bridgeStart;
     [SerializeField] private Transform bridgeEnd;
     [SerializeField] private float extendSpeed;
-    private float lerpPercent = 0f;
+    [SerializeField] private float moveBufferDist;
     private Vector3 startPos;
     private Vector3 endPos;
-    private bool isActivated = false;
+    //private bool isActivated = false;
 
     private void Awake() {
+        //find the length of the bridge
+        float bridgeLength = Vector3.Distance(bridgeStart.position, bridgeEnd.position);
+
         //get end position based on average position of start/end platforms (in-between them)
         endPos = (bridgeStart.position + bridgeEnd.position)/2;
         //get initial poistion of gate
-        startPos = bridgeStart.position - endPos;
+        startPos = bridgeStart.position + (Vector3.forward * (bridgeLength/2));
 
-        //movingBridge.transform.position = startPos;
-        float bridgeLength = Vector3.Distance(startPos, endPos);
+        //adjust position and scale of bridge
+        movingBridge.transform.position = startPos;
         movingBridge.transform.localScale = new Vector3(bridgeStart.localScale.x, bridgeStart.localScale.y/2, bridgeLength);
 
+        //Doesn't work when you rotate bridge
     }
 
     private void Update() {
@@ -44,10 +48,10 @@ public class BridgeExtend : MonoBehaviour
     }
 
     public void Activate() {
-        isActivated = true;
+        //isActivated = true;
     }
 
     public void Deactivate() {
-        isActivated = false;
+       //isActivated = false;
     }
 }
