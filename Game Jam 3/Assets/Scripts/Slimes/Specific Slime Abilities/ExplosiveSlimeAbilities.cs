@@ -10,12 +10,22 @@ public class ExplosiveSlimeAbilities : SlimeAbilities
     [SerializeField] private float blastRadius = 3.5f;
     private SlimeVitality slimeVitality;
     private SoundManager soundManager;
+    private SlimeInput inputScript;
+    private bool abilityInput;
 
     private void Awake() {
         slimeVitality = GetComponent<SlimeVitality>();
         soundManager = GameObject.FindObjectOfType<SoundManager>();
+        inputScript = GetComponent<SlimeInput>();
     }
+
+    private void Update() {
+        if(inputScript.GetAbilityInput())
+            UseAbility();
+    }
+
     public override void UseAbility() {
+
         // Gets all objects within blast radius
         Collider[] objectsInRange = Physics.OverlapSphere(transform.position, blastRadius);
 

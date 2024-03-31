@@ -95,7 +95,7 @@ public class SlimePossess : MonoBehaviour
         //spawn ray from screen to cursor position in world
         ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
-        Debug.Log("Mouse Position: " + Input.mousePosition);
+        //Debug.Log("Mouse Position: " + Input.mousePosition);
         
         //Debug.DrawRay(ray.origin, ray.direction * 20, Color.red);
 

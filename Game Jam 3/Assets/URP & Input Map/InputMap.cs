@@ -359,7 +359,7 @@ public partial class @InputMap: IInputActionCollection2, IDisposable
                     ""id"": ""2057f641-edad-4f75-afd2-56364849c6b8"",
                     ""path"": ""<Gamepad>/rightStick"",
                     ""interactions"": """",
-                    ""processors"": """",
+                    ""processors"": ""ScaleVector2(x=15,y=15)"",
                     ""groups"": """",
                     ""action"": ""Look"",
                     ""isComposite"": false,

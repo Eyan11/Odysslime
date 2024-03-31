@@ -89,8 +89,6 @@ public class ThirdPersonCam : MonoBehaviour
         thirdPersonFreeLookCam.m_YAxis.m_MaxSpeed = 0f;
         topDownFreeLookCam.m_XAxis.m_MaxSpeed = 0f;
         topDownFreeLookCam.m_YAxis.m_MaxSpeed = 0f;
-
-        //topDownFreeLookCam.m_YAxis.m_MaxSpeed = 0f;
     }
 
     private void UnlockCamera() {

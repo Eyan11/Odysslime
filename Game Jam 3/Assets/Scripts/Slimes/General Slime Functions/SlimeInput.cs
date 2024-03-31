@@ -40,12 +40,6 @@ public class SlimeInput : MonoBehaviour
         possessInput = inputMap.Slime.Possess.triggered;
         returnToKingInput = inputMap.Slime.ReturnToKing.triggered;
         abilityInput = inputMap.Slime.Ability.triggered;
-
-        /* WORKING
-        Debug.Log("move: " + moveInput);
-        Debug.Log("lock cam: " + lockCamInput);
-        Debug.Log("possess: " + possessInput);
-        */
     }
 
     //---------- Methods to return input to other slime scripts ----------\\
