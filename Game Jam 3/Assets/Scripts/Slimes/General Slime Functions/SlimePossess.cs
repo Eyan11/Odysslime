@@ -7,8 +7,6 @@ using TMPro;
 
 public class SlimePossess : MonoBehaviour
 {
-    [Header("References")]
-    [SerializeField] private Texture2D scopeImage;
     private UIManager UIScript;
     private ThirdPersonCam cameraScript;
     private GameObject slimeKingPlayer;
@@ -16,6 +14,7 @@ public class SlimePossess : MonoBehaviour
     private SlimeAbilities slimeAbility;
     private SlimeMovement slimeMovement;
     private SlimeFollow slimeFollow;
+    private Transform possessCrosshair;
     private Ray ray;
     private RaycastHit hit;
     private SlimeInput inputScript;
@@ -29,6 +28,7 @@ public class SlimePossess : MonoBehaviour
         inputScript = GetComponent<SlimeInput>();
         discoverScript = slimeKingPlayer.GetComponent<DiscoverSlimes>();
         UIScript = GameObject.FindWithTag("UI Manager").GetComponent<UIManager>();
+        possessCrosshair = GameObject.FindWithTag("World Canvas").transform;
 
         // finds the first instance of script
         slimeAbility = gameObject.GetComponent<SlimeAbilities>();
@@ -60,17 +60,14 @@ public class SlimePossess : MonoBehaviour
 
         //if camera is locked in plcae
         if(cameraScript.CamIsLocked()) {
-            // changes mouse icon to scope
-            //Cursor.SetCursor(scopeImage, Vector2.zero, CursorMode.Auto);
 
             //check for a slime to possess
             RaycastForSlime();
             slimeMovement.enabled = false;
         }
         else {
-            // changes mouse icon back to normal
-            //Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
-
+            //place crosshair under map
+            possessCrosshair.position = Vector3.up * (-9999);
             slimeMovement.enabled = true;
         }
 
@@ -97,7 +94,10 @@ public class SlimePossess : MonoBehaviour
     private void RaycastForSlime() {
         //spawn ray from screen to cursor position in world
         ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        Debug.DrawRay(ray.origin, ray.direction * 20, Color.red);
+
+        Debug.Log("Mouse Position: " + Input.mousePosition);
+        
+        //Debug.DrawRay(ray.origin, ray.direction * 20, Color.red);
 
         //display prompt for 0.1 sec
         UIScript.DisplayPrompt("Hover over slime to possess!", 0.1f);
@@ -106,6 +106,11 @@ public class SlimePossess : MonoBehaviour
         if(Physics.Raycast(ray, out hit)) {
             //Testing
             //Debug.Log("Mouse raycast hit: " + hit.collider.name);
+
+            //place crosshair at point of collision
+            possessCrosshair.position = hit.point + (hit.normal * 0.05f);
+            //make crosshair rotation perpendicular to ray (make it face the camera)
+            possessCrosshair.rotation = Quaternion.LookRotation(-hit.normal, transform.up);
 
             //store hit object in otherObject
             GameObject otherObject = hit.collider.gameObject;
@@ -128,6 +133,10 @@ public class SlimePossess : MonoBehaviour
             if(inputScript.GetPossessInput() && isSlime) {
                 PosessSlime(otherObject);
             }
+        }
+        else {
+            //if ray does NOT hit anything, place crosshair under the map
+            possessCrosshair.position = Vector3.up * (-9999);
         }
     }
 

@@ -1780,6 +1780,16 @@ PrefabInstance:
       propertyPath: m_LocalRotation.z
       value: 0.45119
       objectReference: {fileID: 0}
+    - target: {fileID: 2953544731317126758, guid: be22204a2849d904e9580acbed9f549d,
+        type: 3}
+      propertyPath: m_Cameras.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2953544731317126758, guid: be22204a2849d904e9580acbed9f549d,
+        type: 3}
+      propertyPath: m_Cameras.Array.data[0]
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 3261904152038181768, guid: be22204a2849d904e9580acbed9f549d,
         type: 3}
       propertyPath: m_ComponentOwner
@@ -1795,10 +1805,40 @@ PrefabInstance:
       propertyPath: m_Name
       value: King Slime Player (With Cam)
       objectReference: {fileID: 0}
-    - target: {fileID: 5713887412588871902, guid: be22204a2849d904e9580acbed9f549d,
+    - target: {fileID: 4052726961696685226, guid: be22204a2849d904e9580acbed9f549d,
         type: 3}
-      propertyPath: m_Orbits.Array.data[0].m_Height
-      value: 10
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4052726961696685226, guid: be22204a2849d904e9580acbed9f549d,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4052726961696685226, guid: be22204a2849d904e9580acbed9f549d,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4052726961696685226, guid: be22204a2849d904e9580acbed9f549d,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4052726961696685226, guid: be22204a2849d904e9580acbed9f549d,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -2.1684041e-19
+      objectReference: {fileID: 0}
+    - target: {fileID: 4052726961696685226, guid: be22204a2849d904e9580acbed9f549d,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.000000040803567
+      objectReference: {fileID: 0}
+    - target: {fileID: 4052726961696685226, guid: be22204a2849d904e9580acbed9f549d,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.00000005542585
       objectReference: {fileID: 0}
     - target: {fileID: 6736221168289983159, guid: be22204a2849d904e9580acbed9f549d,
         type: 3}
@@ -1823,12 +1863,12 @@ PrefabInstance:
     - target: {fileID: 7239629344403783254, guid: be22204a2849d904e9580acbed9f549d,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.0000025781
+      value: 0.000002583152
       objectReference: {fileID: 0}
     - target: {fileID: 7239629344403783254, guid: be22204a2849d904e9580acbed9f549d,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.0000014961294
+      value: 0.0000014990613
       objectReference: {fileID: 0}
     - target: {fileID: 7239629344403783254, guid: be22204a2849d904e9580acbed9f549d,
         type: 3}
@@ -1838,7 +1878,7 @@ PrefabInstance:
     - target: {fileID: 7239629344403783254, guid: be22204a2849d904e9580acbed9f549d,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.5019268
+      value: 0.50192684
       objectReference: {fileID: 0}
     - target: {fileID: 7983625084131542732, guid: be22204a2849d904e9580acbed9f549d,
         type: 3}
@@ -1960,7 +2000,9 @@ PrefabInstance:
     - {fileID: 3498442261517605014, guid: be22204a2849d904e9580acbed9f549d, type: 3}
     - {fileID: 3776412416127972813, guid: be22204a2849d904e9580acbed9f549d, type: 3}
     - {fileID: 8740197831834151754, guid: be22204a2849d904e9580acbed9f549d, type: 3}
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 5140544482813149988, guid: be22204a2849d904e9580acbed9f549d, type: 3}
+    - {fileID: 1340742045380791068, guid: be22204a2849d904e9580acbed9f549d, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 4872537616038647648, guid: be22204a2849d904e9580acbed9f549d,
@@ -2008,6 +2050,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 225044353982144572, guid: b1fb31d3b0f0baf45a08650063f2f7c5,
+        type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1716204458688433575, guid: b1fb31d3b0f0baf45a08650063f2f7c5,
         type: 3}
       propertyPath: m_Name

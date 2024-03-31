@@ -169,6 +169,7 @@ GameObject:
   - component: {fileID: 7436520611003988545}
   - component: {fileID: 2231116000922384594}
   - component: {fileID: 8521283471986709456}
+  - component: {fileID: 4098558535292485011}
   m_Layer: 0
   m_Name: Third Person Camera (Slime)
   m_TagString: Untagged
@@ -235,8 +236,8 @@ MonoBehaviour:
   m_LegacyBlendHint: 0
   m_YAxis:
     Value: 0.5
-    m_SpeedMode: 0
-    m_MaxSpeed: 2
+    m_SpeedMode: 1
+    m_MaxSpeed: 0.001
     m_AccelTime: 0.2
     m_DecelTime: 0.1
     m_InputAxisName: Mouse Y
@@ -259,8 +260,8 @@ MonoBehaviour:
     m_LegacyVelocityFilterStrength: -1
   m_XAxis:
     Value: 0
-    m_SpeedMode: 0
-    m_MaxSpeed: 300
+    m_SpeedMode: 1
+    m_MaxSpeed: 0.05
     m_AccelTime: 0.1
     m_DecelTime: 0.1
     m_InputAxisName: Mouse X
@@ -329,6 +330,22 @@ MonoBehaviour:
   m_Damping: 0
   m_DampingWhenOccluded: 0
   m_OptimalTargetDistance: 0
+--- !u!114 &4098558535292485011
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1656750894535342929}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb7194dc27b9df64c8beca7482ee8e0d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PlayerIndex: -1
+  AutoEnableInputs: 1
+  XYAxis: {fileID: 3769078009353831738, guid: 101f52c8378c2684a8dfacb343b5d909, type: 3}
+  ZAxis: {fileID: 0}
 --- !u!1 &1726570129273581925
 GameObject:
   m_ObjectHideFlags: 0
@@ -854,7 +871,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3665290919708885798}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.000001322401, y: -0.8924279, z: 0.45119005, w: 0.0000026156329}
+  m_LocalRotation: {x: 0.0000013534543, y: -0.8924279, z: 0.45119005, w: 0.0000026770547}
   m_LocalPosition: {x: 0.000004744529, y: 1.4, z: 0.8}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1020,8 +1037,8 @@ MonoBehaviour:
   topDownFreeLookCam: {fileID: 3207851831316445057}
   rotationSpeed: 7
   camUnlockedTime: 1
-  mouseSensX: 300
-  mouseSensY: 2
+  mouseSensX: 0.1
+  mouseSensY: 0.0007
 --- !u!114 &7344969645387210437
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1251,6 +1268,7 @@ GameObject:
   - component: {fileID: 1606670917668598528}
   - component: {fileID: 3207851831316445057}
   - component: {fileID: 6331085167213932514}
+  - component: {fileID: 2681255805089609155}
   m_Layer: 0
   m_Name: Top Down Camera (King)
   m_TagString: Untagged
@@ -1317,8 +1335,8 @@ MonoBehaviour:
   m_LegacyBlendHint: 0
   m_YAxis:
     Value: 0.5
-    m_SpeedMode: 0
-    m_MaxSpeed: 2
+    m_SpeedMode: 1
+    m_MaxSpeed: 0.001
     m_AccelTime: 0.2
     m_DecelTime: 0.1
     m_InputAxisName: Mouse Y
@@ -1341,8 +1359,8 @@ MonoBehaviour:
     m_LegacyVelocityFilterStrength: -1
   m_XAxis:
     Value: 0
-    m_SpeedMode: 0
-    m_MaxSpeed: 300
+    m_SpeedMode: 1
+    m_MaxSpeed: 0.05
     m_AccelTime: 0.1
     m_DecelTime: 0.1
     m_InputAxisName: Mouse X
@@ -1411,6 +1429,22 @@ MonoBehaviour:
   m_Damping: 0
   m_DampingWhenOccluded: 0
   m_OptimalTargetDistance: 0
+--- !u!114 &2681255805089609155
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6666131534159369315}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb7194dc27b9df64c8beca7482ee8e0d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PlayerIndex: -1
+  AutoEnableInputs: 1
+  XYAxis: {fileID: 3769078009353831738, guid: 101f52c8378c2684a8dfacb343b5d909, type: 3}
+  ZAxis: {fileID: 0}
 --- !u!1 &7343776851843606966
 GameObject:
   m_ObjectHideFlags: 0

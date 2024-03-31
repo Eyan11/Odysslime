@@ -13,6 +13,7 @@ TagManager:
   - Super Slime
   - Slimeling
   - Game Manager
+  - World Canvas
   layers:
   - Default
   - TransparentFX

@@ -24,8 +24,8 @@ public class ThirdPersonCam : MonoBehaviour
 
     //Time cam is unlocked while transitioning to another slime
     [SerializeField] private float camUnlockedTime;
-    [SerializeField] private float mouseSensX = 300f;
-    [SerializeField] private float mouseSensY = 2f;
+    [SerializeField] private float mouseSensX = 0.1f;
+    [SerializeField] private float mouseSensY = 0.0007f;
     private float camUnlockedTimer = 0f;
     private bool camIsLocked = false;
 
@@ -46,10 +46,6 @@ public class ThirdPersonCam : MonoBehaviour
         Vector3 viewDir = player.position - new Vector3(transform.position.x, player.position.y, transform.position.z);
         //sets the forward direction to the vector calculated (forward is the direction camera is looking)
         orientation.forward = viewDir.normalized;
-
-        //get horizontal and vertical keyboard inputs
-        //float horizontalInput = Input.GetAxis("Horizontal");
-        //float verticalInput = Input.GetAxis("Vertical");
 
         //get movement input from input map
         moveInput = inputScript.GetMoveInput();
@@ -93,6 +89,8 @@ public class ThirdPersonCam : MonoBehaviour
         thirdPersonFreeLookCam.m_YAxis.m_MaxSpeed = 0f;
         topDownFreeLookCam.m_XAxis.m_MaxSpeed = 0f;
         topDownFreeLookCam.m_YAxis.m_MaxSpeed = 0f;
+
+        //topDownFreeLookCam.m_YAxis.m_MaxSpeed = 0f;
     }
 
     private void UnlockCamera() {
@@ -165,6 +163,5 @@ public class ThirdPersonCam : MonoBehaviour
         else
             Debug.LogError("Make sure Slime orientation is second child of slime player!");
     }
-
 
 }

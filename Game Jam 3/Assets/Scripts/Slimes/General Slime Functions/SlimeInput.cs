@@ -7,6 +7,7 @@ public class SlimeInput : MonoBehaviour
     private InputMap inputMap;
 
     private Vector2 moveInput;
+    private Vector2 lookInput;
     //private int moveBlockVertInput;
 
     //button hold inputs
@@ -28,6 +29,7 @@ public class SlimeInput : MonoBehaviour
 
         //gets vector2 input from input map
         moveInput = inputMap.Slime.Move.ReadValue<Vector2>();
+        lookInput = inputMap.Slime.Look.ReadValue<Vector2>();
 
         //float value is 1 when holding and 0 when not holding
         //need to do this to tell if a button is being HELD DOWN
@@ -50,6 +52,10 @@ public class SlimeInput : MonoBehaviour
 
     public Vector2 GetMoveInput() {
         return moveInput;
+    }
+
+    public Vector2 GetLookInput() {
+        return lookInput;
     }
     
     public bool GetLockCamInput() {
