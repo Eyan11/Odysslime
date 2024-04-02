@@ -26,7 +26,7 @@ public class SoulMovement : MonoBehaviour
             //move to it
             lerpPercent += speed * Time.deltaTime;
             //uses curve for smooth movement
-            transform.position = Vector3.Lerp(startPos, targetSlime.position, curve.Evaluate(lerpPercent));
+            transform.position = Vector3.Lerp(startPos, targetSlime.position, lerpPercent);
 
             //if soul is 95% of distance to target
             if(lerpPercent > 0.95) {

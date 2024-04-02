@@ -8,17 +8,17 @@ public class SlimeInput : MonoBehaviour
 
     private Vector2 moveInput;
     private Vector2 lookInput;
-    //private int moveBlockVertInput;
-
-    //button hold inputs
-    private bool lockCamInput;
-    private bool unlockCamInput;
+    private float moveBlockVertInput;
 
     //button down inputs
     private bool jumpInput;
+    private bool lockCamInput;
     private bool possessInput;
     private bool returnToKingInput;
     private bool abilityInput;
+
+    //button up input
+    private bool unlockCamInput;
 
     private void Awake() {
         //create a new Input Map object and enable the King Slime input
@@ -32,22 +32,19 @@ public class SlimeInput : MonoBehaviour
         moveInput = inputMap.Slime.Move.ReadValue<Vector2>();
         lookInput = inputMap.Slime.Look.ReadValue<Vector2>();
 
-        //lockCamInput = inputMap.Slime.LockCamera.ReadValue<float>() > 0.1;
+        //gets int from input map (-1 is down, 0 is no movement, 1 is up)
+        moveBlockVertInput = inputMap.Slime.MoveBlockVertically.ReadValue<float>();
+        Debug.Log(moveBlockVertInput);
 
         //variables are true during the first frame the input is pressed
         jumpInput = inputMap.Slime.Jump.triggered;
-        lockCamInput = inputMap.Slime.LockCamera.triggered;
         possessInput = inputMap.Slime.Possess.triggered;
         returnToKingInput = inputMap.Slime.ReturnToKing.triggered;
         abilityInput = inputMap.Slime.Ability.triggered;
+        lockCamInput = inputMap.Slime.LockCamera.triggered;
 
         //this is true on first frame the input is released
         unlockCamInput = inputMap.Slime.UnlockCamera.triggered;
-
-        if(lockCamInput)
-            Debug.Log("Cam Locked");
-        else if(unlockCamInput)
-            Debug.Log("Cam Unlocked");
     }
 
     //---------- Methods to return input to other slime scripts ----------\\
@@ -82,4 +79,10 @@ public class SlimeInput : MonoBehaviour
     public bool GetAbilityInput() {
         return abilityInput;
     }
+
+
+    public float GetMoveBlockVertInput() {
+        return moveBlockVertInput;
+    }
+
 }
