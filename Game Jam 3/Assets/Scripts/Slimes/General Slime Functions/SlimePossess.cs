@@ -9,24 +9,25 @@ public class SlimePossess : MonoBehaviour
 {
     private UIManager UIScript;
     private ThirdPersonCam cameraScript;
-    private GameObject slimeKingPlayer;
     private DiscoverSlimes discoverScript;
     private SlimeAbilities slimeAbility;
     private SlimeMovement slimeMovement;
     private SlimeFollow slimeFollow;
+    private SlimeInput inputScript;
+    private SoulMovement soulScript;
+    private GameObject kingPlayer;
     private Transform possessCrosshair;
     private Ray ray;
     private RaycastHit hit;
-    private SlimeInput inputScript;
 
     private void Awake() {
         // Retrieve slime king player
-        slimeKingPlayer = GameObject.FindObjectOfType<KingMovement>().gameObject;
+        kingPlayer = GameObject.FindObjectOfType<KingMovement>().gameObject;
 
         //script references
         cameraScript = Camera.main.gameObject.GetComponent<ThirdPersonCam>();
         inputScript = GetComponent<SlimeInput>();
-        discoverScript = slimeKingPlayer.GetComponent<DiscoverSlimes>();
+        discoverScript = kingPlayer.GetComponent<DiscoverSlimes>();
         UIScript = GameObject.FindWithTag("UI Manager").GetComponent<UIManager>();
         possessCrosshair = GameObject.FindWithTag("World Canvas").transform;
 
@@ -36,7 +37,7 @@ public class SlimePossess : MonoBehaviour
         slimeFollow = gameObject.GetComponent<SlimeFollow>();
 
         //if this script is NOT on king obj
-        if (slimeKingPlayer != gameObject) {
+        if (kingPlayer != gameObject) {
             //disable slime abilities
             if (slimeAbility)
                 slimeAbility.enabled = false;
@@ -46,15 +47,23 @@ public class SlimePossess : MonoBehaviour
             }
             GetComponent<Rigidbody>().isKinematic = true;
             this.enabled = false;
+
+            soulScript = kingPlayer.transform.GetChild(2).GetComponent<SoulMovement>();
         }
+        else {
+            soulScript = transform.GetChild(2).GetComponent<SoulMovement>();
+        }
+
+        if(soulScript == null)
+            Debug.LogError("Make sure the Possess Soul object is 3rd child of King Slime");
     }
 
     private void FixedUpdate() {
 
         //if pressing return to King input and not the king
-        if(inputScript.GetReturnToKingInput() && gameObject != slimeKingPlayer) {
+        if(inputScript.GetReturnToKingInput() && gameObject != kingPlayer) {
             //return to king Slime
-            PosessSlime(slimeKingPlayer);
+            PosessSlime(kingPlayer);
         }
 
 
@@ -79,9 +88,14 @@ public class SlimePossess : MonoBehaviour
             return;
 
         //if otherSlime is not king and not currently a slime follower, do NOT possess them
-        if(!otherSlime.CompareTag("King Slime") && discoverScript.FindSlimeFollower(otherSlime.transform) == -1)
+        if(otherSlime != kingPlayer && discoverScript.FindSlimeFollower(otherSlime.transform) == -1) {
+            UIScript.DisplayPrompt("Can only possess slime followers!", 0.1f);
             return;
+        }
 
+        //make soul appear and move to possessed slime
+        soulScript.MoveSoulToSlime(this.transform, otherSlime.transform);
+        
         //switch camera
         cameraScript.SwitchCamera(otherSlime);
 

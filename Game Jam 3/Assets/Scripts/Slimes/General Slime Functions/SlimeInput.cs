@@ -12,6 +12,7 @@ public class SlimeInput : MonoBehaviour
 
     //button hold inputs
     private bool lockCamInput;
+    private bool unlockCamInput;
 
     //button down inputs
     private bool jumpInput;
@@ -31,15 +32,22 @@ public class SlimeInput : MonoBehaviour
         moveInput = inputMap.Slime.Move.ReadValue<Vector2>();
         lookInput = inputMap.Slime.Look.ReadValue<Vector2>();
 
-        //float value is 1 when holding and 0 when not holding
-        //need to do this to tell if a button is being HELD DOWN
-        lockCamInput = inputMap.Slime.LockCamera.ReadValue<float>() > 0.1;
+        //lockCamInput = inputMap.Slime.LockCamera.ReadValue<float>() > 0.1;
 
         //variables are true during the first frame the input is pressed
         jumpInput = inputMap.Slime.Jump.triggered;
+        lockCamInput = inputMap.Slime.LockCamera.triggered;
         possessInput = inputMap.Slime.Possess.triggered;
         returnToKingInput = inputMap.Slime.ReturnToKing.triggered;
         abilityInput = inputMap.Slime.Ability.triggered;
+
+        //this is true on first frame the input is released
+        unlockCamInput = inputMap.Slime.UnlockCamera.triggered;
+
+        if(lockCamInput)
+            Debug.Log("Cam Locked");
+        else if(unlockCamInput)
+            Debug.Log("Cam Unlocked");
     }
 
     //---------- Methods to return input to other slime scripts ----------\\
@@ -54,6 +62,9 @@ public class SlimeInput : MonoBehaviour
     
     public bool GetLockCamInput() {
         return lockCamInput;
+    }
+    public bool GetUnlockCamInput() {
+        return unlockCamInput;
     }
 
     public bool GetJumpInput() {

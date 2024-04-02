@@ -34,12 +34,21 @@
                 },
                 {
                     "name": "Lock Camera",
-                    "type": "Value",
-                    "id": "de3c6eee-3f5c-4880-9675-5c49aa4e3099",
-                    "expectedControlType": "Analog",
+                    "type": "Button",
+                    "id": "34f1be3b-beaf-4ec9-bb46-5fbfba83d370",
+                    "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": true
+                    "interactions": "Press",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Unlock Camera",
+                    "type": "Button",
+                    "id": "084ccc9d-17bf-434b-b0f6-b716986b1e40",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "Press(behavior=1)",
+                    "initialStateCheck": false
                 },
                 {
                     "name": "Possess",
@@ -257,28 +266,6 @@
                 },
                 {
                     "name": "",
-                    "id": "57a5159e-1d3d-4093-b6de-cf70472c0523",
-                    "path": "<Keyboard>/e",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Lock Camera",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "6f1fc60c-6163-44d7-9e31-e623570abe8e",
-                    "path": "<Gamepad>/leftTrigger",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Lock Camera",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "91b0f303-a5c3-448e-a4b5-c382f97b5c5c",
                     "path": "<Mouse>/leftButton",
                     "interactions": "",
@@ -340,6 +327,50 @@
                     "processors": "ScaleVector2(x=15,y=15)",
                     "groups": "",
                     "action": "Look",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "68b81d72-8e9d-445b-929d-ac46b61ffd1c",
+                    "path": "<Keyboard>/e",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Unlock Camera",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "7decfb95-7cf7-4ebb-a04f-925cfdb692d9",
+                    "path": "<Gamepad>/leftTrigger",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Unlock Camera",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "21bc4312-7ae9-402e-8ee3-596871d3491d",
+                    "path": "<Keyboard>/e",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Lock Camera",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "3265b595-2dd7-4865-8f55-64b8ab588119",
+                    "path": "<Gamepad>/leftTrigger",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Lock Camera",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

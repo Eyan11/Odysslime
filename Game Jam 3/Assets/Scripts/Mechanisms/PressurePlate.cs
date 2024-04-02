@@ -7,8 +7,9 @@ public class PressurePlate : MonoBehaviour
     [Header("Choose How the Pressure Plate is Activated: ")]
     [SerializeField] private PlateType plateType;
 
-    [Header("References")]
-    [SerializeField] private GateOpen gateOpenScript;
+    [Header("References, Leave Empty of Not Applicable")]
+    [SerializeField] private GateOpen gateScript;
+    [SerializeField] private BridgeExtend bridgeScript;
 
     [Header("Slime Plate Settings: ")]
     [SerializeField] private int slimesToActivate;
@@ -20,7 +21,6 @@ public class PressurePlate : MonoBehaviour
     private void Awake() {
         slimeLayer = LayerMask.NameToLayer("Slime");
         iceLayer = LayerMask.NameToLayer("Ice");
-
     }
 
     private void OnTriggerEnter(Collider other) {
@@ -61,8 +61,10 @@ public class PressurePlate : MonoBehaviour
             //activate plate
             plateIsActive = true;
             
-            if(gateOpenScript)
-                gateOpenScript.Activate();
+            if(gateScript)
+                gateScript.Activate();
+            else if(bridgeScript)
+                bridgeScript.Activate();
         }
 
         //if plate IS activated and NOT enough slimes are on plate
@@ -70,8 +72,10 @@ public class PressurePlate : MonoBehaviour
             //DEactivate plate
             plateIsActive = false;
 
-            if(gateOpenScript)
-                gateOpenScript.Deactivate();
+            if(gateScript)
+                gateScript.Deactivate();
+            else if(bridgeScript)
+                bridgeScript.Deactivate();
         }
     }
 
@@ -86,8 +90,10 @@ public class PressurePlate : MonoBehaviour
             plateIsActive = true;
             Debug.Log("Plate is activated");
 
-            if(gateOpenScript)
-                gateOpenScript.Activate();
+            if(gateScript)
+                gateScript.Activate();
+            else if(bridgeScript)
+                bridgeScript.Activate();
         }
 
         //if plate IS activated and NOT enough ice cubes are on plate
@@ -96,8 +102,10 @@ public class PressurePlate : MonoBehaviour
             plateIsActive = false;
             Debug.Log("Plate is deactivated");
 
-            if(gateOpenScript)
-                gateOpenScript.Deactivate();
+            if(gateScript)
+                gateScript.Deactivate();
+            else if(bridgeScript)
+                bridgeScript.Deactivate();
         }
     }
 

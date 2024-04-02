@@ -20,13 +20,9 @@ public class ThirdPersonCam : MonoBehaviour
     private Vector2 moveInput;
 
     [Header("Settings")]
-    [SerializeField] private float rotationSpeed;
-
-    //Time cam is unlocked while transitioning to another slime
-    [SerializeField] private float camUnlockedTime;
+    [SerializeField] private float orientationRotSpeed;
     [SerializeField] private float mouseSensX = 0.1f;
     [SerializeField] private float mouseSensY = 0.0007f;
-    private float camUnlockedTimer = 0f;
     private bool camIsLocked = false;
 
     private void Awake() {
@@ -55,29 +51,24 @@ public class ThirdPersonCam : MonoBehaviour
 
         //smoothly change (Slerp) player orientation to match the input direction
         if(inputDir != Vector3.zero)
-            obj.forward = Vector3.Slerp(obj.forward, inputDir.normalized, Time.deltaTime * rotationSpeed);
+            obj.forward = Vector3.Slerp(obj.forward, inputDir.normalized, Time.deltaTime * orientationRotSpeed);
     }
 
     //determines if camera should be locked in place or not
     private void CameraLockState() {
-        camUnlockedTimer -= Time.deltaTime;
 
         //lock cam if unlocked and holding lock input
         if(!camIsLocked && inputScript.GetLockCamInput()) {
             LockCamera();
         }
         //unlock cam if locked and NOT holding lock input
-        else if(camIsLocked && !inputScript.GetLockCamInput())
+        else if(camIsLocked && inputScript.GetUnlockCamInput())
             UnlockCamera();
     }
 
     
     private void LockCamera() {
         camIsLocked = true;
-
-        //don't lock camera if still transitioning to another slime
-        if(camUnlockedTimer > 0)
-            return;
 
         //lock cursor to game window
         Cursor.lockState = CursorLockMode.Confined;
@@ -106,7 +97,7 @@ public class ThirdPersonCam : MonoBehaviour
         topDownFreeLookCam.m_YAxis.m_MaxSpeed = mouseSensY;
     }
 
-    //returns true if camera is locked (freelook component is disabled)
+    //returns true if camera is locked
     public bool CamIsLocked() {
         return camIsLocked;
     }
@@ -116,7 +107,6 @@ public class ThirdPersonCam : MonoBehaviour
     public void SwitchCamera(GameObject slimePlayer) {
 
         //force camera to be unlocked for short time
-        camUnlockedTimer = camUnlockedTime;
         UnlockCamera();
 
         //disable all camera's

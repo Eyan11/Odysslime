@@ -56,12 +56,21 @@ public partial class @InputMap: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": ""Lock Camera"",
-                    ""type"": ""Value"",
-                    ""id"": ""de3c6eee-3f5c-4880-9675-5c49aa4e3099"",
-                    ""expectedControlType"": ""Analog"",
+                    ""type"": ""Button"",
+                    ""id"": ""34f1be3b-beaf-4ec9-bb46-5fbfba83d370"",
+                    ""expectedControlType"": ""Button"",
                     ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": true
+                    ""interactions"": ""Press"",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Unlock Camera"",
+                    ""type"": ""Button"",
+                    ""id"": ""084ccc9d-17bf-434b-b0f6-b716986b1e40"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": ""Press(behavior=1)"",
+                    ""initialStateCheck"": false
                 },
                 {
                     ""name"": ""Possess"",
@@ -279,28 +288,6 @@ public partial class @InputMap: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""57a5159e-1d3d-4093-b6de-cf70472c0523"",
-                    ""path"": ""<Keyboard>/e"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Lock Camera"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""6f1fc60c-6163-44d7-9e31-e623570abe8e"",
-                    ""path"": ""<Gamepad>/leftTrigger"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Lock Camera"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
                     ""id"": ""91b0f303-a5c3-448e-a4b5-c382f97b5c5c"",
                     ""path"": ""<Mouse>/leftButton"",
                     ""interactions"": """",
@@ -364,6 +351,50 @@ public partial class @InputMap: IInputActionCollection2, IDisposable
                     ""action"": ""Look"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""68b81d72-8e9d-445b-929d-ac46b61ffd1c"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Unlock Camera"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""7decfb95-7cf7-4ebb-a04f-925cfdb692d9"",
+                    ""path"": ""<Gamepad>/leftTrigger"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Unlock Camera"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""21bc4312-7ae9-402e-8ee3-596871d3491d"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Lock Camera"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""3265b595-2dd7-4865-8f55-64b8ab588119"",
+                    ""path"": ""<Gamepad>/leftTrigger"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Lock Camera"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -415,6 +446,7 @@ public partial class @InputMap: IInputActionCollection2, IDisposable
         m_Slime_Look = m_Slime.FindAction("Look", throwIfNotFound: true);
         m_Slime_Jump = m_Slime.FindAction("Jump", throwIfNotFound: true);
         m_Slime_LockCamera = m_Slime.FindAction("Lock Camera", throwIfNotFound: true);
+        m_Slime_UnlockCamera = m_Slime.FindAction("Unlock Camera", throwIfNotFound: true);
         m_Slime_Possess = m_Slime.FindAction("Possess", throwIfNotFound: true);
         m_Slime_ReturnToKing = m_Slime.FindAction("Return To King", throwIfNotFound: true);
         m_Slime_Ability = m_Slime.FindAction("Ability", throwIfNotFound: true);
@@ -487,6 +519,7 @@ public partial class @InputMap: IInputActionCollection2, IDisposable
     private readonly InputAction m_Slime_Look;
     private readonly InputAction m_Slime_Jump;
     private readonly InputAction m_Slime_LockCamera;
+    private readonly InputAction m_Slime_UnlockCamera;
     private readonly InputAction m_Slime_Possess;
     private readonly InputAction m_Slime_ReturnToKing;
     private readonly InputAction m_Slime_Ability;
@@ -499,6 +532,7 @@ public partial class @InputMap: IInputActionCollection2, IDisposable
         public InputAction @Look => m_Wrapper.m_Slime_Look;
         public InputAction @Jump => m_Wrapper.m_Slime_Jump;
         public InputAction @LockCamera => m_Wrapper.m_Slime_LockCamera;
+        public InputAction @UnlockCamera => m_Wrapper.m_Slime_UnlockCamera;
         public InputAction @Possess => m_Wrapper.m_Slime_Possess;
         public InputAction @ReturnToKing => m_Wrapper.m_Slime_ReturnToKing;
         public InputAction @Ability => m_Wrapper.m_Slime_Ability;
@@ -524,6 +558,9 @@ public partial class @InputMap: IInputActionCollection2, IDisposable
             @LockCamera.started += instance.OnLockCamera;
             @LockCamera.performed += instance.OnLockCamera;
             @LockCamera.canceled += instance.OnLockCamera;
+            @UnlockCamera.started += instance.OnUnlockCamera;
+            @UnlockCamera.performed += instance.OnUnlockCamera;
+            @UnlockCamera.canceled += instance.OnUnlockCamera;
             @Possess.started += instance.OnPossess;
             @Possess.performed += instance.OnPossess;
             @Possess.canceled += instance.OnPossess;
@@ -552,6 +589,9 @@ public partial class @InputMap: IInputActionCollection2, IDisposable
             @LockCamera.started -= instance.OnLockCamera;
             @LockCamera.performed -= instance.OnLockCamera;
             @LockCamera.canceled -= instance.OnLockCamera;
+            @UnlockCamera.started -= instance.OnUnlockCamera;
+            @UnlockCamera.performed -= instance.OnUnlockCamera;
+            @UnlockCamera.canceled -= instance.OnUnlockCamera;
             @Possess.started -= instance.OnPossess;
             @Possess.performed -= instance.OnPossess;
             @Possess.canceled -= instance.OnPossess;
@@ -633,6 +673,7 @@ public partial class @InputMap: IInputActionCollection2, IDisposable
         void OnLook(InputAction.CallbackContext context);
         void OnJump(InputAction.CallbackContext context);
         void OnLockCamera(InputAction.CallbackContext context);
+        void OnUnlockCamera(InputAction.CallbackContext context);
         void OnPossess(InputAction.CallbackContext context);
         void OnReturnToKing(InputAction.CallbackContext context);
         void OnAbility(InputAction.CallbackContext context);
