@@ -15,20 +15,19 @@ public class MagicSlimeAbilities : SlimeAbilities
     private float nextCheckWait = 0.1f;
     private float nextCheckTime;
     private int movablesMask;
-    private SphereCollider sphereCollider;
-    private NavMeshAgent navMeshAgent;
-    private SlimeFollowerMovement slimeFollowerMovement;
     private SoundManager soundManager;
+    private SlimeFollowerMovement slimeFollowerMovement;
     private RaycastHit raycastHit;
+    private ThirdPersonCam cameraScript;
+    private bool abilityActive = false;
 
     private void Awake() {
         // Creates bit mask for pushable objects
         movablesMask = 1 << 9;
 
         // Retrieves various components
-        sphereCollider = GetComponent<SphereCollider>();
-        navMeshAgent = GetComponent<NavMeshAgent>();
         slimeFollowerMovement = GetComponent<SlimeFollowerMovement>();
+        cameraScript = GetComponent<ThirdPersonCam>();
         soundManager = FindObjectOfType<SoundManager>();
 
         // Sets the first raycast check time
@@ -42,18 +41,20 @@ public class MagicSlimeAbilities : SlimeAbilities
 
         // Raycast check on pushable objects
         Physics.Raycast(transform.position, slimeModel.transform.forward, out raycastHit, interactionDistance, movablesMask);
-
-        // Checks if the raycast hit anything
-        if (raycastHit.collider) {
-            Debug.Log("MOVABLE OBJECTTTT");
-        }
     }
 
     public override void UseAbility() {
-        GameObject colliderObj = raycastHit.collider.gameObject;
+        if (!abilityActive) {
+            // Prevents the usage of the ability if its already in effect
+            if (!raycastHit.collider) return;
+            // Otherwise, activates the ability
+            abilityActive = true;
 
-        if (colliderObj) {
-            
+            // Disables slime's speed
+            slimeFollowerMovement.movementSpeed = 0;
+
+            // Retrieves collider object
+            GameObject colliderObj = raycastHit.collider.gameObject;
         }
     }
 }

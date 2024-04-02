@@ -34,7 +34,7 @@ public class SlimeInput : MonoBehaviour
 
         //gets int from input map (-1 is down, 0 is no movement, 1 is up)
         moveBlockVertInput = inputMap.Slime.MoveBlockVertically.ReadValue<float>();
-        Debug.Log(moveBlockVertInput);
+        //Debug.Log(moveBlockVertInput);
 
         //variables are true during the first frame the input is pressed
         jumpInput = inputMap.Slime.Jump.triggered;

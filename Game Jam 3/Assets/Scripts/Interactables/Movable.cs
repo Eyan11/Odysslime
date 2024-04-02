@@ -7,7 +7,6 @@ using UnityEngine.Timeline;
 
 public class Movable : MonoBehaviour
 {
-    [Header("Statistics")]
     private Collider internalHitbox;
     private GameObject pushableObj;
     private Collider pushableHitbox;
@@ -31,13 +30,5 @@ public class Movable : MonoBehaviour
         }
 
         Physics.IgnoreCollision(internalHitbox, pushableHitbox, true);
-    }
-
-    public void ContinuePush() {
-        pushableHitbox.isTrigger = true;
-    }
-
-    public void EndPush() {
-        pushableHitbox.isTrigger = false;
     }
 }
