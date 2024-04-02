@@ -27,8 +27,8 @@ public class ThirdPersonCam : MonoBehaviour
 
     private void Awake() {
         //makes mouse invisible and locked in place
-        //Cursor.lockState = CursorLockMode.Locked;
-        //Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
         inputScript = GetComponent<SlimeInput>();
     }
 
@@ -71,9 +71,9 @@ public class ThirdPersonCam : MonoBehaviour
         camIsLocked = true;
 
         //lock cursor to game window
-        Cursor.lockState = CursorLockMode.Confined;
+        //Cursor.lockState = CursorLockMode.Confined;
         //make cursor visible
-        Cursor.visible = true;
+        //Cursor.visible = true;
 
         //turn camera sensitivity to 0
         thirdPersonFreeLookCam.m_XAxis.m_MaxSpeed = 0f;
@@ -86,9 +86,9 @@ public class ThirdPersonCam : MonoBehaviour
         camIsLocked = false;
 
         //lock cursor to center of game view
-        Cursor.lockState = CursorLockMode.Locked;
+        //Cursor.lockState = CursorLockMode.Locked;
         //make cursor invisible
-        Cursor.visible = false;
+        //Cursor.visible = false;
 
         //return camera sensitivity to original values
         thirdPersonFreeLookCam.m_XAxis.m_MaxSpeed = mouseSensX;
