@@ -482,6 +482,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7510919766377651646, guid: 20f80afaf6ca5ca46b6992546df5d875,
         type: 3}
+      propertyPath: gateScript
+      value: 
+      objectReference: {fileID: 8080918155733014497}
+    - target: {fileID: 7510919766377651646, guid: 20f80afaf6ca5ca46b6992546df5d875,
+        type: 3}
       propertyPath: gateOpenScript
       value: 
       objectReference: {fileID: 8080918155733014497}
