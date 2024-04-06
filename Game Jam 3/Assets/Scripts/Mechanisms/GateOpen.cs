@@ -6,7 +6,6 @@ public class GateOpen : MonoBehaviour
 {
     [SerializeField] private GameObject gate;
     [SerializeField] private float slideSpeed;
-    private float lerpPercent = 0f;
     private Vector3 startPos;
     private Vector3 endPos;
     private bool isActivated = false;
@@ -20,19 +19,12 @@ public class GateOpen : MonoBehaviour
 
     private void Update() {
 
-        //if active and not done opening
-        if(isActivated && lerpPercent < 1) {
-            //open gate
-            gate.transform.position = Vector3.Lerp(gate.transform.position, endPos, lerpPercent);
-            lerpPercent += slideSpeed * Time.deltaTime;
-        }
-        //if NOT active and not done closing
-        else if(!isActivated && lerpPercent > 0) {
-            //close gate
-            gate.transform.position = Vector3.Lerp(gate.transform.position, startPos, lerpPercent);
-            lerpPercent -= slideSpeed * Time.deltaTime;
-        }
-
+        //move to end position
+        if(isActivated)
+            gate.transform.position = Vector3.MoveTowards(gate.transform.position, endPos, slideSpeed);
+        //move to start position
+        else
+            gate.transform.position = Vector3.MoveTowards(gate.transform.position, startPos, slideSpeed);
     }
 
     public void Activate() {

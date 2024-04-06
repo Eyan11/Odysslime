@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Unity.AI.Navigation;
+using UnityEngine.AI;
 
 public class BridgeExtend : MonoBehaviour
 {
@@ -24,6 +26,9 @@ public class BridgeExtend : MonoBehaviour
         //adjust position and scale of bridge
         movingBridge.transform.position = startPos;
         movingBridge.transform.localScale = new Vector3(bridgeStart.localScale.x, bridgeStart.localScale.y/2, bridgeLength);
+
+        //Bake NavMesh just on platform now that we know position and scale
+        movingBridge.GetComponent<NavMeshSurface>().BuildNavMesh();
     }
 
     private void Update() {

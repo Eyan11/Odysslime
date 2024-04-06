@@ -48,7 +48,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gate: {fileID: 6826432869743205071}
-  slideSpeed: 0.005
+  slideSpeed: 0.04
 --- !u!1 &5751674661260067318
 GameObject:
   m_ObjectHideFlags: 0
