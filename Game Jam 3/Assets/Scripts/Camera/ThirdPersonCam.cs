@@ -105,6 +105,7 @@ public class ThirdPersonCam : MonoBehaviour
 
     //Called when camera needs to be switched because of possess ability
     public void SwitchCamera(GameObject slimePlayer) {
+        Debug.Log(slimePlayer);
 
         //force camera to be unlocked for short time
         UnlockCamera();
