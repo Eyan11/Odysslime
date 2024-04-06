@@ -48,9 +48,20 @@ public class DiscoverSlimes : MonoBehaviour
         //loop through each collider in array
         foreach (var hitCollider in hitColliders) {
             
-            //if not King and not currently following King
-            if(hitCollider.gameObject != gameObject && 
-                hitCollider.gameObject.GetComponent<SlimeFollow>().enabled == false) {
+            //if collider is King, ignore collider
+            if(hitCollider.gameObject.CompareTag("King Slime")) {
+                continue;
+            }
+
+            //else if Super Slime and currently being possessed, ignore collider
+            else if(hitCollider.gameObject.CompareTag("Super Slime") &&
+                    hitCollider.gameObject.GetComponent<SlimePossess>().enabled == true) {
+
+                    continue;
+            }
+
+            //else if not a slime follower
+            else if(hitCollider.gameObject.GetComponent<SlimeFollow>().enabled == false) {
 
                 //make slime a follower
                 AddSlimeFollower(hitCollider.transform);
