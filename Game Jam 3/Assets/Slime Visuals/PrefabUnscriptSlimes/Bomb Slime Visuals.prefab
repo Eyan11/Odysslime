@@ -91,7 +91,7 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 0e2354f9150644a598e96f7c49f8aa78,
         type: 3}
       propertyPath: m_Name
-      value: BombSlimeIDLE
+      value: Bomb Slime Visuals
       objectReference: {fileID: 0}
     - target: {fileID: 6844499898217980155, guid: 0e2354f9150644a598e96f7c49f8aa78,
         type: 3}

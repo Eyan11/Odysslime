@@ -88,13 +88,6 @@ public class SlimePossess : MonoBehaviour
     }
 
     public void PosessSlime(GameObject otherSlime) {
-        /*
-        //if otherSlime is not king and not currently a slime follower, do NOT possess them
-        if(otherSlime != kingPlayer && discoverScript.FindSlimeFollower(otherSlime.transform) == -1) {
-            UIScript.DisplayPrompt("Can only possess slime followers!", 0.1f);
-            return;
-        }
-        */
 
         //make soul appear and move to possessed slime
         soulScript.MoveSoulToSlime(this.transform, otherSlime.transform);

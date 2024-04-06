@@ -10,9 +10,11 @@ public class BridgeExtend : MonoBehaviour
     [SerializeField] private Transform bridgeStart;
     [SerializeField] private Transform bridgeEnd;
     [SerializeField] private float extendSpeed;
+    [SerializeField] private PlatformMoveSlime moveSlimeScript;
     private Vector3 startPos;
     private Vector3 endPos;
     private bool isActivated = false;
+    private Vector3 direction;
 
     private void Awake() {
         //find the length of the bridge
@@ -29,17 +31,23 @@ public class BridgeExtend : MonoBehaviour
 
         //Bake NavMesh just on platform now that we know position and scale
         movingBridge.GetComponent<NavMeshSurface>().BuildNavMesh();
+
+        direction = endPos - startPos;
     }
 
     private void Update() {
         
         //move to end position
-        if(isActivated)
+        if(isActivated) {
             movingBridge.transform.position = Vector3.MoveTowards(movingBridge.transform.position, endPos, extendSpeed);
+            //moveSlimeScript.UpdateAgentPosition(direction, extendSpeed);
+        }
         //move to start position
-        else
+        else {
             movingBridge.transform.position = Vector3.MoveTowards(movingBridge.transform.position, startPos, extendSpeed);
-    
+            //moveSlimeScript.UpdateAgentPosition(-direction, extendSpeed);
+        }
+
     }
 
     public void Activate() {

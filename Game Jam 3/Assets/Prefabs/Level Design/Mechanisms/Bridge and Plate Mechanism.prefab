@@ -550,6 +550,7 @@ MonoBehaviour:
   bridgeStart: {fileID: 2516352924778059288}
   bridgeEnd: {fileID: 3730952902092452805}
   extendSpeed: 0.2
+  moveSlimeScript: {fileID: 8069527762776648328}
 --- !u!1001 &5471977717394440187
 PrefabInstance:
   m_ObjectHideFlags: 0

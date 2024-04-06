@@ -8,7 +8,6 @@ public class KingMovement : SlimeMovement
     private Transform kingObj;
     private Transform orientation;
     private UIManager UIScript;
-    private DiscoverSlimes discoverScript;
     private SlimeInput inputScript;
     private Rigidbody rb;
     private RaycastHit hit;
@@ -49,7 +48,6 @@ public class KingMovement : SlimeMovement
         rb = GetComponent<Rigidbody>();
         rb.freezeRotation = true;
 
-        discoverScript = GetComponent<DiscoverSlimes>();
         inputScript = GetComponent<SlimeInput>();
         UIScript = GameObject.FindWithTag("UI Manager").GetComponent<UIManager>();
         floorLayer = LayerMask.NameToLayer("Floor");
@@ -58,7 +56,6 @@ public class KingMovement : SlimeMovement
     private void FixedUpdate() {
         //set XZ velocity
         rb.velocity = new Vector3(moveDir.x * moveSpeed, vertSpeed, moveDir.z * moveSpeed);
-        
     }
 
     private void Update() {

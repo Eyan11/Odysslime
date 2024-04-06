@@ -29,10 +29,11 @@ public class DiscoverSlimes : MonoBehaviour
         searchCounter -= Time.deltaTime;
         findClosestSlimeCountdown -= Time.deltaTime;
 
-        //search for new slimes if counter is done and currently possessing king
-        if(searchCounter < 0 && possessScript.enabled == true)
+        //search for new slimes on interval
+        if(searchCounter < 0)
             SearchForNewSlimes();
 
+        //search for closest slime on interval
         if(findClosestSlimeCountdown < 0) {
             CalculateClosestFollower();
         }
