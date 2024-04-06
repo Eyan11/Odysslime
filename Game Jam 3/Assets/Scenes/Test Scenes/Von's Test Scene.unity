@@ -443,12 +443,12 @@ PrefabInstance:
     - target: {fileID: 7239629344403783254, guid: be22204a2849d904e9580acbed9f549d,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.0000025403294
+      value: 0.000002546337
       objectReference: {fileID: 0}
     - target: {fileID: 7239629344403783254, guid: be22204a2849d904e9580acbed9f549d,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.0000014742102
+      value: 0.0000014776966
       objectReference: {fileID: 0}
     - target: {fileID: 7239629344403783254, guid: be22204a2849d904e9580acbed9f549d,
         type: 3}
@@ -458,7 +458,7 @@ PrefabInstance:
     - target: {fileID: 7239629344403783254, guid: be22204a2849d904e9580acbed9f549d,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.5019268
+      value: 0.50192684
       objectReference: {fileID: 0}
     - target: {fileID: 8079155906221791023, guid: be22204a2849d904e9580acbed9f549d,
         type: 3}
@@ -1316,6 +1316,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Magic Slime Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 2319556402615896864, guid: 0f8dcf5188b22c74099aa6e2764c1ea1,
+        type: 3}
+      propertyPath: bodyRadius
+      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 6948484096430997319, guid: 0f8dcf5188b22c74099aa6e2764c1ea1,
         type: 3}

@@ -21,7 +21,6 @@ public class SlimeFollowerMovement : SlimeMovement
     private bool jumpInput;
     private float lastJumpTime = 0f;
     private bool onGround = false;
-    private float jumpStart;
     private Vector3 moveDir;
     private SoundManager soundManager;
 
@@ -32,22 +31,28 @@ public class SlimeFollowerMovement : SlimeMovement
         //rb.freezeRotation = true; // disabled as individual constraints
         soundManager = GameObject.FindObjectOfType<SoundManager>();
         inputScript = GetComponent<SlimeInput>();
+
+        Collider collider = gameObject.GetComponent<Collider>();
+        Debug.Log("Size: " + collider.bounds.size);
     }
 
+    // Used for getting inputs and applying jump
     private void Update() {
-        // Ground check
-        GroundCheck();
-
         // Gets input for movement calculation
         GetInput();
 
-        // Applies x-z movement
-        ApplyHorizontalMovement();
+        // Ground check
+        GroundCheck();
 
         // Applies jump if on ground
         if (jumpInput && onGround && lastJumpTime + jumpCooldown < Time.fixedTime) {
             Jump();
         }
+    }
+
+    private void FixedUpdate() {
+        // Applies x-z movement
+        ApplyHorizontalMovement();
 
         // Applies speed constraints
         ConstrainSpeed();
@@ -70,6 +75,7 @@ public class SlimeFollowerMovement : SlimeMovement
         moveDir = (orientation.forward * moveInput.y) + (orientation.right * moveInput.x);
 
         // applies movement
+        //rb.velocity = moveDir.normalized * movementSpeed + new Vector3(0, rb.velocity.y, 0);
         rb.AddForce(moveDir.normalized * movementSpeed, ForceMode.Impulse);
     }
 
