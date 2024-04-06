@@ -8,7 +8,7 @@ public class SlimeFollowerMovement : SlimeMovement
 {
     [Header("Settings")]
     [SerializeField] private Transform orientation;
-    [SerializeField] private float bodyRadius = 0.5f;
+    [SerializeField] private float groundCheckMaxDist = 0.1f;
 
     [Header("Movement Settings")]
     public float movementSpeed = 2f;
@@ -31,9 +31,6 @@ public class SlimeFollowerMovement : SlimeMovement
         //rb.freezeRotation = true; // disabled as individual constraints
         soundManager = GameObject.FindObjectOfType<SoundManager>();
         inputScript = GetComponent<SlimeInput>();
-
-        Collider collider = gameObject.GetComponent<Collider>();
-        Debug.Log("Size: " + collider.bounds.size);
     }
 
     // Used for getting inputs and applying jump
@@ -59,7 +56,7 @@ public class SlimeFollowerMovement : SlimeMovement
     }
 
     private void GroundCheck() {
-        onGround = Physics.Raycast(transform.position, Vector3.down, bodyRadius);
+        onGround = Physics.Raycast(transform.position, Vector3.down, groundCheckMaxDist);
 
         // allows for application of "friction" on ground
         if (onGround) {

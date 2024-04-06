@@ -27,7 +27,7 @@ public class MagicSlimeAbilities : SlimeAbilities
 
         // Retrieves various components
         slimeFollowerMovement = GetComponent<SlimeFollowerMovement>();
-        cameraScript = GetComponent<ThirdPersonCam>();
+        cameraScript = Camera.main.gameObject.GetComponent<ThirdPersonCam>();
         soundManager = FindObjectOfType<SoundManager>();
 
         // Sets the first raycast check time
@@ -50,11 +50,11 @@ public class MagicSlimeAbilities : SlimeAbilities
             // Otherwise, activates the ability
             abilityActive = true;
 
-            // Disables slime's speed
-            slimeFollowerMovement.movementSpeed = 0;
+            // Disables slime's movement
+            slimeFollowerMovement.enabled = false;
 
-            // Retrieves collider object
-            GameObject colliderObj = raycastHit.collider.gameObject;
+            // Retrieves collider object's parent
+            GameObject colliderObj = raycastHit.collider.gameObject.transform.parent.gameObject;
 
             cameraScript.SwitchCamera(colliderObj);
         }

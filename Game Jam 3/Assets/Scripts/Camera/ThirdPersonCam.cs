@@ -10,7 +10,6 @@ public class ThirdPersonCam : MonoBehaviour
     [SerializeField] private Transform orientation;
     [SerializeField] private Transform player;
     [SerializeField] private Transform obj;
-    [SerializeField] private Rigidbody rb;
 
     [SerializeField] private GameObject thirdPersonCam;
     [SerializeField] private CinemachineFreeLook thirdPersonFreeLookCam;
@@ -50,7 +49,7 @@ public class ThirdPersonCam : MonoBehaviour
         Vector3 inputDir = orientation.forward * moveInput.y + orientation.right * moveInput.x;
 
         //smoothly change (Slerp) player orientation to match the input direction
-        if(inputDir != Vector3.zero)
+        if(obj && inputDir != Vector3.zero)
             obj.forward = Vector3.Slerp(obj.forward, inputDir.normalized, Time.deltaTime * orientationRotSpeed);
     }
 
@@ -131,26 +130,44 @@ public class ThirdPersonCam : MonoBehaviour
 
         //get references for player rotation when moving
         player = slimePlayer.transform;
-        rb = slimePlayer.GetComponent<Rigidbody>();
 
 
         //-----Getting reference to orientation and obj children-----\\
 
-        //get obj, should be child(0), but checking both just in case someone moves it
-        if(slimePlayer.gameObject.transform.GetChild(0).CompareTag("Obj"))
-            obj = slimePlayer.gameObject.transform.GetChild(0);
-        else if(slimePlayer.gameObject.transform.GetChild(1).CompareTag("Obj"))
-            obj = slimePlayer.gameObject.transform.GetChild(1);
-        else
-            Debug.LogError("Make sure Slime obj is first child of slime player!");
-        
-        //get orientation, should be child(1), but checking both just in case someone moves it
-        if(slimePlayer.gameObject.transform.GetChild(1).CompareTag("Orientation"))
-            orientation = slimePlayer.gameObject.transform.GetChild(1);
-        else if(slimePlayer.gameObject.transform.GetChild(0).CompareTag("Orientation"))
-            orientation = slimePlayer.gameObject.transform.GetChild(0);
-        else
-            Debug.LogError("Make sure Slime orientation is second child of slime player!");
+        // For slimes
+        if (slimePlayer.layer == 11) { // Slime layer
+            //get obj, should be child(0), but checking both just in case someone moves it
+            if(slimePlayer.transform.GetChild(0).CompareTag("Obj"))
+                obj = slimePlayer.transform.GetChild(0);
+            else if(slimePlayer.transform.GetChild(1).CompareTag("Obj"))
+                obj = slimePlayer.transform.GetChild(1);
+            else
+                Debug.LogError("Make sure Slime obj is first child of slime player!");
+            
+            //get orientation, should be child(1), but checking both just in case someone moves it
+            if(slimePlayer.transform.GetChild(1).CompareTag("Orientation"))
+                orientation = slimePlayer.transform.GetChild(1);
+            else if(slimePlayer.transform.GetChild(0).CompareTag("Orientation"))
+                orientation = slimePlayer.transform.GetChild(0);
+            else
+                Debug.LogError("Make sure Slime orientation is second child of slime player!");
+        }
+        else if (slimePlayer.GetComponent<Movable>()) {
+            Transform movableOrientation = slimePlayer.transform.Find("Orientation");
+
+            // Creates an orientation game object based on the existing movable
+            if (!movableOrientation) {
+                movableOrientation = new GameObject("Orientation").transform;
+                movableOrientation.position = slimePlayer.transform.position;
+                movableOrientation.SetParent(slimePlayer.transform);
+            }
+
+            orientation = movableOrientation;
+            obj = null;
+        }
+        else {
+            Debug.LogError("Unexpected object " + slimePlayer.name + " is attempting to use the SwitchCamera method!");
+        }
     }
 
 }
