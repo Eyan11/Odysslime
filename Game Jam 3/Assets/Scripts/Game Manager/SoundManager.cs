@@ -40,47 +40,56 @@ public class SoundManager : MonoBehaviour
 
     public void PlayExplosion() {
         //second argument is priority level of sound (0-1)
+        if (!source) return;
         source.PlayOneShot(explosionSound, 0.6f);
     }
 
     public void PlaySlimeFreeze() {
         //second argument is priority level of sound (0-1)
+        if (!source) return;
         source.PlayOneShot(freezeSound, 0.6f);
     }
 
     public void PlaySlimeEat() {
         //second argument is priority level of sound (0-1)
+        if (!source) return;
         source.PlayOneShot(eatSound, 0.6f);
     }
 
     public void PlaySlimeMove() {
         //second argument is priority level of sound (0-1)
+        if (!source) return;
         source.PlayOneShot(slimeMoveSound, 0.4f);
     }
 
     public void PlaySlimeJump() {
         //second argument is priority level of sound (0-1)
+        if (!source) return;
         source.PlayOneShot(slimeJumpSound, 0.5f);
     }
 
     public void PlaySlimeDeath() {
         //second argument is priority level of sound (0-1)
+        if (!source) return;
         source.PlayOneShot(slimeDeathSound, 0.7f);
     }
 
     public void PlayButtonSelect() {
         //second argument is priority level of sound (0-1)
+        if (!source) return;
         source.PlayOneShot(buttonSelectSound, 0.7f);
     }
 
     public void PlayWorldMusic() {
         //second argument is priority level of sound (0-1)
+        if (!musicSource) return;
         musicSource.Stop();
         musicSource.PlayOneShot(worldMusic, 0.5f);
     }
 
     public void PlayMenuMusic() {
         //second argument is priority level of sound (0-1)
+        if (!musicSource) return;
         musicSource.Stop();
         musicSource.PlayOneShot(menuMusic, 0.5f);
     }

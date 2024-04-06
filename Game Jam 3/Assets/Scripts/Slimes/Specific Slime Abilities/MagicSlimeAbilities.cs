@@ -55,6 +55,8 @@ public class MagicSlimeAbilities : SlimeAbilities
 
             // Retrieves collider object
             GameObject colliderObj = raycastHit.collider.gameObject;
+
+            cameraScript.SwitchCamera(colliderObj);
         }
     }
 }
