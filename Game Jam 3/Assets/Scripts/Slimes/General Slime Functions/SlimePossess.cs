@@ -7,6 +7,8 @@ using TMPro;
 
 public class SlimePossess : MonoBehaviour
 {
+    [Header("Settings")]
+    public bool canUsePossessKeybind = true;
     private const float RAY_LENGTH = 25f;
     private const float CROSSHAIR_SENS = 0.75f;
     private UIManager UIScript;
@@ -62,6 +64,8 @@ public class SlimePossess : MonoBehaviour
     }
 
     private void Update() {
+        // Prevents possession keybind usage
+        if (!canUsePossessKeybind) return;
 
         //if pressing return to King input and not the King, possess King
         if(inputScript.GetReturnToKingInput() && gameObject != kingPlayer)

@@ -147,9 +147,15 @@ public class KingMovement : SlimeMovement
         closestSlime = slime;
     }
 
+    private void OnEnable() {
+        // turns on movement
+        rb.isKinematic = false;
+    }
+
     private void OnDisable() {
         // turns off movement (so the king slime doesn't drift off if already moving)
         rb.velocity = Vector3.zero;
+        rb.isKinematic = true;
     }
 
 }
