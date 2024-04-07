@@ -130,11 +130,4 @@ public class MagicSlimeAbilities : SlimeAbilities
             slimeVitality.enabled = false;
         }
     }
-
-    private void OnDisable() {
-        // Kills the slime if the player returns to king
-        if (controlObj) {
-
-        }
-    }
 }
