@@ -12,8 +12,10 @@ public class MovingPlatform : MonoBehaviour
     [SerializeField] private float pauseTime;
     [SerializeField] private float moveSpeed;
     [SerializeField] private float bufferDistance;
+    [SerializeField] private PlatformMoveSlime moveSlimeScript;
     private float pauseCountdown = 0f;
     private bool isMovingToEnd = true;
+    private Vector3 direction;
 
     private void Awake() {
         pauseCountdown = pauseTime;
@@ -21,6 +23,9 @@ public class MovingPlatform : MonoBehaviour
         startPos = transform.position;
         //end position is position of "End Position" child gameobject
         endPos = transform.GetChild(0).position;
+
+        //find direction from start to end
+        direction = endPos - startPos;
     }
 
     private void Update() {
@@ -38,6 +43,9 @@ public class MovingPlatform : MonoBehaviour
 
         //move to end position
         transform.position = Vector3.MoveTowards(transform.position, endPos, moveSpeed * Time.deltaTime);
+        
+        //move slimes with platform
+        moveSlimeScript.UpdateAgentPosition(direction, moveSpeed * Time.deltaTime);
 
         if(Vector3.Distance(transform.position, endPos) < bufferDistance) {
             isMovingToEnd = false;
@@ -49,6 +57,9 @@ public class MovingPlatform : MonoBehaviour
 
         //move to start position
         transform.position = Vector3.MoveTowards(transform.position, startPos, moveSpeed * Time.deltaTime);
+
+        //move slimes with platform
+        moveSlimeScript.UpdateAgentPosition(-direction, moveSpeed * Time.deltaTime);
 
         if(Vector3.Distance(transform.position, startPos) < bufferDistance) {
             isMovingToEnd = true;

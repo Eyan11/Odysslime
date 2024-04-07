@@ -43,7 +43,9 @@ GameObject:
   - component: {fileID: 684528700266140990}
   - component: {fileID: 355105372693946642}
   - component: {fileID: 842542171230289481}
+  - component: {fileID: 5335228291478720073}
   - component: {fileID: 6972090117154305022}
+  - component: {fileID: 6135207364838674456}
   - component: {fileID: 6180166047717933698}
   - component: {fileID: 1059386043992297568}
   - component: {fileID: 1261908882620854223}
@@ -147,6 +149,27 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!65 &5335228291478720073
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5792731493083939048}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 5, z: 1}
+  m_Center: {x: 0, y: 2, z: 0}
 --- !u!114 &6972090117154305022
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -162,6 +185,20 @@ MonoBehaviour:
   pauseTime: 3
   moveSpeed: 2
   bufferDistance: 0.01
+  moveSlimeScript: {fileID: 6135207364838674456}
+--- !u!114 &6135207364838674456
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5792731493083939048}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1765fbed7c275784c93f22c799e0895b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  slimeSpeedMultiplier: 2
 --- !u!114 &6180166047717933698
 MonoBehaviour:
   m_ObjectHideFlags: 0
