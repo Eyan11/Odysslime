@@ -631,7 +631,7 @@ GameObject:
   - component: {fileID: 167706063493738581}
   - component: {fileID: 4121452545177475445}
   - component: {fileID: 9069993950812056327}
-  - component: {fileID: 3043276884093285744}
+  - component: {fileID: 4056461753971863880}
   m_Layer: 5
   m_Name: UI Canvas
   m_TagString: UI Manager
@@ -724,7 +724,7 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!114 &3043276884093285744
+--- !u!114 &4056461753971863880
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -733,7 +733,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 4628349281429809771}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0b57e2363361a134eab98f7b5d807e51, type: 3}
+  m_Script: {fileID: 11500000, guid: 4cf29b1e9fd865545892579bd09ab424, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   slimelingText: {fileID: 695162420778376406}
