@@ -5,8 +5,8 @@ using UnityEngine.AI;
 
 public class PlatformMoveSlime : MonoBehaviour
 {
-
     private List<NavMeshAgent> agentsOnPlatform = new List<NavMeshAgent>();
+    [SerializeField] private float slimeSpeedMultiplier;
 
 
     private void OnTriggerEnter(Collider other) {
@@ -33,7 +33,8 @@ public class PlatformMoveSlime : MonoBehaviour
         foreach(NavMeshAgent agent in agentsOnPlatform) {
 
             //update their destination to match the movement of the platform
-            agent.destination += direction * speed;
+            agent.Move(direction * speed * Time.deltaTime * slimeSpeedMultiplier);
         }
     }
+
 }

@@ -38,6 +38,5 @@ public class UIManager : MonoBehaviour
         promptCountdown = displayTime;
         promptText.text = prompt;
     }
-
-
+   
 }
