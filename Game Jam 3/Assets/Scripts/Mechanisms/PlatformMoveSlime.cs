@@ -5,8 +5,13 @@ using UnityEngine.AI;
 
 public class PlatformMoveSlime : MonoBehaviour
 {
-    private List<NavMeshAgent> agentsOnPlatform = new List<NavMeshAgent>();
     [SerializeField] private float slimeSpeedMultiplier;
+
+    [Header ("Only For Bridge Mechanism: ")]
+    [SerializeField] private Transform exitBridgeDest;
+    [SerializeField] private OffMeshLink enterBridgeLink;
+    private List<NavMeshAgent> agentsOnPlatform = new List<NavMeshAgent>();
+    private bool exitBridge = false;
 
 
     private void OnTriggerEnter(Collider other) {
@@ -27,6 +32,17 @@ public class PlatformMoveSlime : MonoBehaviour
         }
     }
 
+    //only for bridge
+    private void OnTriggerStay(Collider other) {
+
+        //if the object has a NavMesh Agent component and the bridge is closing
+        if(exitBridge && other.TryGetComponent<NavMeshAgent>(out NavMeshAgent agent)) {
+
+            //set destination to make slime get off the bridge
+            agent.destination = (exitBridgeDest.position - transform.position);
+        }
+    }
+
     public void UpdateAgentPosition(Vector3 direction, float speed) {
 
         //loop through every agent standing on platform
@@ -35,6 +51,29 @@ public class PlatformMoveSlime : MonoBehaviour
             //update their destination to match the movement of the platform
             agent.Move(direction * speed * Time.deltaTime * slimeSpeedMultiplier);
         }
+    }
+
+    //only for bridge
+    private void Update() {
+        
+        if(exitBridge) {
+
+            foreach(NavMeshAgent agent in agentsOnPlatform) {
+                agent.SetDestination(exitBridgeDest.position - transform.position);
+            }
+        }
+    }
+
+    //only for bridge
+    public void SetExitBridge(bool value) {
+        exitBridge = value;
+
+        //if bridge is retracting, turn off link to enter bridge
+        if(exitBridge)
+            enterBridgeLink.activated = false;
+        //if bridge is NOT retracting, turn on link to enter bridge 
+        else
+            enterBridgeLink.activated = true;
     }
 
 }

@@ -28,6 +28,10 @@ public class SlimeFollow : MonoBehaviour
     private void Update() {
         updateFollowCounter -= Time.deltaTime;
 
+        //only update follow target periodically
+        if(updateFollowCounter < 0)
+            FollowKing();
+
         //calculates direction to king (vector on XZ plane from slime to king)
         kingDir = king.position - transform.position;
         kingDir.y = 0;
@@ -35,12 +39,6 @@ public class SlimeFollow : MonoBehaviour
         //smoothly change (Slerp) player orientation to match the input direction
         rotation = Quaternion.LookRotation(kingDir);
         transform.rotation = Quaternion.Slerp(transform.rotation, rotation, Time.deltaTime * rotationSpeed);
-    }
-
-    private void FixedUpdate() {
-        //only update follow target periodically
-        if(updateFollowCounter < 0)
-            FollowKing();
     }
 
     private void FollowKing() {

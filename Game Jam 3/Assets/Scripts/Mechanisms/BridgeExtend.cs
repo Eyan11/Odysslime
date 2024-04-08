@@ -10,9 +10,9 @@ public class BridgeExtend : MonoBehaviour
     [SerializeField] private Transform bridgeStart;
     [SerializeField] private Transform bridgeEnd;
     [SerializeField] private float extendSpeed;
+    [SerializeField] private float retractSpeed;
     [SerializeField] private float bufferDistance;
     [SerializeField] private PlatformMoveSlime moveSlimeScript;
-    private SlimeExitBridge exitBridgeScript;
     private Vector3 startPos;
     private Vector3 endPos;
     private bool isActivated = false;
@@ -20,7 +20,6 @@ public class BridgeExtend : MonoBehaviour
     private Vector3 direction;
 
     private void Awake() {
-        exitBridgeScript = GetComponent<SlimeExitBridge>();
 
         //find the length of the bridge
         float bridgeLength = Vector3.Distance(bridgeStart.position, bridgeEnd.position);
@@ -43,17 +42,17 @@ public class BridgeExtend : MonoBehaviour
     private void Update() {
 
         if(isMoving && isActivated) {
-            MoveToEnd();
+            ExtendBridge();
         }
         else if(isMoving && !isActivated) {
-            MoveToStart();
+            RetractBridge();
         }
     }
 
     public void Activate() {
         isActivated = true;
         isMoving = true;
-        exitBridgeScript.SetExitBridge(false);
+        moveSlimeScript.SetExitBridge(false);
     }
 
     public void Deactivate() {
@@ -62,7 +61,7 @@ public class BridgeExtend : MonoBehaviour
     }
 
 
-    public void MoveToEnd() {
+    public void ExtendBridge() {
 
         //move to end position
         movingBridge.transform.position = Vector3.MoveTowards(movingBridge.transform.position, endPos, extendSpeed * Time.deltaTime);
@@ -75,19 +74,19 @@ public class BridgeExtend : MonoBehaviour
         }
     }
 
-    public void MoveToStart() {
+    public void RetractBridge() {
 
         //move to start position
-        movingBridge.transform.position = Vector3.MoveTowards(movingBridge.transform.position, startPos, extendSpeed * Time.deltaTime);
+        movingBridge.transform.position = Vector3.MoveTowards(movingBridge.transform.position, startPos, retractSpeed * Time.deltaTime);
 
         //move slimes with platform
-        moveSlimeScript.UpdateAgentPosition(-direction, extendSpeed);
+        moveSlimeScript.UpdateAgentPosition(-direction, retractSpeed);
 
-        exitBridgeScript.SetExitBridge(true);
+        moveSlimeScript.SetExitBridge(true);
 
         if(Vector3.Distance(moveSlimeScript.transform.position, startPos) < bufferDistance) {
             isMoving = true;
-            exitBridgeScript.SetExitBridge(false);
+            moveSlimeScript.SetExitBridge(false);
         }
     }
 }
