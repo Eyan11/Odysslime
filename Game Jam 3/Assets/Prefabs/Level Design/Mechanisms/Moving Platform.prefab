@@ -199,6 +199,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slimeSpeedMultiplier: 2
+  exitBridgeDest: {fileID: 0}
+  enterBridgeLink: {fileID: 0}
 --- !u!114 &6180166047717933698
 MonoBehaviour:
   m_ObjectHideFlags: 0
