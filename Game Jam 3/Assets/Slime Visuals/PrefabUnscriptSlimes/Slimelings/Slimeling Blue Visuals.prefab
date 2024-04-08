@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &6193952477895487014
+--- !u!1001 &6058218067828036122
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -10,13 +10,28 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 6bc80f91a60db4b98b09585fe9dda69f,
         type: 3}
+      propertyPath: m_LocalScale.x
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 6bc80f91a60db4b98b09585fe9dda69f,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 6bc80f91a60db4b98b09585fe9dda69f,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 6bc80f91a60db4b98b09585fe9dda69f,
+        type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.536
+      value: 0.8972419
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 6bc80f91a60db4b98b09585fe9dda69f,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.474
+      value: 0.479
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 6bc80f91a60db4b98b09585fe9dda69f,
         type: 3}
@@ -58,10 +73,20 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 6bc80f91a60db4b98b09585fe9dda69f,
+        type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 6bc80f91a60db4b98b09585fe9dda69f,
         type: 3}
       propertyPath: m_Name
-      value: SlimelingIDLE (brown)
+      value: Slimeling Blue Visuals
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 6bc80f91a60db4b98b09585fe9dda69f,
+        type: 3}
+      propertyPath: m_TagString
+      value: Obj
       objectReference: {fileID: 0}
     - target: {fileID: 6844499898217980155, guid: 6bc80f91a60db4b98b09585fe9dda69f,
         type: 3}
@@ -72,7 +97,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 41f430debb89440bb8b947f1ea0d57a3, type: 2}
+      objectReference: {fileID: 2100000, guid: 30123caf1229e41f6939e03503ebff01, type: 2}
     - target: {fileID: 6844499898217980155, guid: 6bc80f91a60db4b98b09585fe9dda69f,
         type: 3}
       propertyPath: m_Materials.Array.data[1]
@@ -85,22 +110,22 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 6bc80f91a60db4b98b09585fe9dda69f,
         type: 3}
       insertIndex: -1
-      addedObject: {fileID: 2527813692546194828}
+      addedObject: {fileID: 385427038531839156}
   m_SourcePrefab: {fileID: 100100000, guid: 6bc80f91a60db4b98b09585fe9dda69f, type: 3}
---- !u!1 &6427832008467108727 stripped
+--- !u!1 &6400306585003061067 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 6bc80f91a60db4b98b09585fe9dda69f,
     type: 3}
-  m_PrefabInstance: {fileID: 6193952477895487014}
+  m_PrefabInstance: {fileID: 6058218067828036122}
   m_PrefabAsset: {fileID: 0}
---- !u!95 &2527813692546194828
+--- !u!95 &385427038531839156
 Animator:
   serializedVersion: 5
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6427832008467108727}
+  m_GameObject: {fileID: 6400306585003061067}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: 9175f4944950b4393b02d6551c4463c0, type: 2}
