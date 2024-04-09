@@ -25,10 +25,10 @@ public class UIManager : MonoBehaviour
         }
     }
 
-    public void AddSlimeling() {
+    public void UpdateSlimelingCount(int changeInSlimes) {
 
         //update counter and UI for slimeling
-        slimelingsCollected++;
+        slimelingsCollected += changeInSlimes;
         slimelingText.text = "Slimelings: " + slimelingsCollected + " / " + totalSlimelings;
     }
 

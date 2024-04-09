@@ -10,10 +10,12 @@ public class SlimeVitality : MonoBehaviour
     private GameObject slimeKing;
     private SlimePossess slimePossess;
     private SoundManager soundManager;
+    private UIManager UIScript;
     private void Awake() {
         slimeKing = GameObject.FindWithTag("King Slime");
         slimePossess = GetComponent<SlimePossess>();
         soundManager = GameObject.FindWithTag("Sound Manager").GetComponent<SoundManager>();
+        UIScript = GameObject.FindWithTag("UI Manager").GetComponent<UIManager>();
     }
 
     private void OnDisable() {
@@ -29,6 +31,11 @@ public class SlimeVitality : MonoBehaviour
             if(GetComponent<SlimeFollow>().enabled == true)
                 //remove this slime from slime follower array
                 slimeKing.GetComponent<DiscoverSlimes>().RemoveSlimeFollower(this.gameObject.transform);
+
+            //if this is a slimeling, then update the UI counter
+            if(this.gameObject.CompareTag("Slimeling")) {
+                UIScript.UpdateSlimelingCount(-1);
+            }
 
             soundManager.PlaySlimeDeath();
 

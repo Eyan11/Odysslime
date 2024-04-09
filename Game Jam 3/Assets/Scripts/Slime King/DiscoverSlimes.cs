@@ -8,6 +8,7 @@ public class DiscoverSlimes : MonoBehaviour
     [SerializeField] private float searchRadius;
     [SerializeField] private float searchInterval;
     [SerializeField] private float findClosestSlimeInterval;
+    private UIManager UIScript;
     private float findClosestSlimeCountdown = 0;
     private KingMovement moveScript;
     private SlimePossess possessScript;
@@ -20,6 +21,7 @@ public class DiscoverSlimes : MonoBehaviour
     private void Awake() {
         possessScript = GetComponent<SlimePossess>();
         moveScript = GetComponent<KingMovement>();
+        UIScript = GameObject.FindWithTag("UI Manager").GetComponent<UIManager>();
 
         //get layer of slimes and convert to a bitmask
         slimeLayer = 1<<LayerMask.NameToLayer("Slime");
@@ -67,6 +69,11 @@ public class DiscoverSlimes : MonoBehaviour
                 AddSlimeFollower(hitCollider.transform);
                 //make slime follow King
                 hitCollider.gameObject.GetComponent<SlimeFollow>().enabled = true;
+
+                //if a slimeling is discovered, update UI counter
+                if(hitCollider.gameObject.CompareTag("Slimeling")) {
+                    UIScript.UpdateSlimelingCount(1);
+                }
             }
             
         }
