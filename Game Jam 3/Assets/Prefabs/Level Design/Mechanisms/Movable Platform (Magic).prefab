@@ -18,7 +18,7 @@ GameObject:
   - component: {fileID: 5668797184736738865}
   - component: {fileID: 5052216035855323516}
   - component: {fileID: 1396564343186367925}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Movable Platform (Magic)
   m_TagString: Untagged
   m_Icon: {fileID: 0}

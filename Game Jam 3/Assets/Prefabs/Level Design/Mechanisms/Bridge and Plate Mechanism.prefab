@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5873981290322884804}
-  m_Layer: 7
+  m_Layer: 6
   m_Name: Exit Bridge Destination
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -560,7 +560,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6875798520946155857}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: Exit Bridge Link Start Position
   m_TagString: Untagged
   m_Icon: {fileID: -5487077368411116049, guid: 0000000000000000d000000000000000, type: 0}
@@ -592,7 +592,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8169693871212197668}
   - component: {fileID: 7781944407220434186}
-  m_Layer: 7
+  m_Layer: 6
   m_Name: Extending Bridge
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -648,7 +648,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4540679026210830684}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: Exit Bridge Link End Position
   m_TagString: Untagged
   m_Icon: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
