@@ -19,7 +19,6 @@ public class PlatformMoveSlime : MonoBehaviour
         //if the object has a NavMesh Agent component, add it to the list
         if(other.TryGetComponent<NavMeshAgent>(out NavMeshAgent agent)) {
             agentsOnPlatform.Add(agent);
-            Debug.Log("Slime added");
         }
     }
 
@@ -28,7 +27,6 @@ public class PlatformMoveSlime : MonoBehaviour
         //if the object has a NavMesh Agent component, remove it from the list
         if(other.TryGetComponent<NavMeshAgent>(out NavMeshAgent agent)) {
             agentsOnPlatform.Remove(agent);
-            Debug.Log("Slime removed");
         }
     }
 

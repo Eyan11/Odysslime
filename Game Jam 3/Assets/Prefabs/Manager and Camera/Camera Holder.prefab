@@ -291,10 +291,10 @@ MonoBehaviour:
   m_Orbits:
   - m_Height: 6
     m_Radius: 3
-  - m_Height: 2
+  - m_Height: 3
+    m_Radius: 6
+  - m_Height: 0
     m_Radius: 7
-  - m_Height: -1
-    m_Radius: 5
   m_LegacyHeadingBias: 3.4028235e+38
   m_Rigs:
   - {fileID: 5659836030313299159}
@@ -645,7 +645,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BindingMode: 4
-  m_FollowOffset: {x: 0, y: 5, z: -6}
+  m_FollowOffset: {x: 0, y: 5, z: -5}
   m_XDamping: 1
   m_YDamping: 1
   m_ZDamping: 1
@@ -871,8 +871,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3665290919708885798}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.24235463, y: -0.40722778, z: 0.11301181, w: 0.87330294}
-  m_LocalPosition: {x: 0.91925323, y: 1, z: -0.77134496}
+  m_LocalRotation: {x: 0.27998933, y: -0.40194523, z: 0.13056117, w: 0.86197436}
+  m_LocalPosition: {x: 0.76604444, y: 1, z: -0.64278746}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1108,7 +1108,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BindingMode: 4
-  m_FollowOffset: {x: 0, y: 5, z: -6}
+  m_FollowOffset: {x: 0, y: 5, z: -5}
   m_XDamping: 1
   m_YDamping: 1
   m_ZDamping: 1
@@ -1386,11 +1386,11 @@ MonoBehaviour:
   m_BindingMode: 4
   m_SplineCurvature: 0.1
   m_Orbits:
-  - m_Height: 10
+  - m_Height: 12
     m_Radius: 3
   - m_Height: 5
-    m_Radius: 6
-  - m_Height: 1
+    m_Radius: 5
+  - m_Height: -1
     m_Radius: 8
   m_LegacyHeadingBias: 3.4028235e+38
   m_Rigs:
@@ -1502,7 +1502,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BindingMode: 4
-  m_FollowOffset: {x: 0, y: 5, z: -6}
+  m_FollowOffset: {x: 0, y: 5, z: -5}
   m_XDamping: 1
   m_YDamping: 1
   m_ZDamping: 1

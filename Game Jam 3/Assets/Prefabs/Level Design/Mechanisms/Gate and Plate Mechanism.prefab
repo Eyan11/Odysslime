@@ -458,7 +458,7 @@ PrefabInstance:
     - target: {fileID: 7437712782558561375, guid: 20f80afaf6ca5ca46b6992546df5d875,
         type: 3}
       propertyPath: m_Name
-      value: Pressure Plate
+      value: Activation Plate
       objectReference: {fileID: 0}
     - target: {fileID: 7510919766377651646, guid: 20f80afaf6ca5ca46b6992546df5d875,
         type: 3}

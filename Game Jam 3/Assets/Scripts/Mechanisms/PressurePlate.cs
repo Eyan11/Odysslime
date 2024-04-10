@@ -4,12 +4,13 @@ using UnityEngine;
 
 public class PressurePlate : MonoBehaviour
 {
-    [Header("Choose How the Pressure Plate is Activated: ")]
+    [Header("Choose How the Activation Plate is Activated: ")]
     [SerializeField] private PlateType plateType;
 
     [Header("References, Leave Empty of Not Applicable")]
     [SerializeField] private GateOpen gateScript;
     [SerializeField] private BridgeExtend bridgeScript;
+    [SerializeField] private Material activatedMaterial;
 
     [Header("Slime Plate Settings: ")]
     [SerializeField] private int slimesToActivate;
@@ -17,6 +18,7 @@ public class PressurePlate : MonoBehaviour
     private int iceCubesOnPlate = 0;
     private bool plateIsActive = false;
     private int slimeLayer, iceLayer, colliderLayer;
+
 
     private void Awake() {
         slimeLayer = LayerMask.NameToLayer("Slime");
@@ -52,6 +54,48 @@ public class PressurePlate : MonoBehaviour
             UpdateIcePlate(-1);
         }
     }
+
+    private void UpdateSlimePlate(int slimeChange) {
+        slimesOnPlate += slimeChange;
+
+        //if plate is NOT activated and enough slimes are on plate
+        if(!plateIsActive && slimesOnPlate >= slimesToActivate) {
+            //activate plate
+            plateIsActive = true;
+            
+            //activate gate or bridge
+            if(gateScript)
+                gateScript.Activate();
+            else if(bridgeScript)
+                bridgeScript.Activate();
+
+            //switch materials once activated
+            GetComponent<Renderer>().material = activatedMaterial;
+        }
+    }
+
+    private void UpdateIcePlate(int iceChange) {
+        iceCubesOnPlate += iceChange;
+
+        //if plate is NOT activated and enough ice cubes are on plate
+        if(!plateIsActive && iceCubesOnPlate >= 1) {
+            //activate plate
+            plateIsActive = true;
+
+            //activate gate or bridge
+            if(gateScript)
+                gateScript.Activate();
+            else if(bridgeScript)
+                bridgeScript.Activate();
+
+            //switch materials once activated
+            GetComponent<Renderer>().material = activatedMaterial;
+        }
+    }
+
+
+
+/*   FOR PRESSURE PLATE
 
     private void UpdateSlimePlate(int slimeChange) {
         slimesOnPlate += slimeChange;
@@ -108,7 +152,7 @@ public class PressurePlate : MonoBehaviour
                 bridgeScript.Deactivate();
         }
     }
-
+*/
 
     //enums are a set of named values
     //PlateType specifies what activates this pressure plate
