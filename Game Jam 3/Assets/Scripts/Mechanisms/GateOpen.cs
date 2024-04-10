@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GateOpen : MonoBehaviour
+public class GateOpen : MechanismBase
 {
     [SerializeField] private GameObject gate;
     [SerializeField] private float slideSpeed;

@@ -4,7 +4,7 @@ using UnityEngine;
 using Unity.AI.Navigation;
 using UnityEngine.AI;
 
-public class BridgeExtend : MonoBehaviour
+public class BridgeExtend : MechanismBase
 {
     [SerializeField] private GameObject movingBridge;
     [SerializeField] private Transform bridgeStart;
