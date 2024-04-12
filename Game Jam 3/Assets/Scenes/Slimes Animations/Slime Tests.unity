@@ -21019,12 +21019,12 @@ PrefabInstance:
     - target: {fileID: 4486388866382925688, guid: 8bbded48361704f2a84faa5738797ea7,
         type: 3}
       propertyPath: m_Name
-      value: PS_VFX_PickupLoop
+      value: Possess Soul Visuals
       objectReference: {fileID: 0}
     - target: {fileID: 4650632041530361398, guid: 8bbded48361704f2a84faa5738797ea7,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -38.29
+      value: -47.04
       objectReference: {fileID: 0}
     - target: {fileID: 4650632041530361398, guid: 8bbded48361704f2a84faa5738797ea7,
         type: 3}
@@ -21034,7 +21034,7 @@ PrefabInstance:
     - target: {fileID: 4650632041530361398, guid: 8bbded48361704f2a84faa5738797ea7,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 6.19
+      value: 9.190001
       objectReference: {fileID: 0}
     - target: {fileID: 4650632041530361398, guid: 8bbded48361704f2a84faa5738797ea7,
         type: 3}
