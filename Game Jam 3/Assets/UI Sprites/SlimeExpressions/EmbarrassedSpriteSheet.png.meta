@@ -34,7 +34,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -43,7 +43,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -72,7 +72,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -134,7 +134,280 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: EmbarrassedSpriteSheet_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 630.1539
+        height: 630
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f6406acd45f35a840b899634335a567b
+      internalID: -1194952884
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EmbarrassedSpriteSheet_1
+      rect:
+        serializedVersion: 2
+        x: 630
+        y: 0
+        width: 630.1539
+        height: 630
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d1c8456e41d68e84b8037f94380644bc
+      internalID: 1438843801
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EmbarrassedSpriteSheet_2
+      rect:
+        serializedVersion: 2
+        x: 1260
+        y: 0
+        width: 630.1539
+        height: 630
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 738243920262bb445b6639663b278159
+      internalID: -1225337055
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EmbarrassedSpriteSheet_3
+      rect:
+        serializedVersion: 2
+        x: 1890
+        y: 0
+        width: 630.1539
+        height: 630
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 793e5004d0e287e44bb8b748ab951f58
+      internalID: 928317480
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EmbarrassedSpriteSheet_4
+      rect:
+        serializedVersion: 2
+        x: 2520
+        y: 0
+        width: 630.1539
+        height: 630
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 69b7fce515856244b84c2cfecd3e05a0
+      internalID: 1249403188
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EmbarrassedSpriteSheet_5
+      rect:
+        serializedVersion: 2
+        x: 3150
+        y: 0
+        width: 630.1539
+        height: 630
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 924a5dae1e2254c4f908980f9092eb87
+      internalID: -1379694666
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EmbarrassedSpriteSheet_6
+      rect:
+        serializedVersion: 2
+        x: 3780
+        y: 0
+        width: 630.1539
+        height: 630
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1fbf7576daae7754c96be2e3ae27e024
+      internalID: 156290870
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EmbarrassedSpriteSheet_7
+      rect:
+        serializedVersion: 2
+        x: 4410
+        y: 0
+        width: 630.1539
+        height: 630
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: af293320c086b764c8b77fd5a2cbb6eb
+      internalID: 2125533448
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EmbarrassedSpriteSheet_8
+      rect:
+        serializedVersion: 2
+        x: 5040
+        y: 0
+        width: 630.1539
+        height: 630
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f519a891019141a478ae3c84e95a453c
+      internalID: -1392388226
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EmbarrassedSpriteSheet_9
+      rect:
+        serializedVersion: 2
+        x: 5670
+        y: 0
+        width: 630.1539
+        height: 630
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4ef258b6a44dff84d833b66a81a2737f
+      internalID: 1080275927
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EmbarrassedSpriteSheet_10
+      rect:
+        serializedVersion: 2
+        x: 6300
+        y: 0
+        width: 630.1539
+        height: 630
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: df66781c1d15af2438b8f5b4b63c8fa2
+      internalID: 793817220
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EmbarrassedSpriteSheet_11
+      rect:
+        serializedVersion: 2
+        x: 6930
+        y: 0
+        width: 630.1539
+        height: 630
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b6d0748c4575eb54781eafaabfd0869a
+      internalID: -5826333
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EmbarrassedSpriteSheet_12
+      rect:
+        serializedVersion: 2
+        x: 7560
+        y: 0
+        width: 630.1539
+        height: 630
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ee38a4f88f214f04394d92dd4cfe1bfb
+      internalID: 538060421
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -145,7 +418,20 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      EmbarrassedSpriteSheet_0: -1194952884
+      EmbarrassedSpriteSheet_1: 1438843801
+      EmbarrassedSpriteSheet_10: 793817220
+      EmbarrassedSpriteSheet_11: -5826333
+      EmbarrassedSpriteSheet_12: 538060421
+      EmbarrassedSpriteSheet_2: -1225337055
+      EmbarrassedSpriteSheet_3: 928317480
+      EmbarrassedSpriteSheet_4: 1249403188
+      EmbarrassedSpriteSheet_5: -1379694666
+      EmbarrassedSpriteSheet_6: 156290870
+      EmbarrassedSpriteSheet_7: 2125533448
+      EmbarrassedSpriteSheet_8: -1392388226
+      EmbarrassedSpriteSheet_9: 1080275927
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

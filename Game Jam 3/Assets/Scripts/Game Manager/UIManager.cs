@@ -6,14 +6,20 @@ using TMPro;
 
 public class UIManager : MonoBehaviour
 {
+    [SerializeField] private Animator slimelingAnim;
     [SerializeField] private TMP_Text slimelingText;
     [SerializeField] private TMP_Text promptText;
     [SerializeField] private int totalSlimelings;
     private int slimelingsCollected = 0;
     private float promptCountdown = 0;
+    int loseSlimelingHash;
+    int gainSlimelingHash;
 
     private void Awake() {
-        slimelingText.text = "Slimelings: " + slimelingsCollected + " / " + totalSlimelings;
+        slimelingText.text = "" + slimelingsCollected + " / " + totalSlimelings;
+        
+        loseSlimelingHash = Animator.StringToHash("loseSlimeling");
+        gainSlimelingHash = Animator.StringToHash("gainSlimeling");
     }
 
     private void Update() {
@@ -29,7 +35,13 @@ public class UIManager : MonoBehaviour
 
         //update counter and UI for slimeling
         slimelingsCollected += changeInSlimes;
-        slimelingText.text = "Slimelings: " + slimelingsCollected + " / " + totalSlimelings;
+        slimelingText.text = "" + slimelingsCollected + " / " + totalSlimelings;
+    
+        //update UI image
+        if(changeInSlimes > 0)
+            slimelingAnim.SetTrigger(gainSlimelingHash);
+        else
+            slimelingAnim.SetTrigger(loseSlimelingHash);
     }
 
     public void DisplayPrompt(string prompt, float displayTime) {
