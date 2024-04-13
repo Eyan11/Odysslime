@@ -66,7 +66,7 @@ public class ThirdPersonCam : MonoBehaviour
     }
 
     
-    private void LockCamera() {
+    public void LockCamera() {
         camIsLocked = true;
 
         //lock cursor to game window
@@ -81,7 +81,7 @@ public class ThirdPersonCam : MonoBehaviour
         topDownFreeLookCam.m_YAxis.m_MaxSpeed = 0f;
     }
 
-    private void UnlockCamera() {
+    public void UnlockCamera() {
         camIsLocked = false;
 
         //lock cursor to center of game view

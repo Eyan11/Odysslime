@@ -95,7 +95,7 @@ public class PressurePlate : MonoBehaviour
 
 
 
-/*   FOR PRESSURE PLATE
+/*   FOR PRESSURE PLATE - KEEPING INCASE WE WANT IT BACK
 
     private void UpdateSlimePlate(int slimeChange) {
         slimesOnPlate += slimeChange;

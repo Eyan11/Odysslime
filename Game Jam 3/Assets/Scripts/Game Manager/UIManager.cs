@@ -12,12 +12,15 @@ public class UIManager : MonoBehaviour
     [SerializeField] private int totalSlimelings;
     private int slimelingsCollected = 0;
     private float promptCountdown = 0;
-    int loseSlimelingHash;
-    int gainSlimelingHash;
+    private int loseSlimelingHash;
+    private int gainSlimelingHash;
+
 
     private void Awake() {
+        //set initial slimeling count
         slimelingText.text = "" + slimelingsCollected + " / " + totalSlimelings;
         
+        //get references to parameters and store as ints for performace
         loseSlimelingHash = Animator.StringToHash("loseSlimeling");
         gainSlimelingHash = Animator.StringToHash("gainSlimeling");
     }
