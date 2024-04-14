@@ -2409,12 +2409,12 @@ PrefabInstance:
     - target: {fileID: 2643911545365951605, guid: be22204a2849d904e9580acbed9f549d,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.000000043296936
+      value: -0.000000043296936
       objectReference: {fileID: 0}
     - target: {fileID: 2643911545365951605, guid: be22204a2849d904e9580acbed9f549d,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.000000014063852
+      value: 0.000000014063852
       objectReference: {fileID: 0}
     - target: {fileID: 2657715563044509655, guid: be22204a2849d904e9580acbed9f549d,
         type: 3}
@@ -2434,12 +2434,12 @@ PrefabInstance:
     - target: {fileID: 2657715563044509655, guid: be22204a2849d904e9580acbed9f549d,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.000000016364707
+      value: -0.000000016364705
       objectReference: {fileID: 0}
     - target: {fileID: 2657715563044509655, guid: be22204a2849d904e9580acbed9f549d,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.000000005315635
+      value: 0.000000005315635
       objectReference: {fileID: 0}
     - target: {fileID: 3261904152038181768, guid: be22204a2849d904e9580acbed9f549d,
         type: 3}
@@ -2479,12 +2479,12 @@ PrefabInstance:
     - target: {fileID: 7239629344403783254, guid: be22204a2849d904e9580acbed9f549d,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.000000022481217
+      value: 0.00000002248122
       objectReference: {fileID: 0}
     - target: {fileID: 7239629344403783254, guid: be22204a2849d904e9580acbed9f549d,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.000000009312026
+      value: -0.000000009312027
       objectReference: {fileID: 0}
     - target: {fileID: 8079155906221791023, guid: be22204a2849d904e9580acbed9f549d,
         type: 3}
@@ -2574,6 +2574,21 @@ PrefabInstance:
     - target: {fileID: 8740197831834151754, guid: be22204a2849d904e9580acbed9f549d,
         type: 3}
       propertyPath: m_ComponentOwner
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 9023487712723160973, guid: be22204a2849d904e9580acbed9f549d,
+        type: 3}
+      propertyPath: m_Rigs.Array.data[0]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 9023487712723160973, guid: be22204a2849d904e9580acbed9f549d,
+        type: 3}
+      propertyPath: m_Rigs.Array.data[1]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 9023487712723160973, guid: be22204a2849d904e9580acbed9f549d,
+        type: 3}
+      propertyPath: m_Rigs.Array.data[2]
       value: 
       objectReference: {fileID: 0}
     m_RemovedComponents:

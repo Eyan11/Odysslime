@@ -102,8 +102,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 7
-  maxDistToSlime: 25
-  maxAngleToSlime: 45
   hoverSpeed: 2
   maxYPos: 9999
   minYPos: -9999
@@ -135,9 +133,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b52e0f5c8a08be4095df52210a0bb03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  searchRadius: 15
+  discoverRadius: 15
+  undiscoverRadius: 25
   searchInterval: 1
-  findClosestSlimeInterval: 7
+  updateFollowersInterval: 3
 --- !u!114 &3419740655066964938
 MonoBehaviour:
   m_ObjectHideFlags: 0

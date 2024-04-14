@@ -136,7 +136,7 @@ public class SlimePossess : MonoBehaviour
                 isSlime = true;
 
                 //if object is a super slime and is not discovered, display UI and return
-                if(otherObject != kingPlayer && discoverScript.FindSlimeFollower(otherObject.transform) == -1) {
+                if(otherObject != kingPlayer && !discoverScript.FindSlimeFollower(otherObject.transform)) {
                     UIScript.DisplayPrompt("Can only possess slime followers!", 0.1f);
                     return;
                 }

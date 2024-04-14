@@ -16,10 +16,6 @@ public class KingMovement : SlimeMovement
 
     [Header("Horizontal Movement Settings")]
     [SerializeField] private float moveSpeed;
-    [SerializeField] private float maxDistToSlime;
-    [SerializeField] private int maxAngleToSlime;
-    private Transform closestSlime = null;
-    private Vector3 closestSlimeDir;
     private Vector2 moveInput;
     private Vector3 moveDir;
     private Vector3 groundPos;
@@ -74,7 +70,6 @@ public class KingMovement : SlimeMovement
         }
 
         GetInput();
-        ConstrainMovement();
     }
 
     //returns the point fo collision on a downwards raycast
@@ -97,18 +92,23 @@ public class KingMovement : SlimeMovement
 
     private void SetVerticalSpeed() {
 
-        //if too low to ground, move upwards (cap at max height)
-        if(currentHeight < hoverHeight - heightBuffer && (transform.position.y < maxYPos))
-            vertSpeed = hoverSpeed;
+        //if too low to ground and not at max height OR below min height, move upwards
+        if((currentHeight < (hoverHeight - heightBuffer) && (transform.position.y < maxYPos))
+            || transform.position.y < minYPos) {
 
-        //if too high to ground, move downwards (cap at min height)
-        else if(currentHeight > hoverHeight + heightBuffer && (transform.position.y > minYPos))
+            vertSpeed = hoverSpeed;
+        }
+
+        //if too high to ground and not at min height OR above max height, move downwards
+        else if(currentHeight > (hoverHeight + heightBuffer) && (transform.position.y > minYPos)
+            || transform.position.y > maxYPos) {
+            
             vertSpeed = -hoverSpeed;
+        }
 
         //if correct height above ground, don't move vertically
         else
             vertSpeed = 0;
-
     }
 
     private void GetInput() {
@@ -117,34 +117,6 @@ public class KingMovement : SlimeMovement
 
         //find direction of input based on player orientation (relative to camera)
         moveDir = (orientation.forward * moveInput.y) + (kingObj.up * 0) + (orientation.right * moveInput.x);
-    }
-
-    private void ConstrainMovement() {
-
-        //if no slime followers, don't restrict movement
-        if(closestSlime == null)
-            return;
-
-        //if the slime is moving in a direction that is too far from slimes
-        if(Vector3.Distance(groundPos + (moveDir*3), closestSlime.position) > maxDistToSlime) {
-
-            //calculate the direction to closest slime
-            closestSlimeDir = closestSlime.position - groundPos;
-
-            //if angle between closest slime and movement direction is too large
-            if(Vector3.Angle(closestSlimeDir, moveDir) > maxAngleToSlime) {
-
-                //restrict movement
-                moveDir.x = 0;
-                moveDir.z = 0;
-                //display prompt for 1 sec
-                UIScript.DisplayPrompt("Stay with your slime followers", 1f);
-            }
-        }
-    }
-
-    public void SetClosestSlime(Transform slime) {
-        closestSlime = slime;
     }
 
     private void OnEnable() {
@@ -157,5 +129,4 @@ public class KingMovement : SlimeMovement
         rb.velocity = Vector3.zero;
         rb.isKinematic = true;
     }
-
 }
