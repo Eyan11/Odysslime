@@ -379,6 +379,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4343830601681938859}
   - component: {fileID: 7215928947481412633}
+  - component: {fileID: 400074479014764665}
   m_Layer: 0
   m_Name: SlimeFace
   m_TagString: Untagged
@@ -456,6 +457,27 @@ SkinnedMeshRenderer:
     m_Center: {x: -0.09732873, y: -0.00016649812, z: -0.09572548}
     m_Extent: {x: 0.07974442, y: 0.09775912, z: 0.027691096}
   m_DirtyAABB: 0
+--- !u!95 &400074479014764665
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5096215762389207216}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 24ca98dd9a7644f7cadfa3474c945e8a, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &8753895098077787927
 GameObject:
   m_ObjectHideFlags: 0

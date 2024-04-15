@@ -313,11 +313,52 @@ PrefabInstance:
       propertyPath: m_Name
       value: Magic Slime Obj
       objectReference: {fileID: 0}
+    - target: {fileID: 1310345560719107351, guid: 4a4ef7dc123cf45a690d4022a6502452,
+        type: 3}
+      propertyPath: m_Name
+      value: MagicSlimeFace
+      objectReference: {fileID: 0}
+    - target: {fileID: 4444564993910044028, guid: 4a4ef7dc123cf45a690d4022a6502452,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: d7177d990b17449de8b57979deb13532, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1310345560719107351, guid: 4a4ef7dc123cf45a690d4022a6502452,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3658005999765220963}
   m_SourcePrefab: {fileID: 100100000, guid: 4a4ef7dc123cf45a690d4022a6502452, type: 3}
+--- !u!1 &5394613958297350909 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1310345560719107351, guid: 4a4ef7dc123cf45a690d4022a6502452,
+    type: 3}
+  m_PrefabInstance: {fileID: 6409410105850288106}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &3658005999765220963
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5394613958297350909}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 8c4f9b6f00642434fb266fb3bc72be2a, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &6158259414867809714 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 973979041896317528, guid: 4a4ef7dc123cf45a690d4022a6502452,
