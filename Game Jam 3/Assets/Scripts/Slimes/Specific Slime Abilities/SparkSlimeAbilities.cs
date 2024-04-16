@@ -4,19 +4,52 @@ using UnityEngine;
 
 public class SparkSlimeAbilities : SlimeAbilities
 {
-    // Start is called before the first frame update
-    void Start()
+    [Header("Settings")]
+    [SerializeField] private GameObject slimeModel;
+    [SerializeField] private float interactionDistance = 6.0f;
+    [Header("Radius should be bigger than the slime itself")]
+    [SerializeField] private float frontalInteractionRadius = 4.0f;
+    private SlimeVitality slimeVitality;
+
+    private int movablesMask;
+    private float nextCheckWait = 0.1f;
+    private float nextCheckTime;
+    private RaycastHit raycastHit;
+
+
+    void Awake()
     {
-        
+        // Creates bit mask for pushable objects
+        movablesMask = 1 << 12;
+
+        // Retrieves slime health state
+        slimeVitality = GetComponent<SlimeVitality>();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+    private void FixedUpdate() {
+        // Checks to see if an object can be interacted with
+        InteractionCheck();
+    }
+
+    private void InteractionCheck() {
+        // Prevents a raycast hit check until enough time passes
+        if (nextCheckTime > Time.fixedTime) return;
+        nextCheckTime = Time.fixedTime + nextCheckWait;
+
+        // Raycast check on pushable objects
+        Physics.SphereCast(transform.position - slimeModel.transform.forward * frontalInteractionRadius, frontalInteractionRadius, slimeModel.transform.forward, out raycastHit, interactionDistance, movablesMask);
     }
 
     public override void UseAbility() {
+        // Prevents interaction if not interacting with ANYTHING
+        if (!raycastHit.collider) { return; }
 
+        // Increase's the battery charge
+        GameObject colliderObj = raycastHit.collider.gameObject;
+        Battery battery = colliderObj.GetComponent<Battery>();
+        battery.IncreaseCharge();
+
+        // Kills slime
+        slimeVitality.enabled = false;
     }
 }

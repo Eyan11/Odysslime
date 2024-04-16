@@ -172,6 +172,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e181166cb6575641bacdc2a79c2851f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  slimeModel: {fileID: 4334822644479545773}
+  interactionDistance: 6
+  frontalInteractionRadius: 4
 --- !u!114 &5128253687244523962
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -378,6 +381,12 @@ Animator:
 --- !u!4 &3991230056024607511 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7065777455132422059, guid: 9a0f96918165248f3be5204d80fec014,
+    type: 3}
+  m_PrefabInstance: {fileID: 6155608968121296060}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &4334822644479545773 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7585609353656399121, guid: 9a0f96918165248f3be5204d80fec014,
     type: 3}
   m_PrefabInstance: {fileID: 6155608968121296060}
   m_PrefabAsset: {fileID: 0}

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7628215036686758624}
   - component: {fileID: 8551030575387452675}
   - component: {fileID: 5351284717544466499}
-  m_Layer: 12
+  m_Layer: 0
   m_Name: Battery Model
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -94,7 +94,7 @@ GameObject:
   - component: {fileID: 3930148328234558193}
   - component: {fileID: 8630635726870975547}
   - component: {fileID: 1013743674649485849}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Battery
   m_TagString: Untagged
   m_Icon: {fileID: 0}

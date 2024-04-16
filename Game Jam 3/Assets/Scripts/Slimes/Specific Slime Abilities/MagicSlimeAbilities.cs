@@ -91,7 +91,6 @@ public class MagicSlimeAbilities : SlimeAbilities
         nextCheckTime = Time.fixedTime + nextCheckWait;
 
         // Raycast check on pushable objects
-        //Physics.Raycast(transform.position, slimeModel.transform.forward, out raycastHit, interactionDistance, movablesMask);
         Physics.SphereCast(transform.position - slimeModel.transform.forward * frontalInteractionRadius, frontalInteractionRadius, slimeModel.transform.forward, out raycastHit, interactionDistance, movablesMask);
     }
 
