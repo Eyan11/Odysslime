@@ -60,8 +60,12 @@ Material:
     - _NoiseScale: 30
     - _QueueControl: 0
     - _QueueOffset: 0
+    - _WobbleDistance: 50
+    - _WobbleFrequency: 0
+    - _WobbleSpeed_1: 2
     m_Colors:
-    - _Color: {r: 0, g: 0.29234123, b: 1, a: 0}
+    - _Color: {r: 4.6908793, g: 12.844467, b: 2.6052458, a: 0}
     - _NoiseSpeed: {r: 0, g: -0.025, b: 0, a: 0}
     - _NoiseTiling: {r: 7, g: 0.1, b: 0, a: 0}
+    - _Vector3: {r: 0.00001, g: 0.00007, b: 0, a: 0}
   m_BuildTextureStacks: []
