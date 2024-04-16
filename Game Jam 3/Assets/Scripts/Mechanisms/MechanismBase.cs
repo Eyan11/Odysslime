@@ -2,17 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MechanismBase : MonoBehaviour
+abstract public class MechanismBase : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public abstract void Activate();
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    public abstract void Deactivate();
 }

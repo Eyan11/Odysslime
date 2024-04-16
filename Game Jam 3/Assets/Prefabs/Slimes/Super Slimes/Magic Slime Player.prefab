@@ -173,9 +173,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slimeModel: {fileID: 6158259414867809714}
-  interactionDistance: 2
+  interactionDistance: 6
   controlObjMoveSpeed: 4.5
   minimumControlTime: 5
+  frontalInteractionRadius: 4
   abilityActive: 0
 --- !u!114 &2319556402615896864
 MonoBehaviour:

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7628215036686758624}
   - component: {fileID: 8551030575387452675}
   - component: {fileID: 5351284717544466499}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Battery Model
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -151,3 +151,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mechanism: {fileID: 0}
+  chargesNeeded: 1
+  currentCharges: 0

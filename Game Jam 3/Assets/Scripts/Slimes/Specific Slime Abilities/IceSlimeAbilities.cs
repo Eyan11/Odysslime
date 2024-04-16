@@ -26,7 +26,8 @@ public class IceSlimeAbilities : SlimeAbilities
         }
 
         // Creates ice cube at position
-        Instantiate(iceCubeTemplate, transform.position, quaternion.identity);
+        Vector3 icePos = transform.position + new Vector3(0, iceCubeTemplate.transform.localScale.y / 2, 0);
+        Instantiate(iceCubeTemplate, icePos, quaternion.identity);
     }
     
     public override void UseAbility()

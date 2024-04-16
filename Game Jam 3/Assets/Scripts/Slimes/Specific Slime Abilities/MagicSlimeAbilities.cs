@@ -11,9 +11,11 @@ public class MagicSlimeAbilities : SlimeAbilities
 {
     [Header("Settings")]
     [SerializeField] private GameObject slimeModel;
-    [SerializeField] private float interactionDistance = 2.0f;
+    [SerializeField] private float interactionDistance = 6.0f;
     [SerializeField] private float controlObjMoveSpeed = 4.5f;
     [SerializeField] private float minimumControlTime = 5.0f;
+    [Header("Radius should be bigger than the slime itself")]
+    [SerializeField] private float frontalInteractionRadius = 4.0f;
     private float nextCheckWait = 0.1f;
     private float nextCheckTime;
     private float controlEndMinTime;
@@ -88,7 +90,8 @@ public class MagicSlimeAbilities : SlimeAbilities
         nextCheckTime = Time.fixedTime + nextCheckWait;
 
         // Raycast check on pushable objects
-        Physics.Raycast(transform.position, slimeModel.transform.forward, out raycastHit, interactionDistance, movablesMask);
+        //Physics.Raycast(transform.position, slimeModel.transform.forward, out raycastHit, interactionDistance, movablesMask);
+        Physics.SphereCast(transform.position - slimeModel.transform.forward * frontalInteractionRadius, frontalInteractionRadius, slimeModel.transform.forward, out raycastHit, interactionDistance, movablesMask);
     }
 
     public override void UseAbility() {

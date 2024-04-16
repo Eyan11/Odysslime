@@ -13,6 +13,7 @@ public class MovingPlatform : MechanismBase
     [SerializeField] private float moveSpeed;
     [SerializeField] private float bufferDistance;
     [SerializeField] private PlatformMoveSlime moveSlimeScript;
+    public bool isActive = true;
     private float pauseCountdown = 0f;
     private bool isMovingToEnd = true;
     private Vector3 direction;
@@ -31,10 +32,15 @@ public class MovingPlatform : MechanismBase
     private void Update() {
         pauseCountdown -= Time.deltaTime;
         
-        if(isMovingToEnd && pauseCountdown < 0) {
+        // Prevents updatign the platform until enough time passed
+        if (pauseCountdown > 0) { return; }
+        // Prevents platform movement if inactive
+        if (!isActive) { return; }
+
+        if(isMovingToEnd) {
             MoveToEnd();
         }
-        else if(!isMovingToEnd && pauseCountdown < 0) {
+        else if(!isMovingToEnd) {
             MoveToStart();
         }
     }
@@ -67,5 +73,13 @@ public class MovingPlatform : MechanismBase
         }
     }
 
+    public override void Activate()
+    {
+        isActive = true;
+    }
 
+    public override void Deactivate()
+    {
+        isActive = false;
+    }
 }

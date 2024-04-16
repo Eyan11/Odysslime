@@ -5,16 +5,35 @@ using UnityEngine;
 public class Battery : MonoBehaviour
 {
     [SerializeField] private MechanismBase mechanism;
-    
-    // Start is called before the first frame update
-    void Start()
-    {
-        
+    [SerializeField] private int chargesNeeded = 1;
+    // can be changed before runtime to have some initial charge
+    [Header("Read only!")]
+    [SerializeField] private int currentCharges = 0; 
+
+    private void Awake() {
+        if (mechanism) {
+            if (chargesNeeded <= currentCharges) {
+                mechanism.Activate();
+            }
+        } else {
+            Debug.LogError("Missing a mechanism reference!");
+        }
     }
 
-    // Update is called once per frame
-    void Update()
+    private void CheckCharge()
     {
-        
+        // Activates mechanism if enouch charge
+        if (currentCharges < chargesNeeded) { return; }
+
+        mechanism.Activate();
+    }
+
+    public void IncreaseCharge() {
+        if (currentCharges < chargesNeeded) {
+            currentCharges++;
+
+            // Checks charge to see if it can activate mechanism
+            CheckCharge();
+        }
     }
 }

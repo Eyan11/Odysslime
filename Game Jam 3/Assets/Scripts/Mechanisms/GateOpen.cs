@@ -27,11 +27,11 @@ public class GateOpen : MechanismBase
             gate.transform.position = Vector3.MoveTowards(gate.transform.position, startPos, slideSpeed);
     }
 
-    public void Activate() {
+    public override void Activate() {
         isActivated = true;
     }
 
-    public void Deactivate() {
+    public override void Deactivate() {
         isActivated = false;
     }
 }

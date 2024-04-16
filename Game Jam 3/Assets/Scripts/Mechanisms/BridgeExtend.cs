@@ -49,13 +49,13 @@ public class BridgeExtend : MechanismBase
         }
     }
 
-    public void Activate() {
+    override public void Activate() {
         isActivated = true;
         isMoving = true;
         moveSlimeScript.SetExitBridge(false);
     }
 
-    public void Deactivate() {
+    override public void Deactivate() {
        isActivated = false;
        isMoving = true;
     }

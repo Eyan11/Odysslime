@@ -133,7 +133,9 @@ public class ThirdPersonCam : MonoBehaviour
         //-----Getting reference to orientation and obj children-----\\
 
         // For slimes
-        if (slimePlayer.layer == 11) { // Slime layer
+        if (slimePlayer.layer == 11) { // Slime player
+            //thirdPersonFreeLookCam.m_Orbits[1]
+
             //get obj, should be child(0), but checking both just in case someone moves it
             if(slimePlayer.transform.GetChild(0).CompareTag("Obj"))
                 obj = slimePlayer.transform.GetChild(0);
