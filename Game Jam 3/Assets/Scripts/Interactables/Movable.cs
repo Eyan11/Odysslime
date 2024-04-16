@@ -10,8 +10,11 @@ public class Movable : MonoBehaviour
     private Collider internalHitbox;
     private GameObject pushableObj;
     private Collider pushableHitbox;
+    private Rigidbody rb;
+    private bool isHavingInteractions = false;
 
     private void Awake() {
+        // Hitbox collision calculations
         internalHitbox = GetComponent<Collider>();
         if (!internalHitbox) {
             Debug.LogError(gameObject.name + " is missing a \"Rigidbody\"!");
@@ -30,5 +33,23 @@ public class Movable : MonoBehaviour
         }
 
         Physics.IgnoreCollision(internalHitbox, pushableHitbox, true);
+
+        // Rigidbody retrieval
+        rb = GetComponent<Rigidbody>();
+    }
+
+    public void ActiveState() {
+        isHavingInteractions = true;
+        rb.isKinematic = false;
+    }
+
+    public void DeactivatedState() {
+        isHavingInteractions = false;
+    }
+
+    private void Update() {
+        if (rb.IsSleeping() && !isHavingInteractions) {
+            rb.isKinematic = true;
+        }
     }
 }

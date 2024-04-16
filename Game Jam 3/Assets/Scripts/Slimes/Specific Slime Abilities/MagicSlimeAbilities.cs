@@ -29,6 +29,7 @@ public class MagicSlimeAbilities : SlimeAbilities
     private GameObject controlObj;
     private Transform controlObjOrientation;
     private Rigidbody controlObjRigidbody;
+    private Movable movable;
     public bool abilityActive = false;
 
     private void Awake() {
@@ -116,6 +117,12 @@ public class MagicSlimeAbilities : SlimeAbilities
             // Sets slime's speed to zero
             slimeFollowerMovement.enabled = false;
 
+            // Allows the object to move if it couldn't already
+            movable = controlObj.GetComponent<Movable>();
+            if (movable) {
+                movable.ActiveState();
+            }
+
             // Uses it to change the camera's focus
             cameraScript.SwitchCamera(controlObj);
             // Obtains orientation that the camera generates (if it didn't exist already)
@@ -128,6 +135,9 @@ public class MagicSlimeAbilities : SlimeAbilities
             // Re-enables rigidbody settings
             controlObjRigidbody.freezeRotation = false;
             controlObjRigidbody.useGravity = true;
+
+            // Allows the object to freeze again once done moving
+            movable.DeactivatedState();
 
             // Kills slime
             slimeVitality.enabled = false;

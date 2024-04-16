@@ -134,7 +134,13 @@ public class ThirdPersonCam : MonoBehaviour
 
         // For slimes
         if (slimePlayer.layer == 11) { // Slime player
-            //thirdPersonFreeLookCam.m_Orbits[1]
+            // resets third person free cam back to normal orbits
+            thirdPersonFreeLookCam.m_Orbits[0].m_Height = 6; // top
+            thirdPersonFreeLookCam.m_Orbits[0].m_Radius = 3;
+            thirdPersonFreeLookCam.m_Orbits[1].m_Height = 3; // middle
+            thirdPersonFreeLookCam.m_Orbits[1].m_Radius = 6;
+            thirdPersonFreeLookCam.m_Orbits[2].m_Height = 0; // bottom
+            thirdPersonFreeLookCam.m_Orbits[2].m_Radius = 7;
 
             //get obj, should be child(0), but checking both just in case someone moves it
             if(slimePlayer.transform.GetChild(0).CompareTag("Obj"))
@@ -153,6 +159,18 @@ public class ThirdPersonCam : MonoBehaviour
                 Debug.LogError("Make sure Slime orientation is second child of slime player!");
         }
         else if (slimePlayer.GetComponent<Movable>()) {
+            // calculates new orbits based on size
+            Vector3 objSize = slimePlayer.transform.localScale;
+            float maxSize = Mathf.Max(objSize.x, objSize.y, objSize.z);
+            float scale = Mathf.Max(maxSize / 5.0f, 1);
+
+            thirdPersonFreeLookCam.m_Orbits[0].m_Height = 6 * scale; // top
+            thirdPersonFreeLookCam.m_Orbits[0].m_Radius = 3 * scale;
+            thirdPersonFreeLookCam.m_Orbits[1].m_Height = 3 * scale; // middle
+            thirdPersonFreeLookCam.m_Orbits[1].m_Radius = 6 * scale;
+            thirdPersonFreeLookCam.m_Orbits[2].m_Height = 0 * scale; // bottom
+            thirdPersonFreeLookCam.m_Orbits[2].m_Radius = 7 * scale;
+
             Transform movableOrientation = slimePlayer.transform.Find("Orientation");
 
             // Creates an orientation game object based on the existing movable
