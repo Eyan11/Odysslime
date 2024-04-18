@@ -3,6 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using Unity.Mathematics;
+using UnityEditor.Rendering.Universal;
+
 //using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.AI;
@@ -11,12 +13,14 @@ public class MagicSlimeAbilities : SlimeAbilities
 {
     [Header("Settings")]
     [SerializeField] private GameObject slimeModel;
+    [SerializeField] private Material outline;
     [SerializeField] private float interactionDistance = 6.0f;
     [SerializeField] private float controlObjMoveSpeed = 4.5f;
     [SerializeField] private float minimumControlTime = 5.0f;
     [Header("Radius should be bigger than the slime itself")]
     [SerializeField] private float frontalInteractionRadius = 4.0f;
     private float nextCheckWait = 0.1f;
+    private UIManager UIScript;
     private float nextCheckTime;
     private float controlEndMinTime;
     private int movablesMask;
@@ -30,6 +34,9 @@ public class MagicSlimeAbilities : SlimeAbilities
     private Transform controlObjOrientation;
     private Rigidbody controlObjRigidbody;
     private Movable movable;
+    private GameObject priorMovable;
+    private Renderer movableRenderer;
+    Material[] movableMaterials;
     public bool abilityActive = false;
 
     private void Awake() {
@@ -42,6 +49,7 @@ public class MagicSlimeAbilities : SlimeAbilities
         soundManager = FindObjectOfType<SoundManager>();
         slimeVitality = GetComponent<SlimeVitality>();
         slimePossess = GetComponent<SlimePossess>();
+        UIScript = FindObjectOfType<UIManager>();
 
         // Sets the first raycast check time
         nextCheckTime = Time.fixedTime + nextCheckWait;
@@ -82,6 +90,14 @@ public class MagicSlimeAbilities : SlimeAbilities
         controlObjRigidbody.velocity = horizontalMovement * controlObjMoveSpeed + Vector3.up * verticalInput * controlObjMoveSpeed;
     }
 
+    private void ClearOutline() {
+        // Assume that the 2nd element of materials will always have the shader
+        movableMaterials[1] = null;
+        movableRenderer.materials = movableMaterials;
+        // Sets prior movable to null so the outline could be reapplied to same obj
+        priorMovable = null;
+    }
+
     private void InteractionCheck() {
         // Prevents interaction check if there is an object under control
         if (controlObj) return;
@@ -92,6 +108,27 @@ public class MagicSlimeAbilities : SlimeAbilities
 
         // Raycast check on pushable objects
         Physics.SphereCast(transform.position - slimeModel.transform.forward * frontalInteractionRadius, frontalInteractionRadius, slimeModel.transform.forward, out raycastHit, interactionDistance, movablesMask);
+
+        // Checks if theres an object detected; clear out highlight if there isn't;
+        if (!raycastHit.collider && priorMovable) {
+            ClearOutline();
+        } else if (raycastHit.collider && priorMovable != raycastHit.collider.gameObject) {
+            // Sets priorMovable
+            priorMovable = raycastHit.collider.gameObject;
+            Debug.Log(priorMovable.name);
+            // Sets outline to 2nd element for materials
+            // Note we get the parent since the Pushable hitbox is what is getting detected
+            movableRenderer = priorMovable.transform.parent.GetComponentInChildren<Renderer>();
+            if (!movableRenderer) {
+                Debug.LogError("Couldn't find movableRenderer!");
+            }
+            movableMaterials = movableRenderer.materials;
+            movableMaterials[1] = outline;
+            movableRenderer.materials = movableMaterials;
+        }
+
+        // Display prompt message for 2/10 a second
+        UIScript.DisplayPrompt("Press Q to shift block!", 0.2f);
     }
 
     public override void UseAbility() {
@@ -140,6 +177,12 @@ public class MagicSlimeAbilities : SlimeAbilities
 
             // Kills slime
             slimeVitality.enabled = false;
+        }
+    }
+
+    private void OnDisable() {
+        if (priorMovable) {
+            ClearOutline();
         }
     }
 }

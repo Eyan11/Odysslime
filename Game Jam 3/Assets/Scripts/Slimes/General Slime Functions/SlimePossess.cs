@@ -180,7 +180,9 @@ public class SlimePossess : MonoBehaviour
             GetComponent<Rigidbody>().isKinematic = true;
 
         //place crosshair under map
-        possessCrosshair.position = Vector3.up * (-9999);
+        if (possessCrosshair) {
+            possessCrosshair.position = Vector3.up * (-9999);
+        }
     }
 
     //run every time this script is enabled in inspector

@@ -173,6 +173,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slimeModel: {fileID: 6158259414867809714}
+  outline: {fileID: 2100000, guid: dfa89235eda524c45b7920be2218c141, type: 2}
   interactionDistance: 6
   controlObjMoveSpeed: 4.5
   minimumControlTime: 5

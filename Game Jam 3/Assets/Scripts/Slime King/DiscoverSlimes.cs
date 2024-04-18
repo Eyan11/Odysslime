@@ -77,7 +77,7 @@ public class DiscoverSlimes : MonoBehaviour
             UIScript.UpdateSlimelingCount(1);
         }
 
-        Debug.Log("Added Follower: " + newFollower.gameObject.name);
+        //Debug.Log("Added Follower: " + newFollower.gameObject.name);
     }
 
     public void RemoveSlimeFollower(Transform removedFollower) {
@@ -87,7 +87,7 @@ public class DiscoverSlimes : MonoBehaviour
 
             //make slime stop following King
             removedFollower.GetComponent<SlimeFollow>().enabled = false;
-            Debug.Log("Removed Follower: " + removedFollower.gameObject.name);
+            //Debug.Log("Removed Follower: " + removedFollower.gameObject.name);
 
             //if removed follower was Slimeling, update UI
             if(removedFollower.CompareTag("Slimeling")) {
