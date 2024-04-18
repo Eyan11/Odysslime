@@ -489,7 +489,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7294237430148290469}
-  m_Layer: 0
+  - component: {fileID: 6639751681677413597}
+  m_Layer: 6
   m_Name: Off Mesh Links Holder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -516,6 +517,27 @@ Transform:
   - {fileID: 5001490874934271119}
   m_Father: {fileID: 3057132275020888762}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &6639751681677413597
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 760148841667750747}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1.1, y: 1.1, z: 1.1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &811858525746819283
 GameObject:
   m_ObjectHideFlags: 0
@@ -3188,7 +3210,7 @@ GameObject:
   - component: {fileID: 951491166357643337}
   - component: {fileID: -1300302888796901849}
   - component: {fileID: 2142369096541808685}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Movable Stone (Magic)
   m_TagString: Untagged
   m_Icon: {fileID: 0}

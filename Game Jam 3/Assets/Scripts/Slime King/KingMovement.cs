@@ -21,16 +21,19 @@ public class KingMovement : SlimeMovement
     private Vector3 groundPos;
     
     [Header ("Vertical Movement Settings")]
-    [SerializeField] private float hoverSpeed;
+    [SerializeField] private float maxHoverSpeed;
+    [SerializeField] private float hoverAcceleration;
+    [SerializeField] private float hoverDeacceleration;
     [SerializeField] private float maxYPos;
     [SerializeField] private float minYPos;
     [SerializeField] private float hoverHeight;
     [SerializeField] private float heightBuffer;
+    private float vertSpeed;
+
+    [Header ("Downwards Raycast Settings")]
     [SerializeField] private float rayInterval;
     private float rayCountdown = 0;
     private float currentHeight;
-    private float vertSpeed;
-
 
     private void Awake() {
         kingObj = transform.GetChild(0);
@@ -52,6 +55,7 @@ public class KingMovement : SlimeMovement
     private void FixedUpdate() {
         //set XZ velocity
         rb.velocity = new Vector3(moveDir.x * moveSpeed, vertSpeed, moveDir.z * moveSpeed);
+        Debug.Log("Vertical Speed: " + vertSpeed);
     }
 
     private void Update() {
@@ -63,7 +67,8 @@ public class KingMovement : SlimeMovement
             
             //find height above the ground
             groundPos = RayCastDownPosition();
-            currentHeight = Vector3.Distance(transform.position, groundPos);
+            currentHeight = transform.position.y - groundPos.y;
+            //Debug.Log("currentHeight: " + currentHeight);
 
             //set the vertical speed based on current height
             SetVerticalSpeed();
@@ -82,7 +87,7 @@ public class KingMovement : SlimeMovement
         if(Physics.Raycast(ray, out hit)) {
 
             //if an object with "Floor" layer was hit, return it's position
-            if(hit.collider.gameObject.layer == floorLayer) 
+            if(hit.collider.gameObject.layer == floorLayer)
                 return hit.point;
         }
 
@@ -92,23 +97,28 @@ public class KingMovement : SlimeMovement
 
     private void SetVerticalSpeed() {
 
-        //if too low to ground and not at max height OR below min height, move upwards
-        if((currentHeight < (hoverHeight - heightBuffer) && (transform.position.y < maxYPos))
-            || transform.position.y < minYPos) {
-
-            vertSpeed = hoverSpeed;
-        }
-
-        //if too high to ground and not at min height OR above max height, move downwards
-        else if(currentHeight > (hoverHeight + heightBuffer) && (transform.position.y > minYPos)
-            || transform.position.y > maxYPos) {
-            
-            vertSpeed = -hoverSpeed;
-        }
-
-        //if correct height above ground, don't move vertically
+        //if too low to floor, MOVE DOWN
+        if(currentHeight < (hoverHeight - heightBuffer))
+            vertSpeed += hoverAcceleration * Time.deltaTime;
+        //if too high to floor, MOVE UP
+        else if(currentHeight > (hoverHeight + heightBuffer))
+            vertSpeed -= hoverAcceleration * Time.deltaTime;
+        //if within buffers and speed is NOT close to zero, deaccelerate towards 0
+        else if(Mathf.Abs(vertSpeed) > 0.5)
+            vertSpeed += -Mathf.Sign(vertSpeed) * hoverDeacceleration * Time.deltaTime;
+        //if within buffers and speed IS close to zero, set speed to exactly 0
         else
-            vertSpeed = 0;
+            vertSpeed = 0f;
+
+        //if moving up and above max height, STOP MOVING
+        if(vertSpeed > 0 && transform.position.y > maxYPos)
+            vertSpeed = 0f;
+        //if moving down and below min height, STOP MOVING
+        else if(vertSpeed < 0 && transform.position.y < minYPos)
+            vertSpeed = 0f;
+
+        //Clamp speed between negative max speed and positive max speed
+        vertSpeed = Mathf.Clamp(vertSpeed, -maxHoverSpeed, maxHoverSpeed);
     }
 
     private void GetInput() {
