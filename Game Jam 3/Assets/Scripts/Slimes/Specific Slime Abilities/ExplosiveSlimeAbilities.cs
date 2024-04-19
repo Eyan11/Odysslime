@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.Mathematics;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -8,6 +9,7 @@ public class ExplosiveSlimeAbilities : SlimeAbilities
 {
     [Header("Settings")]
     [SerializeField] private float blastRadius = 3.5f;
+    [SerializeField] private GameObject explosionVFX;
     private SlimeVitality slimeVitality;
     private SoundManager soundManager;
 
@@ -39,6 +41,10 @@ public class ExplosiveSlimeAbilities : SlimeAbilities
                 continue;
             }
         }
+
+        // Creates explosion VFX
+        GameObject explosionVFXClone = Instantiate(explosionVFX, transform.position, quaternion.identity);
+        Destroy(explosionVFXClone, 1.0f);
 
         // Plays kaboomy
         soundManager.PlayExplosion();

@@ -55,7 +55,7 @@ public class KingMovement : SlimeMovement
     private void FixedUpdate() {
         //set XZ velocity
         rb.velocity = new Vector3(moveDir.x * moveSpeed, vertSpeed, moveDir.z * moveSpeed);
-        Debug.Log("Vertical Speed: " + vertSpeed);
+        //Debug.Log("Vertical Speed: " + vertSpeed);
     }
 
     private void Update() {

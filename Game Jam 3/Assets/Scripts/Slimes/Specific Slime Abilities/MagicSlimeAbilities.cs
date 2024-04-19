@@ -100,7 +100,13 @@ public class MagicSlimeAbilities : SlimeAbilities
 
     private void InteractionCheck() {
         // Prevents interaction check if there is an object under control
-        if (controlObj) return;
+        if (controlObj) {
+            if (controlEndMinTime < Time.fixedTime) {
+                UIScript.DisplayPrompt("Press Q or Z to stop shifting block!", 0.2f);
+            }
+
+            return;
+        }
 
         // Prevents a raycast hit check until enough time passes
         if (nextCheckTime > Time.fixedTime) return;
@@ -115,13 +121,9 @@ public class MagicSlimeAbilities : SlimeAbilities
         } else if (raycastHit.collider && priorMovable != raycastHit.collider.gameObject) {
             // Sets priorMovable
             priorMovable = raycastHit.collider.gameObject;
-            Debug.Log(priorMovable.name);
             // Sets outline to 2nd element for materials
             // Note we get the parent since the Pushable hitbox is what is getting detected
             movableRenderer = priorMovable.transform.parent.GetComponentInChildren<Renderer>();
-            if (!movableRenderer) {
-                Debug.LogError("Couldn't find movableRenderer!");
-            }
             movableMaterials = movableRenderer.materials;
             movableMaterials[1] = outline;
             movableRenderer.materials = movableMaterials;
@@ -158,6 +160,9 @@ public class MagicSlimeAbilities : SlimeAbilities
             if (movable) {
                 movable.ActiveState();
             }
+
+            // Clears block outline
+            ClearOutline();
 
             // Uses it to change the camera's focus
             cameraScript.SwitchCamera(controlObj);

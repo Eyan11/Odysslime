@@ -204,6 +204,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   blastRadius: 3.5
+  explosionVFX: {fileID: 868468853075218060, guid: 6c0e2ea3d9659784bad0f7b76ee08899,
+    type: 3}
 --- !u!114 &4019593360167590981
 MonoBehaviour:
   m_ObjectHideFlags: 0
