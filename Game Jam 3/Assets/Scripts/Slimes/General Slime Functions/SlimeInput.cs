@@ -22,7 +22,10 @@ public class SlimeInput : MonoBehaviour
         //create a new Input Map object and enable the King Slime input
         inputMap = new InputMap();
         inputMap.Slime.Enable();
+    }
 
+    private void Start() {
+        //needs to be in start to give GameEvents enough time to get set up
         //subscribe to events
         GameEvents.current.onPauseEvent += DisableInput;
         GameEvents.current.onResumeEvent += EnableInput;
@@ -36,7 +39,6 @@ public class SlimeInput : MonoBehaviour
 
         //gets int from input map (-1 is down, 0 is no movement, 1 is up)
         moveBlockVertInput = inputMap.Slime.MoveBlockVertically.ReadValue<float>();
-        //Debug.Log(moveBlockVertInput);
 
         //variables are true during the first frame the input is pressed
         jumpInput = inputMap.Slime.Jump.triggered;

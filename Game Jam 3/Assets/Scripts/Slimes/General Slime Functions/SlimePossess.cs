@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-//using Microsoft.Unity.VisualStudio.Editor;
 using UnityEngine;
 using UnityEngine.AI;
 using TMPro;
@@ -43,10 +42,6 @@ public class SlimePossess : MonoBehaviour
         slimeMovement = gameObject.GetComponent<SlimeMovement>();
         slimeFollow = gameObject.GetComponent<SlimeFollow>();
 
-        //subscribe to events
-        GameEvents.current.onPauseEvent += PreventPossess;
-        GameEvents.current.onResumeEvent += AllowPossess;
-
         //if this script is NOT on king obj
         if (kingPlayer != gameObject) {
             //disable slime abilities
@@ -69,11 +64,17 @@ public class SlimePossess : MonoBehaviour
             Debug.LogError("Make sure the Possess Soul object is 3rd child of King Slime");
     }
 
+    private void Start() {
+        //needs to be in start to give GameEvents enough time to get set up
+        //subscribe to events
+        GameEvents.current.onPauseEvent += PreventPossess;
+        GameEvents.current.onResumeEvent += AllowPossess;
+    }
+
     private void Update() {
+
         // Prevents possession keybind usage and prevents possession when game is paused
         if (!canUsePossessKeybind || !canPossess) return;
-
-        Debug.Log("Slime Possess Running");
 
         //if pressing return to King input and not the King, possess King
         if(inputScript.GetReturnToKingInput() && gameObject != kingPlayer)
@@ -218,8 +219,10 @@ public class SlimePossess : MonoBehaviour
     private void AllowPossess() {
         canPossess = true;
 
-        //enable slime movement
-        slimeMovement.enabled = true;
+        //enable slime movement for the current slime being possessed
+        //  this is in case you are in possess mode while pressing pause
+        if(this.enabled == true)
+            slimeMovement.enabled = true;
     }
 
     private void PreventPossess() {
