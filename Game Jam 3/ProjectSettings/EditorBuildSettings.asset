@@ -5,18 +5,30 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
-    path: Assets/Scenes/Menu and UI/Start Menu.unity
-    guid: 6d822c6eb69e4be42a2c6ce9f36b2031
-  - enabled: 0
+  - enabled: 1
+    path: Assets/Scenes/Menu and UI/LevelSelectScreen.unity
+    guid: bfffe3527bab2d6448bc79a5d45c580d
+  - enabled: 1
+    path: Assets/Scenes/Menu and UI/TitleScreen.unity
+    guid: e1a3a20137d97a1439c39fc1f3303255
+  - enabled: 1
+    path: Assets/Scenes/Islands/CovenIsland.unity
+    guid: 1da5533dbd94c4d4b85530dac6b0da71
+  - enabled: 1
+    path: Assets/Scenes/Islands/EngineerIsland.unity
+    guid: e7413407d9d30954ca657dbdd7d7aa86
+  - enabled: 1
+    path: Assets/Scenes/Islands/FrostbiteIsland.unity
+    guid: e25545c5b697043ac9a57d76eaec29ab
+  - enabled: 1
     path: Assets/Scenes/Islands/GameScene.unity
     guid: f5ddfcd2aef26154d9f189d1fa987d39
-  - enabled: 0
-    path: Assets/Scenes/Game Scenes/EndScreen.unity
-    guid: e8bb74e48bd293f40af95e5791cc0326
-  - enabled: 0
-    path: Assets/Scenes/Test Scenes/Eyan's Test Scene.unity
-    guid: 99c9720ab356a0642a771bea13969a05
+  - enabled: 1
+    path: Assets/Scenes/Islands/InfernoIsland.unity
+    guid: 167c3621b015b4a26a69dd15ed383c01
+  - enabled: 1
+    path: Assets/Scenes/TrophyRoom/TrophyRoom.unity
+    guid: 05971c3c9a54b4a5c84e8f0f20fe783b
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 6c378dddb53b3f841abdb15fb2519633,
       type: 2}

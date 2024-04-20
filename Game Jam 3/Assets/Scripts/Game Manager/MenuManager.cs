@@ -1,13 +1,20 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
+using UnityEngine.SceneManagement;
 
 public class MenuManager : MonoBehaviour
 {
+    [Header("Menu Objects")]
     [SerializeField] private GameObject bgImage;
     [SerializeField] private GameObject pauseUI;
     [SerializeField] private GameObject optionsUI;
     [SerializeField] private GameObject controlsUI;
+
+    [Header("Event System First Selected Objects")]
+    [SerializeField] private GameObject pauseMenuFirst;
+    [SerializeField] private GameObject optionsMenuFirst;
     private CurrentMenu currentMenu;
     private ThirdPersonCam camScript;
     private InputMap inputMap;
@@ -15,6 +22,8 @@ public class MenuManager : MonoBehaviour
     private bool pauseInput;
     private bool backInput;
     private bool selectInput;
+    private bool isRunningCoroutine = false;
+    //private bool isGamepadConnected = false;
 
     private void Awake() {
 
@@ -38,6 +47,10 @@ public class MenuManager : MonoBehaviour
         pauseInput = inputMap.UI.Pause.triggered;
         backInput = inputMap.UI.Back.triggered;
         selectInput = inputMap.UI.Select.triggered;
+
+        //checks if controller is connected
+        //if(Gamepad.all.Count > 0)
+            //isGamepadConnected = true;
     }
 
     //used to navigate the pause menu's
@@ -50,15 +63,6 @@ public class MenuManager : MonoBehaviour
         //if paused and press pause button, resume game
         else if(isPaused && pauseInput)
             ResumeGame();
-
-        /*  TESTING DIFFERENT MENUS
-        if(isPaused && Input.GetKeyDown(KeyCode.O))
-            OpenOptionsMenu();
-        else if(isPaused && Input.GetKeyDown(KeyCode.P))
-            OpenPauseMenu();
-        else if(isPaused && Input.GetKeyDown(KeyCode.C))
-            OpenControlsMenu();
-        */
     }
 
 
@@ -67,12 +71,14 @@ public class MenuManager : MonoBehaviour
         CloseCurrentMenu();
         pauseUI.SetActive(true);
         currentMenu = CurrentMenu.Pause;
+        EventSystem.current.SetSelectedGameObject(pauseMenuFirst);
     }
 
     private void OpenOptionsMenu() {
         CloseCurrentMenu();
         optionsUI.SetActive(true);
         currentMenu = CurrentMenu.Options;
+        EventSystem.current.SetSelectedGameObject(optionsMenuFirst);
     }
 
     private void OpenControlsMenu() {
@@ -82,6 +88,8 @@ public class MenuManager : MonoBehaviour
     }
 
     private void CloseCurrentMenu() {
+        EventSystem.current.SetSelectedGameObject(null);
+
         //disables the gameobject of the current UI Menu
         switch(currentMenu) {
 
@@ -153,5 +161,58 @@ public class MenuManager : MonoBehaviour
 
     public bool IsPaused() {
         return isPaused;
+    }
+
+    // ----------------------- Methods that switch scenes ---------------\\
+
+    private void RestartLevel() {
+        //resume game to fix time scale and other problems
+        Time.timeScale = 1f;
+        //load current scene
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
+    private void OpenLevelSelectScene() {
+        //resume game to fix time scale and other problems
+        Time.timeScale = 1f;
+        //load level select scene
+        SceneManager.LoadScene("LevelSelectScreen");
+    }
+
+    // ---------------------- Methods for Buttons ---------------------\\
+
+    public void ResumeButton() {
+        StartCoroutine(ButtonCoroutine("ResumeGame"));
+    }
+
+    public void OptionsButton() {
+        StartCoroutine(ButtonCoroutine("OpenOptionsMenu"));
+    }
+
+    public void ControlsButton() {
+        StartCoroutine(ButtonCoroutine("OpenControlsMenu"));
+    }
+
+    public void RestartButton() {
+        StartCoroutine(ButtonCoroutine("RestartLevel"));
+    }
+
+    public void LevelSelectButton() {
+        StartCoroutine(ButtonCoroutine("OpenLevelSelectScene"));
+    }
+
+    // waits for 0.2 seconds before calling the desired method so that button anim can play
+    public IEnumerator ButtonCoroutine(string methodName) {
+
+        if(isRunningCoroutine == false) {
+
+            //wait 0.2 seconds and disallow another coroutine
+            isRunningCoroutine = true;
+            yield return new WaitForSecondsRealtime(0.2f);
+
+            //call method and allow another coroutine
+            isRunningCoroutine = false;
+            Invoke(methodName, 0f);
+        }
     }
 }
