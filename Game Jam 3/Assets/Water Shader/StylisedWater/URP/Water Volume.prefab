@@ -135,7 +135,7 @@ MonoBehaviour:
   IncludeFoam: 15
   TileSize: 10
   ShowDebug: 1
-  RealtimeUpdates: 1
+  RealtimeUpdates: 0
 --- !u!1 &4874918348359690753
 GameObject:
   m_ObjectHideFlags: 0

@@ -6,7 +6,6 @@ public class SoulMovement : MonoBehaviour
 {
     [SerializeField] private float speed;
     [SerializeField] private GameObject soulVisuals;
-    [SerializeField] private AnimationCurve curve;
     private Vector3 startPos;
     private float lerpPercent = 0f;
     private Transform targetSlime = null;
@@ -25,7 +24,7 @@ public class SoulMovement : MonoBehaviour
         if(targetSlime != null) {
             //move to it
             lerpPercent += speed * Time.deltaTime;
-            //uses curve for smooth movement
+            //uses lerp for smooth movement
             transform.position = Vector3.Lerp(startPos, targetSlime.position, lerpPercent);
 
             //if soul is 95% of distance to target

@@ -9,6 +9,8 @@ public class SlimePossess : MonoBehaviour
 {
     [Header("Settings")]
     public bool canUsePossessKeybind = true;
+    //set true/false when game is paused/unpaused
+    private bool canPossess = true;
     private const float RAY_LENGTH = 25f;
     private const float CROSSHAIR_SENS = 0.75f;
     private UIManager UIScript;
@@ -41,6 +43,10 @@ public class SlimePossess : MonoBehaviour
         slimeMovement = gameObject.GetComponent<SlimeMovement>();
         slimeFollow = gameObject.GetComponent<SlimeFollow>();
 
+        //subscribe to events
+        GameEvents.current.onPauseEvent += PreventPossess;
+        GameEvents.current.onResumeEvent += AllowPossess;
+
         //if this script is NOT on king obj
         if (kingPlayer != gameObject) {
             //disable slime abilities
@@ -64,8 +70,10 @@ public class SlimePossess : MonoBehaviour
     }
 
     private void Update() {
-        // Prevents possession keybind usage
-        if (!canUsePossessKeybind) return;
+        // Prevents possession keybind usage and prevents possession when game is paused
+        if (!canUsePossessKeybind || !canPossess) return;
+
+        Debug.Log("Slime Possess Running");
 
         //if pressing return to King input and not the King, possess King
         if(inputScript.GetReturnToKingInput() && gameObject != kingPlayer)
@@ -88,7 +96,6 @@ public class SlimePossess : MonoBehaviour
             //place crosshair under map
             possessCrosshair.position = Vector3.up * (-9999);
         }
-
     }
 
     public void PosessSlime(GameObject otherSlime) {
@@ -205,4 +212,28 @@ public class SlimePossess : MonoBehaviour
         CrosshairScreenPos = new Vector2(Screen.width * 0.5f, Screen.height * 0.5f);
     }
 
+
+    // ---------- Methods for pause and resume events ------------------\\
+
+    private void AllowPossess() {
+        canPossess = true;
+
+        //enable slime movement
+        slimeMovement.enabled = true;
+    }
+
+    private void PreventPossess() {
+        canPossess = false;
+
+        //reset crosshair position to center of screen
+        CrosshairScreenPos = new Vector2(Screen.width * 0.5f, Screen.height * 0.5f);
+        //place crosshair under map
+        possessCrosshair.position = Vector3.up * (-9999);
+    }
+
+    private void OnDestroy() {
+        //unsubscribes from event (avoid null reference when slime dies)
+        GameEvents.current.onPauseEvent -= PreventPossess;
+        GameEvents.current.onResumeEvent -= AllowPossess;
+    }
 }

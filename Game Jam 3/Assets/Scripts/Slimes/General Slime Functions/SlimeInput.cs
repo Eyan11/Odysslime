@@ -5,18 +5,16 @@ using UnityEngine;
 public class SlimeInput : MonoBehaviour
 {
     private InputMap inputMap;
-
+    //Vector inputs
     private Vector2 moveInput;
     private Vector2 lookInput;
     private float moveBlockVertInput;
-
     //button down inputs
     private bool jumpInput;
     private bool lockCamInput;
     private bool possessInput;
     private bool returnToKingInput;
     private bool abilityInput;
-
     //button up input
     private bool unlockCamInput;
 
@@ -24,6 +22,10 @@ public class SlimeInput : MonoBehaviour
         //create a new Input Map object and enable the King Slime input
         inputMap = new InputMap();
         inputMap.Slime.Enable();
+
+        //subscribe to events
+        GameEvents.current.onPauseEvent += DisableInput;
+        GameEvents.current.onResumeEvent += EnableInput;
     }
 
     private void Update() {
@@ -45,6 +47,24 @@ public class SlimeInput : MonoBehaviour
 
         //this is true on first frame the input is released
         unlockCamInput = inputMap.Slime.UnlockCamera.triggered;
+    }
+
+    // ---------- Methods for pause and resume events ------------------\\
+
+    //Called when game is paused by pause action event
+    private void DisableInput() {
+        inputMap.Slime.Disable();
+    }
+
+    //Called when game is resumed by resume action event
+    private void EnableInput() {
+        inputMap.Slime.Enable();
+    }
+
+    private void OnDestroy() {
+        //unsubscribes from event (avoid null reference when slime dies)
+        GameEvents.current.onPauseEvent -= DisableInput;
+        GameEvents.current.onResumeEvent -= EnableInput;
     }
 
     //---------- Methods to return input to other slime scripts ----------\\
@@ -79,7 +99,6 @@ public class SlimeInput : MonoBehaviour
     public bool GetAbilityInput() {
         return abilityInput;
     }
-
 
     public float GetMoveBlockVertInput() {
         return moveBlockVertInput;

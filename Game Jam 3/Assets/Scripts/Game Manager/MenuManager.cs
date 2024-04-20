@@ -9,13 +9,18 @@ public class MenuManager : MonoBehaviour
     [SerializeField] private GameObject optionsUI;
     [SerializeField] private GameObject controlsUI;
     private CurrentMenu currentMenu;
-    private bool isPaused = false;
+    private ThirdPersonCam camScript;
     private InputMap inputMap;
+    private bool isPaused = false;
     private bool pauseInput;
     private bool backInput;
     private bool selectInput;
 
     private void Awake() {
+
+        //Reference to camera script
+        camScript = Camera.main.gameObject.GetComponent<ThirdPersonCam>();
+
         //create a new Input Map object and enable the King Slime input
         inputMap = new InputMap();
         inputMap.UI.Enable();
@@ -29,23 +34,22 @@ public class MenuManager : MonoBehaviour
     }
 
     private void GetInput() {
-        /*
+        
         pauseInput = inputMap.UI.Pause.triggered;
         backInput = inputMap.UI.Back.triggered;
         selectInput = inputMap.UI.Select.triggered;
-        */
     }
 
     //used to navigate the pause menu's
     private void MenuController() {
 
-        //if unpaused and press pause button, pause game
+        //if not paused and press pause button, pause game
         if(!isPaused && pauseInput)
             PauseGame();
 
-        //if paused and press pause button, unpause game
+        //if paused and press pause button, resume game
         else if(isPaused && pauseInput)
-            UnpauseGame();
+            ResumeGame();
 
         /*  TESTING DIFFERENT MENUS
         if(isPaused && Input.GetKeyDown(KeyCode.O))
@@ -102,11 +106,18 @@ public class MenuManager : MonoBehaviour
         None, Pause, Options, Controls
     }
 
-    //--------------------- Pause and Unpause UI ---------------------\\
+    //--------------------- Pause and Resume UI ---------------------\\
     private void PauseGame() {
         //pause game
         isPaused = true;
         Time.timeScale = 0f;
+
+        //trigger pause event
+        GameEvents.current.PauseEvent();
+
+        //Set camera sensitivity to 0 when paused
+        camScript.UnlockCamera();
+        camScript.SetCamSensitivity(0f);
 
         //enable background and pause menu
         bgImage.SetActive(true);
@@ -118,10 +129,16 @@ public class MenuManager : MonoBehaviour
         Cursor.visible = true;
     }
 
-    private void UnpauseGame() {
-        //unpause game
+    private void ResumeGame() {
+        //resume game
         isPaused = false;
         Time.timeScale = 1f;
+
+        //trigger resume event
+        GameEvents.current.ResumeEvent();
+
+        //Set camera sensitivity to normal value when resuming
+        camScript.SetCamSensitivity(1f);
 
         //disable current UI
         bgImage.SetActive(false);
@@ -134,4 +151,7 @@ public class MenuManager : MonoBehaviour
         Cursor.visible = false;
     }
 
+    public bool IsPaused() {
+        return isPaused;
+    }
 }

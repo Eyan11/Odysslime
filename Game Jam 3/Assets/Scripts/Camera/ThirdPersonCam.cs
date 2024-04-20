@@ -69,31 +69,24 @@ public class ThirdPersonCam : MonoBehaviour
     public void LockCamera() {
         camIsLocked = true;
 
-        //lock cursor to game window
-        //Cursor.lockState = CursorLockMode.Confined;
-        //make cursor visible
-        //Cursor.visible = true;
-
-        //turn camera sensitivity to 0
-        thirdPersonFreeLookCam.m_XAxis.m_MaxSpeed = 0f;
-        thirdPersonFreeLookCam.m_YAxis.m_MaxSpeed = 0f;
-        topDownFreeLookCam.m_XAxis.m_MaxSpeed = 0f;
-        topDownFreeLookCam.m_YAxis.m_MaxSpeed = 0f;
+        //set camera sensitivity to 0
+        SetCamSensitivity(0f);
     }
 
     public void UnlockCamera() {
         camIsLocked = false;
 
-        //lock cursor to center of game view
-        //Cursor.lockState = CursorLockMode.Locked;
-        //make cursor invisible
-        //Cursor.visible = false;
-
         //return camera sensitivity to original values
-        thirdPersonFreeLookCam.m_XAxis.m_MaxSpeed = mouseSensX;
-        thirdPersonFreeLookCam.m_YAxis.m_MaxSpeed = mouseSensY;
-        topDownFreeLookCam.m_XAxis.m_MaxSpeed = mouseSensX;
-        topDownFreeLookCam.m_YAxis.m_MaxSpeed = mouseSensY;
+        SetCamSensitivity(1f);
+    }
+
+    public void SetCamSensitivity(float sensitivity) {
+
+        //set sensitivity of camera's
+        thirdPersonFreeLookCam.m_XAxis.m_MaxSpeed = mouseSensX * sensitivity;
+        thirdPersonFreeLookCam.m_YAxis.m_MaxSpeed = mouseSensY * sensitivity;
+        topDownFreeLookCam.m_XAxis.m_MaxSpeed = mouseSensX * sensitivity;
+        topDownFreeLookCam.m_YAxis.m_MaxSpeed = mouseSensY * sensitivity;
     }
 
     //returns true if camera is locked
