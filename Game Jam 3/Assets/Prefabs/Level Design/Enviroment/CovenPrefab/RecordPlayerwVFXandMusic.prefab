@@ -26,13 +26,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2988833282305490012}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.40394416, y: 0.1338577, z: -0.048874125, w: 0.90361637}
-  m_LocalPosition: {x: -0.018, y: 0.7533508, z: 0.233}
-  m_LocalScale: {x: 0.67975503, y: 0.67975515, z: 0.679755}
+  m_LocalRotation: {x: 0.443021, y: 0.06966716, z: -0.016825784, w: 0.8936419}
+  m_LocalPosition: {x: -0.017999854, y: 0.7533505, z: 0.23300032}
+  m_LocalScale: {x: 1.351444, y: 1.3514444, z: 1.351444}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7071113831061886250}
-  m_LocalEulerAnglesHint: {x: 47.997, y: 17.608, z: 1.697}
+  m_LocalEulerAnglesHint: {x: 52.575, y: 10.391, z: 2.986}
 --- !u!198 &7568082496904521614
 ParticleSystem:
   m_ObjectHideFlags: 0
@@ -41,7 +41,7 @@ ParticleSystem:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2988833282305490012}
   serializedVersion: 8
-  lengthInSec: 10
+  lengthInSec: 1
   simulationSpeed: 1
   stopAction: 0
   cullingMode: 0
@@ -116,7 +116,7 @@ ParticleSystem:
     startLifetime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 5
+      scalar: 4
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -3940,7 +3940,7 @@ ParticleSystem:
     lifetime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.5
+      scalar: 0.25
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -9811,7 +9811,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 3895dd4bc7f2f4085b212015506f5d67, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 7762a609b2ba5452a9adbbd28e13c85a, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
