@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1602841615106207952}
   - component: {fileID: 5069972360333658644}
+  - component: {fileID: 5525607750823536571}
   m_Layer: 0
   m_Name: Cannon
   m_TagString: Untagged
@@ -27,8 +28,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0.2588194, y: -0, z: -0, w: 0.9659258}
   m_LocalPosition: {x: 0, y: 2.0245192, z: 0.2745183}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 0.6, y: 0.6, z: 0.6}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 1920822623267333935}
   m_Father: {fileID: 0}
@@ -52,8 +53,27 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 0.32823032}
-  m_Center: {x: 0, y: 0.0000024771768, z: 0.00000031498578}
+  m_Size: {x: 8, y: 10, z: 15}
+  m_Center: {x: -1.749223e-14, y: -1.0000005, z: -1.4686751e-15}
+--- !u!114 &5525607750823536571
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8245438498711346657}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e3fdca004f2d45fe8abbed571a8abd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_OverrideArea: 1
+  m_Area: 1
+  m_OverrideGenerateLinks: 0
+  m_GenerateLinks: 0
+  m_IgnoreFromBuild: 0
+  m_ApplyToChildren: 1
+  m_AffectedAgents: ffffffff
 --- !u!1001 &335179211768809628
 PrefabInstance:
   m_ObjectHideFlags: 0
