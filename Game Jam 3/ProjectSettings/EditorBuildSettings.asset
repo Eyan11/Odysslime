@@ -6,10 +6,7 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Menu and UI/LevelSelectScreen.unity
-    guid: bfffe3527bab2d6448bc79a5d45c580d
-  - enabled: 1
-    path: Assets/Scenes/Menu and UI/TitleScreen.unity
+    path: Assets/Scenes/Menu/MainMenu.unity
     guid: e1a3a20137d97a1439c39fc1f3303255
   - enabled: 1
     path: Assets/Scenes/Islands/CovenIsland.unity
