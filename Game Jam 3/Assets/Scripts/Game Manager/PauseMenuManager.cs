@@ -23,16 +23,15 @@ public class PauseMenuManager : MonoBehaviour
     private bool isPaused = false;
     private bool pauseInput;
     private bool backInput;
-    private bool selectInput;
     private bool isRunningCoroutine = false;
-    private bool isUsingKBM = false;
+    private bool isUsingKBM = true;
 
     private void Awake() {
 
         //Reference to camera script
         camScript = Camera.main.gameObject.GetComponent<ThirdPersonCam>();
 
-        //create a new Input Map object and enable the King Slime input
+        //create a new Input Map object and enable the UI input
         inputMap = new InputMap();
         inputMap.UI.Enable();
 
@@ -54,7 +53,6 @@ public class PauseMenuManager : MonoBehaviour
     private void GetInput() {
         pauseInput = inputMap.UI.Pause.triggered;
         backInput = inputMap.UI.Back.triggered;
-        selectInput = inputMap.UI.Select.triggered;
     }
 
     private void PauseMenuController() {
@@ -254,16 +252,22 @@ public class PauseMenuManager : MonoBehaviour
     //Checks which input is plugges in every 1 second
     private IEnumerator CheckForControllers() {
 
-        //if NOT using keyboard and input name is "" (empty string is KBM name)
-        if (!isUsingKBM && Input.GetJoystickNames()[0] == "") {
-            //using keyboard
-            isUsingKBM = true;
-        
-        //if using keyboard and input name is NOT "" (empty string is KBM name)
-        } else if (isUsingKBM && Input.GetJoystickNames()[0] != "") {    
-            //using gamepad     
-            isUsingKBM = false;
+        //if there are any input devices connected
+        if(Input.GetJoystickNames().Length != 0) {
+
+            //if NOT using keyboard and input name is "" (empty string is KBM name)
+            if (!isUsingKBM && Input.GetJoystickNames()[0] == "") {
+                //using keyboard
+                isUsingKBM = true;
+            
+            //if using keyboard and input name is NOT "" (empty string is KBM name)
+            } else if (isUsingKBM && Input.GetJoystickNames()[0] != "") {    
+                //using gamepad     
+                isUsingKBM = false;
+            }
         }
+        else
+            Debug.Log("No Input connected, keyboard controls displayed by default");
 
         //wait 1 seconds before checking input again
         yield return new WaitForSecondsRealtime(1f);
