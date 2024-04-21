@@ -129,6 +129,8 @@ public class MagicSlimeAbilities : SlimeAbilities
             movableRenderer.materials = movableMaterials;
         }
 
+        if (!priorMovable) return;
+
         // Display prompt message for 2/10 a second
         UIScript.DisplayPrompt("Press Q to shift block!", 0.2f);
     }

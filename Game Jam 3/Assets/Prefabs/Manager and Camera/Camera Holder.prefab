@@ -1412,7 +1412,7 @@ MonoBehaviour:
   m_CollideAgainst:
     serializedVersion: 2
     m_Bits: 5056
-  m_IgnoreTag: Slime King
+  m_IgnoreTag: King Slime
   m_TransparentLayers:
     serializedVersion: 2
     m_Bits: 0
