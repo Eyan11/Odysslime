@@ -12,6 +12,7 @@ public class SlimeVitality : MonoBehaviour
     private SlimePossess slimePossess;
     private SoundManager soundManager;
     private UIManager UIScript;
+    private bool isQuitting = false;
     private void Awake() {
         slimeKing = GameObject.FindWithTag("King Slime");
         slimePossess = GetComponent<SlimePossess>();
@@ -20,6 +21,7 @@ public class SlimeVitality : MonoBehaviour
     }
 
     private void OnDisable() {
+        if (isQuitting) return; // Prevents death sound from being generated on quit
 
         if (slimeKing) {
             // Return control back to king slime if currently possessed
@@ -55,5 +57,9 @@ public class SlimeVitality : MonoBehaviour
         if (slimePossess.enabled && Input.GetKey(KeyCode.R) && enableResetKeybind) {
             this.enabled = false;
         }
+    }
+
+    private void OnApplicationQuit() {
+        isQuitting = true;
     }
 }
