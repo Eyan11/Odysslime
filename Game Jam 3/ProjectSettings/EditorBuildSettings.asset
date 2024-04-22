@@ -9,20 +9,20 @@ EditorBuildSettings:
     path: Assets/Scenes/Menu/MainMenu.unity
     guid: e1a3a20137d97a1439c39fc1f3303255
   - enabled: 1
+    path: Assets/Scenes/Islands/InfernoIsland.unity
+    guid: 167c3621b015b4a26a69dd15ed383c01
+  - enabled: 1
+    path: Assets/Scenes/Islands/FrostbiteIsland.unity
+    guid: e25545c5b697043ac9a57d76eaec29ab
+  - enabled: 1
     path: Assets/Scenes/Islands/CovenIsland.unity
     guid: 1da5533dbd94c4d4b85530dac6b0da71
   - enabled: 1
     path: Assets/Scenes/Islands/EngineerIsland.unity
     guid: e7413407d9d30954ca657dbdd7d7aa86
   - enabled: 1
-    path: Assets/Scenes/Islands/FrostbiteIsland.unity
-    guid: e25545c5b697043ac9a57d76eaec29ab
-  - enabled: 1
-    path: Assets/Scenes/Islands/GameScene.unity
-    guid: f5ddfcd2aef26154d9f189d1fa987d39
-  - enabled: 1
-    path: Assets/Scenes/Islands/InfernoIsland.unity
-    guid: 167c3621b015b4a26a69dd15ed383c01
+    path: Assets/Scenes/Islands/Ooze Island.unity
+    guid: 8926cd9a55b1a8d468fb9ca6b115c6ad
   - enabled: 1
     path: Assets/Scenes/TrophyRoom/TrophyRoom.unity
     guid: 05971c3c9a54b4a5c84e8f0f20fe783b
