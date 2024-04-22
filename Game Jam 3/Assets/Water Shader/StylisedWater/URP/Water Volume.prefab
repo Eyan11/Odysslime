@@ -43,6 +43,8 @@ GameObject:
   - component: {fileID: 3929584568031018604}
   - component: {fileID: 6730036352266314221}
   - component: {fileID: 5023146414089793736}
+  - component: {fileID: 2375173940554705689}
+  - component: {fileID: 8835683542711370481}
   m_Layer: 0
   m_Name: Water Volume
   m_TagString: Untagged
@@ -136,6 +138,39 @@ MonoBehaviour:
   TileSize: 10
   ShowDebug: 1
   RealtimeUpdates: 0
+--- !u!65 &2375173940554705689
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3800750959994470943}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1000, y: 12, z: 1000}
+  m_Center: {x: 499.5, y: 4.5, z: 499.5}
+--- !u!114 &8835683542711370481
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3800750959994470943}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c990c96b3371c048a9844f9ec741128, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4874918348359690753
 GameObject:
   m_ObjectHideFlags: 0
