@@ -364,6 +364,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Possess Soul
       objectReference: {fileID: 0}
+    - target: {fileID: 1066756708110679675, guid: 44dc16eb9513eb04ba4c113c68b491e9,
+        type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 5016994208560e34f97b0ecbebcda7c0, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
