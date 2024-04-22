@@ -186,6 +186,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c06470c6cce9284ca3888a18eef3949, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  deathSound: {fileID: 8300000, guid: 9a0ffdc49f318384fa26fb159734abc6, type: 3}
 --- !u!1001 &5590345231620691903
 PrefabInstance:
   m_ObjectHideFlags: 0

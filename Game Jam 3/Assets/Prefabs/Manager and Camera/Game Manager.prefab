@@ -1183,17 +1183,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0730115c7751f23469a05d685be94bfa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  source: {fileID: 7478033257666367373}
-  musicSource: {fileID: 8682454269843244094}
-  explosionSound: {fileID: 8300000, guid: 67384fe18ecd36340ba53c5998a39fb8, type: 3}
-  eatSound: {fileID: 8300000, guid: 083b8d9260d746549a35244d8c9ed55a, type: 3}
-  freezeSound: {fileID: 8300000, guid: 228d9ebeb1d05c54b962c9367c604de3, type: 3}
-  slimeMoveSound: {fileID: 8300000, guid: dbd20457ed8891e4b9152bd56a430bfc, type: 3}
-  slimeJumpSound: {fileID: 8300000, guid: 4a704a2791aa8c140af5a0c4f7c82661, type: 3}
-  slimeDeathSound: {fileID: 8300000, guid: 9a0ffdc49f318384fa26fb159734abc6, type: 3}
-  buttonSelectSound: {fileID: 8300000, guid: 7abe5f0bd7e372144bcb7d6883d69325, type: 3}
-  menuMusic: {fileID: 8300000, guid: 23460c83eb8a1d847bb6f52892604ad8, type: 3}
-  worldMusic: {fileID: 8300000, guid: 1bde96a73f8a41240a2628bca9361241, type: 3}
+  globalSource: {fileID: 7478033257666367373}
+  BGMSource: {fileID: 8682454269843244094}
+  soundEffectVolume: 0.6
+  backgrondMusicVolume: 0.5
 --- !u!1 &4628349281429809771
 GameObject:
   m_ObjectHideFlags: 0

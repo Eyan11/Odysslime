@@ -192,6 +192,8 @@ MonoBehaviour:
   groundDrag: 3
   jumpPower: 7
   jumpCooldown: 0.2
+  jumpSound: {fileID: 8300000, guid: 4a704a2791aa8c140af5a0c4f7c82661, type: 3}
+  moveSound: {fileID: 8300000, guid: dbd20457ed8891e4b9152bd56a430bfc, type: 3}
 --- !u!114 &-2627454649028561501
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -204,6 +206,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c06470c6cce9284ca3888a18eef3949, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  deathSound: {fileID: 8300000, guid: 9a0ffdc49f318384fa26fb159734abc6, type: 3}
 --- !u!114 &2605430135748131320
 MonoBehaviour:
   m_ObjectHideFlags: 0

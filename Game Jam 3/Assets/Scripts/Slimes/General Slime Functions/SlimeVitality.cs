@@ -5,7 +5,8 @@ using UnityEngine;
 
 public class SlimeVitality : MonoBehaviour
 {
-    [Header("Settings")]
+    [Header("Audio Settings")]
+    [SerializeField] private AudioClip deathSound;
     private bool enableResetKeybind = true; // Press R to die
     private GameObject slimeKing;
     private SlimePossess slimePossess;
@@ -37,7 +38,7 @@ public class SlimeVitality : MonoBehaviour
                 UIScript.UpdateSlimelingCount(-1);
             }
 
-            soundManager.PlaySlimeDeath();
+            soundManager.PlaySoundEffectAtPoint(deathSound, transform.position, 0.9f);
 
             // Destroys slime
             Destroy(gameObject);

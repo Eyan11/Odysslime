@@ -15,6 +15,9 @@ public class SlimeFollowerMovement : SlimeMovement
     [SerializeField] private float groundDrag = 3;
     [SerializeField] private float jumpPower = 5;
     [SerializeField] private float jumpCooldown = 0.2f;
+    [Header("Audio Settings")]
+    [SerializeField] private AudioClip jumpSound;
+    [SerializeField] private AudioClip moveSound;
     private Rigidbody rb;
     private SlimeInput inputScript;
     private Vector2 moveInput;
@@ -23,6 +26,7 @@ public class SlimeFollowerMovement : SlimeMovement
     private bool onGround = false;
     private Vector3 moveDir;
     private SoundManager soundManager;
+    private AudioSource moveSource;
 
     void Awake()
     {
@@ -74,6 +78,14 @@ public class SlimeFollowerMovement : SlimeMovement
         // applies movement
         //rb.velocity = moveDir.normalized * movementSpeed + new Vector3(0, rb.velocity.y, 0);
         rb.AddForce(moveDir.normalized * movementSpeed, ForceMode.Impulse);
+
+        // Move sound effect
+        float speed = moveDir.sqrMagnitude;
+        if (speed > 0.1 && !moveSource) {
+            moveSource = soundManager.PlaySoundEffectOnObject(moveSound, orientation.gameObject, 0.2f);
+        } else if (speed < 0.1 && moveSource) {
+            Destroy(moveSource);
+        }
     }
 
     private void Jump() {
@@ -87,7 +99,7 @@ public class SlimeFollowerMovement : SlimeMovement
         rb.AddForce(orientation.up * jumpPower, ForceMode.Impulse);
 
         // Plays jump sound
-        soundManager.PlaySlimeJump();
+        soundManager.PlaySoundEffectAtPoint(jumpSound, transform.position, 0.5f);
     }
 
     private void ConstrainSpeed() {
