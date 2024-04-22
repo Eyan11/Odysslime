@@ -59,9 +59,8 @@ public class SoundManager : MonoBehaviour
         AudioSource audioSource = objectToPlayOn.AddComponent<AudioSource>();
         audioSource.clip = audioClip;
         audioSource.volume = volume;
-        SoundJanitor soundJanitor = objectToPlayOn.AddComponent<SoundJanitor>();
-        soundJanitor.audioSource = audioSource;
-        soundJanitor.isSetUp = true;
+        audioSource.Play();
+        Destroy(audioSource, audioClip.length);
     }
 
     // Plays a sound on an object with the default sound effect volume
