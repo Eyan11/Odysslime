@@ -8,7 +8,11 @@ public class SoundManager : MonoBehaviour
     [Header("Audio Sources")]
     [SerializeField] private AudioSource source;
     [SerializeField] private AudioSource musicSource;
+    [SerializeField] private AudioSource globalSource;
     [SerializeField] private AudioSource BGMSource;
+    [Header("Volume Defaults")]
+    [SerializeField] private float soundEffectVolume = 0.6f;
+    [SerializeField] private float backgrondMusicVolume = 0.5f;
 
     [Header("Sounds")]
     [SerializeField] private AudioClip explosionSound;
@@ -41,25 +45,53 @@ public class SoundManager : MonoBehaviour
     */
 
     // Plays a sound at a location with a customizable volume
-    // The sound automatically cleans itself
     public void PlaySoundEffectAtPoint(AudioClip audioClip, UnityEngine.Vector3 point, float volume) {
         AudioSource.PlayClipAtPoint(audioClip, point, volume);
     }
 
-    // Plays a sound at a location using the default volume of 0.6f
+    // Plays a sound at a location using the default sound effect volume
     public void PlaySoundEffectAtPoint(AudioClip audioClip, UnityEngine.Vector3 point) {
-        PlaySoundEffectAtPoint(audioClip, point, 0.6f);
+        PlaySoundEffectAtPoint(audioClip, point, soundEffectVolume);
     }
+
+    // Plays a sound on an object with a customizable volume
+    public void PlaySoundEffectOnObject(AudioClip audioClip, GameObject objectToPlayOn, float volume) {
+        AudioSource audioSource = objectToPlayOn.AddComponent<AudioSource>();
+        audioSource.clip = audioClip;
+        audioSource.volume = volume;
+        SoundJanitor soundJanitor = objectToPlayOn.AddComponent<SoundJanitor>();
+        soundJanitor.audioSource = audioSource;
+        soundJanitor.isSetUp = true;
+    }
+
+    // Plays a sound on an object with the default sound effect volume
+    public void PlaySoundEffectOnObject(AudioClip audioClip, GameObject objectToPlayOn) {
+        PlaySoundEffectOnObject(audioClip, objectToPlayOn, soundEffectVolume);
+    }
+
+    // Plays a sound globally with a customizable volume
+    public void PlayGlobalSoundEffect(AudioClip audioClip, float volume) {
+        globalSource.PlayOneShot(audioClip, volume);
+    }
+
+    // Plays a sound globally with a default sound effect volume
+    public void PlayGlobalSoundEffect(AudioClip audioClip) {
+        PlayGlobalSoundEffect(audioClip, soundEffectVolume);
+    }
+    
 
     // Plays looping background music using a customizable volume
     public void PlayBackgroundMusic(AudioClip audioClip, float volume) {
         BGMSource.PlayOneShot(audioClip, volume);
     }
 
-    // Plays looping ackground music using the default volume of 0.5f;
+    // Plays looping ackground music using the default background music volume
     public void PlayBackgroundMusic(AudioClip audioClip) {
-        PlayBackgroundMusic(audioClip, 0.5f);
+        PlayBackgroundMusic(audioClip, backgrondMusicVolume);
     }
+
+    // TODO: DEPRECATED AND REPLACE ALL METHODS BELOW
+    // ------------------------------------------------------------
 
     public void PlayExplosion() {
         //second argument is priority level of sound (0-1)
