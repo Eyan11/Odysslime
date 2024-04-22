@@ -17,6 +17,9 @@ public class MainMenuManager : MonoBehaviour
     [SerializeField] private GameObject TitleMenuFirst;
     [SerializeField] private GameObject optionsMenuFirst;
     [SerializeField] private GameObject levelSelectMenuFirst;
+
+    [Header("Level Select References")]
+    [SerializeField] private LevelSelectManager levelScript;
     private CurrentMenu currentMenu;
     private InputMap inputMap;
     private bool backInput;
@@ -33,6 +36,9 @@ public class MainMenuManager : MonoBehaviour
 
         //start checking for controllers
         StartCoroutine(CheckForControllers());
+        
+        //set play button as selected
+        EventSystem.current.SetSelectedGameObject(TitleMenuFirst);
 
         //lock cursor to game window
         Cursor.lockState = CursorLockMode.Confined;
@@ -130,6 +136,7 @@ public class MainMenuManager : MonoBehaviour
                 break;
 
             case CurrentMenu.LevelSelect:
+                levelScript.CloseLevelSelectMenu();
                 levelSelectUI.SetActive(false);
                 break;
 
@@ -201,7 +208,7 @@ public class MainMenuManager : MonoBehaviour
             }
         }
         else
-            Debug.Log("No Input connected, keyboard controls displayed by default");
+            //Debug.Log("No Input connected, keyboard controls displayed by default");
 
         //wait 1 seconds before checking input again
         yield return new WaitForSecondsRealtime(1f);

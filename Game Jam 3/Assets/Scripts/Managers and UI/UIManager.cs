@@ -20,7 +20,7 @@ public class UIManager : MonoBehaviour
         //set initial slimeling count
         slimelingText.text = "" + slimelingsCollected + " / " + totalSlimelings;
         
-        //get references to parameters and store as ints for performace
+        //get references to parameters and store as ints for 
         loseSlimelingHash = Animator.StringToHash("loseSlimeling");
         gainSlimelingHash = Animator.StringToHash("gainSlimeling");
     }
