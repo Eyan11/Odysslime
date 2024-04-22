@@ -2,11 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
-using UnityEngine.SceneManagement;
 
 public class MainMenuManager : MonoBehaviour
 {
-    [Header("Menu Objects")]
+    [Header("Main Menu UI Objects")]
     [SerializeField] private GameObject bgImage;
     [SerializeField] private GameObject optionsUI;
     [SerializeField] private GameObject controlsUI;
@@ -91,12 +90,7 @@ public class MainMenuManager : MonoBehaviour
     }
 
 
-    //--------------------- Opens/Closes Desired Menu or Scene ---------------------\\
-    
-    private void OpenIslandScene(string sceneName) {
-        //load specified scene
-        SceneManager.LoadScene(sceneName);
-    }
+    //--------------------- Opens/Closes Desired Menu ---------------------\\
 
     private void OpenTitleMenu() {
         CloseCurrentMenu();
