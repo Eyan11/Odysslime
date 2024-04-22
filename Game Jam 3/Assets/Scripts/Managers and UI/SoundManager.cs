@@ -1,12 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
+using System.Numerics;
+using UnityEngine; 
 
 public class SoundManager : MonoBehaviour
 {
     [Header("Audio Sources")]
     [SerializeField] private AudioSource source;
     [SerializeField] private AudioSource musicSource;
+    [SerializeField] private AudioSource BGMSource;
 
     [Header("Sounds")]
     [SerializeField] private AudioClip explosionSound;
@@ -37,6 +39,27 @@ public class SoundManager : MonoBehaviour
         DontDestroyOnLoad(this.gameObject);
     }
     */
+
+    // Plays a sound at a location with a customizable volume
+    // The sound automatically cleans itself
+    public void PlaySoundEffectAtPoint(AudioClip audioClip, UnityEngine.Vector3 point, float volume) {
+        AudioSource.PlayClipAtPoint(audioClip, point, volume);
+    }
+
+    // Plays a sound at a location using the default volume of 0.6f
+    public void PlaySoundEffectAtPoint(AudioClip audioClip, UnityEngine.Vector3 point) {
+        PlaySoundEffectAtPoint(audioClip, point, 0.6f);
+    }
+
+    // Plays looping background music using a customizable volume
+    public void PlayBackgroundMusic(AudioClip audioClip, float volume) {
+        BGMSource.PlayOneShot(audioClip, volume);
+    }
+
+    // Plays looping ackground music using the default volume of 0.5f;
+    public void PlayBackgroundMusic(AudioClip audioClip) {
+        PlayBackgroundMusic(audioClip, 0.5f);
+    }
 
     public void PlayExplosion() {
         //second argument is priority level of sound (0-1)
