@@ -893,7 +893,7 @@ MonoBehaviour:
       m_Type:
         m_SerializableType: UnityEngine.Mesh, UnityEngine.CoreModule, Version=0.0.0.0,
           Culture=neutral, PublicKeyToken=null
-      m_SerializableObject: '{"obj":{"fileID":9019197023114797182,"guid":"203dd61ddc02b465c9d2b66e08504d44","type":3}}'
+      m_SerializableObject: '{"obj":{"fileID":5302568919011541938,"guid":"364eb7f69332e4c30b9b5872b1990837","type":3}}'
     m_Space: 2147483647
   m_Property:
     name: mesh
@@ -965,7 +965,7 @@ MonoBehaviour:
       m_Type:
         m_SerializableType: UnityEngine.Color, UnityEngine.CoreModule, Version=0.0.0.0,
           Culture=neutral, PublicKeyToken=null
-      m_SerializableObject: '{"r":1.0,"g":0.7534226179122925,"b":0.0,"a":1.0}'
+      m_SerializableObject: '{"r":1.0,"g":0.11237703263759613,"b":0.0,"a":1.0}'
     m_Space: 2147483647
   m_Property:
     name: _BaseColor
