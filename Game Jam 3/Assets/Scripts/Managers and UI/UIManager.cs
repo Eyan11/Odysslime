@@ -10,6 +10,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private TMP_Text slimelingText;
     [SerializeField] private TMP_Text promptText;
     [SerializeField] private int totalSlimelings;
+    private SaveManager saveScript;
     private int slimelingsCollected = 0;
     private float promptCountdown = 0;
     private int loseSlimelingHash;
@@ -23,6 +24,9 @@ public class UIManager : MonoBehaviour
         //get references to parameters and store as ints for 
         loseSlimelingHash = Animator.StringToHash("loseSlimeling");
         gainSlimelingHash = Animator.StringToHash("gainSlimeling");
+
+        //TODO: uncomment once canon is implemented
+        //saveScript = GameObject.FindWithTag("Save Manager").GetComponent<SaveManager>();
     }
 
     private void Update() {
@@ -54,4 +58,25 @@ public class UIManager : MonoBehaviour
         promptText.text = prompt;
     }
    
+    // -------------- Finish Island Event Methods -------------------\\
+
+    private void Start() {
+        //needs to be in start to give GameEvents enough time to get set up
+        //subscribe to events
+        GameEvents.current.onFinishIslandEvent += SaveSlimeCount;
+    }
+
+    private void OnDestroy() {
+        //unsubscribes from event (avoid null reference when slime dies)
+        GameEvents.current.onFinishIslandEvent -= SaveSlimeCount;
+    }
+
+    //Method is called when canon is used and the island is finished
+    private void SaveSlimeCount() {
+        if(saveScript != null) {
+            //save slime count for current island
+            saveScript.SaveSlimeCount(slimelingsCollected);
+        }
+    }
+
 }

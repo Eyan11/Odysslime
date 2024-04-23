@@ -20,6 +20,7 @@ public class MainMenuManager : MonoBehaviour
 
     [Header("Level Select References")]
     [SerializeField] private LevelSelectManager levelScript;
+    
     private CurrentMenu currentMenu;
     private InputMap inputMap;
     private bool backInput;

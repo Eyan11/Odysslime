@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class LevelSelectManager : MonoBehaviour
 {
@@ -12,11 +13,20 @@ public class LevelSelectManager : MonoBehaviour
     [SerializeField] private GameObject engineerInfo;
     [SerializeField] private GameObject oozeInfo;
     [SerializeField] private Animator scrollAnim;
+    
+    [Header("Scroll Information Text Objects")]
+    [SerializeField] private TMP_Text infernoSlimeText;
+    [SerializeField] private TMP_Text frostbiteSlimeText;
+    [SerializeField] private TMP_Text covenSlimeText;
+    [SerializeField] private TMP_Text engineerSlimeText;
+    [SerializeField] private TMP_Text oozeSlimeText;
     private CurrentInfo currentInfo;
+    private SaveManager saveScript = null;
     private bool isRunningCoroutine = false;
     private bool isScrollMoving = false;
     private int selectHash;
     private int unselectHash;
+
 
     private void Awake() {
         //get references to parameters and store as ints for performace
@@ -24,6 +34,19 @@ public class LevelSelectManager : MonoBehaviour
         unselectHash = Animator.StringToHash("unselect");
 
         currentInfo = CurrentInfo.None;
+
+        //Get save script
+        saveScript = GameObject.FindWithTag("Save Manager").GetComponent<SaveManager>();
+
+        //TODO: replace 99 with total slime count
+        //Sets slimeling count text for all islands
+        if(saveScript != null) {
+            infernoSlimeText.text = saveScript.GetIslandSlimesCollected('I') + " / 99";
+            frostbiteSlimeText.text = saveScript.GetIslandSlimesCollected('F') + " / 99";
+            covenSlimeText.text = saveScript.GetIslandSlimesCollected('C') + " / 99";
+            engineerSlimeText.text = saveScript.GetIslandSlimesCollected('E') + " / 99";
+            oozeSlimeText.text = saveScript.GetIslandSlimesCollected('O') + " / 99";
+        }
     }
 
 

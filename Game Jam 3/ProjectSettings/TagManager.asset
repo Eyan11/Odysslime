@@ -14,6 +14,7 @@ TagManager:
   - Slimeling
   - Game Manager
   - World Canvas
+  - Save Manager
   layers:
   - Default
   - TransparentFX

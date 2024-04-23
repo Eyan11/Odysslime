@@ -149,7 +149,7 @@ public class PauseMenuManager : MonoBehaviour
         Time.timeScale = 0f;
 
         //trigger pause event
-        GameEvents.current.PauseEvent();
+        GameEvents.current.TriggerPauseEvent();
 
         //Set camera sensitivity to 0 when paused
         camScript.UnlockCamera();
@@ -171,7 +171,7 @@ public class PauseMenuManager : MonoBehaviour
         Time.timeScale = 1f;
 
         //trigger resume event
-        GameEvents.current.ResumeEvent();
+        GameEvents.current.TriggerResumeEvent();
 
         //Set camera sensitivity to normal value when resuming
         camScript.SetCamSensitivity(1f);
@@ -265,8 +265,6 @@ public class PauseMenuManager : MonoBehaviour
                 isUsingKBM = false;
             }
         }
-        else
-            Debug.Log("No Input connected, keyboard controls displayed by default");
 
         //wait 1 seconds before checking input again
         yield return new WaitForSecondsRealtime(1f);

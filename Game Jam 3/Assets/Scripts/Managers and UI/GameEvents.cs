@@ -15,17 +15,24 @@ public class GameEvents : MonoBehaviour
     //list of observers for events
     public event Action onPauseEvent;
     public event Action onResumeEvent;
+    public event Action onFinishIslandEvent;
 
     //triggers pause event
-    public void PauseEvent() {
+    public void TriggerPauseEvent() {
         if(onPauseEvent != null)
             onPauseEvent();
     }
 
     //triggers resume event
-    public void ResumeEvent() {
+    public void TriggerResumeEvent() {
         if(onResumeEvent != null) 
             onResumeEvent();
+    }
+
+    //triggers finish island event
+    public void TriggerFinishIslandEvent() {
+        if(onFinishIslandEvent != null)
+            onFinishIslandEvent();
     }
 
 }
