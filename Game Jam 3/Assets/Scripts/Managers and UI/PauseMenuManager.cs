@@ -27,7 +27,6 @@ public class PauseMenuManager : MonoBehaviour
     private bool isUsingKBM = true;
 
     private void Awake() {
-
         //Reference to camera script
         camScript = Camera.main.gameObject.GetComponent<ThirdPersonCam>();
 

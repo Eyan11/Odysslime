@@ -97,15 +97,32 @@ public class KingMovement : SlimeMovement
 
     private void SetVerticalSpeed() {
 
-        //if too low to floor, MOVE DOWN
-        if(currentHeight < (hoverHeight - heightBuffer))
-            vertSpeed += hoverAcceleration * Time.deltaTime;
-        //if too high to floor, MOVE UP
-        else if(currentHeight > (hoverHeight + heightBuffer))
-            vertSpeed -= hoverAcceleration * Time.deltaTime;
-        //if within buffers and speed is NOT close to zero, deaccelerate towards 0
-        else if(Mathf.Abs(vertSpeed) > 0.5)
-            vertSpeed += -Mathf.Sign(vertSpeed) * hoverDeacceleration * Time.deltaTime;
+        //if too low to floor, MOVE UP
+        if(currentHeight < (hoverHeight - heightBuffer)) {
+
+            //if already moving up, use acceleration
+            if(vertSpeed > 0)
+                vertSpeed += hoverAcceleration * Time.deltaTime;
+            //if moving in opposite direction, use deacceleration (faster)
+            else
+                vertSpeed += hoverDeacceleration * Time.deltaTime;
+        }
+
+        //if too high to floor, MOVE DOWN
+        else if(currentHeight > (hoverHeight + heightBuffer)) {
+
+            //if already moving down, use acceleration
+            if(vertSpeed < 0)
+                vertSpeed -= hoverAcceleration * Time.deltaTime;
+            //if moving in opposite direction, use deacceleration (faster)
+            else
+                vertSpeed -= hoverDeacceleration * Time.deltaTime;
+        }
+
+        //if within buffers and speed is NOT close to zero, reduce speed by half until it becomes 0
+        else if(Mathf.Abs(vertSpeed) > 0.2)
+            vertSpeed *= 0.5f;
+        
         //if within buffers and speed IS close to zero, set speed to exactly 0
         else
             vertSpeed = 0f;

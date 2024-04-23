@@ -48,7 +48,7 @@ SphereCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6164710366797321215}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 10d73b588fc920d4288a741b6532baaa, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -103,12 +103,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 7
   maxHoverSpeed: 4
-  hoverAcceleration: 30
-  hoverDeacceleration: 50
+  hoverAcceleration: 50
+  hoverDeacceleration: 120
   maxYPos: 9999
   minYPos: -9999
   hoverHeight: 5
-  heightBuffer: 1
+  heightBuffer: 0.5
   rayInterval: 0.3
 --- !u!114 &7084102939287826575
 MonoBehaviour:
@@ -292,7 +292,7 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4129207219936611899}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 10d73b588fc920d4288a741b6532baaa, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
