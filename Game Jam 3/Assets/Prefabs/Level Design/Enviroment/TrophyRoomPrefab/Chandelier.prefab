@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8745843118236819694}
   - component: {fileID: 5282197542487524559}
   - component: {fileID: 4322095208697456304}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: PS_VFX_Glow2 (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4917,7 +4917,7 @@ GameObject:
   - component: {fileID: 8378205187769652452}
   - component: {fileID: 6113217951884385447}
   - component: {fileID: 6227963728728145246}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: PS_VFX_Glow2 (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9823,7 +9823,7 @@ GameObject:
   - component: {fileID: 7708686852142138206}
   - component: {fileID: 4488739479068824756}
   - component: {fileID: 2874327912315875152}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: PS_VFX_Glow2 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14729,7 +14729,7 @@ GameObject:
   - component: {fileID: 6052988570500061182}
   - component: {fileID: 475412015093630722}
   - component: {fileID: 2955287077526430473}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: PS_VFX_Glow2 (6)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19635,7 +19635,7 @@ GameObject:
   - component: {fileID: 6898635987843811403}
   - component: {fileID: 302998646089516837}
   - component: {fileID: 8292337883530684711}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: PS_VFX_Glow2 (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -24541,7 +24541,7 @@ GameObject:
   - component: {fileID: 3733267583713886588}
   - component: {fileID: 3748090942278361740}
   - component: {fileID: 6485724536183317127}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: PS_VFX_Glow2 (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -29499,20 +29499,45 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 79728497ed67b4b0a967fe02aa0856ca, type: 2}
+    - target: {fileID: -7640558969779515294, guid: bd670cb984d27423896ad8623d2ff0f0,
+        type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: -7511558181221131132, guid: bd670cb984d27423896ad8623d2ff0f0,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 816a18435cc964e68ba3dfe957422086, type: 2}
+    - target: {fileID: -7029948723529949830, guid: bd670cb984d27423896ad8623d2ff0f0,
+        type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: -6093592463355912122, guid: bd670cb984d27423896ad8623d2ff0f0,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 816a18435cc964e68ba3dfe957422086, type: 2}
+    - target: {fileID: -1281056945285190893, guid: bd670cb984d27423896ad8623d2ff0f0,
+        type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: bd670cb984d27423896ad8623d2ff0f0,
         type: 3}
       propertyPath: m_Name
       value: Chandelier
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: bd670cb984d27423896ad8623d2ff0f0,
+        type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 2800250516343163423, guid: bd670cb984d27423896ad8623d2ff0f0,
+        type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 6047510140390042459, guid: bd670cb984d27423896ad8623d2ff0f0,
         type: 3}

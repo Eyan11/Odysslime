@@ -12,7 +12,8 @@ GameObject:
   - component: {fileID: 2578154317867325874}
   - component: {fileID: 6158377152447207106}
   - component: {fileID: 8492310184667474888}
-  m_Layer: 0
+  - component: {fileID: 9054464061743704578}
+  m_Layer: 7
   m_Name: Truba (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -106,3 +107,22 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: -8860314732324638107, guid: ff71e8c32ea9e46b0843f6b4ff466d29, type: 3}
+--- !u!114 &9054464061743704578
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1856656577430422456}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e3fdca004f2d45fe8abbed571a8abd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_OverrideArea: 1
+  m_Area: 1
+  m_OverrideGenerateLinks: 0
+  m_GenerateLinks: 0
+  m_IgnoreFromBuild: 0
+  m_ApplyToChildren: 1
+  m_AffectedAgents: ffffffff

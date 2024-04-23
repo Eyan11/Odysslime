@@ -108,7 +108,7 @@ MonoBehaviour:
   maxYPos: 9999
   minYPos: -9999
   hoverHeight: 5
-  heightBuffer: 0.5
+  heightBuffer: 1
   rayInterval: 0.3
 --- !u!114 &7084102939287826575
 MonoBehaviour:

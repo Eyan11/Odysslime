@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2999192031919708376}
   - component: {fileID: 7330119102546787004}
   - component: {fileID: 7493361071102465870}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Directional Light (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -129,7 +129,7 @@ GameObject:
   - component: {fileID: 1112884932413476335}
   - component: {fileID: 921502416774303870}
   - component: {fileID: 5951567073295107505}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Directional Light (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -247,7 +247,7 @@ GameObject:
   - component: {fileID: 1613549029832782395}
   - component: {fileID: 7913543289776998132}
   - component: {fileID: 600673267408008252}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Directional Light (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -447,6 +447,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: comercial
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: c0fb682249cdd4ea7986a4e61d8fb0bc,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
@@ -467,6 +472,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 1047269669437914049}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: c0fb682249cdd4ea7986a4e61d8fb0bc,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6997852236107333812}
   m_SourcePrefab: {fileID: 100100000, guid: c0fb682249cdd4ea7986a4e61d8fb0bc, type: 3}
 --- !u!1 &8619325407313928519 stripped
 GameObject:
@@ -495,6 +504,25 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 4.393301, y: 1.9662997, z: 2.8322725}
   m_Center: {x: 0, y: 0.9369276, z: 1.4012806}
+--- !u!114 &6997852236107333812
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8619325407313928519}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e3fdca004f2d45fe8abbed571a8abd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_OverrideArea: 1
+  m_Area: 1
+  m_OverrideGenerateLinks: 0
+  m_GenerateLinks: 0
+  m_IgnoreFromBuild: 0
+  m_ApplyToChildren: 1
+  m_AffectedAgents: ffffffff
 --- !u!4 &8995428325245746173 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: c0fb682249cdd4ea7986a4e61d8fb0bc,

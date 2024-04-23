@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 317609743735962126}
   - component: {fileID: 3702676542959407632}
   - component: {fileID: 8820377597428946488}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Area Light (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -129,7 +129,7 @@ GameObject:
   - component: {fileID: 2492018894264615892}
   - component: {fileID: 3697914718743837846}
   - component: {fileID: 3285788612938415057}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Area Light (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -247,7 +247,7 @@ GameObject:
   - component: {fileID: 6855644255900161147}
   - component: {fileID: 4335341537485859762}
   - component: {fileID: 6893918716756380302}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Area Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -365,7 +365,7 @@ GameObject:
   - component: {fileID: 7559750598417366556}
   - component: {fileID: 7207546163159382988}
   - component: {fileID: 8114529074889494370}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Area Light (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -483,7 +483,7 @@ GameObject:
   - component: {fileID: 6074754330124814045}
   - component: {fileID: 943197698318349893}
   - component: {fileID: 804814331910181896}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Area Light (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -663,10 +663,25 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -5800716005839480390, guid: b5a9eb692f6944d1d83c413286359234,
+        type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: -1545476444600196597, guid: b5a9eb692f6944d1d83c413286359234,
+        type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: b5a9eb692f6944d1d83c413286359234,
         type: 3}
       propertyPath: m_Name
       value: LanternwLights
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: b5a9eb692f6944d1d83c413286359234,
+        type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 5576596853126749476, guid: b5a9eb692f6944d1d83c413286359234,
         type: 3}

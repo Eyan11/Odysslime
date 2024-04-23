@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1602841615106207952}
   - component: {fileID: 5069972360333658644}
   - component: {fileID: 5525607750823536571}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cannon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -86,6 +86,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Cannon Visuals
+      objectReference: {fileID: 0}
+    - target: {fileID: 1532696002325198089, guid: 832afbe4c5c09473a8ad35da450d754c,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 2165926066406911923, guid: 832afbe4c5c09473a8ad35da450d754c,
         type: 3}

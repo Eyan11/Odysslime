@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6237335378542787937}
   - component: {fileID: 6630711873110745240}
   - component: {fileID: 7035390981590854770}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: PS_VFX_Stars (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4940,10 +4940,30 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -3133498875991405556, guid: 9db38b03192d84bc9bebf154af0a9e32,
+        type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: -1195479871806631034, guid: 9db38b03192d84bc9bebf154af0a9e32,
+        type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 344339473256029501, guid: 9db38b03192d84bc9bebf154af0a9e32,
+        type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 9db38b03192d84bc9bebf154af0a9e32,
         type: 3}
       propertyPath: m_Name
       value: Trophy Model
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 9db38b03192d84bc9bebf154af0a9e32,
+        type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 3306424035897567520, guid: 9db38b03192d84bc9bebf154af0a9e32,
         type: 3}
@@ -5048,6 +5068,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: ET_Pedestal
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 17ad819727ec542568aec6029adb1f6c,
+        type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

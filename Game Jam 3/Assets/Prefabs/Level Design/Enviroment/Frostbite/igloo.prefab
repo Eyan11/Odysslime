@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 533676615670309889}
-  m_Layer: 7
+  m_Layer: 6
   m_Name: igloo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -45,7 +45,7 @@ GameObject:
   - component: {fileID: 7759016758661410854}
   - component: {fileID: 8094725537726037129}
   - component: {fileID: 6411576498936009072}
-  m_Layer: 7
+  m_Layer: 6
   m_Name: high_poly
   m_TagString: Untagged
   m_Icon: {fileID: 0}

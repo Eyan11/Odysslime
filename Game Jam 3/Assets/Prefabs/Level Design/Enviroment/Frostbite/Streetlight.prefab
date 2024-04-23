@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4227265183861393633}
   - component: {fileID: 518498054928584441}
   - component: {fileID: 3776107949602246657}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Directional Light (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -191,6 +191,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -923326879212824360, guid: e455e9a60a60649b0a02d0d2e7f858bf,
+        type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 782588651094249075, guid: e455e9a60a60649b0a02d0d2e7f858bf,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -205,6 +210,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Streetlight
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: e455e9a60a60649b0a02d0d2e7f858bf,
+        type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:

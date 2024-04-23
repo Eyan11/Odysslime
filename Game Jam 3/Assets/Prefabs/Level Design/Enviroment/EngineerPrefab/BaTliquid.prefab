@@ -121,6 +121,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4549007852733079286}
   - component: {fileID: 3550642430491890598}
+  - component: {fileID: 8353117422962052971}
   m_Layer: 0
   m_Name: BaTliquid
   m_TagString: Untagged
@@ -166,6 +167,25 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 3, y: 5.41, z: 3}
   m_Center: {x: 0, y: 2.7, z: 0}
+--- !u!114 &8353117422962052971
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6834055682387216027}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e3fdca004f2d45fe8abbed571a8abd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_OverrideArea: 1
+  m_Area: 1
+  m_OverrideGenerateLinks: 0
+  m_GenerateLinks: 0
+  m_IgnoreFromBuild: 0
+  m_ApplyToChildren: 1
+  m_AffectedAgents: ffffffff
 --- !u!1 &8935559432318203632
 GameObject:
   m_ObjectHideFlags: 0

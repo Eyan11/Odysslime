@@ -73,15 +73,85 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -6444049623125133369, guid: 6865c3203e5d8451ab2bfc082c41c070,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: -6307071130699595593, guid: 6865c3203e5d8451ab2bfc082c41c070,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: -230926519358164040, guid: 6865c3203e5d8451ab2bfc082c41c070,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 383dc03f55ce94e55af14d09a5208bfe, type: 2}
+    - target: {fileID: -190278446733663070, guid: 6865c3203e5d8451ab2bfc082c41c070,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 6865c3203e5d8451ab2bfc082c41c070,
         type: 3}
       propertyPath: m_Name
       value: smile_arm_pick
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 6865c3203e5d8451ab2bfc082c41c070,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1084663051822224077, guid: 6865c3203e5d8451ab2bfc082c41c070,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1245457461135087616, guid: 6865c3203e5d8451ab2bfc082c41c070,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 2139377622862253292, guid: 6865c3203e5d8451ab2bfc082c41c070,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 4373033558521945699, guid: 6865c3203e5d8451ab2bfc082c41c070,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 5528860797864257434, guid: 6865c3203e5d8451ab2bfc082c41c070,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 7036213049465896255, guid: 6865c3203e5d8451ab2bfc082c41c070,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 7135489290814281502, guid: 6865c3203e5d8451ab2bfc082c41c070,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 7363181043211386078, guid: 6865c3203e5d8451ab2bfc082c41c070,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 7594444660365775247, guid: 6865c3203e5d8451ab2bfc082c41c070,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 7872466948928179809, guid: 6865c3203e5d8451ab2bfc082c41c070,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -95,6 +165,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 8640777263810554341}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 6865c3203e5d8451ab2bfc082c41c070,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2283816448003971169}
   m_SourcePrefab: {fileID: 100100000, guid: 6865c3203e5d8451ab2bfc082c41c070, type: 3}
 --- !u!1 &2908979430684670104 stripped
 GameObject:
@@ -144,3 +218,22 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 2.6, z: 1}
   m_Center: {x: 0, y: 1, z: 0}
+--- !u!114 &2283816448003971169
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2908979430684670104}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e3fdca004f2d45fe8abbed571a8abd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_OverrideArea: 1
+  m_Area: 1
+  m_OverrideGenerateLinks: 0
+  m_GenerateLinks: 0
+  m_IgnoreFromBuild: 0
+  m_ApplyToChildren: 1
+  m_AffectedAgents: ffffffff
