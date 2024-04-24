@@ -8,9 +8,12 @@ using UnityEditor.Rendering.Universal;
 //using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.VFX;
 
 public class MagicSlimeAbilities : SlimeAbilities
 {
+    [Header("References")]
+    [SerializeField] private VisualEffectAsset magicSlimeVFX;
     [Header("Settings")]
     [SerializeField] private GameObject slimeModel;
     [SerializeField] private Material outline;
@@ -34,9 +37,8 @@ public class MagicSlimeAbilities : SlimeAbilities
     private Transform controlObjOrientation;
     private Rigidbody controlObjRigidbody;
     private Movable movable;
-    private GameObject priorMovable;
-    private Renderer movableRenderer;
-    Material[] movableMaterials;
+    private GameObject raycastMovableObj;
+    private VisualEffect movableVFX;
     public bool abilityActive = false;
 
     private void Awake() {
@@ -90,12 +92,11 @@ public class MagicSlimeAbilities : SlimeAbilities
         controlObjRigidbody.velocity = horizontalMovement * controlObjMoveSpeed + Vector3.up * verticalInput * controlObjMoveSpeed;
     }
 
-    private void ClearOutline() {
-        // Assume that the 2nd element of materials will always have the shader
-        movableMaterials[1] = null;
-        movableRenderer.materials = movableMaterials;
-        // Sets prior movable to null so the outline could be reapplied to same obj
-        priorMovable = null;
+    private void ClearEffect() {
+        // Clears effect
+        Destroy(movableVFX);
+        // Nullifies variable, allowing for a new highlight to be put on
+        raycastMovableObj = null;
     }
 
     private void InteractionCheck() {
@@ -116,20 +117,17 @@ public class MagicSlimeAbilities : SlimeAbilities
         Physics.SphereCast(transform.position - slimeModel.transform.forward * frontalInteractionRadius, frontalInteractionRadius, slimeModel.transform.forward, out raycastHit, interactionDistance, movablesMask);
 
         // Checks if theres an object detected; clear out highlight if there isn't;
-        if (!raycastHit.collider && priorMovable) {
-            ClearOutline();
-        } else if (raycastHit.collider && priorMovable != raycastHit.collider.gameObject) {
-            // Sets priorMovable
-            priorMovable = raycastHit.collider.gameObject;
-            // Sets outline to 2nd element for materials
-            // Note we get the parent since the Pushable hitbox is what is getting detected
-            movableRenderer = priorMovable.transform.parent.GetComponentInChildren<Renderer>();
-            movableMaterials = movableRenderer.materials;
-            movableMaterials[1] = outline;
-            movableRenderer.materials = movableMaterials;
+        if (!raycastHit.collider && raycastMovableObj) {
+            ClearEffect();
+        } else if (raycastHit.collider && raycastMovableObj != raycastHit.collider.gameObject) {
+            raycastMovableObj = raycastHit.collider.gameObject;
+            // Tacks on visual effect
+            movableVFX = raycastMovableObj.AddComponent<VisualEffect>();
+            movableVFX.visualEffectAsset = magicSlimeVFX;
+
         }
 
-        if (!priorMovable) return;
+        if (!raycastMovableObj) return;
 
         // Display prompt message for 2/10 a second
         UIScript.DisplayPrompt("Press Q to shift block!", 0.2f);
@@ -163,9 +161,6 @@ public class MagicSlimeAbilities : SlimeAbilities
                 movable.ActiveState();
             }
 
-            // Clears block outline
-            ClearOutline();
-
             // Uses it to change the camera's focus
             cameraScript.SwitchCamera(controlObj);
             // Obtains orientation that the camera generates (if it didn't exist already)
@@ -175,6 +170,9 @@ public class MagicSlimeAbilities : SlimeAbilities
             controlEndMinTime = Time.fixedTime + minimumControlTime;
         }
         else if (controlEndMinTime < Time.fixedTime) { // Prevents player from disengaging for a little
+            // Clears block outline
+            ClearEffect();
+
             // Re-enables rigidbody settings
             controlObjRigidbody.freezeRotation = false;
             controlObjRigidbody.useGravity = true;
@@ -188,8 +186,8 @@ public class MagicSlimeAbilities : SlimeAbilities
     }
 
     private void OnDisable() {
-        if (priorMovable) {
-            ClearOutline();
+        if (raycastMovableObj) {
+            ClearEffect();
         }
     }
 }

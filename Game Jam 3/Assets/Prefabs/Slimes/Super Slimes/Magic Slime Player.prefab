@@ -172,6 +172,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42a58c0cc21809349808aabadf8b98bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  magicSlimeVFX: {fileID: 8926484042661614526, guid: 71fdc6568b6edb3428eade4cc33de7c8,
+    type: 3}
   slimeModel: {fileID: 6158259414867809714}
   outline: {fileID: 2100000, guid: dfa89235eda524c45b7920be2218c141, type: 2}
   interactionDistance: 6
