@@ -153,6 +153,7 @@ public class MagicSlimeAbilities : SlimeAbilities
             controlObjRigidbody.useGravity = false;
 
             // Sets slime's speed to zero
+            slimeFollowerMovement.movementSpeed = 0;
             slimeFollowerMovement.enabled = false;
 
             // Allows the object to move if it couldn't already
