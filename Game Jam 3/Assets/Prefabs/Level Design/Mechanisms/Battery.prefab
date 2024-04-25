@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3930148328234558193}
   - component: {fileID: 8630635726870975547}
   - component: {fileID: 1013743674649485849}
+  - component: {fileID: 7474662186047810506}
   m_Layer: 12
   m_Name: Battery
   m_TagString: Untagged
@@ -70,6 +71,27 @@ MonoBehaviour:
   mechanism: {fileID: 0}
   chargesNeeded: 1
   currentCharges: 0
+--- !u!95 &7474662186047810506
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4952583734734218031}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 58939439275876a448bc2ec1cfb63871, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1001 &7559944726558674778
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -18,6 +18,9 @@ public class SaveManager : MonoBehaviour
     private bool unlockedEngineer = false;
     private bool unlockedOoze = false;
 
+    //cutscene trackers
+    private bool seenVolcanoCutscene = false;
+
     //keeps Save Manager object active throughout every scene and deletes duplicates
     private void Awake() {
         GameObject[] objs = GameObject.FindGameObjectsWithTag("Save Manager");
@@ -27,6 +30,8 @@ public class SaveManager : MonoBehaviour
 
         DontDestroyOnLoad(this.gameObject);
     }
+
+    //------------------------ Setter Method for Island Info Upon Using Canon --------------------------\\
 
     //Saves the slimes collected if collected more slimes than current best score
     // also since this script is only called when canon is used, it will unlock the next level
@@ -72,7 +77,7 @@ public class SaveManager : MonoBehaviour
     }
 
 
-    //Eeturns slimeling high score for all islands (used by LevelSelectManager)
+    //------------------------ Getter Method Island Slimeling Count States --------------------------\\
     public int GetIslandSlimesCollected(char islandChar) {
         
         //Compare character
@@ -100,7 +105,7 @@ public class SaveManager : MonoBehaviour
         }
     }
 
-    //Returns false if level is locked and true if unlocked (used by LevelSelectManager)
+    //------------------------ Getter Method Island Lock/Unlock States --------------------------\\
     public bool IsIslandUnlocked(char islandChar) {
         
         //Compare character
@@ -124,4 +129,19 @@ public class SaveManager : MonoBehaviour
                 return false;
         }
     }
+
+
+    //------------------------ Getter Method for Cutscenes --------------------------\\
+
+    public bool SeenVolcanoCutscene() {
+        return seenVolcanoCutscene;
+    }
+
+
+    //------------------------ Setter Method for Cutscenes --------------------------\\
+
+    public void FinishedVolcanoCutscene() {
+        seenVolcanoCutscene = true;
+    }
+    
 }

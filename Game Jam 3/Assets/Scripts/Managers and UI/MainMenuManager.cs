@@ -21,20 +21,31 @@ public class MainMenuManager : MonoBehaviour
 
     [Header("Level Select References")]
     [SerializeField] private LevelSelectManager levelScript;
-    
+
+    [Header("Cutscene References")]
+    [SerializeField] private GameObject volcanoCutscene;
+
     private CurrentMenu currentMenu;
     private InputMap inputMap;
+    private SaveManager saveScript;
     private bool backInput;
     private bool isRunningCoroutine = false;
     private bool isUsingKBM = true;
 
     private void Awake() {
-
         //create a new Input Map object and enable the King Slime input
         inputMap = new InputMap();
         inputMap.UI.Enable();
 
+        //get reference to save script (persistent)
+        saveScript = GameObject.FindWithTag("Save Manager").GetComponent<SaveManager>();
+
         currentMenu = CurrentMenu.Title;
+
+        //if already seen volcano cutscene, then return to level select instead of title screen
+        if(saveScript.SeenVolcanoCutscene() == true)
+            OpenLevelSelectMenu();
+
 
         //start checking for controllers
         StartCoroutine(CheckForControllers());
@@ -50,7 +61,10 @@ public class MainMenuManager : MonoBehaviour
 
     private void Update() {
         GetInput();
-        TitleMenuController();
+
+        //let cutscene manager control game during cutscene
+        if(currentMenu != CurrentMenu.Cutscene)
+            TitleMenuController();
         
         //if on controls screen, display correct controls image
         if(currentMenu == CurrentMenu.Controls)
@@ -121,14 +135,22 @@ public class MainMenuManager : MonoBehaviour
         currentMenu = CurrentMenu.Controls;
     }
 
-    private void OpenLevelSelectMenu() {
+    //public for volcano cutscene to call when finished
+    public void OpenLevelSelectMenu() {
         CloseCurrentMenu();
         //distable title UI here instead of CloseCurrentMenu 
         //  because I want it enabled for options and controls still
         titleUI.SetActive(false);
-        levelSelectUI.SetActive(true);
-        currentMenu = CurrentMenu.LevelSelect;
-        EventSystem.current.SetSelectedGameObject(levelSelectMenuFirst);
+
+        if(saveScript.SeenVolcanoCutscene() == false) {
+            volcanoCutscene.SetActive(true);
+            currentMenu = CurrentMenu.Cutscene;
+        }
+        else {
+            levelSelectUI.SetActive(true);
+            currentMenu = CurrentMenu.LevelSelect;
+            EventSystem.current.SetSelectedGameObject(levelSelectMenuFirst);
+        }
     }
 
     private void CloseCurrentMenu() {
@@ -153,11 +175,16 @@ public class MainMenuManager : MonoBehaviour
             case CurrentMenu.Controls:
                 controlsUI.SetActive(false);
                 break;
+
+            case CurrentMenu.Cutscene:
+                //cutscenes disable themselves in CutsceneManager script
+                break;
+
         }
     }
 
     private enum CurrentMenu {
-        Title, LevelSelect, Options, Controls
+        Title, LevelSelect, Options, Controls, Cutscene
     }
 
     private void QuitGame() {

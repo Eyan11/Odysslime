@@ -3369,6 +3369,7 @@ MonoBehaviour:
   optionsMenuFirst: {fileID: 0}
   levelSelectMenuFirst: {fileID: 836652548}
   levelScript: {fileID: 183060951}
+  volcanoCutscene: {fileID: 1518374150}
 --- !u!114 &1030047864 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8038405889918588150, guid: 6b9c9091533f4864ba0f2479f7a91342,
@@ -4160,8 +4161,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1518374151}
+  - component: {fileID: 1518374152}
   m_Layer: 5
-  m_Name: Intro Cutscene UI Holder
+  m_Name: Volcano Cutscene UI Holder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4189,6 +4191,24 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1518374152
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1518374150}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0589b786d271b2a4b942d7938454ffbc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cutsceneImageList:
+  - {fileID: 593836778}
+  - {fileID: 1644205984}
+  - {fileID: 1595218708}
+  cutscene: 0
+  mainMenuScript: {fileID: 1021065581}
 --- !u!1 &1537013618
 GameObject:
   m_ObjectHideFlags: 0
