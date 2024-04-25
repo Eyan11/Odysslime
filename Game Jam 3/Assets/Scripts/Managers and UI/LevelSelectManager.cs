@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using TMPro;
+using UnityEngine.UI;
 
 public class LevelSelectManager : MonoBehaviour
 {
@@ -14,12 +15,18 @@ public class LevelSelectManager : MonoBehaviour
     [SerializeField] private GameObject oozeInfo;
     [SerializeField] private Animator scrollAnim;
     
-    [Header("Scroll Information Text Objects")]
+    [Header("Scroll Information Text")]
     [SerializeField] private TMP_Text infernoSlimeText;
     [SerializeField] private TMP_Text frostbiteSlimeText;
     [SerializeField] private TMP_Text covenSlimeText;
     [SerializeField] private TMP_Text engineerSlimeText;
     [SerializeField] private TMP_Text oozeSlimeText;
+
+    [Header("Island Buttons (excluding Inferno since always unlocked)")]
+    [SerializeField] private Button frostbiteButton;
+    [SerializeField] private Button covenButton;
+    [SerializeField] private Button engineerButton;
+    [SerializeField] private Button oozeButton; 
     private CurrentInfo currentInfo;
     private SaveManager saveScript = null;
     private bool isRunningCoroutine = false;
@@ -39,13 +46,21 @@ public class LevelSelectManager : MonoBehaviour
         saveScript = GameObject.FindWithTag("Save Manager").GetComponent<SaveManager>();
 
         //TODO: replace 99 with total slime count
-        //Sets slimeling count text for all islands
+        //Gathers save data from SaveManager persistent script
         if(saveScript != null) {
+
+            //Sets slimeling count text for all islands
             infernoSlimeText.text = saveScript.GetIslandSlimesCollected('I') + " / 99";
             frostbiteSlimeText.text = saveScript.GetIslandSlimesCollected('F') + " / 99";
             covenSlimeText.text = saveScript.GetIslandSlimesCollected('C') + " / 99";
             engineerSlimeText.text = saveScript.GetIslandSlimesCollected('E') + " / 99";
             oozeSlimeText.text = saveScript.GetIslandSlimesCollected('O') + " / 99";
+
+            //Sets island lock/unlock state for all islands
+            frostbiteButton.interactable = saveScript.IsIslandUnlocked('F');
+            covenButton.interactable = saveScript.IsIslandUnlocked('C');
+            engineerButton.interactable = saveScript.IsIslandUnlocked('E');
+            oozeButton.interactable = saveScript.IsIslandUnlocked('O');
         }
     }
 

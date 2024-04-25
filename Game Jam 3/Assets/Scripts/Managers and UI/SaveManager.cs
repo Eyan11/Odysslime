@@ -11,6 +11,12 @@ public class SaveManager : MonoBehaviour
     private int covenSlimesCollected = 0;
     private int engineerSlimesCollected = 0;
     private int oozeSlimesCollected = 0;
+    
+    //restricted island trackers
+    private bool unlockedFrostbite = false;
+    private bool unlockedCoven = false;
+    private bool unlockedEngineer = false;
+    private bool unlockedOoze = false;
 
     //keeps Save Manager object active throughout every scene and deletes duplicates
     private void Awake() {
@@ -23,27 +29,32 @@ public class SaveManager : MonoBehaviour
     }
 
     //Saves the slimes collected if collected more slimes than current best score
+    // also since this script is only called when canon is used, it will unlock the next level
     public void SaveSlimeCount(int slimeCount) {
 
         //Compare name of current scene
         switch (SceneManager.GetActiveScene().name) {
 
             case "InfernoIsland":
+                unlockedFrostbite = true;
                 if(infernoSlimesCollected < slimeCount)
                     infernoSlimesCollected = slimeCount;
                 break;
 
             case "FrostbiteIsland":
+                unlockedCoven = true;
                 if(frostbiteSlimesCollected < slimeCount)
                     frostbiteSlimesCollected = slimeCount;
                 break;
 
             case "CovenIsland":
+                unlockedEngineer = true;
                 if(covenSlimesCollected < slimeCount)
                     covenSlimesCollected = slimeCount;
                 break;
 
             case "EngineerIsland":
+                unlockedOoze = true;
                 if(engineerSlimesCollected < slimeCount)
                     engineerSlimesCollected = slimeCount;
                 break;
@@ -61,7 +72,7 @@ public class SaveManager : MonoBehaviour
     }
 
 
-    //Getter method for all islands (used by LevelSelectManager)
+    //Eeturns slimeling high score for all islands (used by LevelSelectManager)
     public int GetIslandSlimesCollected(char islandChar) {
         
         //Compare character
@@ -86,6 +97,31 @@ public class SaveManager : MonoBehaviour
             default:
                 Debug.LogError("GetIslandSlimesCollected input is wrong in Save Manager script");
                 return -1;
+        }
+    }
+
+    //Returns false if level is locked and true if unlocked (used by LevelSelectManager)
+    public bool IsIslandUnlocked(char islandChar) {
+        
+        //Compare character
+        switch (islandChar) {
+
+            case 'F':
+                return unlockedFrostbite;
+
+            case 'C':
+                return unlockedCoven;
+
+            case 'E':
+                return unlockedEngineer;
+
+            case 'O':
+                return unlockedOoze;
+
+            //else, incorrect input
+            default:
+                Debug.LogError("IsIslandUnlocked input is wrong in Save Manager script");
+                return false;
         }
     }
 }

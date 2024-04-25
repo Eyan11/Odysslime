@@ -7,6 +7,7 @@ public class MainMenuManager : MonoBehaviour
 {
     [Header("Main Menu UI Objects")]
     [SerializeField] private GameObject bgImage;
+    [SerializeField] private GameObject titleUI;
     [SerializeField] private GameObject optionsUI;
     [SerializeField] private GameObject controlsUI;
     [SerializeField] private GameObject levelSelectUI;
@@ -101,6 +102,7 @@ public class MainMenuManager : MonoBehaviour
 
     private void OpenTitleMenu() {
         CloseCurrentMenu();
+        titleUI.SetActive(true);
         bgImage.SetActive(false);
         currentMenu = CurrentMenu.Title;
         EventSystem.current.SetSelectedGameObject(TitleMenuFirst);
@@ -121,6 +123,9 @@ public class MainMenuManager : MonoBehaviour
 
     private void OpenLevelSelectMenu() {
         CloseCurrentMenu();
+        //distable title UI here instead of CloseCurrentMenu 
+        //  because I want it enabled for options and controls still
+        titleUI.SetActive(false);
         levelSelectUI.SetActive(true);
         currentMenu = CurrentMenu.LevelSelect;
         EventSystem.current.SetSelectedGameObject(levelSelectMenuFirst);
@@ -155,6 +160,11 @@ public class MainMenuManager : MonoBehaviour
         Title, LevelSelect, Options, Controls
     }
 
+    private void QuitGame() {
+        Debug.Log("Quit Game");
+        Application.Quit();
+    }
+
     // ---------------------- Methods for Buttons ---------------------\\
 
     public void BackButton() {
@@ -171,6 +181,10 @@ public class MainMenuManager : MonoBehaviour
 
     public void LevelSelectButton() {
         StartCoroutine(ButtonCoroutine("OpenLevelSelectMenu"));
+    }
+
+    public void QuitButton() {
+        StartCoroutine(ButtonCoroutine("QuitGame"));
     }
 
 

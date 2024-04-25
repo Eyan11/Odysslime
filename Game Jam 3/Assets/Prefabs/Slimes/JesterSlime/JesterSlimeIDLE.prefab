@@ -211,6 +211,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 4711177927045437931}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: d410d5afd8e834017a8fa6974b4213bb,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1113140684199466997}
   m_SourcePrefab: {fileID: 100100000, guid: d410d5afd8e834017a8fa6974b4213bb, type: 3}
 --- !u!1 &156382752475678617 stripped
 GameObject:
@@ -239,3 +243,17 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1113140684199466997
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 156382752475678617}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64831d1a3f6ecb94d915c8cab1b8443a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  flySpeed: 5
+  despawnHeight: 500
