@@ -83,6 +83,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: tableset
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 39b19a3e67a1f4b26a7e80d8cd693e4f,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1319648730747250577, guid: 39b19a3e67a1f4b26a7e80d8cd693e4f,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1869004960016252962, guid: 39b19a3e67a1f4b26a7e80d8cd693e4f,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 5090062054982439474, guid: 39b19a3e67a1f4b26a7e80d8cd693e4f,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
