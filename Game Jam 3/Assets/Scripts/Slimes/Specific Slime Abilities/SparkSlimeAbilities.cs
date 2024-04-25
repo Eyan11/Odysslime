@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.InteropServices;
 using UnityEngine;
 
 public class SparkSlimeAbilities : SlimeAbilities
@@ -15,6 +16,8 @@ public class SparkSlimeAbilities : SlimeAbilities
     private float nextCheckWait = 0.1f;
     private float nextCheckTime;
     private RaycastHit raycastHit;
+    private UIManager UIScript;
+
 
 
     void Awake()
@@ -24,6 +27,8 @@ public class SparkSlimeAbilities : SlimeAbilities
 
         // Retrieves slime health state
         slimeVitality = GetComponent<SlimeVitality>();
+        // Retrieves other stuff
+        UIScript = FindObjectOfType<UIManager>();
     }
 
     private void FixedUpdate() {
@@ -38,6 +43,11 @@ public class SparkSlimeAbilities : SlimeAbilities
 
         // Raycast check on pushable objects
         Physics.SphereCast(transform.position - slimeModel.transform.forward * frontalInteractionRadius, frontalInteractionRadius, slimeModel.transform.forward, out raycastHit, interactionDistance, movablesMask);
+
+        // Only show prompt when possible to interact
+        if (raycastHit.collider) {
+            UIScript.DisplayPrompt("Press Q to charge battery!", 0.2f);
+        }
     }
 
     public override void UseAbility() {
