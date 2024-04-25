@@ -22,10 +22,10 @@ AnimationClip:
     curve:
     - time: 0
       value: {fileID: 2100000, guid: 15928bb9974aa421785c0ef08d267de4, type: 2}
-    - time: 1
+    - time: 0.98333335
       value: {fileID: 2100000, guid: 15928bb9974aa421785c0ef08d267de4, type: 2}
     attribute: m_Materials.Array.data[0]
-    path: 
+    path: BatteryPre/pCylinder5
     classID: 23
     script: {fileID: 0}
     flags: 2
@@ -37,7 +37,7 @@ AnimationClip:
   m_ClipBindingConstant:
     genericBindings:
     - serializedVersion: 2
-      path: 0
+      path: 3925153952
       attribute: 0
       script: {fileID: 0}
       typeID: 23
@@ -53,7 +53,7 @@ AnimationClip:
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 1.0166667
+    m_StopTime: 1
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0

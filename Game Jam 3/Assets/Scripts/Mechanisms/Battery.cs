@@ -1,29 +1,39 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Battery : MonoBehaviour
 {
+    [Header("References")]
     [SerializeField] private MechanismBase mechanism;
+    [Header("Settings")]
     [SerializeField] private int chargesNeeded = 1;
     // can be changed before runtime to have some initial charge
     [Header("Read only!")]
     [SerializeField] private int currentCharges = 0; 
+    private int chargesHash;
+    private Animator animator;
 
     private void Awake() {
+        animator = GetComponent<Animator>();
+
         if (mechanism) {
-            if (chargesNeeded <= currentCharges) {
-                mechanism.Activate();
-            }
+            CheckCharge();
+            // Gets int hash for animator int variable "Charges"
+            chargesHash = Animator.StringToHash("ChargesDifference");
         } else {
             Debug.LogError("Missing a mechanism reference!");
+            this.enabled = false;
         }
     }
 
     private void CheckCharge()
     {
+        int chargeDif = Math.Clamp(chargesNeeded - currentCharges, 0, 3);
+        animator.SetInteger("ChargesDifference", chargeDif);
         // Activates mechanism if enouch charge
-        if (currentCharges < chargesNeeded) { return; }
+        if (chargeDif != 0) { return; }
 
         mechanism.Activate();
     }
