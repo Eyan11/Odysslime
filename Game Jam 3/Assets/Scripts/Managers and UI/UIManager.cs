@@ -57,6 +57,14 @@ public class UIManager : MonoBehaviour
         promptCountdown = displayTime;
         promptText.text = prompt;
     }
+
+    public int GetTotalSlimelings() {
+        return totalSlimelings;
+    }
+
+    public int GetSlimelings() {
+        return slimelingsCollected;
+    }
    
     // -------------- Finish Island Event Methods -------------------\\
 
