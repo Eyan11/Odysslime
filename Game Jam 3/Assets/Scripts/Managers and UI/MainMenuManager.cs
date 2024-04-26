@@ -45,13 +45,12 @@ public class MainMenuManager : MonoBehaviour
         //if already seen volcano cutscene, then return to level select instead of title screen
         if(saveScript.SeenVolcanoCutscene() == true)
             OpenLevelSelectMenu();
-
+        //if have NOT scene volcano cutscene, keep title screen displayed and set play button as selected
+        else
+            EventSystem.current.SetSelectedGameObject(TitleMenuFirst);
 
         //start checking for controllers
         StartCoroutine(CheckForControllers());
-        
-        //set play button as selected
-        EventSystem.current.SetSelectedGameObject(TitleMenuFirst);
 
         //lock cursor to game window
         Cursor.lockState = CursorLockMode.Confined;
@@ -142,10 +141,12 @@ public class MainMenuManager : MonoBehaviour
         //  because I want it enabled for options and controls still
         titleUI.SetActive(false);
 
+        //if haven't seen volcano cutscene, play it
         if(saveScript.SeenVolcanoCutscene() == false) {
             volcanoCutscene.SetActive(true);
             currentMenu = CurrentMenu.Cutscene;
         }
+        //if seen volcano cutscene, go straight to level select
         else {
             levelSelectUI.SetActive(true);
             currentMenu = CurrentMenu.LevelSelect;
@@ -190,6 +191,11 @@ public class MainMenuManager : MonoBehaviour
     private void QuitGame() {
         Debug.Log("Quit Game");
         Application.Quit();
+    }
+
+    //set by cutscene manager for loading screens so no input is received from this script
+    public void OnLoadingScreen() {
+        currentMenu = CurrentMenu.Cutscene;
     }
 
     // ---------------------- Methods for Buttons ---------------------\\

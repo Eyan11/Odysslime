@@ -44,6 +44,10 @@ public class UIManager : MonoBehaviour
         slimelingsCollected += changeInSlimes;
         slimelingText.text = "" + slimelingsCollected + " / " + totalSlimelings;
     
+        //prevent null reference errors
+        if(slimelingAnim == null)
+            return;
+
         //update UI image
         if(changeInSlimes > 0)
             slimelingAnim.SetTrigger(gainSlimelingHash);

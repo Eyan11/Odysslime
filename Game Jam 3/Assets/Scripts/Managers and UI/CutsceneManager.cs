@@ -4,14 +4,15 @@ using UnityEngine;
 
 public class CutsceneManager : MonoBehaviour
 {
-    [SerializeField] private List<GameObject> cutsceneImageList;
-    [SerializeField] private Cutscene cutscene = Cutscene.None;
+    [SerializeField] private List<GameObject> imageList;
+    [SerializeField] private CutsceneType cutsceneType = CutsceneType.None;
     [SerializeField] private MainMenuManager mainMenuScript;
+    [SerializeField] private LevelSelectManager levelSelectScript;
     private SaveManager saveScript;
     private InputMap inputMap;
     private bool backInput = false;
     private bool selectInput = false;
-    private int cutsceneIndex = 0;
+    private int imageIndex = 0;
 
     private void Awake() {
         //create a new Input Map object and enable the King Slime input
@@ -38,12 +39,12 @@ public class CutsceneManager : MonoBehaviour
         if(selectInput) {
             
             //if there is another cutscene image to watch
-            if((cutsceneImageList.Count - 1) > cutsceneIndex) {
+            if((imageList.Count - 1) > imageIndex) {
 
                 //enable next cutscene, disable previous cutscene
-                cutsceneIndex++;
-                cutsceneImageList[cutsceneIndex].SetActive(true);
-                cutsceneImageList[cutsceneIndex - 1].SetActive(false);
+                imageIndex++;
+                imageList[imageIndex].SetActive(true);
+                imageList[imageIndex - 1].SetActive(false);
             }
             //if there are no more cutscene images, finish cutscene
             else {
@@ -55,12 +56,12 @@ public class CutsceneManager : MonoBehaviour
         if(backInput) {
             
             //if not at first cutscene, goto previous cutscene image
-            if(cutsceneIndex > 0) {
+            if(imageIndex > 0) {
 
                 //enable previous cutscene, disable current cutscene
-                cutsceneIndex--;
-                cutsceneImageList[cutsceneIndex].SetActive(true);
-                cutsceneImageList[cutsceneIndex + 1].SetActive(false);
+                imageIndex--;
+                imageList[imageIndex].SetActive(true);
+                imageList[imageIndex + 1].SetActive(false);
             }
         }
     }
@@ -68,9 +69,9 @@ public class CutsceneManager : MonoBehaviour
     //Handles end of cutscene for all cutscenes
     private void FinishedCutscene() {
         
-        switch(cutscene) {
+        switch(cutsceneType) {
             
-            case Cutscene.VolcanoIntro:
+            case CutsceneType.VolcanoIntro:
                 //tell save manager that we have watched volcano cutscene (only watch once)
                 saveScript.FinishedVolcanoCutscene();
                 mainMenuScript.OpenLevelSelectMenu();
@@ -78,10 +79,11 @@ public class CutsceneManager : MonoBehaviour
                 gameObject.SetActive(false);
                 break;
             
-            case Cutscene.Jester:
+            case CutsceneType.LoadingScreen:
+                levelSelectScript.FinishedLoadingScreen();
                 break;
 
-            case Cutscene.None:
+            case CutsceneType.None:
                 break;
         }
     }
@@ -89,20 +91,23 @@ public class CutsceneManager : MonoBehaviour
 
 
 
-    private enum Cutscene {
-        VolcanoIntro, Jester, None
+    private enum CutsceneType {
+        VolcanoIntro, LoadingScreen, None
     }
 
     private void OnEnable() {
 
         //disable all but the first cutscene
-        for(int i = 1; i < cutsceneImageList.Count; i++) {
-            cutsceneImageList[i].SetActive(false);
+        for(int i = 1; i < imageList.Count; i++) {
+            imageList[i].SetActive(false);
         }
         //enable first cutscene
-        cutsceneImageList[0].SetActive(true);
+        imageList[0].SetActive(true);
 
         //reset cutscene index
-        cutsceneIndex = 0;
+        imageIndex = 0;
+
+        //set current menu to cutscene so MainMenu stops checking for input
+        mainMenuScript.OnLoadingScreen();
     }
 }

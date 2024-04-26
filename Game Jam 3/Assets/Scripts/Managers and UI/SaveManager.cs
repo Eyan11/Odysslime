@@ -13,10 +13,10 @@ public class SaveManager : MonoBehaviour
     private int oozeSlimesCollected = 0;
     
     //restricted island trackers
-    private bool unlockedFrostbite = false;
-    private bool unlockedCoven = false;
-    private bool unlockedEngineer = false;
-    private bool unlockedOoze = false;
+    private bool unlockedFrostbite = true;
+    private bool unlockedCoven = true;
+    private bool unlockedEngineer = true;
+    private bool unlockedOoze = true;
 
     //cutscene trackers
     private bool seenVolcanoCutscene = false;
