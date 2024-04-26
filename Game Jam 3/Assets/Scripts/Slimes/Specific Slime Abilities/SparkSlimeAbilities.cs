@@ -1,24 +1,25 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
+using Unity.Mathematics;
 using UnityEngine;
 
 public class SparkSlimeAbilities : SlimeAbilities
 {
     [Header("Settings")]
     [SerializeField] private GameObject slimeModel;
+    [SerializeField] private GameObject chargeVFX;
+    [SerializeField] private AudioClip chargeSFX;
     [SerializeField] private float interactionDistance = 6.0f;
     [Header("Radius should be bigger than the slime itself")]
     [SerializeField] private float frontalInteractionRadius = 4.0f;
     private SlimeVitality slimeVitality;
-
+    private SoundManager soundManager;
     private int movablesMask;
     private float nextCheckWait = 0.1f;
     private float nextCheckTime;
     private RaycastHit raycastHit;
     private UIManager UIScript;
-
-
 
     void Awake()
     {
@@ -29,6 +30,7 @@ public class SparkSlimeAbilities : SlimeAbilities
         slimeVitality = GetComponent<SlimeVitality>();
         // Retrieves other stuff
         UIScript = FindObjectOfType<UIManager>();
+        soundManager = FindObjectOfType<SoundManager>();
     }
 
     private void FixedUpdate() {
@@ -46,6 +48,9 @@ public class SparkSlimeAbilities : SlimeAbilities
 
         // Only show prompt when possible to interact
         if (raycastHit.collider) {
+            Battery battery = raycastHit.collider.gameObject.GetComponent<Battery>();
+            if (battery.IsFullyCharged()) return;
+
             UIScript.DisplayPrompt("Press Q to charge battery!", 0.2f);
         }
     }
@@ -57,7 +62,15 @@ public class SparkSlimeAbilities : SlimeAbilities
         // Increase's the battery charge
         GameObject colliderObj = raycastHit.collider.gameObject;
         Battery battery = colliderObj.GetComponent<Battery>();
+        if (battery.IsFullyCharged()) return; // Prevents from overcharging
         battery.IncreaseCharge();
+
+        // Plays SFX and VFX
+        soundManager.PlaySoundEffectAtPoint(chargeSFX, transform.position, 0.6f);
+        GameObject chargeVFXClone = Instantiate(chargeVFX, transform.position, quaternion.identity);
+        chargeVFXClone.transform.Find("VFXSpawn").transform.position = transform.position;
+        chargeVFXClone.transform.Find("VFXFlash").transform.position = transform.position;
+        chargeVFXClone.transform.Find("VFXExplosion").transform.position = colliderObj.transform.position;
 
         // Kills slime
         slimeVitality.enabled = false;

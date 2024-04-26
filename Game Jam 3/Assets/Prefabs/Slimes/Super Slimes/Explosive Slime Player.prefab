@@ -204,8 +204,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   blastRadius: 3.5
-  explosionVFX: {fileID: 868468853075218060, guid: 6c0e2ea3d9659784bad0f7b76ee08899,
+  explosionVFX: {fileID: 1976369554747123653, guid: 648ed2b3569b047c1a059d7ce92e80ee,
     type: 3}
+  explosionSFX: {fileID: 8300000, guid: 81573894d556b094aabe935d639baeb6, type: 3}
 --- !u!114 &4019593360167590981
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -225,7 +226,7 @@ MonoBehaviour:
   jumpPower: 7
   jumpCooldown: 0.2
   jumpSound: {fileID: 8300000, guid: 4a704a2791aa8c140af5a0c4f7c82661, type: 3}
-  moveSound: {fileID: 8300000, guid: dbd20457ed8891e4b9152bd56a430bfc, type: 3}
+  moveSound: {fileID: 8300000, guid: 70097154d1bb8804498b74b911fbed19, type: 3}
 --- !u!114 &-5661098779021773053
 MonoBehaviour:
   m_ObjectHideFlags: 0

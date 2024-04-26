@@ -172,10 +172,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42a58c0cc21809349808aabadf8b98bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  magicSlimeVFX: {fileID: 8926484042661614526, guid: 71fdc6568b6edb3428eade4cc33de7c8,
+  magicSlimeBlockVFX: {fileID: 8926484042661614526, guid: 71fdc6568b6edb3428eade4cc33de7c8,
     type: 3}
+  magicSlimeVFX: {fileID: 4265268916054696334, guid: 858b857b17c4147a4b198358780d134f,
+    type: 3}
+  magicSlimeSFX: {fileID: 8300000, guid: 392320453da1f6b4881da0a03f842fb9, type: 3}
   slimeModel: {fileID: 6158259414867809714}
-  outline: {fileID: 2100000, guid: dfa89235eda524c45b7920be2218c141, type: 2}
   interactionDistance: 6
   controlObjMoveSpeed: 4.5
   minimumControlTime: 5
@@ -200,7 +202,7 @@ MonoBehaviour:
   jumpPower: 7
   jumpCooldown: 0.2
   jumpSound: {fileID: 8300000, guid: 4a704a2791aa8c140af5a0c4f7c82661, type: 3}
-  moveSound: {fileID: 8300000, guid: dbd20457ed8891e4b9152bd56a430bfc, type: 3}
+  moveSound: {fileID: 8300000, guid: 70097154d1bb8804498b74b911fbed19, type: 3}
 --- !u!114 &6288437759167098439
 MonoBehaviour:
   m_ObjectHideFlags: 0

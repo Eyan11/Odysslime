@@ -13,10 +13,11 @@ using UnityEngine.VFX;
 public class MagicSlimeAbilities : SlimeAbilities
 {
     [Header("References")]
-    [SerializeField] private VisualEffectAsset magicSlimeVFX;
-    [Header("Settings")]
+    [SerializeField] private VisualEffectAsset magicSlimeBlockVFX;
+    [SerializeField] private GameObject magicSlimeVFX;
+    [SerializeField] private AudioClip magicSlimeSFX;
     [SerializeField] private GameObject slimeModel;
-    [SerializeField] private Material outline;
+    [Header("Settings")]
     [SerializeField] private float interactionDistance = 6.0f;
     [SerializeField] private float controlObjMoveSpeed = 4.5f;
     [SerializeField] private float minimumControlTime = 5.0f;
@@ -123,7 +124,7 @@ public class MagicSlimeAbilities : SlimeAbilities
             raycastMovableObj = raycastHit.collider.gameObject;
             // Tacks on visual effect
             movableVFX = raycastMovableObj.AddComponent<VisualEffect>();
-            movableVFX.visualEffectAsset = magicSlimeVFX;
+            movableVFX.visualEffectAsset = magicSlimeBlockVFX;
 
         }
 
@@ -161,6 +162,11 @@ public class MagicSlimeAbilities : SlimeAbilities
             if (movable) {
                 movable.ActiveState();
             }
+
+            // Plays the visual and sound effect for magic slime
+            soundManager.PlaySoundEffectAtPoint(magicSlimeSFX, transform.position, 0.6f);
+            GameObject magicSlimeVFXClone = Instantiate(magicSlimeVFX, transform.position, quaternion.identity);
+            Destroy(magicSlimeVFXClone, 1.0f);
 
             // Uses it to change the camera's focus
             cameraScript.SwitchCamera(controlObj);

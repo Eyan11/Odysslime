@@ -9,6 +9,8 @@ public class IceSlimeAbilities : SlimeAbilities
 {
     [Header("Settings")]
     [SerializeField] private GameObject iceCubeTemplate;
+    [SerializeField] private AudioClip iceCreationSFX;
+    [SerializeField] private GameObject iceCreationVFX;
     private SlimeVitality slimeVitality;
     private SoundManager soundManager;
 
@@ -40,8 +42,11 @@ public class IceSlimeAbilities : SlimeAbilities
 
         GenerateIceCube();
 
+        // Generates visual effect for creation
+        GameObject iceCreationVFXClone = Instantiate(iceCreationVFX, transform.position, quaternion.identity);
+        Destroy(iceCreationVFXClone, 1.0f);
         // Plays freeze sound
-        soundManager.PlaySlimeFreeze();
+        soundManager.PlaySoundEffectAtPoint(iceCreationSFX, transform.position, 0.6f);
 
         // Always kills slime
         slimeVitality.enabled = false;

@@ -28,6 +28,10 @@ public class Battery : MonoBehaviour
         }
     }
 
+    public bool IsFullyCharged() {
+        return currentCharges >= chargesNeeded;
+    }
+
     private void CheckCharge()
     {
         int chargeDif = Math.Clamp(chargesNeeded - currentCharges, 0, 3);

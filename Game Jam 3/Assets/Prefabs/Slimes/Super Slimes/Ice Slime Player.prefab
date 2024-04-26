@@ -174,6 +174,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   iceCubeTemplate: {fileID: 8684171417627582877, guid: 8205996345d2267498e663371df717e1,
     type: 3}
+  iceCreationSFX: {fileID: 8300000, guid: 15c4c05e917ae594d997d4d93fedea31, type: 3}
+  iceCreationVFX: {fileID: 1087657923552476063, guid: edf3e82ccea2f4454b0ca78e39de1471,
+    type: 3}
 --- !u!114 &4362966882715022011
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -193,7 +196,7 @@ MonoBehaviour:
   jumpPower: 7
   jumpCooldown: 0.2
   jumpSound: {fileID: 8300000, guid: 4a704a2791aa8c140af5a0c4f7c82661, type: 3}
-  moveSound: {fileID: 8300000, guid: dbd20457ed8891e4b9152bd56a430bfc, type: 3}
+  moveSound: {fileID: 8300000, guid: 70097154d1bb8804498b74b911fbed19, type: 3}
 --- !u!114 &-2627454649028561501
 MonoBehaviour:
   m_ObjectHideFlags: 0

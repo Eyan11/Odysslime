@@ -173,6 +173,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slimeModel: {fileID: 4334822644479545773}
+  chargeVFX: {fileID: 1467794882349655128, guid: b5aac1a8d4bf44c75ab98769fee731b7,
+    type: 3}
+  chargeSFX: {fileID: 8300000, guid: bde5a11e6a94d6644b54cc27e26ab423, type: 3}
   interactionDistance: 6
   frontalInteractionRadius: 4
 --- !u!114 &5128253687244523962
@@ -194,7 +197,7 @@ MonoBehaviour:
   jumpPower: 7
   jumpCooldown: 0.2
   jumpSound: {fileID: 8300000, guid: 4a704a2791aa8c140af5a0c4f7c82661, type: 3}
-  moveSound: {fileID: 8300000, guid: dbd20457ed8891e4b9152bd56a430bfc, type: 3}
+  moveSound: {fileID: 8300000, guid: 70097154d1bb8804498b74b911fbed19, type: 3}
 --- !u!114 &6686251619390662144
 MonoBehaviour:
   m_ObjectHideFlags: 0

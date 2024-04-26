@@ -81,9 +81,9 @@ public class SlimeFollowerMovement : SlimeMovement
 
         // Move sound effect
         float speed = moveDir.sqrMagnitude;
-        if (speed > 0.1 && !moveSource) {
-            moveSource = soundManager.PlaySoundEffectOnObject(moveSound, orientation.gameObject, 0.2f);
-        } else if (speed < 0.1 && moveSource) {
+        if (speed > 0.1 && !moveSource && onGround) {
+            moveSource = soundManager.PlaySoundEffectOnObject(moveSound, orientation.gameObject, 0.05f);
+        } else if ((speed < 0.1 || !onGround) && moveSource) {
             Destroy(moveSource);
         }
     }

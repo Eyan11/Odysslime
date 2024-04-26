@@ -7,6 +7,9 @@ public class PressurePlate : MonoBehaviour
 {
     [Header("Choose How the Activation Plate is Activated: ")]
     [SerializeField] private PlateType plateType;
+    [Header("References (Critical)")]
+    [SerializeField] private AudioClip stepOnSFX;
+    [SerializeField] private AudioClip activateSFX;
 
     [Header("References, Leave Empty of Not Applicable")]
     [SerializeField] private GateOpen gateScript;
@@ -22,6 +25,7 @@ public class PressurePlate : MonoBehaviour
     private GameObject imageDisplay;
     private GameObject promptDisplay;
     private TextMeshProUGUI textBox;
+    private SoundManager soundManager;
 
     private void UpdateDisplayText() {
         // Displays prompt only if plate is not active
@@ -57,11 +61,21 @@ public class PressurePlate : MonoBehaviour
         }
         UpdateDisplayText();
         imageDisplay.SetActive(true);
+
+        // Additional references
+        soundManager = FindObjectOfType<SoundManager>();
+    }
+
+    private void PlaySFXIfInCertainActiveState(AudioClip SFXToPlay, bool neededState) {
+        if (plateIsActive != neededState) return;
+
+        soundManager.PlaySoundEffectOnObject(SFXToPlay, gameObject, 0.3f);
     }
 
     private void OnTriggerEnter(Collider other) {
         colliderLayer = other.gameObject.layer;
 
+        PlaySFXIfInCertainActiveState(stepOnSFX, false);
         //if plate is activated by slimes and slime entered the plate
         if((plateType == PlateType.Slime) && (colliderLayer == slimeLayer)) {
             //add slime to plate
@@ -77,6 +91,7 @@ public class PressurePlate : MonoBehaviour
     private void OnTriggerExit(Collider other) {
         colliderLayer = other.gameObject.layer;
 
+        PlaySFXIfInCertainActiveState(stepOnSFX, false);
         //if plate is activated by slimes and slime exited the plate
         if((plateType == PlateType.Slime) && (colliderLayer == slimeLayer)) {
             //remove slime to plate
@@ -97,6 +112,7 @@ public class PressurePlate : MonoBehaviour
         if(!plateIsActive && slimesOnPlate >= slimesToActivate) {
             //activate plate
             plateIsActive = true;
+            PlaySFXIfInCertainActiveState(activateSFX, true);
             
             //activate gate or bridge
             if(gateScript)
@@ -117,6 +133,7 @@ public class PressurePlate : MonoBehaviour
         if(!plateIsActive && iceCubesOnPlate >= 1) {
             //activate plate
             plateIsActive = true;
+            PlaySFXIfInCertainActiveState(activateSFX, true);
 
             //activate gate or bridge
             if(gateScript)

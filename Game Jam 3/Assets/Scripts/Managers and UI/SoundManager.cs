@@ -93,19 +93,4 @@ public class SoundManager : MonoBehaviour
             Debug.LogError("No audio clip found!");
         }
     }
-
-    // TODO: DEPRECATED AND REPLACE ALL METHODS BELOW
-    // ------------------------------------------------------------
-
-    public void PlayExplosion() {
-        //second argument is priority level of sound (0-1)
-        // if (!source) return;
-        // source.PlayOneShot(explosionSound, 0.6f);
-    }
-
-    public void PlaySlimeFreeze() {
-        //second argument is priority level of sound (0-1)
-        // if (!source) return;
-        // source.PlayOneShot(freezeSound, 0.6f);
-    }
 }

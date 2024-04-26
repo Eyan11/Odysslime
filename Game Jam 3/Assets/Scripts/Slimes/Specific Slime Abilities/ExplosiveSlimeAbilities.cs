@@ -10,6 +10,7 @@ public class ExplosiveSlimeAbilities : SlimeAbilities
     [Header("Settings")]
     [SerializeField] private float blastRadius = 3.5f;
     [SerializeField] private GameObject explosionVFX;
+    [SerializeField] private AudioClip explosionSFX;
     private SlimeVitality slimeVitality;
     private SoundManager soundManager;
 
@@ -42,12 +43,10 @@ public class ExplosiveSlimeAbilities : SlimeAbilities
             }
         }
 
-        // Creates explosion VFX
+        // Creates explosion VFX and SFX
         GameObject explosionVFXClone = Instantiate(explosionVFX, transform.position, quaternion.identity);
+        soundManager.PlaySoundEffectAtPoint(explosionSFX, transform.position, 0.8f);
         Destroy(explosionVFXClone, 1.0f);
-
-        // Plays kaboomy
-        soundManager.PlayExplosion();
 
         // Kills slime
         slimeVitality.enabled = false;

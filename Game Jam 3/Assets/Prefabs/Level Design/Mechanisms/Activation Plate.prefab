@@ -481,6 +481,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   plateType: 0
+  stepOnSFX: {fileID: 8300000, guid: ac72aa6dcd625af4b847d561e7873f9f, type: 3}
+  activateSFX: {fileID: 8300000, guid: 536788feebf2f8849bd0a232de0b6c29, type: 3}
   gateScript: {fileID: 0}
   bridgeScript: {fileID: 0}
   activatedMaterial: {fileID: 2100000, guid: 45b44585da405ac47b8c0045f16bcc16, type: 2}
