@@ -21,6 +21,6 @@ public class FaceObjectYAxis : MonoBehaviour
         transform.position.y,
         objectToLookAt.position.z);
 
-        transform.LookAt(objectToLookAt);
+        transform.LookAt(objectPosYModded);
     }
 }

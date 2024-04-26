@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class PressurePlate : MonoBehaviour
@@ -18,11 +19,44 @@ public class PressurePlate : MonoBehaviour
     private int iceCubesOnPlate = 0;
     private bool plateIsActive = false;
     private int slimeLayer, iceLayer, colliderLayer;
+    private GameObject imageDisplay;
+    private GameObject promptDisplay;
+    private TextMeshProUGUI textBox;
 
+    private void UpdateDisplayText() {
+        // Displays prompt only if plate is not active
+        if (plateIsActive) {
+            promptDisplay.SetActive(false);
+            return;
+        } else if (!promptDisplay.activeSelf) {
+            promptDisplay.SetActive(true);
+        }
+
+        if (plateType == PlateType.Slime) { // slime UI
+            int slimesNeeded = slimesToActivate - slimesOnPlate;
+            
+            textBox.text = "" + (slimesNeeded);
+        } else if (plateType == PlateType.IceCube) { // ice cube UI
+            textBox.text = ""; // Blank
+        }
+    }
 
     private void Awake() {
         slimeLayer = LayerMask.NameToLayer("Slime");
         iceLayer = LayerMask.NameToLayer("Ice");
+
+        // GUI
+        promptDisplay = transform.Find("GUI").gameObject;
+        // textbox
+        textBox = promptDisplay.transform.Find("AmountText").GetComponent<TextMeshProUGUI>();
+        // image & description
+        if (plateType == PlateType.Slime) { // slime UI
+            imageDisplay = promptDisplay.transform.Find("SlimeImage").gameObject;
+        } else if (plateType == PlateType.IceCube) { // ice cube UI
+            imageDisplay = promptDisplay.transform.Find("IceCubeImage").gameObject;
+        }
+        UpdateDisplayText();
+        imageDisplay.SetActive(true);
     }
 
     private void OnTriggerEnter(Collider other) {
@@ -57,6 +91,7 @@ public class PressurePlate : MonoBehaviour
 
     private void UpdateSlimePlate(int slimeChange) {
         slimesOnPlate += slimeChange;
+        UpdateDisplayText();
 
         //if plate is NOT activated and enough slimes are on plate
         if(!plateIsActive && slimesOnPlate >= slimesToActivate) {
@@ -76,6 +111,7 @@ public class PressurePlate : MonoBehaviour
 
     private void UpdateIcePlate(int iceChange) {
         iceCubesOnPlate += iceChange;
+        UpdateDisplayText();
 
         //if plate is NOT activated and enough ice cubes are on plate
         if(!plateIsActive && iceCubesOnPlate >= 1) {
@@ -91,6 +127,10 @@ public class PressurePlate : MonoBehaviour
             //switch materials once activated
             GetComponent<Renderer>().material = activatedMaterial;
         }
+    }
+
+    public bool IsPlateActive() {
+        return plateIsActive;
     }
 
 
