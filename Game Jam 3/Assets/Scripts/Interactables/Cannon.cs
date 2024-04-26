@@ -2,10 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class Cannon : MonoBehaviour
 {
     [SerializeField] private Collider hitbox;
+    private InputMap inputMap;
     private TextMeshProUGUI textBox;
     private RectTransform UITransform;
     private Transform cameraTransform;
@@ -25,11 +27,14 @@ public class Cannon : MonoBehaviour
         }
 
         UITransform = GetComponentInChildren<RectTransform>();
-
+        UICanvas = GetComponentInChildren<Canvas>().gameObject;
         cameraTransform = FindObjectOfType<Camera>().transform;
         faceObjectYAxis = GetComponentInChildren<FaceObjectYAxis>();
         textBox = GetComponentInChildren<TextMeshProUGUI>();
         UIScript = FindObjectOfType<UIManager>();
+
+        // Creates inputmap to retrieve button trigger name
+        inputMap = new InputMap();
 
         // Retrieves slime total
         totalNumOfSlimelings = UIScript.GetTotalSlimelings();
@@ -39,11 +44,16 @@ public class Cannon : MonoBehaviour
         // Only update if theres slimes within range
         if (numOfSlimesInRange == 0) return;
 
+        textBox.text = numOfSlimelignsInRange + "/" + totalNumOfSlimelings;
         if (numOfSlimelignsInRange == totalNumOfSlimelings) {
-            textBox.text = "You got all the slimelings!";
+            textBox.color = Color.green;
         } else {
-            textBox.text = "There are still " + (totalNumOfSlimelings - numOfSlimelignsInRange) + " undiscovered slimelings!";
+            textBox.color = Color.yellow;
         }
+
+        // TEMPORARILY GETTING RETURNTOKING KEYBINDS
+        UIScript.DisplayPrompt(inputMap.Slime.ReturnToKing.GetBindingDisplayString() + 
+                               " to launch!", 0.2f);
     }
 
     private bool IsASlime(GameObject obj) {

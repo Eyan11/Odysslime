@@ -7,7 +7,7 @@ using UnityEngine.Timeline;
 
 public class Movable : MonoBehaviour
 {
-    [SerializeField] private float forcePlateDistance = 5.0f;
+    [SerializeField] private float forcePlateDistance = 1.0f;
     private Collider internalHitbox;
     private GameObject pushableObj;
     private Collider pushableHitbox;

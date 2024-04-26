@@ -882,6 +882,11 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3583423108942761901, guid: a3e9ad9aa53f2e94abaa17d9fc36573d,
+        type: 3}
+      propertyPath: slimesToActivate
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 4065500933688802007, guid: a3e9ad9aa53f2e94abaa17d9fc36573d,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -936,6 +941,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Gate and Plate Mechanism
+      objectReference: {fileID: 0}
+    - target: {fileID: 8250629726623314695, guid: a3e9ad9aa53f2e94abaa17d9fc36573d,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 8.36
+      objectReference: {fileID: 0}
+    - target: {fileID: 8250629726623314695, guid: a3e9ad9aa53f2e94abaa17d9fc36573d,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 8250629726623314695, guid: a3e9ad9aa53f2e94abaa17d9fc36573d,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -15.07
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
