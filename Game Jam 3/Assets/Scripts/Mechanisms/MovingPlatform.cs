@@ -13,10 +13,13 @@ public class MovingPlatform : MechanismBase
     [SerializeField] private float moveSpeed;
     [SerializeField] private float bufferDistance;
     [SerializeField] private PlatformMoveSlime moveSlimeScript;
+    [SerializeField] private AudioClip movingPlatformSFX;
     public bool isActive = true;
     private float pauseCountdown = 0f;
     private bool isMovingToEnd = true;
     private Vector3 direction;
+    private SoundManager soundManager;
+    private AudioSource movingAudioSource;
 
     private void Awake() {
         pauseCountdown = pauseTime;
@@ -27,6 +30,9 @@ public class MovingPlatform : MechanismBase
 
         //find direction from start to end
         direction = endPos - startPos;
+
+        // gets soundManager
+        soundManager = FindObjectOfType<SoundManager>();
     }
 
     private void Update() {
@@ -35,7 +41,18 @@ public class MovingPlatform : MechanismBase
         // Prevents updatign the platform until enough time passed
         if (pauseCountdown > 0) { return; }
         // Prevents platform movement if inactive
-        if (!isActive) { return; }
+        if (!isActive) { 
+            if (movingAudioSource) {
+                Destroy(movingAudioSource);
+            }
+
+            return; 
+        }
+
+        // Sound effect for moving
+        if (movingAudioSource == null || !movingAudioSource.isPlaying) {
+            movingAudioSource = soundManager.PlaySoundEffectOnObject(movingPlatformSFX, gameObject, 0.5f);
+        }
 
         if(isMovingToEnd) {
             MoveToEnd();

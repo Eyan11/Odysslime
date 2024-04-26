@@ -121,6 +121,7 @@ public class MagicSlimeAbilities : SlimeAbilities
         if (!raycastHit.collider && raycastMovableObj) {
             ClearEffect();
         } else if (raycastHit.collider && raycastMovableObj != raycastHit.collider.gameObject) {
+            ClearEffect();
             raycastMovableObj = raycastHit.collider.gameObject;
             // Tacks on visual effect
             movableVFX = raycastMovableObj.AddComponent<VisualEffect>();

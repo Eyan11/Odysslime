@@ -4,5 +4,14 @@ using UnityEngine;
 
 public class Explodable : MonoBehaviour
 {
-    //hi
+    [SerializeField] private AudioClip explodeSFX;
+    private SoundManager soundManager;
+
+    private void Awake() {
+        soundManager = FindObjectOfType<SoundManager>();
+    }
+
+    private void OnDisable() {
+        soundManager.PlaySoundEffectAtPoint(explodeSFX, transform.position, 0.7f);
+    }
 }

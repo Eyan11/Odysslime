@@ -17,6 +17,7 @@ public class Cannon : MonoBehaviour
     private int numOfSlimesInRange = 0;
     private int numOfSlimelignsInRange = 0;
     private int totalNumOfSlimelings;
+    private bool kingSlimeInRange = false;
 
     // Retrieves components
     private void Awake()
@@ -44,6 +45,7 @@ public class Cannon : MonoBehaviour
         // Only update if theres slimes within range
         if (numOfSlimesInRange == 0) return;
 
+        // World text
         textBox.text = numOfSlimelignsInRange + "/" + totalNumOfSlimelings;
         if (numOfSlimelignsInRange == totalNumOfSlimelings) {
             textBox.color = Color.green;
@@ -51,8 +53,10 @@ public class Cannon : MonoBehaviour
             textBox.color = Color.yellow;
         }
 
-        // TEMPORARILY GETTING RETURNTOKING KEYBINDS
-        UIScript.DisplayPrompt(inputMap.Slime.ReturnToKing.GetBindingDisplayString() + 
+        // Only display the prompt if king slime is in radius
+        if (!kingSlimeInRange) return;
+        // UI Prompt
+        UIScript.DisplayPrompt(inputMap.Slime.Jump.GetBindingDisplayString() + 
                                " to launch!", 0.2f);
     }
 
@@ -64,12 +68,19 @@ public class Cannon : MonoBehaviour
         return obj.tag == "Slimeling";
     }
 
+    private bool IsKingSlime(GameObject obj) {
+        return obj.tag == "Slime King";
+    }
+
     private void OnTriggerEnter(Collider collider) {
-        if (!IsASlime(collider.gameObject)) return; 
+        GameObject colliderObj = collider.gameObject;
+        if (!IsASlime(colliderObj)) return; 
 
         numOfSlimesInRange++;
-        if (IsASlimeling(collider.gameObject)) {
+        if (IsASlimeling(colliderObj)) {
             numOfSlimelignsInRange++;
+        } else if (IsKingSlime(colliderObj)) {
+            kingSlimeInRange = true;
         }
 
         // Enables UI rotation
@@ -79,11 +90,14 @@ public class Cannon : MonoBehaviour
     }
 
     private void OnTriggerExit(Collider collider) {
-        if (!IsASlime(collider.gameObject)) return; 
+        GameObject colliderObj = collider.gameObject;
+        if (!IsASlime(colliderObj)) return; 
 
         numOfSlimesInRange--;
-        if (IsASlimeling(collider.gameObject)) {
+        if (IsASlimeling(colliderObj)) {
             numOfSlimelignsInRange--;
+        } else if (IsKingSlime(colliderObj)) {
+            kingSlimeInRange = false;
         }
 
         // Disables UI rotation if no more slimes

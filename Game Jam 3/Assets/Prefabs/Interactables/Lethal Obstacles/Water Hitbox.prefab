@@ -119,6 +119,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c990c96b3371c048a9844f9ec741128, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  waterSFX: {fileID: 8300000, guid: fabd0e94ba8e9274aab2f5dce835c9ab, type: 3}
 --- !u!114 &9046359623144979844
 MonoBehaviour:
   m_ObjectHideFlags: 0

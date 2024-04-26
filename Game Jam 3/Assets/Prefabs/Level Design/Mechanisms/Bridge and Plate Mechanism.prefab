@@ -835,6 +835,7 @@ MonoBehaviour:
   retractSpeed: 2
   bufferDistance: 0.01
   moveSlimeScript: {fileID: 8069527762776648328}
+  bridgeExtendSFX: {fileID: 8300000, guid: a8c80b27eb28a8d49bb49a25030000e1, type: 3}
 --- !u!1 &5385807633394413820
 GameObject:
   m_ObjectHideFlags: 0

@@ -13,11 +13,14 @@ public class BridgeExtend : MechanismBase
     [SerializeField] private float retractSpeed;
     [SerializeField] private float bufferDistance;
     [SerializeField] private PlatformMoveSlime moveSlimeScript;
+    [SerializeField] private AudioClip bridgeExtendSFX;
     private Vector3 startPos;
     private Vector3 endPos;
     private bool isActivated = false;
     private bool isMoving = false;
     private Vector3 direction;
+    private SoundManager soundManager;
+    private AudioSource bridgeExtendAudioSource;
 
     private void Awake() {
 
@@ -37,14 +40,22 @@ public class BridgeExtend : MechanismBase
         movingBridge.GetComponent<NavMeshSurface>().BuildNavMesh();
 
         direction = endPos - startPos;
+
+        // Retrieve soundManager
+        soundManager = FindObjectOfType<SoundManager>();
     }
 
     private void Update() {
+        if (!isMoving) return;
 
-        if(isMoving && isActivated) {
+        if (bridgeExtendAudioSource == null || !bridgeExtendAudioSource.isPlaying) {
+            bridgeExtendAudioSource = soundManager.PlaySoundEffectOnObject(bridgeExtendSFX, gameObject, 0.6f);
+        }
+
+        if(isActivated) {
             ExtendBridge();
         }
-        else if(isMoving && !isActivated) {
+        else if(!isActivated) {
             RetractBridge();
         }
     }

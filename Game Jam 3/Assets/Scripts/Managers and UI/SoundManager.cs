@@ -12,7 +12,19 @@ public class SoundManager : MonoBehaviour
     [Header("Volume Defaults")]
     [SerializeField] private float soundEffectVolume = 0.6f;
     [SerializeField] private float backgrondMusicVolume = 0.5f;
+    [Header("Background Noise")]
+    [SerializeField] private AudioClip backgroundMusic;
+    [SerializeField] private AudioClip ambienceMusic;
 
+    private void Awake() {
+        if (backgroundMusic) {
+            PlayBackgroundMusic(backgroundMusic, 0.4f);
+        }
+
+        if (ambienceMusic) {
+            PlayBackgroundMusic(ambienceMusic, 0.1f);
+        }
+    }
 
 
 
