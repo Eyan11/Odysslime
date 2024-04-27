@@ -6,7 +6,11 @@ using UnityEngine.InputSystem;
 
 public class Cannon : MonoBehaviour
 {
+    [Header("References")]
     [SerializeField] private Collider hitbox;
+    [Header("Settings")]
+    [SerializeField] private float minBindTime = 5.0f;
+
     private InputMap inputMap;
     private TextMeshProUGUI textBox;
     private RectTransform UITransform;
@@ -15,10 +19,13 @@ public class Cannon : MonoBehaviour
     private UIManager UIScript;
     private GameObject UICanvas;
     private PauseMenuManager pauseMenuManager;
+    private SlimePossess kingSlimePossess;
+    private SlimeInput kingSlimeInput;
     private int numOfSlimesInRange = 0;
     private int numOfSlimelignsInRange = 0;
     private int totalNumOfSlimelings;
     private bool kingSlimeInRange = false;
+    private float timeHeld = 0;
 
     // Retrieves components
     private void Awake()
@@ -28,6 +35,7 @@ public class Cannon : MonoBehaviour
             this.enabled = false;
         }
 
+        // Retrieves a ton of components through built-in functions
         UITransform = GetComponentInChildren<RectTransform>();
         UICanvas = GetComponentInChildren<Canvas>().gameObject;
         cameraTransform = FindObjectOfType<Camera>().transform;
@@ -35,6 +43,10 @@ public class Cannon : MonoBehaviour
         textBox = GetComponentInChildren<TextMeshProUGUI>();
         UIScript = FindObjectOfType<UIManager>();
         pauseMenuManager = FindObjectOfType<PauseMenuManager>();
+        // Retrieves king slime possession
+        GameObject kingSlime = FindObjectOfType<KingMovement>().gameObject;
+        kingSlimePossess = kingSlime.GetComponent<SlimePossess>();
+        kingSlimeInput = kingSlime.GetComponent<SlimeInput>();
 
         // Creates inputmap to retrieve button trigger name
         inputMap = new InputMap();
@@ -55,16 +67,27 @@ public class Cannon : MonoBehaviour
             textBox.color = Color.yellow;
         }
 
-        // Only display the prompt if king slime is in radius
-        if (!kingSlimeInRange) return;
+        // Only display the prompt if king slime is in radius AND in control
+        if (!kingSlimeInRange || !kingSlimePossess.enabled) return;
         // UI Prompt
         int usingController = pauseMenuManager.GetIsUsingKBM() == true ? 0 : 1;
         UIScript.DisplayPrompt("[" + inputMap.Slime.Jump.GetBindingDisplayString(usingController) + 
                                "] to launch!", 0.2f);
+        // Add to timer if the proper key is pressed down
+        if (kingSlimeInput.GetJumpHeldInput()) {
+            timeHeld += Time.deltaTime;
+        } else { // Otherwise reset it
+            timeHeld = 0;
+        }
+        // If it's been held down for the mindBindTime, then launch
+        if (timeHeld > minBindTime) {
+            // SWITCH SCENES HERE EYANANANANANA
+            Debug.Log("LAUNCH TIME");
+        }
     }
 
     private bool IsASlime(GameObject obj) {
-        return obj.layer == 11; // Slime layer check
+        return obj.layer == LayerMask.NameToLayer("Slime"); // Slime layer check
     }
 
     private bool IsASlimeling(GameObject obj) {

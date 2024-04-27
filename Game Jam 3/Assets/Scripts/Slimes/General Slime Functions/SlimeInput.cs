@@ -11,6 +11,7 @@ public class SlimeInput : MonoBehaviour
     private float moveBlockVertInput;
     //button down inputs
     private bool jumpInput;
+    private bool jumpHeldInput;
     private bool lockCamInput;
     private bool possessInput;
     private bool returnToKingInput;
@@ -42,6 +43,7 @@ public class SlimeInput : MonoBehaviour
 
         //variables are true during the first frame the input is pressed
         jumpInput = inputMap.Slime.Jump.triggered;
+        jumpHeldInput = inputMap.Slime.Jump.inProgress;
         possessInput = inputMap.Slime.Possess.triggered;
         returnToKingInput = inputMap.Slime.ReturnToKing.triggered;
         abilityInput = inputMap.Slime.Ability.triggered;
@@ -88,6 +90,10 @@ public class SlimeInput : MonoBehaviour
 
     public bool GetJumpInput() {
         return jumpInput;
+    }
+
+    public bool GetJumpHeldInput() {
+        return jumpHeldInput;
     }
 
     public bool GetPossessInput() {
