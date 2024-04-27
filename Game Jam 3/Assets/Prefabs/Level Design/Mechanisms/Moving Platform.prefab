@@ -818,6 +818,8 @@ MonoBehaviour:
   bufferDistance: 0.01
   moveSlimeScript: {fileID: 6135207364838674456}
   movingPlatformSFX: {fileID: 8300000, guid: d94befe937443034d863b5bf5d8f62f9, type: 3}
+  boxCastHeight: 3
+  boxCastInterval: 0.1
   isActive: 1
 --- !u!114 &6135207364838674456
 MonoBehaviour:
