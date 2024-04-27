@@ -27,18 +27,17 @@ public class LevelSelectManager : MonoBehaviour
     [SerializeField] private Button covenButton;
     [SerializeField] private Button engineerButton;
     [SerializeField] private Button oozeButton; 
-
+        
     [Header ("Loading Screen UI Objects")]
+    [SerializeField] private GameObject loadingScreenHolder;
     [SerializeField] private GameObject infernoLoadingScreen;
     [SerializeField] private GameObject frostbiteLoadingScreen;
     [SerializeField] private GameObject covenLoadingScreen;
     [SerializeField] private GameObject engineerLoadingScreen;
     [SerializeField] private GameObject oozeLoadingScreen;
-    private AsyncOperation asyncOperation;
+    [SerializeField] private GameObject trophyLoadingScreen;
     private CurrentInfo currentInfo;
-    private SaveManager saveScript = null;
-    private bool hasFinishedLoadingScreen = false;
-    private bool isSceneLoaded = false;
+    private SaveManager saveScript;
     private bool isRunningCoroutine = false;
     private bool isScrollMoving = false;
     private int selectHash;
@@ -75,7 +74,7 @@ public class LevelSelectManager : MonoBehaviour
     }
 
 
-    // ------------ Closes Current Info on Scroll ------------ \\
+    // ------------ Close Scroll Info for Island Buttons ------------ \\
     private void CloseCurrentScrollInfo() {
 
         //disables the gameobject of the current scroll information
@@ -115,7 +114,7 @@ public class LevelSelectManager : MonoBehaviour
         None, Inferno, Frostbite, Coven, Engineer, Ooze
     }
 
-    // ----------- Method for Island Buttons that Open Info on Scroll ----------- \\
+    // ----------- Open Scroll Info for Island Buttons ----------- \\
 
     public void OpenScrollInfo() {
         //scroll is done animating when called
@@ -158,64 +157,53 @@ public class LevelSelectManager : MonoBehaviour
         }
     }
 
-    // ----------------------- Methods that Change Scenes -------------------- \\
+    // ------------------ Scroll Open Scene Buttons -------------------- \\
 
-    private void OpenIslandScene() {
-        //opens the scene of the current info variable
+    public void VisitIslandButton() {
+        StartCoroutine(ButtonCoroutine("StartIslandLoadingSceen", 0.2f));
+    }
+
+    private void StartIslandLoadingSceen() {
+        //enable loading screen's parent
+        loadingScreenHolder.SetActive(true);
+
+        //enable island loading screen 
         switch(currentInfo) {
 
             case CurrentInfo.Inferno:
                 infernoLoadingScreen.SetActive(true);
-                StartCoroutine(LoadSceneCoroutine("InfernoIsland"));
                 break;
 
             case CurrentInfo.Frostbite:
                 frostbiteLoadingScreen.SetActive(true);
-                StartCoroutine(LoadSceneCoroutine("FrostbiteIsland"));
                 break;
 
             case CurrentInfo.Coven:
                 covenLoadingScreen.SetActive(true);
-                StartCoroutine(LoadSceneCoroutine("CovenIsland"));
                 break;
 
             case CurrentInfo.Engineer:
                 engineerLoadingScreen.SetActive(true);
-                StartCoroutine(LoadSceneCoroutine("EngineerIsland"));
                 break;
 
             case CurrentInfo.Ooze:
                 oozeLoadingScreen.SetActive(true);
-                StartCoroutine(LoadSceneCoroutine("Ooze Island"));
                 break;
         }
     }
 
-    private void OpenTrophyScene() {
-        oozeLoadingScreen.SetActive(true);
-        StartCoroutine(LoadSceneCoroutine("TrophyRoom"));
-
-    }
-
-    //called by CutsceneManager when player skips through all cutscene images
-    public void FinishedLoadingScreen() {
-        //Debug.Log("HAS FINISHED LOADING SCREEN");
-        hasFinishedLoadingScreen = true;
-
-        if(isSceneLoaded)
-            asyncOperation.allowSceneActivation = true;
-    }
-
-
-    // ------------------ Method for Island and Scroll Buttons -------------------- \\
-
-    public void VisitIslandButton() {
-        StartCoroutine(ButtonCoroutine("OpenIslandScene", 0.2f));
-    }
-
     public void TrophyRoomButton() {
-        StartCoroutine(ButtonCoroutine("OpenTrophyScene", 0.2f));
+        StartCoroutine(ButtonCoroutine("StartTrophyLoadingScreen", 0.2f));
     }
+
+    private void StartTrophyLoadingScreen() {
+        //enable loading screen's parent
+        loadingScreenHolder.SetActive(true);
+        //enable trophy loading screen 
+        trophyLoadingScreen.SetActive(true);
+    }
+
+    // ----------------------- Island Buttons ------------------------- \\
 
     public void InfernoIslandButton() {
         //if already displaying Inferno info, then ignore
@@ -298,24 +286,5 @@ public class LevelSelectManager : MonoBehaviour
             isRunningCoroutine = false;
             Invoke(methodName, 0f);
         }
-    }
-
-    private IEnumerator LoadSceneCoroutine(string sceneName) {
-        yield return null;
-
-        asyncOperation = SceneManager.LoadSceneAsync(sceneName);
-        asyncOperation.allowSceneActivation = false;
-
-        while(asyncOperation.progress < 0.9f) {
-
-            Debug.Log("Loading");
-        }
-
-        isSceneLoaded = true;
-
-        if(hasFinishedLoadingScreen)
-            asyncOperation.allowSceneActivation = true;
-
-        yield return null;
     }
 }

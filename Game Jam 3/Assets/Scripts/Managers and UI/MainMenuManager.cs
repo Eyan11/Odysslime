@@ -188,10 +188,6 @@ public class MainMenuManager : MonoBehaviour
         Title, LevelSelect, Options, Controls, Cutscene
     }
 
-    private void QuitGame() {
-        Debug.Log("Quit Game");
-        Application.Quit();
-    }
 
     //set by cutscene manager for loading screens so no input is received from this script
     public void OnLoadingScreen() {
@@ -218,6 +214,11 @@ public class MainMenuManager : MonoBehaviour
 
     public void QuitButton() {
         StartCoroutine(ButtonCoroutine("QuitGame"));
+    }
+
+    private void QuitGame() {
+        Debug.Log("Quit Game");
+        Application.Quit();
     }
 
 

@@ -7,7 +7,6 @@ public class CutsceneManager : MonoBehaviour
     [SerializeField] private List<GameObject> imageList;
     [SerializeField] private CutsceneType cutsceneType = CutsceneType.None;
     [SerializeField] private MainMenuManager mainMenuScript;
-    [SerializeField] private LevelSelectManager levelSelectScript;
     private SaveManager saveScript;
     private InputMap inputMap;
     private bool backInput = false;
@@ -71,28 +70,24 @@ public class CutsceneManager : MonoBehaviour
         
         switch(cutsceneType) {
             
-            case CutsceneType.VolcanoIntro:
+            case CutsceneType.Volcano:
                 //tell save manager that we have watched volcano cutscene (only watch once)
                 saveScript.FinishedVolcanoCutscene();
                 mainMenuScript.OpenLevelSelectMenu();
+
                 //disable THIS gameobejct
                 gameObject.SetActive(false);
                 break;
-            
-            case CutsceneType.LoadingScreen:
-                levelSelectScript.FinishedLoadingScreen();
-                break;
 
+            case CutsceneType.Jester:
+                break;
             case CutsceneType.None:
                 break;
         }
     }
 
-
-
-
     private enum CutsceneType {
-        VolcanoIntro, LoadingScreen, None
+        Volcano, Jester, None
     }
 
     private void OnEnable() {
@@ -107,7 +102,8 @@ public class CutsceneManager : MonoBehaviour
         //reset cutscene index
         imageIndex = 0;
 
-        //set current menu to cutscene so MainMenu stops checking for input
-        mainMenuScript.OnLoadingScreen();
+        //if in MainMenu scene, disable main menu input
+        if(cutsceneType == CutsceneType.Volcano)
+            mainMenuScript.OnLoadingScreen();
     }
 }
