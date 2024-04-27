@@ -14,6 +14,12 @@ public class MovingPlatform : MechanismBase
     [SerializeField] private float bufferDistance;
     [SerializeField] private PlatformMoveSlime moveSlimeScript;
     [SerializeField] private AudioClip movingPlatformSFX;
+    [SerializeField] private float boxCastHeight;
+    [SerializeField] private float boxCastInterval;
+    private float boxCastCountdown = 0;
+    private Vector3 boxCastSize;
+    private int slimeLayer;
+    private bool isSquashingSlimes = false;
     public bool isActive = true;
     private float pauseCountdown = 0f;
     private bool isMovingToEnd = true;
@@ -23,6 +29,12 @@ public class MovingPlatform : MechanismBase
 
     private void Awake() {
         pauseCountdown = pauseTime;
+        boxCastCountdown = boxCastInterval;
+        slimeLayer = LayerMask.NameToLayer("Slime");
+
+        boxCastSize = transform.localScale;
+        boxCastSize.y = boxCastHeight;
+
         //start position is currentposition
         startPos = transform.position;
         //end position is position of "End Position" child gameobject
@@ -37,6 +49,21 @@ public class MovingPlatform : MechanismBase
 
     private void Update() {
         pauseCountdown -= Time.deltaTime;
+        boxCastCountdown -= Time.deltaTime;
+
+        //every boxCastInterval seconds
+        if(boxCastCountdown < 0) {
+            boxCastCountdown = boxCastInterval;
+
+            //check for collision with slime layer below platform
+            if(Physics.BoxCast(transform.position, boxCastSize/2, -transform.up, Quaternion.identity, boxCastHeight/2, slimeLayer))
+                isSquashingSlimes = true;
+            else
+                isSquashingSlimes = false;
+        }
+
+        Debug.Log("isSquashingSlimes" + isSquashingSlimes);
+
         
         // Prevents updatign the platform until enough time passed
         if (pauseCountdown > 0) { return; }
@@ -57,7 +84,8 @@ public class MovingPlatform : MechanismBase
         if(isMovingToEnd) {
             MoveToEnd();
         }
-        else if(!isMovingToEnd) {
+        //move to start if no slimes are in the way
+        else if(!isMovingToEnd && !isSquashingSlimes) {
             MoveToStart();
         }
     }
@@ -88,6 +116,10 @@ public class MovingPlatform : MechanismBase
             isMovingToEnd = true;
             pauseCountdown = pauseTime;
         }
+    }
+
+    private void OnDrawGizmos() {
+        Gizmos.DrawWireCube(transform.position + (-transform.up * boxCastHeight/2), boxCastSize);
     }
 
     public override void Activate()
