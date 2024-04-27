@@ -141,7 +141,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Cutscene Text 3
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: a151d741017e2824fb2167b814f135fe, type: 2}
   m_sharedMaterial: {fileID: 7320659943140256068, guid: a151d741017e2824fb2167b814f135fe,
@@ -276,7 +276,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Cutscene Text 1
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: a151d741017e2824fb2167b814f135fe, type: 2}
   m_sharedMaterial: {fileID: 7320659943140256068, guid: a151d741017e2824fb2167b814f135fe,
@@ -563,7 +563,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Cutscene Text 2
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: a151d741017e2824fb2167b814f135fe, type: 2}
   m_sharedMaterial: {fileID: 7320659943140256068, guid: a151d741017e2824fb2167b814f135fe,
@@ -684,9 +684,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0589b786d271b2a4b942d7938454ffbc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cutsceneImageList:
-  - {fileID: 8021801342859452011}
-  - {fileID: 8126719610507345797}
-  - {fileID: 393830587817804968}
-  cutscene: 0
+  imageList: []
+  cutsceneType: 2
   mainMenuScript: {fileID: 0}

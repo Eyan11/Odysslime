@@ -13,11 +13,11 @@ public class SaveManager : MonoBehaviour
     private int oozeSlimesCollected = 0;
 
     //Total slimes trackers
-    private int totalInfernoSlimes = 0;
-    private int totalFrostbiteSlimes = 0;
-    private int totalCovenSlimes = 0;
-    private int totalEngineerSlimes = 0;
-    private int totalOozeSlimes = 0;
+    private int totalInfernoSlimes = 23;
+    private int totalFrostbiteSlimes = 20;
+    private int totalCovenSlimes = 42;
+    private int totalEngineerSlimes = 38;
+    private int totalOozeSlimes = 99;
     
     //restricted island trackers
     private bool unlockedFrostbite = true;
@@ -90,30 +90,30 @@ public class SaveManager : MonoBehaviour
 
 
     //------------------------ Getter Method Island Slimeling Count States --------------------------\\
-    public int GetIslandSlimesCollected(char islandChar) {
+    public string GetIslandSlimeStats(char islandChar) {
         
         //Compare character
         switch (islandChar) {
 
             case 'I':
-                return infernoSlimesCollected;
+                return infernoSlimesCollected + " / " + totalInfernoSlimes;
 
             case 'F':
-                return frostbiteSlimesCollected;
+                return frostbiteSlimesCollected + " / " + totalFrostbiteSlimes;
 
             case 'C':
-                return covenSlimesCollected;
+                return covenSlimesCollected + " / " + totalCovenSlimes;
 
             case 'E':
-                return engineerSlimesCollected;
+                return engineerSlimesCollected + " / " + totalEngineerSlimes;
 
             case 'O':
-                return oozeSlimesCollected;
+                return oozeSlimesCollected + " / " + totalOozeSlimes;
 
             //else, incorrect input
             default:
                 Debug.LogError("GetIslandSlimesCollected input is wrong in Save Manager script");
-                return -1;
+                return "GetIslandSlimesCollected input is wrong in Save Manager script";
         }
     }
 

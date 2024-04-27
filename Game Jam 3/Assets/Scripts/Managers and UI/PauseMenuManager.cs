@@ -191,6 +191,20 @@ public class PauseMenuManager : MonoBehaviour
         return isPaused;
     }
 
+    // ----------------------- For Game Events (Disable and Enable Input) --------------------\\
+
+    public void DisableInput() {
+        //if not in pause menu, allow input to be disabled
+        if(currentMenu == CurrentMenu.None)
+            inputMap.UI.Disable();
+    }
+
+    public void EnableInput() {
+        //if not in pause menu, allow input to be disabled
+        if(currentMenu == CurrentMenu.None)
+            inputMap.UI.Enable();
+    }
+
     // ----------------------- Methods that switch scenes ---------------\\
 
     private void RestartLevel() {

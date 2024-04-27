@@ -59,11 +59,11 @@ public class LevelSelectManager : MonoBehaviour
         if(saveScript != null) {
 
             //Sets slimeling count text for all islands
-            infernoSlimeText.text = saveScript.GetIslandSlimesCollected('I') + " / 99";
-            frostbiteSlimeText.text = saveScript.GetIslandSlimesCollected('F') + " / 99";
-            covenSlimeText.text = saveScript.GetIslandSlimesCollected('C') + " / 99";
-            engineerSlimeText.text = saveScript.GetIslandSlimesCollected('E') + " / 99";
-            oozeSlimeText.text = saveScript.GetIslandSlimesCollected('O') + " / 99";
+            infernoSlimeText.text = saveScript.GetIslandSlimeStats('I');
+            frostbiteSlimeText.text = saveScript.GetIslandSlimeStats('F');
+            covenSlimeText.text = saveScript.GetIslandSlimeStats('C');
+            engineerSlimeText.text = saveScript.GetIslandSlimeStats('E');
+            oozeSlimeText.text = saveScript.GetIslandSlimeStats('O');
 
             //Sets island lock/unlock state for all islands
             frostbiteButton.interactable = saveScript.IsIslandUnlocked('F');

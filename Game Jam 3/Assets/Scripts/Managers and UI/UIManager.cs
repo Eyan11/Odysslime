@@ -6,11 +6,15 @@ using TMPro;
 
 public class UIManager : MonoBehaviour
 {
+    [Header ("HUD References")]
     [SerializeField] private Animator slimelingAnim;
-    [SerializeField] private GameObject cannonLoadingScreen;
     [SerializeField] private TMP_Text slimelingText;
     [SerializeField] private TMP_Text promptText;
     [SerializeField] private int totalSlimelings;
+
+    [Header ("Cutscenes and Loading Screens (Ignore if Not Applicable)")]
+    [SerializeField] private GameObject cannonLoadingScreen;
+    [SerializeField] private GameObject jesterCutscene;
     private SaveManager saveScript;
     private Cannon cannonScript;
     private int slimelingsCollected = 0;
@@ -79,6 +83,11 @@ public class UIManager : MonoBehaviour
         //subscribe to events
         GameEvents.current.onFinishIslandEvent += SaveSlimeCount;
         GameEvents.current.onFinishIslandEvent += StartCannonLoadingScreen;
+
+        //start jester cutscene
+        if(jesterCutscene != null) {
+            jesterCutscene.gameObject.SetActive(true);
+        }
     }
 
     private void OnDestroy() {

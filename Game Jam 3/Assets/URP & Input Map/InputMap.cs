@@ -421,9 +421,18 @@ public partial class @InputMap: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""Select"",
+                    ""name"": ""Cutscene Next"",
                     ""type"": ""Button"",
                     ""id"": ""b9f58ec9-69f4-4c66-971b-491d7c659555"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Cutscene Previous"",
+                    ""type"": ""Button"",
+                    ""id"": ""1a0f1d4d-db78-4a37-ab4c-c347b2861baa"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -482,7 +491,7 @@ public partial class @InputMap: IInputActionCollection2, IDisposable
                     ""interactions"": ""Press"",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Select"",
+                    ""action"": ""Cutscene Next"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -493,7 +502,7 @@ public partial class @InputMap: IInputActionCollection2, IDisposable
                     ""interactions"": ""Press"",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Select"",
+                    ""action"": ""Cutscene Next"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -504,7 +513,7 @@ public partial class @InputMap: IInputActionCollection2, IDisposable
                     ""interactions"": ""Press"",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Select"",
+                    ""action"": ""Cutscene Next"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -515,7 +524,62 @@ public partial class @InputMap: IInputActionCollection2, IDisposable
                     ""interactions"": ""Press"",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Select"",
+                    ""action"": ""Cutscene Next"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""a5d11d08-b01a-465f-abbe-45c39663ad81"",
+                    ""path"": ""<Keyboard>/rightArrow"",
+                    ""interactions"": ""Press"",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Cutscene Next"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""3b58c444-4878-48fa-99af-7a4793f4dc0e"",
+                    ""path"": ""<Gamepad>/buttonEast"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Cutscene Previous"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""612ac4ce-5355-4e1a-8b7f-094ffd1c84df"",
+                    ""path"": ""<Keyboard>/leftArrow"",
+                    ""interactions"": ""Press"",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Cutscene Previous"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""21e3a858-cdbd-4ebb-8f17-c113a4635239"",
+                    ""path"": ""<Keyboard>/backspace"",
+                    ""interactions"": ""Press"",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Cutscene Previous"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""40b82e21-6cd2-4551-8c32-4f9012ffc710"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Cutscene Previous"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -539,7 +603,8 @@ public partial class @InputMap: IInputActionCollection2, IDisposable
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Pause = m_UI.FindAction("Pause", throwIfNotFound: true);
         m_UI_Back = m_UI.FindAction("Back", throwIfNotFound: true);
-        m_UI_Select = m_UI.FindAction("Select", throwIfNotFound: true);
+        m_UI_CutsceneNext = m_UI.FindAction("Cutscene Next", throwIfNotFound: true);
+        m_UI_CutscenePrevious = m_UI.FindAction("Cutscene Previous", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -713,14 +778,16 @@ public partial class @InputMap: IInputActionCollection2, IDisposable
     private List<IUIActions> m_UIActionsCallbackInterfaces = new List<IUIActions>();
     private readonly InputAction m_UI_Pause;
     private readonly InputAction m_UI_Back;
-    private readonly InputAction m_UI_Select;
+    private readonly InputAction m_UI_CutsceneNext;
+    private readonly InputAction m_UI_CutscenePrevious;
     public struct UIActions
     {
         private @InputMap m_Wrapper;
         public UIActions(@InputMap wrapper) { m_Wrapper = wrapper; }
         public InputAction @Pause => m_Wrapper.m_UI_Pause;
         public InputAction @Back => m_Wrapper.m_UI_Back;
-        public InputAction @Select => m_Wrapper.m_UI_Select;
+        public InputAction @CutsceneNext => m_Wrapper.m_UI_CutsceneNext;
+        public InputAction @CutscenePrevious => m_Wrapper.m_UI_CutscenePrevious;
         public InputActionMap Get() { return m_Wrapper.m_UI; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -736,9 +803,12 @@ public partial class @InputMap: IInputActionCollection2, IDisposable
             @Back.started += instance.OnBack;
             @Back.performed += instance.OnBack;
             @Back.canceled += instance.OnBack;
-            @Select.started += instance.OnSelect;
-            @Select.performed += instance.OnSelect;
-            @Select.canceled += instance.OnSelect;
+            @CutsceneNext.started += instance.OnCutsceneNext;
+            @CutsceneNext.performed += instance.OnCutsceneNext;
+            @CutsceneNext.canceled += instance.OnCutsceneNext;
+            @CutscenePrevious.started += instance.OnCutscenePrevious;
+            @CutscenePrevious.performed += instance.OnCutscenePrevious;
+            @CutscenePrevious.canceled += instance.OnCutscenePrevious;
         }
 
         private void UnregisterCallbacks(IUIActions instance)
@@ -749,9 +819,12 @@ public partial class @InputMap: IInputActionCollection2, IDisposable
             @Back.started -= instance.OnBack;
             @Back.performed -= instance.OnBack;
             @Back.canceled -= instance.OnBack;
-            @Select.started -= instance.OnSelect;
-            @Select.performed -= instance.OnSelect;
-            @Select.canceled -= instance.OnSelect;
+            @CutsceneNext.started -= instance.OnCutsceneNext;
+            @CutsceneNext.performed -= instance.OnCutsceneNext;
+            @CutsceneNext.canceled -= instance.OnCutsceneNext;
+            @CutscenePrevious.started -= instance.OnCutscenePrevious;
+            @CutscenePrevious.performed -= instance.OnCutscenePrevious;
+            @CutscenePrevious.canceled -= instance.OnCutscenePrevious;
         }
 
         public void RemoveCallbacks(IUIActions instance)
@@ -785,6 +858,7 @@ public partial class @InputMap: IInputActionCollection2, IDisposable
     {
         void OnPause(InputAction.CallbackContext context);
         void OnBack(InputAction.CallbackContext context);
-        void OnSelect(InputAction.CallbackContext context);
+        void OnCutsceneNext(InputAction.CallbackContext context);
+        void OnCutscenePrevious(InputAction.CallbackContext context);
     }
 }

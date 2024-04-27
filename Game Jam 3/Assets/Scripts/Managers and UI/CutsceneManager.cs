@@ -6,7 +6,11 @@ public class CutsceneManager : MonoBehaviour
 {
     [SerializeField] private List<GameObject> imageList;
     [SerializeField] private CutsceneType cutsceneType = CutsceneType.None;
+    [Header("Only For Volcano Cutscene")]
     [SerializeField] private MainMenuManager mainMenuScript;
+    //only for jester cutscene
+    private PauseMenuManager pauseScript;
+
     private SaveManager saveScript;
     private InputMap inputMap;
     private bool backInput = false;
@@ -19,6 +23,9 @@ public class CutsceneManager : MonoBehaviour
         inputMap.UI.Enable();
 
         saveScript = GameObject.FindWithTag("Save Manager").GetComponent<SaveManager>();
+
+        if(cutsceneType == CutsceneType.Jester)
+            pauseScript = GameObject.FindWithTag("Pause Menu Manager").GetComponent<PauseMenuManager>();
     }
 
     private void Update() {
@@ -28,8 +35,8 @@ public class CutsceneManager : MonoBehaviour
 
     private void GetInput() {
         //back input is triggered by back OR pause input
-        backInput = (inputMap.UI.Back.triggered || inputMap.UI.Pause.triggered);
-        selectInput = inputMap.UI.Select.triggered;
+        backInput = (inputMap.UI.CutscenePrevious.triggered || inputMap.UI.Pause.triggered);
+        selectInput = inputMap.UI.CutsceneNext.triggered;
     }
 
     private void CutsceneController() {
@@ -74,12 +81,15 @@ public class CutsceneManager : MonoBehaviour
                 //tell save manager that we have watched volcano cutscene (only watch once)
                 saveScript.FinishedVolcanoCutscene();
                 mainMenuScript.OpenLevelSelectMenu();
-
-                //disable THIS gameobejct
                 gameObject.SetActive(false);
                 break;
 
             case CutsceneType.Jester:
+                //trigger event, allows slime input and possesstion again (was disabled for cutscene)
+                GameEvents.current.TriggerResumeEvent();
+                //enable pause input
+                pauseScript.EnableInput();
+                gameObject.SetActive(false);
                 break;
             case CutsceneType.None:
                 break;
@@ -105,5 +115,11 @@ public class CutsceneManager : MonoBehaviour
         //if in MainMenu scene, disable main menu input
         if(cutsceneType == CutsceneType.Volcano)
             mainMenuScript.OnLoadingScreen();
+        //if in island scene, disable slime input and possession
+        else if(cutsceneType == CutsceneType.Jester) {
+            GameEvents.current.TriggerPauseEvent();
+            //disable pause input
+            pauseScript.DisableInput();
+        }
     }
 }

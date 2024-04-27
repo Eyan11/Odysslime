@@ -399,9 +399,18 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Select",
+                    "name": "Cutscene Next",
                     "type": "Button",
                     "id": "b9f58ec9-69f4-4c66-971b-491d7c659555",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Cutscene Previous",
+                    "type": "Button",
+                    "id": "1a0f1d4d-db78-4a37-ab4c-c347b2861baa",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -460,7 +469,7 @@
                     "interactions": "Press",
                     "processors": "",
                     "groups": "",
-                    "action": "Select",
+                    "action": "Cutscene Next",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -471,7 +480,7 @@
                     "interactions": "Press",
                     "processors": "",
                     "groups": "",
-                    "action": "Select",
+                    "action": "Cutscene Next",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -482,7 +491,7 @@
                     "interactions": "Press",
                     "processors": "",
                     "groups": "",
-                    "action": "Select",
+                    "action": "Cutscene Next",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -493,7 +502,62 @@
                     "interactions": "Press",
                     "processors": "",
                     "groups": "",
-                    "action": "Select",
+                    "action": "Cutscene Next",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "a5d11d08-b01a-465f-abbe-45c39663ad81",
+                    "path": "<Keyboard>/rightArrow",
+                    "interactions": "Press",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Cutscene Next",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "3b58c444-4878-48fa-99af-7a4793f4dc0e",
+                    "path": "<Gamepad>/buttonEast",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Cutscene Previous",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "612ac4ce-5355-4e1a-8b7f-094ffd1c84df",
+                    "path": "<Keyboard>/leftArrow",
+                    "interactions": "Press",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Cutscene Previous",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "21e3a858-cdbd-4ebb-8f17-c113a4635239",
+                    "path": "<Keyboard>/backspace",
+                    "interactions": "Press",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Cutscene Previous",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "40b82e21-6cd2-4551-8c32-4f9012ffc710",
+                    "path": "<Keyboard>/escape",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Cutscene Previous",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
