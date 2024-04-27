@@ -14,6 +14,7 @@ public class Cannon : MonoBehaviour
     private FaceObjectYAxis faceObjectYAxis;
     private UIManager UIScript;
     private GameObject UICanvas;
+    private PauseMenuManager pauseMenuManager;
     private int numOfSlimesInRange = 0;
     private int numOfSlimelignsInRange = 0;
     private int totalNumOfSlimelings;
@@ -33,6 +34,7 @@ public class Cannon : MonoBehaviour
         faceObjectYAxis = GetComponentInChildren<FaceObjectYAxis>();
         textBox = GetComponentInChildren<TextMeshProUGUI>();
         UIScript = FindObjectOfType<UIManager>();
+        pauseMenuManager = FindObjectOfType<PauseMenuManager>();
 
         // Creates inputmap to retrieve button trigger name
         inputMap = new InputMap();
@@ -56,8 +58,9 @@ public class Cannon : MonoBehaviour
         // Only display the prompt if king slime is in radius
         if (!kingSlimeInRange) return;
         // UI Prompt
-        UIScript.DisplayPrompt(inputMap.Slime.Jump.GetBindingDisplayString() + 
-                               " to launch!", 0.2f);
+        int usingController = pauseMenuManager.GetIsUsingKBM() == true ? 0 : 1;
+        UIScript.DisplayPrompt("[" + inputMap.Slime.Jump.GetBindingDisplayString(usingController) + 
+                               "] to launch!", 0.2f);
     }
 
     private bool IsASlime(GameObject obj) {
@@ -69,7 +72,7 @@ public class Cannon : MonoBehaviour
     }
 
     private bool IsKingSlime(GameObject obj) {
-        return obj.tag == "Slime King";
+        return obj.tag == "King Slime";
     }
 
     private void OnTriggerEnter(Collider collider) {

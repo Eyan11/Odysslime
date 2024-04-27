@@ -47,10 +47,10 @@ public class SlimeFollow : MonoBehaviour
         //transform.rotation = Quaternion.Slerp(transform.rotation, rotation, Time.deltaTime * rotationSpeed);
         
         moveDirection = (agent.steeringTarget - transform.position).normalized;
-        lookRotation = Quaternion.LookRotation(new Vector3(moveDirection.x, 0f, moveDirection.z));
-        slimeObjTran.rotation = Quaternion.Slerp(slimeObjTran.rotation, lookRotation, Time.deltaTime * rotationSpeed);
-        
-    
+        if (moveDirection.x + moveDirection.z != 0) { // prevents console flooding from Vector3(0, 0, 0)
+            lookRotation = Quaternion.LookRotation(new Vector3(moveDirection.x, 0f, moveDirection.z));
+            slimeObjTran.rotation = Quaternion.Slerp(slimeObjTran.rotation, lookRotation, Time.deltaTime * rotationSpeed);
+        }
     }
 
     private void FollowKing() {

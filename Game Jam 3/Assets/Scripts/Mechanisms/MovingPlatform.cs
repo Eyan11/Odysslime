@@ -62,7 +62,7 @@ public class MovingPlatform : MechanismBase
                 isSquashingSlimes = false;
         }
 
-        Debug.Log("isSquashingSlimes" + isSquashingSlimes);
+        // Debug.Log("isSquashingSlimes" + isSquashingSlimes);
 
         
         // Prevents updatign the platform until enough time passed

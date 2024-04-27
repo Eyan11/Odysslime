@@ -48,7 +48,7 @@ public class PauseMenuManager : MonoBehaviour
         if(currentMenu == CurrentMenu.Controls)
             ControlsMenuController();
     }
-
+    
     private void GetInput() {
         pauseInput = inputMap.UI.Pause.triggered;
         backInput = inputMap.UI.Back.triggered;
@@ -269,6 +269,12 @@ public class PauseMenuManager : MonoBehaviour
         //wait 1 seconds before checking input again
         yield return new WaitForSecondsRealtime(1f);
         StartCoroutine(CheckForControllers());
+    }
+
+    // ------------------------ Public Getter Methods -----------------------------\\
+
+    public bool GetIsUsingKBM() {
+        return isUsingKBM;
     }
 }
 

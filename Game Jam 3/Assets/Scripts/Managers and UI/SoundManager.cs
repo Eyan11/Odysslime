@@ -15,18 +15,29 @@ public class SoundManager : MonoBehaviour
     [Header("Background Noise")]
     [SerializeField] private AudioClip backgroundMusic;
     [SerializeField] private AudioClip ambienceMusic;
+    private PauseMenuManager pauseMenuManager;
 
     private void Awake() {
+        // Plays music if in the settings
         if (backgroundMusic) {
             PlayBackgroundMusic(backgroundMusic, 0.4f);
         }
-
         if (ambienceMusic) {
             PlayBackgroundMusic(ambienceMusic, 0.1f);
         }
+
+        // Retrieves pauseMenuManager
+        pauseMenuManager = FindObjectOfType<PauseMenuManager>();
     }
 
 
+    private void Update() {
+        if (pauseMenuManager.IsPaused()) {
+            BGMSource.volume = 0.1f;
+        } else {
+            BGMSource.volume = 1.0f;
+        }
+    }
 
     //Not making this object persistent as of now.
     //I will update this script in week 3/4
@@ -91,7 +102,6 @@ public class SoundManager : MonoBehaviour
     public void PlayBackgroundMusic(AudioClip audioClip, float volume) {
         HasAudioClip(audioClip);
 
-        BGMSource.Stop();
         BGMSource.PlayOneShot(audioClip, volume);
     }
 
