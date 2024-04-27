@@ -5,8 +5,10 @@ using UnityEngine.SceneManagement;
 
 public class LoadingScreenManager : MonoBehaviour
 {
-    [Header ("References")]
+    [Header ("Loading Screen Images")]
     [SerializeField] private List<GameObject> imageList;
+
+    [Header ("References (Ignore For Cannon Loading Screen)")]
     [SerializeField] private MainMenuManager mainMenuScript;
 
     [Header ("Settings")]

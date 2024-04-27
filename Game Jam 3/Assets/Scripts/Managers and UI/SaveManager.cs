@@ -5,12 +5,19 @@ using UnityEngine.SceneManagement;
 
 public class SaveManager : MonoBehaviour
 {
-    //Slime stat trackers
+    //Slimes collected trackers
     private int infernoSlimesCollected = 0;
     private int frostbiteSlimesCollected = 0;
     private int covenSlimesCollected = 0;
     private int engineerSlimesCollected = 0;
     private int oozeSlimesCollected = 0;
+
+    //Total slimes trackers
+    private int totalInfernoSlimes = 0;
+    private int totalFrostbiteSlimes = 0;
+    private int totalCovenSlimes = 0;
+    private int totalEngineerSlimes = 0;
+    private int totalOozeSlimes = 0;
     
     //restricted island trackers
     private bool unlockedFrostbite = true;
@@ -35,38 +42,43 @@ public class SaveManager : MonoBehaviour
 
     //Saves the slimes collected if collected more slimes than current best score
     // also since this script is only called when canon is used, it will unlock the next level
-    public void SaveSlimeCount(int slimeCount) {
+    public void SaveSlimeCount(int slimesCollected, int totalSlimes) {
 
         //Compare name of current scene
         switch (SceneManager.GetActiveScene().name) {
 
             case "InfernoIsland":
                 unlockedFrostbite = true;
-                if(infernoSlimesCollected < slimeCount)
-                    infernoSlimesCollected = slimeCount;
+                totalInfernoSlimes = totalSlimes;
+                if(infernoSlimesCollected < slimesCollected)
+                    infernoSlimesCollected = slimesCollected;
                 break;
 
             case "FrostbiteIsland":
                 unlockedCoven = true;
-                if(frostbiteSlimesCollected < slimeCount)
-                    frostbiteSlimesCollected = slimeCount;
+                totalFrostbiteSlimes = totalSlimes;
+                if(frostbiteSlimesCollected < slimesCollected)
+                    frostbiteSlimesCollected = slimesCollected;
                 break;
 
             case "CovenIsland":
                 unlockedEngineer = true;
-                if(covenSlimesCollected < slimeCount)
-                    covenSlimesCollected = slimeCount;
+                totalCovenSlimes = totalSlimes;
+                if(covenSlimesCollected < slimesCollected)
+                    covenSlimesCollected = slimesCollected;
                 break;
 
             case "EngineerIsland":
                 unlockedOoze = true;
-                if(engineerSlimesCollected < slimeCount)
-                    engineerSlimesCollected = slimeCount;
+                totalEngineerSlimes = totalSlimes;
+                if(engineerSlimesCollected < slimesCollected)
+                    engineerSlimesCollected = slimesCollected;
                 break;
 
             case "Ooze Island":
-                if(oozeSlimesCollected < slimeCount)
-                    oozeSlimesCollected = slimeCount;
+                totalOozeSlimes = totalSlimes;
+                if(oozeSlimesCollected < slimesCollected)
+                    oozeSlimesCollected = slimesCollected;
                 break;
 
             //else

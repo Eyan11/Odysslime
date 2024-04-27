@@ -34,17 +34,16 @@ public class Cannon : MonoBehaviour
             Debug.LogError("Missing hitbox!");
             this.enabled = false;
         }
-
         // Retrieves a ton of components through built-in functions
         UITransform = GetComponentInChildren<RectTransform>();
         UICanvas = GetComponentInChildren<Canvas>().gameObject;
-        cameraTransform = FindObjectOfType<Camera>().transform;
+        cameraTransform = Camera.main.transform;
         faceObjectYAxis = GetComponentInChildren<FaceObjectYAxis>();
         textBox = GetComponentInChildren<TextMeshProUGUI>();
-        UIScript = FindObjectOfType<UIManager>();
+        UIScript = GameObject.FindWithTag("UI Manager").GetComponent<UIManager>();
         pauseMenuManager = FindObjectOfType<PauseMenuManager>();
         // Retrieves king slime possession
-        GameObject kingSlime = FindObjectOfType<KingMovement>().gameObject;
+        GameObject kingSlime = GameObject.FindWithTag("King Slime");
         kingSlimePossess = kingSlime.GetComponent<SlimePossess>();
         kingSlimeInput = kingSlime.GetComponent<SlimeInput>();
 
@@ -71,7 +70,7 @@ public class Cannon : MonoBehaviour
         if (!kingSlimeInRange || !kingSlimePossess.enabled) return;
         // UI Prompt
         int usingController = pauseMenuManager.GetIsUsingKBM() == true ? 0 : 1;
-        UIScript.DisplayPrompt("[" + inputMap.Slime.Jump.GetBindingDisplayString(usingController) + 
+        UIScript.DisplayPrompt("Hold [" + inputMap.Slime.Jump.GetBindingDisplayString(usingController) + 
                                "] to launch!", 0.2f);
         // Add to timer if the proper key is pressed down
         if (kingSlimeInput.GetJumpHeldInput()) {
@@ -83,6 +82,9 @@ public class Cannon : MonoBehaviour
         if (timeHeld > minBindTime) {
             // SWITCH SCENES HERE EYANANANANANA
             Debug.Log("LAUNCH TIME");
+
+            //trigger event, causes all observers to respond to event
+            GameEvents.current.TriggerFinishIslandEvent();
         }
     }
 
@@ -130,5 +132,10 @@ public class Cannon : MonoBehaviour
         if (!faceObjectYAxis.enabled || numOfSlimesInRange > 0) return;
         faceObjectYAxis.enabled = false;
         UICanvas.SetActive(false);
+    }
+
+    //Getter method for UI Script to record slimelings that were put in cannon
+    public int GetSlimelingsInRange() {
+        return numOfSlimelignsInRange;
     }
 }

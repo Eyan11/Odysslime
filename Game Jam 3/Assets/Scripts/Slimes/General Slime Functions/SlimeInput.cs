@@ -25,13 +25,6 @@ public class SlimeInput : MonoBehaviour
         inputMap.Slime.Enable();
     }
 
-    private void Start() {
-        //needs to be in start to give GameEvents enough time to get set up
-        //subscribe to events
-        GameEvents.current.onPauseEvent += DisableInput;
-        GameEvents.current.onResumeEvent += EnableInput;
-    }
-
     private void Update() {
 
         //gets vector2 input from input map
@@ -55,6 +48,21 @@ public class SlimeInput : MonoBehaviour
 
     // ---------- Methods for pause and resume events ------------------\\
 
+    private void Start() {
+        //needs to be in start to give GameEvents enough time to get set up
+        //subscribe to events
+        GameEvents.current.onPauseEvent += DisableInput;
+        GameEvents.current.onResumeEvent += EnableInput;
+        GameEvents.current.onFinishIslandEvent += DisableInput;
+    }
+
+    private void OnDestroy() {
+        //unsubscribes from event (avoid null reference when slime dies)
+        GameEvents.current.onPauseEvent -= DisableInput;
+        GameEvents.current.onResumeEvent -= EnableInput;
+        GameEvents.current.onFinishIslandEvent -= DisableInput;
+    }
+
     //Called when game is paused by pause action event
     private void DisableInput() {
         inputMap.Slime.Disable();
@@ -63,12 +71,6 @@ public class SlimeInput : MonoBehaviour
     //Called when game is resumed by resume action event
     private void EnableInput() {
         inputMap.Slime.Enable();
-    }
-
-    private void OnDestroy() {
-        //unsubscribes from event (avoid null reference when slime dies)
-        GameEvents.current.onPauseEvent -= DisableInput;
-        GameEvents.current.onResumeEvent -= EnableInput;
     }
 
     //---------- Methods to return input to other slime scripts ----------\\

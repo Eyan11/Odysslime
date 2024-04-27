@@ -30,7 +30,7 @@ public class MovingPlatform : MechanismBase
     private void Awake() {
         pauseCountdown = pauseTime;
         boxCastCountdown = boxCastInterval;
-        slimeLayer = LayerMask.NameToLayer("Slime");
+        slimeLayer = 1 << LayerMask.NameToLayer("Slime");
 
         boxCastSize = transform.localScale;
         boxCastSize.y = boxCastHeight;
@@ -61,9 +61,6 @@ public class MovingPlatform : MechanismBase
             else
                 isSquashingSlimes = false;
         }
-
-        // Debug.Log("isSquashingSlimes" + isSquashingSlimes);
-
         
         // Prevents updatign the platform until enough time passed
         if (pauseCountdown > 0) { return; }

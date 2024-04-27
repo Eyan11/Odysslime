@@ -17,22 +17,21 @@ public class GameEvents : MonoBehaviour
     public event Action onResumeEvent;
     public event Action onFinishIslandEvent;
 
-    //triggers pause event
+
+    // ---------------- Trigger Event Methods --------------------\\
+
     public void TriggerPauseEvent() {
         if(onPauseEvent != null)
             onPauseEvent();
     }
 
-    //triggers resume event
     public void TriggerResumeEvent() {
         if(onResumeEvent != null) 
             onResumeEvent();
     }
 
-    //triggers finish island event
     public void TriggerFinishIslandEvent() {
         if(onFinishIslandEvent != null)
             onFinishIslandEvent();
     }
-
 }

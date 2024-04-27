@@ -7,10 +7,12 @@ using TMPro;
 public class UIManager : MonoBehaviour
 {
     [SerializeField] private Animator slimelingAnim;
+    [SerializeField] private GameObject cannonLoadingScreen;
     [SerializeField] private TMP_Text slimelingText;
     [SerializeField] private TMP_Text promptText;
     [SerializeField] private int totalSlimelings;
     private SaveManager saveScript;
+    private Cannon cannonScript;
     private int slimelingsCollected = 0;
     private float promptCountdown = 0;
     private int loseSlimelingHash;
@@ -25,8 +27,8 @@ public class UIManager : MonoBehaviour
         loseSlimelingHash = Animator.StringToHash("loseSlimeling");
         gainSlimelingHash = Animator.StringToHash("gainSlimeling");
 
-        //TODO: uncomment once canon is implemented
-        //saveScript = GameObject.FindWithTag("Save Manager").GetComponent<SaveManager>();
+        saveScript = GameObject.FindWithTag("Save Manager").GetComponent<SaveManager>();
+        cannonScript = GameObject.FindWithTag("Cannon").GetComponent<Cannon>();
     }
 
     private void Update() {
@@ -76,19 +78,27 @@ public class UIManager : MonoBehaviour
         //needs to be in start to give GameEvents enough time to get set up
         //subscribe to events
         GameEvents.current.onFinishIslandEvent += SaveSlimeCount;
+        GameEvents.current.onFinishIslandEvent += StartCannonLoadingScreen;
     }
 
     private void OnDestroy() {
         //unsubscribes from event (avoid null reference when slime dies)
         GameEvents.current.onFinishIslandEvent -= SaveSlimeCount;
+        GameEvents.current.onFinishIslandEvent -= StartCannonLoadingScreen;
     }
 
     //Method is called when canon is used and the island is finished
     private void SaveSlimeCount() {
         if(saveScript != null) {
             //save slime count for current island
-            saveScript.SaveSlimeCount(slimelingsCollected);
+
+            //saves number of slimelings that were put in the cannon, and the total slimelings in level
+            saveScript.SaveSlimeCount(cannonScript.GetSlimelingsInRange(), totalSlimelings);
         }
+    }
+
+    private void StartCannonLoadingScreen() {
+        cannonLoadingScreen.SetActive(true);
     }
 
 }

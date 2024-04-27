@@ -15,6 +15,7 @@ TagManager:
   - Game Manager
   - World Canvas
   - Save Manager
+  - Cannon
   layers:
   - Default
   - TransparentFX

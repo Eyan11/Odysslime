@@ -5743,6 +5743,11 @@ PrefabInstance:
       propertyPath: m_text
       value: Inferno Island
       objectReference: {fileID: 0}
+    - target: {fileID: 4872506278296176624, guid: c0a416dd6dfba274baafba5672770dc8,
+        type: 3}
+      propertyPath: m_text
+      value: 0 / 99
+      objectReference: {fileID: 0}
     - target: {fileID: 5219357283135635818, guid: c0a416dd6dfba274baafba5672770dc8,
         type: 3}
       propertyPath: m_Name
