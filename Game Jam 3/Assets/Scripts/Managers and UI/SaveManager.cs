@@ -91,7 +91,7 @@ public class SaveManager : MonoBehaviour
     }
 
 
-    //------------------------ Getter Method Island Slimeling Count States --------------------------\\
+    //------------------ Getter Method For Level Select to Display Slime Stats -------------------\\
     public string GetIslandSlimeStats(char islandChar) {
         
         //Compare character
@@ -116,6 +116,35 @@ public class SaveManager : MonoBehaviour
             default:
                 Debug.LogError("GetIslandSlimesCollected input is wrong in Save Manager script");
                 return "GetIslandSlimesCollected input is wrong in Save Manager script";
+        }
+    }
+
+    //------------------------ Getter Method For TrophySlimeSpawner -----------------------\\
+
+    //same as above except only returns slimelings collected
+    public int GetIslandSlimesCollected(char islandChar) {
+        //Compare character
+        switch (islandChar) {
+
+            case 'I':
+                return infernoSlimesCollected;
+
+            case 'F':
+                return frostbiteSlimesCollected;
+
+            case 'C':
+                return covenSlimesCollected;
+
+            case 'E':
+                return engineerSlimesCollected;
+
+            case 'O':
+                return oozeSlimesCollected;
+
+            //else, incorrect input
+            default:
+                Debug.LogError("GetIslandSlimesCollected input is wrong in Save Manager script");
+                return -1;
         }
     }
 

@@ -83,6 +83,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Throne
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 19759787901694e4d96088af09f3e501,
+        type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -90,7 +95,7 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 19759787901694e4d96088af09f3e501,
         type: 3}
       insertIndex: -1
-      addedObject: {fileID: 4695597544472644708}
+      addedObject: {fileID: 6382635611740431175}
   m_SourcePrefab: {fileID: 100100000, guid: 19759787901694e4d96088af09f3e501, type: 3}
 --- !u!1 &8322854457698797456 stripped
 GameObject:
@@ -98,8 +103,8 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 9169841048529468097}
   m_PrefabAsset: {fileID: 0}
---- !u!65 &4695597544472644708
-BoxCollider:
+--- !u!64 &6382635611740431175
+MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -116,6 +121,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1.1380113, y: 2.0645163, z: 0.7983031}
-  m_Center: {x: 0, y: 0, z: 0}
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -5594335622326786677, guid: 19759787901694e4d96088af09f3e501, type: 3}
