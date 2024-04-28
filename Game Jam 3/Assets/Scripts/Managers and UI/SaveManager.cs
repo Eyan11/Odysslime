@@ -25,6 +25,8 @@ public class SaveManager : MonoBehaviour
     private bool unlockedEngineer = true;
     private bool unlockedOoze = true;
 
+
+
     //cutscene trackers
     private bool seenVolcanoCutscene = false;
 
@@ -143,17 +145,13 @@ public class SaveManager : MonoBehaviour
     }
 
 
-    //------------------------ Getter Method for Cutscenes --------------------------\\
+    //------------------------ Getter/Setter for Cutscenes --------------------------\\
 
     public bool SeenVolcanoCutscene() {
         return seenVolcanoCutscene;
     }
 
-
-    //------------------------ Setter Method for Cutscenes --------------------------\\
-
     public void FinishedVolcanoCutscene() {
         seenVolcanoCutscene = true;
     }
-    
 }
