@@ -102,13 +102,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 7
-  maxHoverSpeed: 4
+  maxHoverSpeed: 3.5
   hoverAcceleration: 50
   hoverDeacceleration: 120
   maxYPos: 9999
   minYPos: -9999
   hoverHeight: 5
-  heightBuffer: 1
+  heightBuffer: 1.25
   rayInterval: 0.3
 --- !u!114 &7084102939287826575
 MonoBehaviour:
