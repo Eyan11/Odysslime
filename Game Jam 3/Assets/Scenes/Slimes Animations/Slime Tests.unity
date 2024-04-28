@@ -21565,7 +21565,7 @@ PrefabInstance:
     - target: {fileID: 5920855607128532424, guid: 59182fb87369943358f87d425c1673d2,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 59.2
+      value: 508
       objectReference: {fileID: 0}
     - target: {fileID: 5920855607128532424, guid: 59182fb87369943358f87d425c1673d2,
         type: 3}
@@ -21575,7 +21575,7 @@ PrefabInstance:
     - target: {fileID: 5920855607128532424, guid: 59182fb87369943358f87d425c1673d2,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 301.4
+      value: 554
       objectReference: {fileID: 0}
     - target: {fileID: 5920855607128532424, guid: 59182fb87369943358f87d425c1673d2,
         type: 3}
@@ -21690,6 +21690,74 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 088317a0ee72841d3bfa343af1acbbaf, type: 3}
+--- !u!1001 &4799803469213651891
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 6134201985763047016, guid: 58bce78736dc04e62b1704d812057582,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 194.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 6134201985763047016, guid: 58bce78736dc04e62b1704d812057582,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 28.771
+      objectReference: {fileID: 0}
+    - target: {fileID: 6134201985763047016, guid: 58bce78736dc04e62b1704d812057582,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 148.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 6134201985763047016, guid: 58bce78736dc04e62b1704d812057582,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6134201985763047016, guid: 58bce78736dc04e62b1704d812057582,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6134201985763047016, guid: 58bce78736dc04e62b1704d812057582,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6134201985763047016, guid: 58bce78736dc04e62b1704d812057582,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6134201985763047016, guid: 58bce78736dc04e62b1704d812057582,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 6134201985763047016, guid: 58bce78736dc04e62b1704d812057582,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6134201985763047016, guid: 58bce78736dc04e62b1704d812057582,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 6382186833912256412, guid: 58bce78736dc04e62b1704d812057582,
+        type: 3}
+      propertyPath: m_Name
+      value: WaterFallInferno
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 58bce78736dc04e62b1704d812057582, type: 3}
 --- !u!1001 &5085707144410663862
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -25119,3 +25187,4 @@ SceneRoots:
   - {fileID: 1876736291}
   - {fileID: 1300883921449948749}
   - {fileID: 4332019898978417674}
+  - {fileID: 4799803469213651891}
