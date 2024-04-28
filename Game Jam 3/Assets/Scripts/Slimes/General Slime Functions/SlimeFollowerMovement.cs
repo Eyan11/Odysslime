@@ -24,9 +24,13 @@ public class SlimeFollowerMovement : SlimeMovement
     private bool jumpInput;
     private float lastJumpTime = 0f;
     private bool onGround = false;
+    private bool isFalling = false;
+    private bool isJumping = false;
+    private bool isMoving = false;
     private Vector3 moveDir;
     private SoundManager soundManager;
     private AudioSource moveSource;
+    private Animator slimeMoveAnimator;
 
     void Awake()
     {
@@ -35,6 +39,7 @@ public class SlimeFollowerMovement : SlimeMovement
         //rb.freezeRotation = true; // disabled as individual constraints
         soundManager = GameObject.FindObjectOfType<SoundManager>();
         inputScript = GetComponent<SlimeInput>();
+        slimeMoveAnimator = GetComponentInChildren<Animator>();
     }
 
     // Used for getting inputs and applying jump
@@ -49,6 +54,8 @@ public class SlimeFollowerMovement : SlimeMovement
         if (jumpInput && onGround && lastJumpTime + jumpCooldown < Time.fixedTime) {
             Jump();
         }
+
+        UpdateAnimatorStateMachine();
     }
 
     private void FixedUpdate() {
@@ -59,15 +66,36 @@ public class SlimeFollowerMovement : SlimeMovement
         ConstrainSpeed();
     }
 
+    private void UpdateAnimatorStateMachine() {
+        if (slimeMoveAnimator.GetBool("IsMoving") != isMoving)
+            slimeMoveAnimator.SetBool("IsMoving", isMoving);
+        if (slimeMoveAnimator.GetBool("IsJumping") != isJumping)
+            slimeMoveAnimator.SetBool("IsJumping", isJumping);
+        if (slimeMoveAnimator.GetBool("IsFalling") != isFalling)
+            slimeMoveAnimator.SetBool("IsFalling", isFalling);
+        if (slimeMoveAnimator.GetBool("IsGrounded") != onGround)
+            slimeMoveAnimator.SetBool("IsGrounded", onGround);
+    }
+
     private void GroundCheck() {
         onGround = Physics.Raycast(transform.position, Vector3.down, groundCheckMaxDist);
 
         // allows for application of "friction" on ground
         if (onGround) {
+            isJumping = false;
+            isFalling = false;
             rb.drag = groundDrag;
         }
         else {
             rb.drag = 0;
+
+            if (rb.velocity.y > 0) { // "jumping"
+                isJumping = true;
+                isFalling = false;
+            } else { // "falling"
+                isFalling = true;
+                isJumping = false;
+            }
         }
     }
 
@@ -82,8 +110,10 @@ public class SlimeFollowerMovement : SlimeMovement
         // Move sound effect
         float speed = moveDir.sqrMagnitude;
         if (speed > 0.1 && !moveSource && onGround) {
+            isMoving = true;
             moveSource = soundManager.PlaySoundEffectOnObject(moveSound, orientation.gameObject, 0.05f);
         } else if ((speed < 0.1 || !onGround) && moveSource) {
+            isMoving = false;
             Destroy(moveSource);
         }
     }

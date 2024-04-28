@@ -40,6 +40,7 @@ public class MagicSlimeAbilities : SlimeAbilities
     private Movable movable;
     private GameObject raycastMovableObj;
     private VisualEffect movableVFX;
+    private Animator slimeAnimator;
     public bool abilityActive = false;
 
     private void Awake() {
@@ -53,6 +54,7 @@ public class MagicSlimeAbilities : SlimeAbilities
         slimeVitality = GetComponent<SlimeVitality>();
         slimePossess = GetComponent<SlimePossess>();
         UIScript = FindObjectOfType<UIManager>();
+        slimeAnimator = GetComponentInChildren<Animator>();
 
         // Sets the first raycast check time
         nextCheckTime = Time.fixedTime + nextCheckWait;
@@ -187,6 +189,18 @@ public class MagicSlimeAbilities : SlimeAbilities
 
             // Allows the object to freeze again once done moving
             movable.DeactivatedState();
+
+            // Allows slime to play its death animation
+            slimeModel.transform.parent = null;
+            slimeAnimator.Play("Death");
+            EffectSpawner effectSpawner = slimeModel.AddComponent<EffectSpawner>();
+            effectSpawner.delay = 4.9f;
+            effectSpawner.destroyTime = 1.0f;
+            effectSpawner.volume = 0.6f;
+            effectSpawner.VFX = magicSlimeVFX;
+            effectSpawner.SFX = magicSlimeSFX;
+            effectSpawner.isConfigured = true;
+            Destroy(slimeModel, 5f);
 
             // Kills slime
             slimeVitality.enabled = false;
