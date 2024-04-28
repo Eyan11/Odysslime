@@ -10,6 +10,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private Animator slimelingAnim;
     [SerializeField] private TMP_Text slimelingText;
     [SerializeField] private TMP_Text promptText;
+    [SerializeField] private TMP_Text countdownText;
     [SerializeField] private int totalSlimelings;
 
     [Header ("Cutscenes and Loading Screens (Ignore if Not Applicable)")]
@@ -19,6 +20,7 @@ public class UIManager : MonoBehaviour
     private Cannon cannonScript;
     private int slimelingsCollected = 0;
     private float promptCountdown = 0;
+    private float numberCountdown = 0;
     private int loseSlimelingHash;
     private int gainSlimelingHash;
 
@@ -37,10 +39,17 @@ public class UIManager : MonoBehaviour
 
     private void Update() {
         promptCountdown -= Time.deltaTime;
+        numberCountdown -= Time.deltaTime;
 
         //display no prompt after timer ends (can use any amount of time)
         if(promptCountdown < 0) {
             DisplayPrompt("", 60f);
+        }
+
+        // hide countdown after timer ends
+        if (numberCountdown < 0) {
+            countdownText.text = "";
+            numberCountdown = 60.0f;
         }
     }
 
@@ -66,6 +75,21 @@ public class UIManager : MonoBehaviour
         //reset counter and display prompt
         promptCountdown = displayTime;
         promptText.text = prompt;
+    }
+
+    public void DisplayCountdownNumber(int number, float displayTime) {
+        numberCountdown = displayTime;
+
+        // Colors the number depending on how low it is
+        if (number > 4) {
+            countdownText.color = Color.white;
+        } else if (number > 2) {
+            countdownText.color = Color.yellow;
+        } else {
+            countdownText.color = Color.red;
+        }
+
+        countdownText.text = "" + number;
     }
 
     public int GetTotalSlimelings() {

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Cinemachine;
 using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -10,6 +11,7 @@ public class Cannon : MonoBehaviour
     [SerializeField] private Collider hitbox;
     [Header("Settings")]
     [SerializeField] private float minBindTime = 5.0f;
+    [SerializeField] private bool showCounter = true;
 
     private InputMap inputMap;
     private TextMeshProUGUI textBox;
@@ -52,6 +54,9 @@ public class Cannon : MonoBehaviour
 
         // Retrieves slime total
         totalNumOfSlimelings = UIScript.GetTotalSlimelings();
+
+        // Turns off counter pre-emptively
+        UICanvas.SetActive(false);
     }
 
     private void Update() {
@@ -59,24 +64,35 @@ public class Cannon : MonoBehaviour
         if (numOfSlimesInRange == 0) return;
 
         // World text
-        textBox.text = numOfSlimelignsInRange + "/" + totalNumOfSlimelings;
-        if (numOfSlimelignsInRange == totalNumOfSlimelings) {
-            textBox.color = Color.green;
-        } else {
-            textBox.color = Color.yellow;
+        if (showCounter) {
+            textBox.text = numOfSlimelignsInRange + "/" + totalNumOfSlimelings;
+            if (numOfSlimelignsInRange == totalNumOfSlimelings) {
+                textBox.color = Color.green;
+            } else {
+                textBox.color = Color.yellow;
+            }
         }
 
         // Only display the prompt if king slime is in radius AND in control
         if (!kingSlimeInRange || !kingSlimePossess.enabled) return;
         // UI Prompt
         int usingController = pauseMenuManager.GetIsUsingKBM() == true ? 0 : 1;
-        UIScript.DisplayPrompt("Hold [" + inputMap.Slime.Jump.GetBindingDisplayString(usingController) + 
-                               "] to launch!", 0.2f);
+        if (minBindTime > 0) {
+            UIScript.DisplayPrompt("Hold [" + inputMap.Slime.Jump.GetBindingDisplayString(usingController) + 
+                                "] to launch!", 0.2f);
+        } else {
+            UIScript.DisplayPrompt("Press [" + inputMap.Slime.Jump.GetBindingDisplayString(usingController) + 
+                    "] to exit!", 0.2f);
+        }
         // Add to timer if the proper key is pressed down
         if (kingSlimeInput.GetJumpHeldInput()) {
             timeHeld += Time.deltaTime;
         } else { // Otherwise reset it
             timeHeld = 0;
+        }
+        // Display countdown if held
+        if (minBindTime != 0 && timeHeld != 0) {
+            UIScript.DisplayCountdownNumber((int) Mathf.Ceil(minBindTime - timeHeld), 0.2f);
         }
         // If it's been held down for the mindBindTime, then launch
         if (timeHeld > minBindTime) {
@@ -114,6 +130,8 @@ public class Cannon : MonoBehaviour
         // Enables UI rotation
         if (faceObjectYAxis.enabled) return;
         faceObjectYAxis.enabled = true;
+        // Enables UI 
+        if (!showCounter) return;
         UICanvas.SetActive(true);
     }
 
