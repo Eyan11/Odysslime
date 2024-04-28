@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using Unity.Mathematics;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class SparkSlimeAbilities : SlimeAbilities
@@ -20,14 +21,17 @@ public class SparkSlimeAbilities : SlimeAbilities
     private float nextCheckTime;
     private RaycastHit raycastHit;
     private UIManager UIScript;
+    private Animator lightAnimator;
 
     void Awake()
     {
         // Creates bit mask for pushable objects
         movablesMask = 1 << 12;
 
-        // Retrieves slime health state
+        // Retrieves slime stuff
         slimeVitality = GetComponent<SlimeVitality>();
+        GameObject lightBulb = slimeModel.transform.Find("LightBulb").Find("LightBulb").gameObject;
+        lightAnimator = lightBulb.GetComponent<Animator>();
         // Retrieves other stuff
         UIScript = FindObjectOfType<UIManager>();
         soundManager = FindObjectOfType<SoundManager>();
@@ -47,11 +51,21 @@ public class SparkSlimeAbilities : SlimeAbilities
         Physics.SphereCast(transform.position - slimeModel.transform.forward * frontalInteractionRadius, frontalInteractionRadius, slimeModel.transform.forward, out raycastHit, interactionDistance, movablesMask);
 
         // Only show prompt when possible to interact
-        if (raycastHit.collider) {
+        do {
+            if (!raycastHit.collider) break;
             Battery battery = raycastHit.collider.gameObject.GetComponent<Battery>();
-            if (battery.IsFullyCharged()) return;
+            if (battery.IsFullyCharged()) break;
+
+            if (!lightAnimator.GetBool("CanUseAbility")) {
+                lightAnimator.SetBool("CanUseAbility", true);
+            }
 
             UIScript.DisplayPrompt("Press Q to charge battery!", 0.2f);
+            return;
+        } while (false);
+
+        if (lightAnimator.GetBool("CanUseAbility")) {
+            lightAnimator.SetBool("CanUseAbility", false);
         }
     }
 
