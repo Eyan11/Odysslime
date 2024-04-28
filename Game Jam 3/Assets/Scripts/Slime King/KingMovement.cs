@@ -6,8 +6,8 @@ using TMPro;
 public class KingMovement : SlimeMovement
 {
     private Transform kingObj;
+    private Animator kingSlimeAnimator;
     private Transform orientation;
-    private UIManager UIScript;
     private SlimeInput inputScript;
     private Rigidbody rb;
     private RaycastHit hit;
@@ -38,6 +38,8 @@ public class KingMovement : SlimeMovement
     private void Awake() {
         kingObj = transform.GetChild(0);
         orientation = transform.GetChild(1);
+        
+        kingSlimeAnimator = kingObj.GetComponent<Animator>();
 
         //send error message if accidentally switched order or children
         if(kingObj.CompareTag("Obj") == false || orientation.CompareTag("Orientation") == false)
@@ -48,7 +50,6 @@ public class KingMovement : SlimeMovement
         rb.freezeRotation = true;
 
         inputScript = GetComponent<SlimeInput>();
-        UIScript = GameObject.FindWithTag("UI Manager").GetComponent<UIManager>();
         floorLayer = LayerMask.NameToLayer("Floor");
     }
 
@@ -56,6 +57,13 @@ public class KingMovement : SlimeMovement
         //set XZ velocity
         rb.velocity = new Vector3(moveDir.x * moveSpeed, vertSpeed, moveDir.z * moveSpeed);
         //Debug.Log("Vertical Speed: " + vertSpeed);
+
+        // sets movement based on speed
+        if (moveDir.sqrMagnitude == 0 ) { // idle
+            kingSlimeAnimator.SetBool("IsMoving", false);
+        } else { // move
+            kingSlimeAnimator.SetBool("IsMoving", true);
+        }
     }
 
     private void Update() {

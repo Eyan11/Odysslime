@@ -6,7 +6,7 @@ using TMPro;
 
 public class SlimePossess : MonoBehaviour
 {
-    [Header("Settings")]
+    private Animator kingSlimeFaceAnimator;
     public bool canUsePossessKeybind = true;
     //set true/false when game is paused/unpaused
     private bool canPossess = true;
@@ -29,6 +29,9 @@ public class SlimePossess : MonoBehaviour
     private void Awake() {
         // Retrieve slime king player
         kingPlayer = GameObject.FindObjectOfType<KingMovement>().gameObject;
+        Transform kingSlimeTransform = kingPlayer.transform.Find("King Slime Obj");
+        GameObject kingSlimeFace = kingSlimeTransform.Find("KINGFace").gameObject;
+        kingSlimeFaceAnimator = kingSlimeFace.GetComponent<Animator>();
 
         //script references
         cameraScript = Camera.main.gameObject.GetComponent<ThirdPersonCam>();
@@ -87,6 +90,11 @@ public class SlimePossess : MonoBehaviour
         //if lock cam bind is pressed (1 frame), disable movement
         if(inputScript.GetLockCamInput()) {
             slimeMovement.enabled = false;
+
+            // Possession face
+            if (kingSlimeFaceAnimator.GetBool("Possessing") == false) {
+                kingSlimeFaceAnimator.SetBool("Possessing", true);
+            }
         }
         //if lock cam bind is released (1 frame)
         else if(inputScript.GetUnlockCamInput()) {
@@ -96,6 +104,8 @@ public class SlimePossess : MonoBehaviour
             CrosshairScreenPos = new Vector2(Screen.width * 0.5f, Screen.height * 0.5f);
             //place crosshair under map
             possessCrosshair.position = Vector3.up * (-9999);
+            // Puts face back to normal
+            kingSlimeFaceAnimator.SetBool("Possessing", false);
         }
     }
 
@@ -186,6 +196,9 @@ public class SlimePossess : MonoBehaviour
 
         if(gameObject.CompareTag("Super Slime"))
             GetComponent<Rigidbody>().isKinematic = true;
+
+        if (gameObject.CompareTag("King Slime"))
+            kingSlimeFaceAnimator.SetBool("Possessing", false);
 
         //place crosshair under map
         if (possessCrosshair) {

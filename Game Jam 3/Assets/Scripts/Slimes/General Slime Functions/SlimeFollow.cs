@@ -17,6 +17,7 @@ public class SlimeFollow : MonoBehaviour
     private Rigidbody rb;
     private Vector3 moveDirection;
     private Quaternion lookRotation;
+    private Animator slimeAnimator;
 
 
     private void Awake() {
@@ -24,6 +25,7 @@ public class SlimeFollow : MonoBehaviour
         updateFollowCounter = updateFollowTime;
         rb = GetComponent<Rigidbody>();
         king = GameObject.FindObjectOfType<KingMovement>().gameObject.transform;
+        slimeAnimator = GetComponentInChildren<Animator>();
 
         //disable agent rotation so I can do it manually
         agent.updateRotation = false;
@@ -50,6 +52,12 @@ public class SlimeFollow : MonoBehaviour
         if (moveDirection.x + moveDirection.z != 0) { // prevents console flooding from Vector3(0, 0, 0)
             lookRotation = Quaternion.LookRotation(new Vector3(moveDirection.x, 0f, moveDirection.z));
             slimeObjTran.rotation = Quaternion.Slerp(slimeObjTran.rotation, lookRotation, Time.deltaTime * rotationSpeed);
+        }
+
+        if (agent.velocity.sqrMagnitude == 0) { // not moving
+            slimeAnimator.SetBool("IsMoving", false);
+        } else { // moving
+            slimeAnimator.SetBool("IsMoving", true);
         }
     }
 
