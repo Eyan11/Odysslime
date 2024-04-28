@@ -17,11 +17,13 @@ public class ThirdPersonCam : MonoBehaviour
     [SerializeField] private CinemachineFreeLook topDownFreeLookCam;
     private SlimeInput inputScript;
     private Vector2 moveInput;
+    private PauseMenuManager pauseScript;
 
     [Header("Settings")]
     [SerializeField] private float orientationRotSpeed;
-    [SerializeField] private float mouseSensX = 0.1f;
-    [SerializeField] private float mouseSensY = 0.0007f;
+    [SerializeField] private float defaultSensX = 0.2f;
+    [SerializeField] private float defaultSensY = 0.0014f;
+    private float savedSens = 0.5f; //from SaveSlider, percent from 0-1
     private bool camIsLocked = false;
 
     private void Awake() {
@@ -29,6 +31,7 @@ public class ThirdPersonCam : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
         inputScript = GetComponent<SlimeInput>();
+        pauseScript = GameObject.FindWithTag("Pause Menu Manager").GetComponent<PauseMenuManager>();
     }
 
     private void Update() {
@@ -81,12 +84,24 @@ public class ThirdPersonCam : MonoBehaviour
     }
 
     public void SetCamSensitivity(float sensitivity) {
-
         //set sensitivity of camera's
-        thirdPersonFreeLookCam.m_XAxis.m_MaxSpeed = mouseSensX * sensitivity;
-        thirdPersonFreeLookCam.m_YAxis.m_MaxSpeed = mouseSensY * sensitivity;
-        topDownFreeLookCam.m_XAxis.m_MaxSpeed = mouseSensX * sensitivity;
-        topDownFreeLookCam.m_YAxis.m_MaxSpeed = mouseSensY * sensitivity;
+        thirdPersonFreeLookCam.m_XAxis.m_MaxSpeed = defaultSensX * savedSens * sensitivity;
+        thirdPersonFreeLookCam.m_YAxis.m_MaxSpeed = defaultSensY * savedSens * sensitivity;
+        topDownFreeLookCam.m_XAxis.m_MaxSpeed = defaultSensX * savedSens * sensitivity;
+        topDownFreeLookCam.m_YAxis.m_MaxSpeed = defaultSensY * savedSens * sensitivity;
+    }
+
+    public void SaveSensitivitySetting(float newSens) {
+        savedSens = newSens;
+        
+        // ----- This is to stop sensitivity slider from making camera move in pause menu ----- \\
+
+        //if paused, apply sensitivity but don't let camera move
+        if(pauseScript.IsPaused())
+            SetCamSensitivity(0f);
+        //if NOT paused, apply sensitivity and allow camera to move
+        else
+            SetCamSensitivity(1f);
     }
 
     //returns true if camera is locked

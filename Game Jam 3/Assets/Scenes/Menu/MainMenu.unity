@@ -539,6 +539,11 @@ PrefabInstance:
       propertyPath: sceneNameToLoad
       value: TrophyRoom
       objectReference: {fileID: 0}
+    - target: {fileID: 5324088490734357656, guid: cd8856e54ebe4e6469a2d208420f1fca,
+        type: 3}
+      propertyPath: imageList.Array.size
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5626519908503995179, guid: cd8856e54ebe4e6469a2d208420f1fca,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -611,7 +616,8 @@ PrefabInstance:
       objectReference: {fileID: 21300000, guid: 4fe906d84fa7049548c15ace634af2ac,
         type: 3}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 2763790847235319842, guid: cd8856e54ebe4e6469a2d208420f1fca, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cd8856e54ebe4e6469a2d208420f1fca, type: 3}
@@ -2069,6 +2075,11 @@ PrefabInstance:
       propertyPath: sceneNameToLoad
       value: Ooze Island
       objectReference: {fileID: 0}
+    - target: {fileID: 5324088490734357656, guid: cd8856e54ebe4e6469a2d208420f1fca,
+        type: 3}
+      propertyPath: imageList.Array.size
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5626519908503995179, guid: cd8856e54ebe4e6469a2d208420f1fca,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2141,7 +2152,8 @@ PrefabInstance:
       objectReference: {fileID: 21300000, guid: 4fe906d84fa7049548c15ace634af2ac,
         type: 3}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 2763790847235319842, guid: cd8856e54ebe4e6469a2d208420f1fca, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cd8856e54ebe4e6469a2d208420f1fca, type: 3}
@@ -4525,7 +4537,7 @@ MonoBehaviour:
   keyboardImage: {fileID: 1042430484}
   gamepadImage: {fileID: 1565457591}
   TitleMenuFirst: {fileID: 253596249}
-  optionsMenuFirst: {fileID: 0}
+  optionsMenuFirst: {fileID: 164019835}
   levelSelectMenuFirst: {fileID: 836652548}
   levelScript: {fileID: 183060951}
   volcanoCutscene: {fileID: 1518374150}

@@ -2259,7 +2259,7 @@ MonoBehaviour:
   keyboardImage: {fileID: 2592943826514813601}
   gamepadImage: {fileID: 2354657539662354964}
   pauseMenuFirst: {fileID: 7091285105467152562}
-  optionsMenuFirst: {fileID: 0}
+  optionsMenuFirst: {fileID: 1480301782142073831}
 --- !u!1 &4611088879445846798
 GameObject:
   m_ObjectHideFlags: 0

@@ -19,8 +19,8 @@ public class SoundManager : MonoBehaviour
     [SerializeField] private AudioClip ambienceMusic;
     private PauseMenuManager pauseMenuManager;
     //Volume Settings
-    private float savedMusicPercent = 1; //from SaveManager
-    private float savedSFXPercent = 1; //from SaveManager
+    private float savedMusicPercent = 1; //from SaveManager, percent from 0-1
+    private float savedSFXPercent = 1; //from SaveManager, percent from 0-1
 
     private void Awake() {
         // Plays music if in the settings
@@ -108,9 +108,8 @@ public class SoundManager : MonoBehaviour
     // --------------------- Sound Settings ------------------- \\
 
     public void SetVolume(float musicVolume, float sfxVolume) {
-        backgrondMusicVolume = musicVolume;
-        soundEffectVolume = sfxVolume;
-        Debug.Log("Volume Set");
+        savedMusicPercent = musicVolume;
+        savedSFXPercent = sfxVolume;
     }
 
 }
