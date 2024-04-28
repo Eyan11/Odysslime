@@ -148,6 +148,9 @@ public class MagicSlimeAbilities : SlimeAbilities
             controlObj = raycastHit.collider.gameObject.transform.parent.gameObject;
             controlObjRigidbody = controlObj.GetComponent<Rigidbody>();
 
+            // Enables magic overlay ------------------------------------------------------------------
+            UIScript.SetMagicOverlay(true);
+
             if (!controlObj || !controlObjRigidbody) {
                 Debug.LogError("Unable to find a controlled object's property!");
             }
@@ -208,6 +211,10 @@ public class MagicSlimeAbilities : SlimeAbilities
     }
 
     private void OnDisable() {
+        // Disables magic overlay
+        UIScript.SetMagicOverlay(false);
+
+        // Clears effect on movable object
         if (raycastMovableObj) {
             ClearEffect();
         }

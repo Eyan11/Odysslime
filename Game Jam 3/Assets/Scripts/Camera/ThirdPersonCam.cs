@@ -59,11 +59,11 @@ public class ThirdPersonCam : MonoBehaviour
     //determines if camera should be locked in place or not
     private void CameraLockState() {
 
-        //lock cam if unlocked and holding lock input
-        if(!camIsLocked && inputScript.GetLockCamInput()) {
+        //lock cam if unlocked and holding lock input, lock camera
+        if(!camIsLocked && inputScript.GetLockCamInput())
             LockCamera();
-        }
-        //unlock cam if locked and NOT holding lock input
+        
+        //unlock cam if locked and NOT holding lock input, unlock camera
         else if(camIsLocked && inputScript.GetUnlockCamInput())
             UnlockCamera();
     }

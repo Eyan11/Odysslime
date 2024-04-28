@@ -59,7 +59,10 @@ public class LoadingScreenManager : MonoBehaviour
     // ----------------------- Methods that Change Scenes -------------------- \\
 
     private IEnumerator LoadSceneCoroutine(string sceneName) {
-
+        //wait 0.2 seconds before starting scene load 
+        //  to make sure loading screen image is displayed before game starts lagging
+        yield return new WaitForSecondsRealtime(0.2f);
+        
         //start loading next scene 
         asyncOperation = SceneManager.LoadSceneAsync(sceneName);
         //don't activate next scene yet

@@ -16,6 +16,9 @@ public class UIManager : MonoBehaviour
     [Header ("Cutscenes and Loading Screens (Ignore if Not Applicable)")]
     [SerializeField] private GameObject cannonLoadingScreen;
     [SerializeField] private GameObject jesterCutscene;
+    [Header ("Ability Overlays")]
+    [SerializeField] private GameObject possessOverlay;
+    [SerializeField] private GameObject magicOverlay;
     private SaveManager saveScript;
     private Cannon cannonScript;
     private int slimelingsCollected = 0;
@@ -134,4 +137,13 @@ public class UIManager : MonoBehaviour
         cannonLoadingScreen.SetActive(true);
     }
 
+    // ------------------- Ability Overlay Methods --------------------\\
+
+    public void SetPossessOverlay(bool enableStatus) {
+        possessOverlay.SetActive(enableStatus);
+    }
+
+    public void SetMagicOverlay(bool enableStatus) {
+        magicOverlay.SetActive(enableStatus);
+    }
 }

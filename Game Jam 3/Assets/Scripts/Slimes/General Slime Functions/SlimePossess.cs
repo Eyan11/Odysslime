@@ -87,9 +87,12 @@ public class SlimePossess : MonoBehaviour
         if(cameraScript.CamIsLocked())
             RaycastForSlime();
 
-        //if lock cam bind is pressed (1 frame), disable movement
+        //if lock cam bind is pressed (1 frame)
         if(inputScript.GetLockCamInput()) {
+            //disable movement
             slimeMovement.enabled = false;
+            //display possess overlay
+            UIScript.SetPossessOverlay(true);
 
             // Possession face
             if (kingSlimeFaceAnimator.GetBool("Possessing") == false) {
@@ -104,12 +107,17 @@ public class SlimePossess : MonoBehaviour
             CrosshairScreenPos = new Vector2(Screen.width * 0.5f, Screen.height * 0.5f);
             //place crosshair under map
             possessCrosshair.position = Vector3.up * (-9999);
+
             // Puts face back to normal
             kingSlimeFaceAnimator.SetBool("Possessing", false);
+            //hide possess overlay
+            UIScript.SetPossessOverlay(false);
         }
     }
 
     public void PosessSlime(GameObject otherSlime) {
+        //hide possess overlay
+        UIScript.SetPossessOverlay(false);
 
         //make soul appear and move to possessed slime
         soulScript.MoveSoulToSlime(this.transform, otherSlime.transform);
