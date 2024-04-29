@@ -17,7 +17,7 @@ public class SaveManager : MonoBehaviour
     private int totalFrostbiteSlimes = 20;
     private int totalCovenSlimes = 22;
     private int totalEngineerSlimes = 22;
-    private int totalOozeSlimes = 24;
+    private int totalOozeSlimes = 28;
     
     //restricted island trackers
     private bool unlockedFrostbite = true;
