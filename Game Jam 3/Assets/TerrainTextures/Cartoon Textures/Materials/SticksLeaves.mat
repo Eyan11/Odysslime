@@ -23,7 +23,7 @@ Material:
   m_Name: SticksLeaves
   m_Shader: {fileID: -6465566751694194690, guid: 3bb35f7f86ffc45c2aa6fc4291f787fc,
     type: 3}
-  m_Parent: {fileID: 2100000, guid: c1a23c025b9c9d54c8fcec256089a5d9, type: 2}
+  m_Parent: {fileID: 2100000, guid: 9170eb5c11a295b4394a5c450fbce006, type: 2}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords:
   - _SHADING_STYLE_SKIN_AND_TEXTILES
