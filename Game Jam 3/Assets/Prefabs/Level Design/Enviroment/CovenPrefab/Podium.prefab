@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4807658740923534557}
   - component: {fileID: 7842232305177530606}
   - component: {fileID: 5722179891361301279}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Podium
   m_TagString: Untagged
   m_Icon: {fileID: 0}

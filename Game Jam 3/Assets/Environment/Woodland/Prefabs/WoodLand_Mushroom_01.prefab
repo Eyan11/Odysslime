@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 5010121741173510747}
   - component: {fileID: 8787979830899522257}
   - component: {fileID: 4879530462240772513}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: WoodLand_Mushroom_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
