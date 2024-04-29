@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2999192031919708376}
   - component: {fileID: 7330119102546787004}
   - component: {fileID: 7493361071102465870}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: Directional Light (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -129,7 +129,7 @@ GameObject:
   - component: {fileID: 1112884932413476335}
   - component: {fileID: 921502416774303870}
   - component: {fileID: 5951567073295107505}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: Directional Light (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -247,7 +247,7 @@ GameObject:
   - component: {fileID: 1613549029832782395}
   - component: {fileID: 7913543289776998132}
   - component: {fileID: 600673267408008252}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: Directional Light (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -450,7 +450,7 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: c0fb682249cdd4ea7986a4e61d8fb0bc,
         type: 3}
       propertyPath: m_Layer
-      value: 6
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

@@ -15,9 +15,9 @@ public class SaveManager : MonoBehaviour
     //Total slimes trackers
     private int totalInfernoSlimes = 23;
     private int totalFrostbiteSlimes = 20;
-    private int totalCovenSlimes = 42;
-    private int totalEngineerSlimes = 38;
-    private int totalOozeSlimes = 99;
+    private int totalCovenSlimes = 22;
+    private int totalEngineerSlimes = 22;
+    private int totalOozeSlimes = 24;
     
     //restricted island trackers
     private bool unlockedFrostbite = true;
