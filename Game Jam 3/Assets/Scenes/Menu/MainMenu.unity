@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028352, g: 0.22571376, b: 0.3069224, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -529,6 +529,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Ooze Loading Screen Holder
+      objectReference: {fileID: 0}
+    - target: {fileID: 2082199107858694530, guid: cd8856e54ebe4e6469a2d208420f1fca,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2763790847235319842, guid: cd8856e54ebe4e6469a2d208420f1fca,
         type: 3}
@@ -1528,6 +1533,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: Coven Loading Screen Holder
       objectReference: {fileID: 0}
+    - target: {fileID: 2082199107858694530, guid: cd8856e54ebe4e6469a2d208420f1fca,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2465315190009695808, guid: cd8856e54ebe4e6469a2d208420f1fca,
+        type: 3}
+      propertyPath: m_text
+      value: The Magic Slimes are devoted to their craft, which allows them to move
+        some stones their minds.
+      objectReference: {fileID: 0}
     - target: {fileID: 2763790847235319842, guid: cd8856e54ebe4e6469a2d208420f1fca,
         type: 3}
       propertyPath: m_Name
@@ -1646,6 +1662,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 21300000, guid: 0837b28b535b74013bcb65616fcb8fca,
         type: 3}
+    - target: {fileID: 8072618445630229302, guid: cd8856e54ebe4e6469a2d208420f1fca,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2124,6 +2145,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: Engineer Loading Screen Holder
       objectReference: {fileID: 0}
+    - target: {fileID: 2082199107858694530, guid: cd8856e54ebe4e6469a2d208420f1fca,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2465315190009695808, guid: cd8856e54ebe4e6469a2d208420f1fca,
+        type: 3}
+      propertyPath: m_text
+      value: The Spark Slimes can use their electric powers to fuel their own inventions
+        through these batteries!
+      objectReference: {fileID: 0}
     - target: {fileID: 2763790847235319842, guid: cd8856e54ebe4e6469a2d208420f1fca,
         type: 3}
       propertyPath: m_Name
@@ -2247,6 +2279,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 21300000, guid: 3b9c7d43afc2f47468c4ac93af29509c,
         type: 3}
+    - target: {fileID: 8072618445630229302, guid: cd8856e54ebe4e6469a2d208420f1fca,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: 2763790847235319842, guid: cd8856e54ebe4e6469a2d208420f1fca, type: 3}
@@ -4762,12 +4799,23 @@ PrefabInstance:
     - target: {fileID: 2082199107858694530, guid: cd8856e54ebe4e6469a2d208420f1fca,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2465315190009695808, guid: cd8856e54ebe4e6469a2d208420f1fca,
+        type: 3}
+      propertyPath: m_text
+      value: Bomb Slimes always go out with a bang! If you ever get stuck, they can
+        help you carve out a path through lava rocks that have fallen all over.
       objectReference: {fileID: 0}
     - target: {fileID: 2763790847235319842, guid: cd8856e54ebe4e6469a2d208420f1fca,
         type: 3}
       propertyPath: m_Name
       value: Frostbite Meet Locals 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2798646552017891828, guid: cd8856e54ebe4e6469a2d208420f1fca,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3204483369419844777, guid: cd8856e54ebe4e6469a2d208420f1fca,
         type: 3}
@@ -4870,6 +4918,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 21300000, guid: fe117e798e2b046d991132c846288cca,
         type: 3}
+    - target: {fileID: 7633624230079969156, guid: cd8856e54ebe4e6469a2d208420f1fca,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 246
+      objectReference: {fileID: 0}
     - target: {fileID: 8072618445630229302, guid: cd8856e54ebe4e6469a2d208420f1fca,
         type: 3}
       propertyPath: m_IsActive
@@ -6469,10 +6522,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: Frostbite Loading Screen Holder
       objectReference: {fileID: 0}
+    - target: {fileID: 2082199107858694530, guid: cd8856e54ebe4e6469a2d208420f1fca,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2465315190009695808, guid: cd8856e54ebe4e6469a2d208420f1fca,
+        type: 3}
+      propertyPath: m_text
+      value: Although timid, the Ice Slimes won't hesitate to freeze into ice blocks
+        to fill gaps and activate switches.
+      objectReference: {fileID: 0}
     - target: {fileID: 2763790847235319842, guid: cd8856e54ebe4e6469a2d208420f1fca,
         type: 3}
       propertyPath: m_Name
       value: Coven Meet Locals 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2798646552017891828, guid: cd8856e54ebe4e6469a2d208420f1fca,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3204483369419844777, guid: cd8856e54ebe4e6469a2d208420f1fca,
         type: 3}
@@ -6587,6 +6656,16 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 21300000, guid: f8ddd9ecaaf1f489289449444e51b6bb,
         type: 3}
+    - target: {fileID: 7633624230079969156, guid: cd8856e54ebe4e6469a2d208420f1fca,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 236
+      objectReference: {fileID: 0}
+    - target: {fileID: 8072618445630229302, guid: cd8856e54ebe4e6469a2d208420f1fca,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -7054,6 +7133,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Trophy Loading Screen Holder
       objectReference: {fileID: 0}
+    - target: {fileID: 2082199107858694530, guid: cd8856e54ebe4e6469a2d208420f1fca,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2763790847235319842, guid: cd8856e54ebe4e6469a2d208420f1fca,
         type: 3}
       propertyPath: m_Name
@@ -7185,6 +7269,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1021065580}
     m_Modifications:
+    - target: {fileID: 393830587817804968, guid: f1ee94ed60260a84481131e3a5c6fa69,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1248381111782635027, guid: f1ee94ed60260a84481131e3a5c6fa69,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 265
+      objectReference: {fileID: 0}
+    - target: {fileID: 2429371293929413273, guid: f1ee94ed60260a84481131e3a5c6fa69,
+        type: 3}
+      propertyPath: m_text
+      value: In the middle of the ocean somewhere far away, a place called Ooze Island
+        was inhabited by strange creatures called Slimes
+      objectReference: {fileID: 0}
     - target: {fileID: 5024065856884600398, guid: f1ee94ed60260a84481131e3a5c6fa69,
         type: 3}
       propertyPath: m_Pivot.x
@@ -7285,6 +7385,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6222443227218355634, guid: f1ee94ed60260a84481131e3a5c6fa69,
+        type: 3}
+      propertyPath: m_text
+      value: The Slimes lived in harmony for over a hundred years. Until one day...
+      objectReference: {fileID: 0}
     - target: {fileID: 6404661368807305202, guid: f1ee94ed60260a84481131e3a5c6fa69,
         type: 3}
       propertyPath: cutsceneType
@@ -7320,10 +7425,31 @@ PrefabInstance:
       propertyPath: imageList.Array.data[2]
       value: 
       objectReference: {fileID: 1595218708}
+    - target: {fileID: 8021801342859452011, guid: f1ee94ed60260a84481131e3a5c6fa69,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8126719610507345797, guid: f1ee94ed60260a84481131e3a5c6fa69,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8277691684382114894, guid: f1ee94ed60260a84481131e3a5c6fa69,
+        type: 3}
+      propertyPath: m_text
+      value: The volcanic island erupted. The Kingdom of Ooze crumbled, and its King
+        was nowhere to be found...
+      objectReference: {fileID: 0}
     - target: {fileID: 8530720871311918869, guid: f1ee94ed60260a84481131e3a5c6fa69,
         type: 3}
       propertyPath: m_Name
       value: Volcano Cutscene UI Holder
+      objectReference: {fileID: 0}
+    - target: {fileID: 8530720871311918869, guid: f1ee94ed60260a84481131e3a5c6fa69,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
