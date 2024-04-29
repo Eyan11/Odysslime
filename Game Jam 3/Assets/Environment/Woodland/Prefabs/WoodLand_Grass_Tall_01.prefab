@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 1907096405914946689}
   - component: {fileID: 2775229153347414326}
   - component: {fileID: 4856175533744057470}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: WoodLand_Grass_Tall_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -135,7 +135,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3164710816179876108}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: GameObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
