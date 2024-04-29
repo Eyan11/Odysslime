@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3867823375579188321}
   - component: {fileID: 7708226992673118462}
   - component: {fileID: 9047700726052704907}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Particle System
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4841,7 +4841,7 @@ GameObject:
   - component: {fileID: 1721796976643757532}
   - component: {fileID: 2616454240588153663}
   - component: {fileID: 5936042768435785559}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Particle System (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9669,7 +9669,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 290586719984107843}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: BalController (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9705,7 +9705,7 @@ GameObject:
   - component: {fileID: 8430499075443580340}
   - component: {fileID: 4898236367237494671}
   - component: {fileID: 3086139497901108246}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: BallTent
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9888,10 +9888,25 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[1]
       value: 
       objectReference: {fileID: 2100000, guid: 62fee5e4027814255b1fc39f0cdb1d25, type: 2}
+    - target: {fileID: -4209329389563969781, guid: 3bb70649972dd4429993ec243542719a,
+        type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: -3945248140049355098, guid: 3bb70649972dd4429993ec243542719a,
+        type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 3bb70649972dd4429993ec243542719a,
         type: 3}
       propertyPath: m_Name
       value: poppintent
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 3bb70649972dd4429993ec243542719a,
+        type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 7046644522681670263, guid: 3bb70649972dd4429993ec243542719a,
         type: 3}
@@ -9905,7 +9920,11 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 290586719984107843}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 3bb70649972dd4429993ec243542719a,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8385092373496132652}
   m_SourcePrefab: {fileID: 100100000, guid: 3bb70649972dd4429993ec243542719a, type: 3}
 --- !u!4 &560423103945015185 stripped
 Transform:
@@ -9913,3 +9932,28 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 21880992145676410}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &904332321939793195 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 3bb70649972dd4429993ec243542719a,
+    type: 3}
+  m_PrefabInstance: {fileID: 21880992145676410}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &8385092373496132652
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 904332321939793195}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e3fdca004f2d45fe8abbed571a8abd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_OverrideArea: 1
+  m_Area: 1
+  m_OverrideGenerateLinks: 0
+  m_GenerateLinks: 0
+  m_IgnoreFromBuild: 0
+  m_ApplyToChildren: 1
+  m_AffectedAgents: ffffffff
