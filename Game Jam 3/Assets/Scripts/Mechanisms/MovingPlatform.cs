@@ -14,12 +14,13 @@ public class MovingPlatform : MechanismBase
     [SerializeField] private float bufferDistance;
     [SerializeField] private PlatformMoveSlime moveSlimeScript;
     [SerializeField] private AudioClip movingPlatformSFX;
-    [SerializeField] private float boxCastHeight;
-    [SerializeField] private float boxCastInterval;
-    private float boxCastCountdown = 0;
-    private Vector3 boxCastSize;
+    //For removed boxcast feature to prevent squashing slimes
+    //[SerializeField] private float boxCastHeight;
+    //[SerializeField] private float boxCastInterval;
+    //private float boxCastCountdown = 0;
+    //private Vector3 boxCastSize;
+    //private bool isSquashingSlimes = false;
     private int slimeLayer;
-    private bool isSquashingSlimes = false;
     public bool isActive = true;
     private float pauseCountdown = 0f;
     private bool isMovingToEnd = true;
@@ -29,11 +30,11 @@ public class MovingPlatform : MechanismBase
 
     private void Awake() {
         pauseCountdown = pauseTime;
-        boxCastCountdown = boxCastInterval;
+        //boxCastCountdown = boxCastInterval;
         slimeLayer = 1 << LayerMask.NameToLayer("Slime");
 
-        boxCastSize = transform.localScale;
-        boxCastSize.y = boxCastHeight;
+        //boxCastSize = transform.localScale;
+        //boxCastSize.y = boxCastHeight;
 
         //start position is currentposition
         startPos = transform.position;
@@ -49,8 +50,9 @@ public class MovingPlatform : MechanismBase
 
     private void Update() {
         pauseCountdown -= Time.deltaTime;
-        boxCastCountdown -= Time.deltaTime;
 
+        /* For removed box cast
+        boxCastCountdown -= Time.deltaTime;
         //every boxCastInterval seconds
         if(boxCastCountdown < 0) {
             boxCastCountdown = boxCastInterval;
@@ -61,6 +63,7 @@ public class MovingPlatform : MechanismBase
             else
                 isSquashingSlimes = false;
         }
+        */
         
         // Prevents updatign the platform until enough time passed
         if (pauseCountdown > 0) { return; }
@@ -81,10 +84,16 @@ public class MovingPlatform : MechanismBase
         if(isMovingToEnd) {
             MoveToEnd();
         }
+        else if(!isMovingToEnd) {
+            MoveToStart();
+        }
+        /* For removed box cast (it replaced the else if block above)
         //move to start if no slimes are in the way
         else if(!isMovingToEnd && !isSquashingSlimes) {
             MoveToStart();
         }
+        */
+
     }
 
     public void MoveToEnd() {
@@ -115,9 +124,11 @@ public class MovingPlatform : MechanismBase
         }
     }
 
+    /*For visualizing box cast
     private void OnDrawGizmos() {
         Gizmos.DrawWireCube(transform.position + (-transform.up * boxCastHeight/2), boxCastSize);
     }
+    */
 
     public override void Activate()
     {

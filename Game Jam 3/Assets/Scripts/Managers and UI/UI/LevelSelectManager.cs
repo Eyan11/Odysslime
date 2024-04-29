@@ -36,6 +36,10 @@ public class LevelSelectManager : MonoBehaviour
     [SerializeField] private GameObject engineerLoadingScreen;
     [SerializeField] private GameObject oozeLoadingScreen;
     [SerializeField] private GameObject trophyLoadingScreen;
+
+    [Header ("Sounds")]
+    [SerializeField] private AudioClip scrollSFX;
+    private SoundManager soundScript;
     private CurrentInfo currentInfo;
     private SaveManager saveScript;
     private bool isRunningCoroutine = false;
@@ -51,8 +55,9 @@ public class LevelSelectManager : MonoBehaviour
 
         currentInfo = CurrentInfo.None;
 
-        //Get save script
+        //Get save and sound script
         saveScript = GameObject.FindWithTag("Save Manager").GetComponent<SaveManager>();
+        soundScript = GameObject.FindWithTag("Sound Manager").GetComponent<SoundManager>();
 
         //TODO: replace 99 with total slime count
         //Gathers save data from SaveManager persistent script
@@ -107,6 +112,7 @@ public class LevelSelectManager : MonoBehaviour
         CloseCurrentScrollInfo();
         currentInfo = CurrentInfo.None;
         scrollAnim.SetTrigger(unselectHash); 
+        //not playing scroll sound because this only happens when you leave level select menu
         isScrollMoving = false;
     }
 
@@ -153,6 +159,7 @@ public class LevelSelectManager : MonoBehaviour
             
             //play scroll animation
             scrollAnim.SetTrigger(selectHash); 
+            soundScript.PlayGlobalSoundEffect(scrollSFX);
             isScrollMoving = true;
         }
     }

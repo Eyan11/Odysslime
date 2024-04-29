@@ -20,10 +20,10 @@ public class SaveManager : MonoBehaviour
     private int totalOozeSlimes = 28;
     
     //restricted island trackers
-    private bool unlockedFrostbite = true;
-    private bool unlockedCoven = true;
-    private bool unlockedEngineer = true;
-    private bool unlockedOoze = true;
+    private bool unlockedFrostbite = false;
+    private bool unlockedCoven = false;
+    private bool unlockedEngineer = false;
+    private bool unlockedOoze = false;
 
 
 

@@ -584,7 +584,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 3b9c7d43afc2f47468c4ac93af29509c,
+      objectReference: {fileID: 21300000, guid: 19d2af5b0699c4faba0ff51cfad7039d,
         type: 3}
     - target: {fileID: 5626519908503995179, guid: cd8856e54ebe4e6469a2d208420f1fca,
         type: 3}
@@ -1731,6 +1731,7 @@ MonoBehaviour:
   engineerLoadingScreen: {fileID: 637280861}
   oozeLoadingScreen: {fileID: 830557621}
   trophyLoadingScreen: {fileID: 897634790}
+  scrollSFX: {fileID: 8300000, guid: 67b699a7f9884eb498f7e6dc213a94f5, type: 3}
 --- !u!1001 &253596248
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7097,7 +7098,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 84694c26f80c746d3b8eccf940399703,
+      objectReference: {fileID: 21300000, guid: 32d1bb5587cd84160b64201ba9bbe76e,
         type: 3}
     - target: {fileID: 5626519908503995179, guid: cd8856e54ebe4e6469a2d208420f1fca,
         type: 3}
