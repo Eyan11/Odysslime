@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8259882162005616357}
   - component: {fileID: 6455961363258645270}
   - component: {fileID: 7566240803486463271}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: s.0179 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -93,7 +93,8 @@ GameObject:
   m_Component:
   - component: {fileID: 6933528656990479250}
   - component: {fileID: 4140655008654586792}
-  m_Layer: 0
+  - component: {fileID: 7957110464120814166}
+  m_Layer: 7
   m_Name: Sign
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -143,6 +144,25 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 6.79, z: 3.15}
   m_Center: {x: -0.98, y: 4.31, z: 0.94}
+--- !u!114 &7957110464120814166
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2844902504982989987}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e3fdca004f2d45fe8abbed571a8abd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_OverrideArea: 1
+  m_Area: 1
+  m_OverrideGenerateLinks: 0
+  m_GenerateLinks: 0
+  m_IgnoreFromBuild: 0
+  m_ApplyToChildren: 1
+  m_AffectedAgents: ffffffff
 --- !u!1 &2954144453965612662
 GameObject:
   m_ObjectHideFlags: 0
@@ -154,7 +174,7 @@ GameObject:
   - component: {fileID: 6790830081989485425}
   - component: {fileID: 4539345583274931038}
   - component: {fileID: 6567906118880546159}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: s.0204 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -237,7 +257,7 @@ GameObject:
   - component: {fileID: 3624275495189274677}
   - component: {fileID: 8375859076974041924}
   - component: {fileID: 6431262879751394774}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: s.0200 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -320,7 +340,7 @@ GameObject:
   - component: {fileID: 6089839233694526078}
   - component: {fileID: 7155269638140454260}
   - component: {fileID: 1339712088461926333}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: s.0185 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -403,7 +423,7 @@ GameObject:
   - component: {fileID: 2878862837961958706}
   - component: {fileID: 7989952967756730587}
   - component: {fileID: 490375025589550754}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: s.0203 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -486,7 +506,7 @@ GameObject:
   - component: {fileID: 8281104330871654788}
   - component: {fileID: 3749222887808840939}
   - component: {fileID: 4198908908534737474}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: s.0217 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -569,7 +589,7 @@ GameObject:
   - component: {fileID: 6125966460595412768}
   - component: {fileID: 9181747915743003741}
   - component: {fileID: 6643771697554536849}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: s.0194 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
