@@ -1,9 +1,36 @@
+Team: 
+
+Eyan Martucci - Team Leader and Programmer
+
+Von Caparas - Programmer and Sound
+
+Josue Bracamontes - Game and Production Artist
+
+Jayce Cochell - Level Designer and Writer
+
+Layton Borunda - Level Designer 
 
 
-Asset Credits:
+
+
+Sound Credits:
 
 wood_plank_impact_ground.wav by marb7e -- https://freesound.org/s/653128/ -- License: Attribution 4.0
 
 Page flip.wav by cameronpride -- https://freesound.org/s/676674/ -- License: Creative Commons 0
 
 Paper crumble by franzzle -- https://freesound.org/s/713220/ -- License: Creative Commons 0
+
+Jeanie's Melody by <a href="https://app.sessions.blue/browse/track/245600">Blue Dot Sessions</a>
+
+Cmd x94 by <a href="https://app.sessions.blue/browse/track/245643">Blue Dot Sessions</a>
+
+Heartland Flyer by <a href="https://app.sessions.blue/browse/track/245644">Blue Dot Sessions</a>
+
+Rush to the Clearing by <a href="https://app.sessions.blue/browse/track/245645">Blue Dot Sessions</a>
+
+Cicle DR Valga by <a href="https://app.sessions.blue/browse/track/245646">Blue Dot Sessions</a>
+
+Jazzberry by <a href="https://app.sessions.blue/browse/track/245648">Blue Dot Sessions</a>
+
+The Compound by <a href="https://app.sessions.blue/browse/track/245649">Blue Dot Sessions</a> 
