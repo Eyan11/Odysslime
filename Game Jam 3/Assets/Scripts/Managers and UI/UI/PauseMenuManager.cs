@@ -53,6 +53,10 @@ public class PauseMenuManager : MonoBehaviour
         //if on controls screen, display correct controls image
         if(currentMenu == CurrentMenu.Controls)
             ControlsMenuController();
+
+        //if controls or options are on screen, allow for player to go back
+        if(currentMenu == CurrentMenu.Controls || currentMenu == CurrentMenu.Options)
+            BackOnControlsAndOptions();
     }
     
     private void GetInput() {
@@ -96,6 +100,16 @@ public class PauseMenuManager : MonoBehaviour
                 keyboardImage.SetActive(false);
                 gamepadImage.SetActive(true);
             }
+        }
+    }
+
+    private void BackOnControlsAndOptions() {
+
+        if(backInput) {
+            //play sound
+            soundScript.PlayGlobalSoundEffect(pauseSFX);
+            //close current menu and go back to pause menu
+            OpenPauseMenu();
         }
     }
 

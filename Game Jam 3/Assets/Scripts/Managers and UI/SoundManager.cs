@@ -18,17 +18,14 @@ public class SoundManager : MonoBehaviour
     [SerializeField] private AudioClip backgroundMusic;
     [SerializeField] private AudioClip ambienceMusic;
     private PauseMenuManager pauseMenuManager;
-    //Volume Settings
-    private float savedMusicPercent = 1; //from SaveManager, percent from 0-1
-    private float savedSFXPercent = 1; //from SaveManager, percent from 0-1
 
     private void Awake() {
         // Plays music if in the settings
         if (backgroundMusic) {
-            PlayBackgroundMusic(backgroundMusic, 0.4f * savedMusicPercent);
+            PlayBackgroundMusic(backgroundMusic, 0.4f);
         }
         if (ambienceMusic) {
-            PlayBackgroundMusic(ambienceMusic, 0.1f * savedMusicPercent);
+            PlayBackgroundMusic(ambienceMusic, 0.1f);
         }
 
         // Retrieves pauseMenuManager
@@ -48,12 +45,12 @@ public class SoundManager : MonoBehaviour
     public void PlaySoundEffectAtPoint(AudioClip audioClip, UnityEngine.Vector3 point, float volume) {
         HasAudioClip(audioClip);
         
-        AudioSource.PlayClipAtPoint(audioClip, point, volume * savedSFXPercent);
+        AudioSource.PlayClipAtPoint(audioClip, point, volume);
     }
 
     // Plays a sound at a location using the default sound effect volume
     public void PlaySoundEffectAtPoint(AudioClip audioClip, UnityEngine.Vector3 point) {
-        PlaySoundEffectAtPoint(audioClip, point, soundEffectVolume * savedSFXPercent);
+        PlaySoundEffectAtPoint(audioClip, point, soundEffectVolume);
     }
 
     // Plays a sound on an object with a customizable volume
@@ -62,7 +59,7 @@ public class SoundManager : MonoBehaviour
         
         AudioSource audioSource = objectToPlayOn.AddComponent<AudioSource>();
         audioSource.clip = audioClip;
-        audioSource.volume = volume * savedSFXPercent;
+        audioSource.volume = volume;
         audioSource.Play();
         Destroy(audioSource, audioClip.length);
 
@@ -71,19 +68,19 @@ public class SoundManager : MonoBehaviour
 
     // Plays a sound on an object with the default sound effect volume
     public AudioSource PlaySoundEffectOnObject(AudioClip audioClip, GameObject objectToPlayOn) {
-        return PlaySoundEffectOnObject(audioClip, objectToPlayOn, soundEffectVolume * savedSFXPercent);
+        return PlaySoundEffectOnObject(audioClip, objectToPlayOn, soundEffectVolume);
     }
 
     // Plays a sound globally with a customizable volume
     public void PlayGlobalSoundEffect(AudioClip audioClip, float volume) {
         HasAudioClip(audioClip);
         
-        globalSource.PlayOneShot(audioClip, volume * savedSFXPercent);
+        globalSource.PlayOneShot(audioClip, volume);
     }
 
     // Plays a sound globally with a default sound effect volume
     public void PlayGlobalSoundEffect(AudioClip audioClip) {
-        PlayGlobalSoundEffect(audioClip, soundEffectVolume * savedSFXPercent);
+        PlayGlobalSoundEffect(audioClip, soundEffectVolume);
     }
     
 
@@ -91,12 +88,12 @@ public class SoundManager : MonoBehaviour
     public void PlayBackgroundMusic(AudioClip audioClip, float volume) {
         HasAudioClip(audioClip);
 
-        BGMSource.PlayOneShot(audioClip, volume * savedMusicPercent);
+        BGMSource.PlayOneShot(audioClip, volume);
     }
 
     // Plays looping ackground music using the default background music volume
     public void PlayBackgroundMusic(AudioClip audioClip) {
-        PlayBackgroundMusic(audioClip, backgrondMusicVolume * savedMusicPercent);
+        PlayBackgroundMusic(audioClip, backgrondMusicVolume);
     }
 
     private void HasAudioClip(AudioClip audioClip) {
@@ -104,12 +101,4 @@ public class SoundManager : MonoBehaviour
             Debug.LogError("No audio clip found!");
         }
     }
-
-    // --------------------- Sound Settings ------------------- \\
-
-    public void SetVolume(float musicVolume, float sfxVolume) {
-        savedMusicPercent = musicVolume;
-        savedSFXPercent = sfxVolume;
-    }
-
 }

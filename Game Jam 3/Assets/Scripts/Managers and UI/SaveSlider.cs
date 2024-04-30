@@ -18,9 +18,8 @@ public class SaveSlider : MonoBehaviour
     private bool allowSliderChange = false;
     
     //Saved game settings (settings are float percent from 0-1)
-    private float musicVolume;
-    private float sfxVolume;
-    private float sensitivity;
+    private float savedVolume;
+    private float savedSens;
 
     //SliderValueChange is called when game starts by unity, this timer is to ignore the call
     private void Update() {
@@ -37,12 +36,8 @@ public class SaveSlider : MonoBehaviour
 
     private void Start() {
         //if no current save data for music volume, set default music volume to 80%
-        if(!PlayerPrefs.HasKey("Music Volume"))
-            PlayerPrefs.SetFloat("Music Volume", 0.8f);
-
-        //if no current save data for sfx volume, set default sfx volume to 80%
-        if(!PlayerPrefs.HasKey("SFX Volume")) 
-            PlayerPrefs.SetFloat("SFX Volume", 0.8f);
+        if(!PlayerPrefs.HasKey("Volume"))
+            PlayerPrefs.SetFloat("Volume", 0.8f);
 
         //if no current save data for sens, set default sens to 50%
         if(!PlayerPrefs.HasKey("Sensitivity")) 
@@ -64,34 +59,29 @@ public class SaveSlider : MonoBehaviour
             return;
 
         //Save new slider values in SaveManager script
-        musicVolume = musicSlider.value;
-        sfxVolume = sfxSlider.value;
-        sensitivity = sensSlider.value;
+        savedVolume = musicSlider.value;
+        savedSens = sensSlider.value;
         SaveSettings();
     }
 
 
     public void LoadSettings() {
-        musicSlider.value = PlayerPrefs.GetFloat("Music Volume");
-        musicVolume = PlayerPrefs.GetFloat("Music Volume");
-
-        sfxSlider.value = PlayerPrefs.GetFloat("SFX Volume");
-        sfxVolume = PlayerPrefs.GetFloat("SFX Volume");
+        musicSlider.value = PlayerPrefs.GetFloat("Volume");
+        savedVolume = PlayerPrefs.GetFloat("Volume");
 
         sensSlider.value = PlayerPrefs.GetFloat("Sensitivity");
-        sensitivity = PlayerPrefs.GetFloat("Sensitivity");
+        savedSens = PlayerPrefs.GetFloat("Sensitivity");
     }
 
     private void SaveSettings() {
         //save slider values to player computer
-        PlayerPrefs.SetFloat("Music Volume", musicVolume);
-        PlayerPrefs.SetFloat("SFX Volume", sfxVolume);
-        PlayerPrefs.SetFloat("Sensitivity", sensitivity);
+        PlayerPrefs.SetFloat("Volume", savedVolume);
+        PlayerPrefs.SetFloat("Sensitivity", savedSens);
 
-        //Actually apply sound volume in SoundManager
-        soundScript.SetVolume(musicVolume, sfxVolume);
-
+        //set entire game volume
+        AudioListener.volume = savedVolume;
+        //apply sensitivity to camera (not for mouse, just camera)
         if(camScript != null)
-            camScript.SaveSensitivitySetting(sensitivity);
+            camScript.SaveSensitivitySetting(savedSens);
     }
 }
