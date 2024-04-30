@@ -1990,6 +1990,8 @@ MonoBehaviour:
   gamepadImage: {fileID: 2354657539662354964}
   pauseMenuFirst: {fileID: 7091285105467152562}
   optionsMenuFirst: {fileID: 1480301782142073831}
+  buttonSFX: {fileID: 8300000, guid: 1fd303a908bbf41beacfe2cd717eb1c0, type: 3}
+  pauseSFX: {fileID: 8300000, guid: e4336e93cb3b57947bc0cac1a7610e2b, type: 3}
 --- !u!1 &4611088879445846798
 GameObject:
   m_ObjectHideFlags: 0

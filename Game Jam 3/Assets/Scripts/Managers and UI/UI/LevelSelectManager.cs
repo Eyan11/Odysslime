@@ -39,6 +39,7 @@ public class LevelSelectManager : MonoBehaviour
 
     [Header ("Sounds")]
     [SerializeField] private AudioClip scrollSFX;
+    [SerializeField] private AudioClip buttonSFX;
     private SoundManager soundScript;
     private CurrentInfo currentInfo;
     private SaveManager saveScript;
@@ -168,6 +169,7 @@ public class LevelSelectManager : MonoBehaviour
 
     public void VisitIslandButton() {
         StartCoroutine(ButtonCoroutine("StartIslandLoadingSceen", 0.2f));
+        soundScript.PlayGlobalSoundEffect(buttonSFX);
     }
 
     private void StartIslandLoadingSceen() {
@@ -200,6 +202,7 @@ public class LevelSelectManager : MonoBehaviour
     }
 
     public void TrophyRoomButton() {
+        soundScript.PlayGlobalSoundEffect(buttonSFX);
         StartCoroutine(ButtonCoroutine("StartTrophyLoadingScreen", 0.2f));
     }
 

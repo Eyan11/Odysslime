@@ -8,9 +8,11 @@ public class CutsceneManager : MonoBehaviour
     [SerializeField] private CutsceneType cutsceneType = CutsceneType.None;
     [Header("Only For Volcano Cutscene")]
     [SerializeField] private MainMenuManager mainMenuScript;
+    [Header ("Sounds")]
+    [SerializeField] private AudioClip nextImageSFX;
+    private SoundManager soundScript;
     //only for jester cutscene
     private PauseMenuManager pauseScript;
-
     private SaveManager saveScript;
     private InputMap inputMap;
     private bool backInput = false;
@@ -22,7 +24,9 @@ public class CutsceneManager : MonoBehaviour
         inputMap = new InputMap();
         inputMap.UI.Enable();
 
+        //references
         saveScript = GameObject.FindWithTag("Save Manager").GetComponent<SaveManager>();
+        soundScript = GameObject.FindWithTag("Sound Manager").GetComponent<SoundManager>();
 
         if(cutsceneType == CutsceneType.Jester)
             pauseScript = GameObject.FindWithTag("Pause Menu Manager").GetComponent<PauseMenuManager>();
@@ -43,6 +47,8 @@ public class CutsceneManager : MonoBehaviour
 
         //if select input is triggered
         if(selectInput) {
+            //play sound
+            soundScript.PlayGlobalSoundEffect(nextImageSFX);
             
             //if there is another cutscene image to watch
             if((imageList.Count - 1) > imageIndex) {
@@ -60,7 +66,8 @@ public class CutsceneManager : MonoBehaviour
 
         //if back input is triggered
         if(backInput) {
-            
+            //play sound
+            soundScript.PlayGlobalSoundEffect(nextImageSFX);
             //if not at first cutscene, goto previous cutscene image
             if(imageIndex > 0) {
 

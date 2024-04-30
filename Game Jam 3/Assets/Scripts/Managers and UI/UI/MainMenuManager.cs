@@ -25,6 +25,12 @@ public class MainMenuManager : MonoBehaviour
     [Header("Cutscene References")]
     [SerializeField] private GameObject volcanoCutscene;
 
+    [Header ("Sounds")]
+    [SerializeField] private AudioClip buttonSFX;
+    [SerializeField] private AudioClip menuSFX;
+    [SerializeField] private AudioClip waterStartSFX;
+    [SerializeField] private AudioClip waterEndSFX;
+    private SoundManager soundScript;
     private CurrentMenu currentMenu;
     private InputMap inputMap;
     private SaveManager saveScript;
@@ -37,8 +43,9 @@ public class MainMenuManager : MonoBehaviour
         inputMap = new InputMap();
         inputMap.UI.Enable();
 
-        //get reference to save script (persistent)
+        //get reference to save script (persistent) and sound script
         saveScript = GameObject.FindWithTag("Save Manager").GetComponent<SaveManager>();
+        soundScript = GameObject.FindWithTag("Sound Manager").GetComponent<SoundManager>();
 
         currentMenu = CurrentMenu.Title;
 
@@ -143,11 +150,14 @@ public class MainMenuManager : MonoBehaviour
 
         //if haven't seen volcano cutscene, play it
         if(saveScript.SeenVolcanoCutscene() == false) {
+            soundScript.PlayGlobalSoundEffect(buttonSFX);
             volcanoCutscene.SetActive(true);
             currentMenu = CurrentMenu.Cutscene;
         }
         //if seen volcano cutscene, go straight to level select
         else {
+            //play level select sound
+            soundScript.PlayGlobalSoundEffect(waterStartSFX);
             levelSelectUI.SetActive(true);
             currentMenu = CurrentMenu.LevelSelect;
             EventSystem.current.SetSelectedGameObject(levelSelectMenuFirst);
@@ -165,15 +175,18 @@ public class MainMenuManager : MonoBehaviour
                 break;
 
             case CurrentMenu.LevelSelect:
+                soundScript.PlayGlobalSoundEffect(waterEndSFX);
                 levelScript.CloseLevelSelectMenu();
                 levelSelectUI.SetActive(false);
                 break;
 
             case CurrentMenu.Options:
+                soundScript.PlayGlobalSoundEffect(menuSFX);
                 optionsUI.SetActive(false);
                 break;
 
             case CurrentMenu.Controls:
+                soundScript.PlayGlobalSoundEffect(menuSFX);
                 controlsUI.SetActive(false);
                 break;
 
@@ -201,10 +214,12 @@ public class MainMenuManager : MonoBehaviour
     }
 
     public void OptionsButton() {
+        soundScript.PlayGlobalSoundEffect(menuSFX);
         StartCoroutine(ButtonCoroutine("OpenOptionsMenu"));
     }
 
     public void ControlsButton() {
+        soundScript.PlayGlobalSoundEffect(menuSFX);
         StartCoroutine(ButtonCoroutine("OpenControlsMenu"));
     }
 
@@ -213,6 +228,7 @@ public class MainMenuManager : MonoBehaviour
     }
 
     public void QuitButton() {
+        soundScript.PlayGlobalSoundEffect(buttonSFX);
         StartCoroutine(ButtonCoroutine("QuitGame"));
     }
 

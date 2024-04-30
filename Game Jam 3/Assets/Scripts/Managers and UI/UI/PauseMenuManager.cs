@@ -17,6 +17,11 @@ public class PauseMenuManager : MonoBehaviour
     [Header("Event System First Selected Objects")]
     [SerializeField] private GameObject pauseMenuFirst;
     [SerializeField] private GameObject optionsMenuFirst;
+
+    [Header ("Sounds")]
+    [SerializeField] private AudioClip buttonSFX;
+    [SerializeField] private AudioClip pauseSFX;
+    private SoundManager soundScript;
     private CurrentMenu currentMenu;
     private ThirdPersonCam camScript;
     private InputMap inputMap;
@@ -27,8 +32,9 @@ public class PauseMenuManager : MonoBehaviour
     private bool isUsingKBM = true;
 
     private void Awake() {
-        //Reference to camera script
+        //Reference to camera and sound script
         camScript = Camera.main.gameObject.GetComponent<ThirdPersonCam>();
+        soundScript = GameObject.FindWithTag("Sound Manager").GetComponent<SoundManager>();
 
         //create a new Input Map object and enable the UI input
         inputMap = new InputMap();
@@ -147,6 +153,7 @@ public class PauseMenuManager : MonoBehaviour
         //pause game
         isPaused = true;
         Time.timeScale = 0f;
+        soundScript.PlayGlobalSoundEffect(pauseSFX);
 
         //trigger pause event
         GameEvents.current.TriggerPauseEvent();
@@ -169,6 +176,7 @@ public class PauseMenuManager : MonoBehaviour
         //resume game
         isPaused = false;
         Time.timeScale = 1f;
+        soundScript.PlayGlobalSoundEffect(pauseSFX);
 
         //trigger resume event
         GameEvents.current.TriggerResumeEvent();
@@ -208,6 +216,7 @@ public class PauseMenuManager : MonoBehaviour
     // ----------------------- Methods that switch scenes ---------------\\
 
     private void RestartLevel() {
+
         //resume game to fix time scale and other problems
         Time.timeScale = 1f;
         //load current scene
@@ -224,22 +233,27 @@ public class PauseMenuManager : MonoBehaviour
     // ---------------------- Methods for Buttons ---------------------\\
 
     public void ResumeButton() {
+        soundScript.PlayGlobalSoundEffect(buttonSFX);
         StartCoroutine(ButtonCoroutine("ResumeGame"));
     }
 
     public void OptionsButton() {
+        soundScript.PlayGlobalSoundEffect(buttonSFX);
         StartCoroutine(ButtonCoroutine("OpenOptionsMenu"));
     }
 
     public void ControlsButton() {
+        soundScript.PlayGlobalSoundEffect(buttonSFX);
         StartCoroutine(ButtonCoroutine("OpenControlsMenu"));
     }
 
     public void RestartButton() {
+        soundScript.PlayGlobalSoundEffect(buttonSFX);
         StartCoroutine(ButtonCoroutine("RestartLevel"));
     }
 
     public void LevelSelectButton() {
+        soundScript.PlayGlobalSoundEffect(buttonSFX);
         StartCoroutine(ButtonCoroutine("OpenLevelSelectScene"));
     }
 

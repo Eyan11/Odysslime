@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028352, g: 0.22571376, b: 0.3069224, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1542,7 +1542,37 @@ PrefabInstance:
         type: 3}
       propertyPath: m_text
       value: The Magic Slimes are devoted to their craft, which allows them to move
-        some stones their minds.
+        magic stones and ice blocks their minds.
+      objectReference: {fileID: 0}
+    - target: {fileID: 2465315190009695808, guid: cd8856e54ebe4e6469a2d208420f1fca,
+        type: 3}
+      propertyPath: m_fontSize
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 2465315190009695808, guid: cd8856e54ebe4e6469a2d208420f1fca,
+        type: 3}
+      propertyPath: m_fontColor.b
+      value: 0.46274513
+      objectReference: {fileID: 0}
+    - target: {fileID: 2465315190009695808, guid: cd8856e54ebe4e6469a2d208420f1fca,
+        type: 3}
+      propertyPath: m_fontColor.g
+      value: 0.20000002
+      objectReference: {fileID: 0}
+    - target: {fileID: 2465315190009695808, guid: cd8856e54ebe4e6469a2d208420f1fca,
+        type: 3}
+      propertyPath: m_fontColor.r
+      value: 0.3529412
+      objectReference: {fileID: 0}
+    - target: {fileID: 2465315190009695808, guid: cd8856e54ebe4e6469a2d208420f1fca,
+        type: 3}
+      propertyPath: m_fontSizeBase
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 2465315190009695808, guid: cd8856e54ebe4e6469a2d208420f1fca,
+        type: 3}
+      propertyPath: m_fontColor32.rgba
+      value: 4285936474
       objectReference: {fileID: 0}
     - target: {fileID: 2763790847235319842, guid: cd8856e54ebe4e6469a2d208420f1fca,
         type: 3}
@@ -1662,6 +1692,16 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 21300000, guid: 0837b28b535b74013bcb65616fcb8fca,
         type: 3}
+    - target: {fileID: 7633624230079969156, guid: cd8856e54ebe4e6469a2d208420f1fca,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: -800
+      objectReference: {fileID: 0}
+    - target: {fileID: 7633624230079969156, guid: cd8856e54ebe4e6469a2d208420f1fca,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -400
+      objectReference: {fileID: 0}
     - target: {fileID: 8072618445630229302, guid: cd8856e54ebe4e6469a2d208420f1fca,
         type: 3}
       propertyPath: m_IsActive
@@ -1752,7 +1792,8 @@ MonoBehaviour:
   engineerLoadingScreen: {fileID: 637280861}
   oozeLoadingScreen: {fileID: 830557621}
   trophyLoadingScreen: {fileID: 897634790}
-  scrollSFX: {fileID: 8300000, guid: 67b699a7f9884eb498f7e6dc213a94f5, type: 3}
+  scrollSFX: {fileID: 8300000, guid: 07a76cedea37b5a42ba63d83ec8847bb, type: 3}
+  buttonSFX: {fileID: 8300000, guid: 1fd303a908bbf41beacfe2cd717eb1c0, type: 3}
 --- !u!1001 &253596248
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2156,6 +2197,36 @@ PrefabInstance:
       value: The Spark Slimes can use their electric powers to fuel their own inventions
         through these batteries!
       objectReference: {fileID: 0}
+    - target: {fileID: 2465315190009695808, guid: cd8856e54ebe4e6469a2d208420f1fca,
+        type: 3}
+      propertyPath: m_fontSize
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 2465315190009695808, guid: cd8856e54ebe4e6469a2d208420f1fca,
+        type: 3}
+      propertyPath: m_fontColor.b
+      value: 0.07450981
+      objectReference: {fileID: 0}
+    - target: {fileID: 2465315190009695808, guid: cd8856e54ebe4e6469a2d208420f1fca,
+        type: 3}
+      propertyPath: m_fontColor.g
+      value: 0.41176474
+      objectReference: {fileID: 0}
+    - target: {fileID: 2465315190009695808, guid: cd8856e54ebe4e6469a2d208420f1fca,
+        type: 3}
+      propertyPath: m_fontColor.r
+      value: 0.5058824
+      objectReference: {fileID: 0}
+    - target: {fileID: 2465315190009695808, guid: cd8856e54ebe4e6469a2d208420f1fca,
+        type: 3}
+      propertyPath: m_fontSizeBase
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 2465315190009695808, guid: cd8856e54ebe4e6469a2d208420f1fca,
+        type: 3}
+      propertyPath: m_fontColor32.rgba
+      value: 4279462273
+      objectReference: {fileID: 0}
     - target: {fileID: 2763790847235319842, guid: cd8856e54ebe4e6469a2d208420f1fca,
         type: 3}
       propertyPath: m_Name
@@ -2279,6 +2350,16 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 21300000, guid: 3b9c7d43afc2f47468c4ac93af29509c,
         type: 3}
+    - target: {fileID: 7633624230079969156, guid: cd8856e54ebe4e6469a2d208420f1fca,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: -750
+      objectReference: {fileID: 0}
+    - target: {fileID: 7633624230079969156, guid: cd8856e54ebe4e6469a2d208420f1fca,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -375
+      objectReference: {fileID: 0}
     - target: {fileID: 8072618445630229302, guid: cd8856e54ebe4e6469a2d208420f1fca,
         type: 3}
       propertyPath: m_IsActive
@@ -4674,6 +4755,10 @@ MonoBehaviour:
   levelSelectMenuFirst: {fileID: 836652548}
   levelScript: {fileID: 183060951}
   volcanoCutscene: {fileID: 1518374150}
+  buttonSFX: {fileID: 8300000, guid: 1fd303a908bbf41beacfe2cd717eb1c0, type: 3}
+  menuSFX: {fileID: 8300000, guid: e4336e93cb3b57947bc0cac1a7610e2b, type: 3}
+  waterStartSFX: {fileID: 8300000, guid: 42d9cc966f5049848bafe12f3ee0201a, type: 3}
+  waterEndSFX: {fileID: 8300000, guid: 63bc111cc70aaef41a2d2019208b562d, type: 3}
 --- !u!114 &1021065582
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4799,13 +4884,43 @@ PrefabInstance:
     - target: {fileID: 2082199107858694530, guid: cd8856e54ebe4e6469a2d208420f1fca,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2465315190009695808, guid: cd8856e54ebe4e6469a2d208420f1fca,
         type: 3}
       propertyPath: m_text
       value: Bomb Slimes always go out with a bang! If you ever get stuck, they can
         help you carve out a path through lava rocks that have fallen all over.
+      objectReference: {fileID: 0}
+    - target: {fileID: 2465315190009695808, guid: cd8856e54ebe4e6469a2d208420f1fca,
+        type: 3}
+      propertyPath: m_fontSize
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 2465315190009695808, guid: cd8856e54ebe4e6469a2d208420f1fca,
+        type: 3}
+      propertyPath: m_fontColor.b
+      value: 0.03137255
+      objectReference: {fileID: 0}
+    - target: {fileID: 2465315190009695808, guid: cd8856e54ebe4e6469a2d208420f1fca,
+        type: 3}
+      propertyPath: m_fontColor.g
+      value: 0.17254902
+      objectReference: {fileID: 0}
+    - target: {fileID: 2465315190009695808, guid: cd8856e54ebe4e6469a2d208420f1fca,
+        type: 3}
+      propertyPath: m_fontColor.r
+      value: 0.62352943
+      objectReference: {fileID: 0}
+    - target: {fileID: 2465315190009695808, guid: cd8856e54ebe4e6469a2d208420f1fca,
+        type: 3}
+      propertyPath: m_fontSizeBase
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 2465315190009695808, guid: cd8856e54ebe4e6469a2d208420f1fca,
+        type: 3}
+      propertyPath: m_fontColor32.rgba
+      value: 4278725791
       objectReference: {fileID: 0}
     - target: {fileID: 2763790847235319842, guid: cd8856e54ebe4e6469a2d208420f1fca,
         type: 3}
@@ -4920,8 +5035,18 @@ PrefabInstance:
         type: 3}
     - target: {fileID: 7633624230079969156, guid: cd8856e54ebe4e6469a2d208420f1fca,
         type: 3}
+      propertyPath: m_SizeDelta.x
+      value: -800
+      objectReference: {fileID: 0}
+    - target: {fileID: 7633624230079969156, guid: cd8856e54ebe4e6469a2d208420f1fca,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -400
+      objectReference: {fileID: 0}
+    - target: {fileID: 7633624230079969156, guid: cd8856e54ebe4e6469a2d208420f1fca,
+        type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 246
+      value: 200
       objectReference: {fileID: 0}
     - target: {fileID: 8072618445630229302, guid: cd8856e54ebe4e6469a2d208420f1fca,
         type: 3}
@@ -6533,6 +6658,36 @@ PrefabInstance:
       value: Although timid, the Ice Slimes won't hesitate to freeze into ice blocks
         to fill gaps and activate switches.
       objectReference: {fileID: 0}
+    - target: {fileID: 2465315190009695808, guid: cd8856e54ebe4e6469a2d208420f1fca,
+        type: 3}
+      propertyPath: m_fontSize
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 2465315190009695808, guid: cd8856e54ebe4e6469a2d208420f1fca,
+        type: 3}
+      propertyPath: m_fontColor.b
+      value: 0.45098042
+      objectReference: {fileID: 0}
+    - target: {fileID: 2465315190009695808, guid: cd8856e54ebe4e6469a2d208420f1fca,
+        type: 3}
+      propertyPath: m_fontColor.g
+      value: 0.3803922
+      objectReference: {fileID: 0}
+    - target: {fileID: 2465315190009695808, guid: cd8856e54ebe4e6469a2d208420f1fca,
+        type: 3}
+      propertyPath: m_fontColor.r
+      value: 0.22352943
+      objectReference: {fileID: 0}
+    - target: {fileID: 2465315190009695808, guid: cd8856e54ebe4e6469a2d208420f1fca,
+        type: 3}
+      propertyPath: m_fontSizeBase
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 2465315190009695808, guid: cd8856e54ebe4e6469a2d208420f1fca,
+        type: 3}
+      propertyPath: m_fontColor32.rgba
+      value: 4285751609
+      objectReference: {fileID: 0}
     - target: {fileID: 2763790847235319842, guid: cd8856e54ebe4e6469a2d208420f1fca,
         type: 3}
       propertyPath: m_Name
@@ -6658,8 +6813,18 @@ PrefabInstance:
         type: 3}
     - target: {fileID: 7633624230079969156, guid: cd8856e54ebe4e6469a2d208420f1fca,
         type: 3}
+      propertyPath: m_SizeDelta.x
+      value: -700
+      objectReference: {fileID: 0}
+    - target: {fileID: 7633624230079969156, guid: cd8856e54ebe4e6469a2d208420f1fca,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -350
+      objectReference: {fileID: 0}
+    - target: {fileID: 7633624230079969156, guid: cd8856e54ebe4e6469a2d208420f1fca,
+        type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 236
+      value: 200
       objectReference: {fileID: 0}
     - target: {fileID: 8072618445630229302, guid: cd8856e54ebe4e6469a2d208420f1fca,
         type: 3}
@@ -7276,14 +7441,114 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1248381111782635027, guid: f1ee94ed60260a84481131e3a5c6fa69,
         type: 3}
+      propertyPath: m_SizeDelta.x
+      value: -400
+      objectReference: {fileID: 0}
+    - target: {fileID: 1248381111782635027, guid: f1ee94ed60260a84481131e3a5c6fa69,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1248381111782635027, guid: f1ee94ed60260a84481131e3a5c6fa69,
+        type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 265
+      value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 2068515687579293972, guid: f1ee94ed60260a84481131e3a5c6fa69,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2068515687579293972, guid: f1ee94ed60260a84481131e3a5c6fa69,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2068515687579293972, guid: f1ee94ed60260a84481131e3a5c6fa69,
+        type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2068515687579293972, guid: f1ee94ed60260a84481131e3a5c6fa69,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2068515687579293972, guid: f1ee94ed60260a84481131e3a5c6fa69,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2068515687579293972, guid: f1ee94ed60260a84481131e3a5c6fa69,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 2068515687579293972, guid: f1ee94ed60260a84481131e3a5c6fa69,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2068515687579293972, guid: f1ee94ed60260a84481131e3a5c6fa69,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -50
       objectReference: {fileID: 0}
     - target: {fileID: 2429371293929413273, guid: f1ee94ed60260a84481131e3a5c6fa69,
         type: 3}
       propertyPath: m_text
       value: In the middle of the ocean somewhere far away, a place called Ooze Island
         was inhabited by strange creatures called Slimes
+      objectReference: {fileID: 0}
+    - target: {fileID: 2429371293929413273, guid: f1ee94ed60260a84481131e3a5c6fa69,
+        type: 3}
+      propertyPath: m_fontSize
+      value: 82
+      objectReference: {fileID: 0}
+    - target: {fileID: 2429371293929413273, guid: f1ee94ed60260a84481131e3a5c6fa69,
+        type: 3}
+      propertyPath: m_fontColor.b
+      value: 0.8915094
+      objectReference: {fileID: 0}
+    - target: {fileID: 2429371293929413273, guid: f1ee94ed60260a84481131e3a5c6fa69,
+        type: 3}
+      propertyPath: m_fontColor.g
+      value: 0.99475044
+      objectReference: {fileID: 0}
+    - target: {fileID: 2429371293929413273, guid: f1ee94ed60260a84481131e3a5c6fa69,
+        type: 3}
+      propertyPath: m_fontColor.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2429371293929413273, guid: f1ee94ed60260a84481131e3a5c6fa69,
+        type: 3}
+      propertyPath: m_fontSizeBase
+      value: 82
+      objectReference: {fileID: 0}
+    - target: {fileID: 2429371293929413273, guid: f1ee94ed60260a84481131e3a5c6fa69,
+        type: 3}
+      propertyPath: m_fontColor32.rgba
+      value: 4293132031
+      objectReference: {fileID: 0}
+    - target: {fileID: 2721550562983606067, guid: f1ee94ed60260a84481131e3a5c6fa69,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: -360
+      objectReference: {fileID: 0}
+    - target: {fileID: 2721550562983606067, guid: f1ee94ed60260a84481131e3a5c6fa69,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3382996363724695294, guid: f1ee94ed60260a84481131e3a5c6fa69,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: -400
+      objectReference: {fileID: 0}
+    - target: {fileID: 3382996363724695294, guid: f1ee94ed60260a84481131e3a5c6fa69,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5024065856884600398, guid: f1ee94ed60260a84481131e3a5c6fa69,
         type: 3}
@@ -7390,6 +7655,36 @@ PrefabInstance:
       propertyPath: m_text
       value: The Slimes lived in harmony for over a hundred years. Until one day...
       objectReference: {fileID: 0}
+    - target: {fileID: 6222443227218355634, guid: f1ee94ed60260a84481131e3a5c6fa69,
+        type: 3}
+      propertyPath: m_fontSize
+      value: 82
+      objectReference: {fileID: 0}
+    - target: {fileID: 6222443227218355634, guid: f1ee94ed60260a84481131e3a5c6fa69,
+        type: 3}
+      propertyPath: m_fontColor.b
+      value: 0.89411765
+      objectReference: {fileID: 0}
+    - target: {fileID: 6222443227218355634, guid: f1ee94ed60260a84481131e3a5c6fa69,
+        type: 3}
+      propertyPath: m_fontColor.g
+      value: 0.99607843
+      objectReference: {fileID: 0}
+    - target: {fileID: 6222443227218355634, guid: f1ee94ed60260a84481131e3a5c6fa69,
+        type: 3}
+      propertyPath: m_fontColor.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6222443227218355634, guid: f1ee94ed60260a84481131e3a5c6fa69,
+        type: 3}
+      propertyPath: m_fontSizeBase
+      value: 82
+      objectReference: {fileID: 0}
+    - target: {fileID: 6222443227218355634, guid: f1ee94ed60260a84481131e3a5c6fa69,
+        type: 3}
+      propertyPath: m_fontColor32.rgba
+      value: 4293197567
+      objectReference: {fileID: 0}
     - target: {fileID: 6404661368807305202, guid: f1ee94ed60260a84481131e3a5c6fa69,
         type: 3}
       propertyPath: cutsceneType
@@ -7425,10 +7720,87 @@ PrefabInstance:
       propertyPath: imageList.Array.data[2]
       value: 
       objectReference: {fileID: 1595218708}
+    - target: {fileID: 7496931927009059825, guid: f1ee94ed60260a84481131e3a5c6fa69,
+        type: 3}
+      propertyPath: m_text
+      value: Space or A to continue
+      objectReference: {fileID: 0}
+    - target: {fileID: 7496931927009059825, guid: f1ee94ed60260a84481131e3a5c6fa69,
+        type: 3}
+      propertyPath: m_fontSize
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 7496931927009059825, guid: f1ee94ed60260a84481131e3a5c6fa69,
+        type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: a151d741017e2824fb2167b814f135fe,
+        type: 2}
+    - target: {fileID: 7496931927009059825, guid: f1ee94ed60260a84481131e3a5c6fa69,
+        type: 3}
+      propertyPath: m_fontStyle
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7496931927009059825, guid: f1ee94ed60260a84481131e3a5c6fa69,
+        type: 3}
+      propertyPath: m_fontColor.b
+      value: 0.016509444
+      objectReference: {fileID: 0}
+    - target: {fileID: 7496931927009059825, guid: f1ee94ed60260a84481131e3a5c6fa69,
+        type: 3}
+      propertyPath: m_fontColor.g
+      value: 0.28251827
+      objectReference: {fileID: 0}
+    - target: {fileID: 7496931927009059825, guid: f1ee94ed60260a84481131e3a5c6fa69,
+        type: 3}
+      propertyPath: m_fontColor.r
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7496931927009059825, guid: f1ee94ed60260a84481131e3a5c6fa69,
+        type: 3}
+      propertyPath: m_fontSizeBase
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 7496931927009059825, guid: f1ee94ed60260a84481131e3a5c6fa69,
+        type: 3}
+      propertyPath: m_isOrthographic
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7496931927009059825, guid: f1ee94ed60260a84481131e3a5c6fa69,
+        type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 7320659943140256068, guid: a151d741017e2824fb2167b814f135fe,
+        type: 2}
+    - target: {fileID: 7496931927009059825, guid: f1ee94ed60260a84481131e3a5c6fa69,
+        type: 3}
+      propertyPath: m_fontColor32.rgba
+      value: 4278470784
+      objectReference: {fileID: 0}
+    - target: {fileID: 7496931927009059825, guid: f1ee94ed60260a84481131e3a5c6fa69,
+        type: 3}
+      propertyPath: m_TextStyleHashCode
+      value: -1183493901
+      objectReference: {fileID: 0}
+    - target: {fileID: 7496931927009059825, guid: f1ee94ed60260a84481131e3a5c6fa69,
+        type: 3}
+      propertyPath: m_VerticalAlignment
+      value: 256
+      objectReference: {fileID: 0}
+    - target: {fileID: 7496931927009059825, guid: f1ee94ed60260a84481131e3a5c6fa69,
+        type: 3}
+      propertyPath: m_HorizontalAlignment
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7496931927009059825, guid: f1ee94ed60260a84481131e3a5c6fa69,
+        type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8021801342859452011, guid: f1ee94ed60260a84481131e3a5c6fa69,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8126719610507345797, guid: f1ee94ed60260a84481131e3a5c6fa69,
         type: 3}
@@ -7440,6 +7812,36 @@ PrefabInstance:
       propertyPath: m_text
       value: The volcanic island erupted. The Kingdom of Ooze crumbled, and its King
         was nowhere to be found...
+      objectReference: {fileID: 0}
+    - target: {fileID: 8277691684382114894, guid: f1ee94ed60260a84481131e3a5c6fa69,
+        type: 3}
+      propertyPath: m_fontSize
+      value: 82
+      objectReference: {fileID: 0}
+    - target: {fileID: 8277691684382114894, guid: f1ee94ed60260a84481131e3a5c6fa69,
+        type: 3}
+      propertyPath: m_fontColor.b
+      value: 0.89411765
+      objectReference: {fileID: 0}
+    - target: {fileID: 8277691684382114894, guid: f1ee94ed60260a84481131e3a5c6fa69,
+        type: 3}
+      propertyPath: m_fontColor.g
+      value: 0.99607843
+      objectReference: {fileID: 0}
+    - target: {fileID: 8277691684382114894, guid: f1ee94ed60260a84481131e3a5c6fa69,
+        type: 3}
+      propertyPath: m_fontColor.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8277691684382114894, guid: f1ee94ed60260a84481131e3a5c6fa69,
+        type: 3}
+      propertyPath: m_fontSizeBase
+      value: 82
+      objectReference: {fileID: 0}
+    - target: {fileID: 8277691684382114894, guid: f1ee94ed60260a84481131e3a5c6fa69,
+        type: 3}
+      propertyPath: m_fontColor32.rgba
+      value: 4293197567
       objectReference: {fileID: 0}
     - target: {fileID: 8530720871311918869, guid: f1ee94ed60260a84481131e3a5c6fa69,
         type: 3}
