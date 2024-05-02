@@ -15,11 +15,12 @@ public class SoundManager : MonoBehaviour
     [SerializeField] private float backgrondMusicVolume = 0.5f;
 
     [Header("Background Noise")]
-    [SerializeField] private AudioClip backgroundMusic;
-    [SerializeField] private AudioClip ambienceMusic;
+    [SerializeField] private AudioClip backgroundMusic; //not used in script
+    [SerializeField] private AudioClip ambienceMusic; //not used in script
     private PauseMenuManager pauseMenuManager;
 
     private void Awake() {
+        /* PlayOneShot() does not loop, so I put BGM directly in audtio sources in inspector for all islands
         // Plays music if in the settings
         if (backgroundMusic) {
             PlayBackgroundMusic(backgroundMusic, 0.4f);
@@ -27,6 +28,7 @@ public class SoundManager : MonoBehaviour
         if (ambienceMusic) {
             PlayBackgroundMusic(ambienceMusic, 0.1f);
         }
+        */
 
         // Retrieves pauseMenuManager
         pauseMenuManager = FindObjectOfType<PauseMenuManager>();
@@ -83,7 +85,7 @@ public class SoundManager : MonoBehaviour
         PlayGlobalSoundEffect(audioClip, soundEffectVolume);
     }
     
-
+    
     // Plays looping background music using a customizable volume
     public void PlayBackgroundMusic(AudioClip audioClip, float volume) {
         HasAudioClip(audioClip);
