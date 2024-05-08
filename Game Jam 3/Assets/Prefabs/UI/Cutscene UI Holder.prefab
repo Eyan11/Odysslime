@@ -823,3 +823,4 @@ MonoBehaviour:
   cutsceneType: 2
   mainMenuScript: {fileID: 0}
   nextImageSFX: {fileID: 8300000, guid: 33b7257e4a636c149b3aae46f87ca6d8, type: 3}
+  inputText: {fileID: 7496931927009059825}

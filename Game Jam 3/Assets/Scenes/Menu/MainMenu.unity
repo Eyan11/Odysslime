@@ -512,8 +512,13 @@ PrefabInstance:
     - target: {fileID: 5005122714446220993, guid: cd8856e54ebe4e6469a2d208420f1fca,
         type: 3}
       propertyPath: timePerImage
-      value: 5
+      value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 5005122714446220993, guid: cd8856e54ebe4e6469a2d208420f1fca,
+        type: 3}
+      propertyPath: loadTextScript
+      value: 
+      objectReference: {fileID: 2026563321}
     - target: {fileID: 5005122714446220993, guid: cd8856e54ebe4e6469a2d208420f1fca,
         type: 3}
       propertyPath: mainMenuScript
@@ -1557,8 +1562,13 @@ PrefabInstance:
     - target: {fileID: 5005122714446220993, guid: cd8856e54ebe4e6469a2d208420f1fca,
         type: 3}
       propertyPath: timePerImage
-      value: 5
+      value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 5005122714446220993, guid: cd8856e54ebe4e6469a2d208420f1fca,
+        type: 3}
+      propertyPath: loadTextScript
+      value: 
+      objectReference: {fileID: 2026563321}
     - target: {fileID: 5005122714446220993, guid: cd8856e54ebe4e6469a2d208420f1fca,
         type: 3}
       propertyPath: mainMenuScript
@@ -2135,8 +2145,13 @@ PrefabInstance:
     - target: {fileID: 5005122714446220993, guid: cd8856e54ebe4e6469a2d208420f1fca,
         type: 3}
       propertyPath: timePerImage
-      value: 5
+      value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 5005122714446220993, guid: cd8856e54ebe4e6469a2d208420f1fca,
+        type: 3}
+      propertyPath: loadTextScript
+      value: 
+      objectReference: {fileID: 2026563321}
     - target: {fileID: 5005122714446220993, guid: cd8856e54ebe4e6469a2d208420f1fca,
         type: 3}
       propertyPath: mainMenuScript
@@ -4623,8 +4638,13 @@ PrefabInstance:
     - target: {fileID: 5005122714446220993, guid: cd8856e54ebe4e6469a2d208420f1fca,
         type: 3}
       propertyPath: timePerImage
-      value: 5
+      value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 5005122714446220993, guid: cd8856e54ebe4e6469a2d208420f1fca,
+        type: 3}
+      propertyPath: loadTextScript
+      value: 
+      objectReference: {fileID: 2026563321}
     - target: {fileID: 5005122714446220993, guid: cd8856e54ebe4e6469a2d208420f1fca,
         type: 3}
       propertyPath: mainMenuScript
@@ -6456,8 +6476,13 @@ PrefabInstance:
     - target: {fileID: 5005122714446220993, guid: cd8856e54ebe4e6469a2d208420f1fca,
         type: 3}
       propertyPath: timePerImage
-      value: 5
+      value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 5005122714446220993, guid: cd8856e54ebe4e6469a2d208420f1fca,
+        type: 3}
+      propertyPath: loadTextScript
+      value: 
+      objectReference: {fileID: 2026563321}
     - target: {fileID: 5005122714446220993, guid: cd8856e54ebe4e6469a2d208420f1fca,
         type: 3}
       propertyPath: mainMenuScript
@@ -6748,6 +6773,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2010263103}
   m_CullTransparentMesh: 1
+--- !u!114 &2026563321 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5622828084107333453, guid: c5c037e10a2ac154f982d606a6f42c5a,
+    type: 3}
+  m_PrefabInstance: {fileID: 1646452916725998199}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d749231f45934294da974f44973d88db, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2027175607
 GameObject:
   m_ObjectHideFlags: 0
@@ -7058,8 +7095,13 @@ PrefabInstance:
     - target: {fileID: 5005122714446220993, guid: cd8856e54ebe4e6469a2d208420f1fca,
         type: 3}
       propertyPath: timePerImage
-      value: 5
+      value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 5005122714446220993, guid: cd8856e54ebe4e6469a2d208420f1fca,
+        type: 3}
+      propertyPath: loadTextScript
+      value: 
+      objectReference: {fileID: 2026563321}
     - target: {fileID: 5005122714446220993, guid: cd8856e54ebe4e6469a2d208420f1fca,
         type: 3}
       propertyPath: mainMenuScript

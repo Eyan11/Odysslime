@@ -1600,6 +1600,8 @@ MonoBehaviour:
   optionsMenuFirst: {fileID: 1480301782142073831}
   buttonSFX: {fileID: 8300000, guid: 1fd303a908bbf41beacfe2cd717eb1c0, type: 3}
   pauseSFX: {fileID: 8300000, guid: e4336e93cb3b57947bc0cac1a7610e2b, type: 3}
+  optionsText: {fileID: 2599385073120397645}
+  controlsText: {fileID: 6870693706781165419}
 --- !u!1 &4611088879445846798
 GameObject:
   m_ObjectHideFlags: 0
@@ -2494,7 +2496,7 @@ GameObject:
   - component: {fileID: 7391820378502135627}
   - component: {fileID: 2599385073120397645}
   m_Layer: 5
-  m_Name: Back Text
+  m_Name: Options Back Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2547,7 +2549,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Backspace or B to go back
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: a151d741017e2824fb2167b814f135fe, type: 2}
   m_sharedMaterial: {fileID: 7320659943140256068, guid: a151d741017e2824fb2167b814f135fe,
@@ -3392,7 +3394,7 @@ GameObject:
   - component: {fileID: 7526079841513145272}
   - component: {fileID: 6870693706781165419}
   m_Layer: 5
-  m_Name: Back Text
+  m_Name: Controls Back Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3445,7 +3447,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Backspace or B to go back
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: a151d741017e2824fb2167b814f135fe, type: 2}
   m_sharedMaterial: {fileID: 7320659943140256068, guid: a151d741017e2824fb2167b814f135fe,
@@ -4657,6 +4659,11 @@ PrefabInstance:
         type: 3}
     - target: {fileID: 5005122714446220993, guid: cd8856e54ebe4e6469a2d208420f1fca,
         type: 3}
+      propertyPath: loadTextScript
+      value: 
+      objectReference: {fileID: 3625349230777215772}
+    - target: {fileID: 5005122714446220993, guid: cd8856e54ebe4e6469a2d208420f1fca,
+        type: 3}
       propertyPath: sceneNameToLoad
       value: MainMenu
       objectReference: {fileID: 0}
@@ -5163,6 +5170,18 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c5c037e10a2ac154f982d606a6f42c5a, type: 3}
+--- !u!114 &3625349230777215772 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5622828084107333453, guid: c5c037e10a2ac154f982d606a6f42c5a,
+    type: 3}
+  m_PrefabInstance: {fileID: 8955301975826162769}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d749231f45934294da974f44973d88db, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &6561423926193168746 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 2830868603812103483, guid: c5c037e10a2ac154f982d606a6f42c5a,

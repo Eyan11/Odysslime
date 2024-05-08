@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class PauseMenuManager : MonoBehaviour
 {
@@ -21,6 +22,10 @@ public class PauseMenuManager : MonoBehaviour
     [Header ("Sounds")]
     [SerializeField] private AudioClip buttonSFX;
     [SerializeField] private AudioClip pauseSFX;
+
+    [Header ("Back Text")]
+    [SerializeField] private TMP_Text optionsText;
+    [SerializeField] private TMP_Text controlsText;
     private SoundManager soundScript;
     private CurrentMenu currentMenu;
     private ThirdPersonCam camScript;
@@ -89,6 +94,7 @@ public class PauseMenuManager : MonoBehaviour
             keyboardImage.SetActive(true);
             gamepadImage.SetActive(false);
         }
+
         //if no controls are displayed (which should never happen), display correct controls screen
         else if(gamepadImage.activeInHierarchy == false && keyboardImage.activeInHierarchy == false) {
             
@@ -300,11 +306,15 @@ public class PauseMenuManager : MonoBehaviour
             if (!isUsingKBM && Input.GetJoystickNames()[0] == "") {
                 //using keyboard
                 isUsingKBM = true;
+                controlsText.text = "Press Backspace to go back";
+                optionsText.text = "Press Backspace to go back";
             
             //if using keyboard and input name is NOT "" (empty string is KBM name)
             } else if (isUsingKBM && Input.GetJoystickNames()[0] != "") {    
                 //using gamepad     
                 isUsingKBM = false;
+                controlsText.text = "Press B to go back";
+                optionsText.text = "Press B to go back";
             }
         }
 

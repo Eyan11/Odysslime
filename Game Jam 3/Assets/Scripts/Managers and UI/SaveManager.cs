@@ -25,10 +25,16 @@ public class SaveManager : MonoBehaviour
     private bool unlockedEngineer = false;
     private bool unlockedOoze = false;
 
-
-
     //cutscene trackers
     private bool seenVolcanoCutscene = false;
+    
+    //unlock all island cheat
+    private InputMap inputMap;
+    private bool cheatActivated = false;
+    private bool cheatInput = false;
+    private float cheatInputTime = 5f;
+    private float cheatTimer = 0f;
+
 
     //keeps Save Manager object active throughout every scene and deletes duplicates
     private void Awake() {
@@ -38,6 +44,33 @@ public class SaveManager : MonoBehaviour
             Destroy(this.gameObject);
 
         DontDestroyOnLoad(this.gameObject);
+
+        //create a new Input Map object and enable the King Slime input
+        inputMap = new InputMap();
+        inputMap.UI.Enable();
+    }
+
+    private void Update() {
+
+        //if cheat has NOT been activated yet
+        if(!cheatActivated) {
+            //get input
+            cheatInput = inputMap.UI.Cheat.triggered;
+
+            //if held cheat input for 5 seconds (through input map interactions)
+            if(cheatInput) {
+                cheatActivated = true;
+
+                Debug.Log("CHEAT MODE YAY");
+
+                //unlock all islands
+                unlockedFrostbite = true;
+                unlockedCoven = true;
+                unlockedEngineer = true;
+                unlockedOoze = true;
+            }
+        }
+
     }
 
     //------------------------ Setter Method for Island Info Upon Using Canon --------------------------\\

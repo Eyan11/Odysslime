@@ -34,3 +34,10 @@ Cicle DR Valga by <a href="https://app.sessions.blue/browse/track/245646">Blue D
 Jazzberry by <a href="https://app.sessions.blue/browse/track/245648">Blue Dot Sessions</a>
 
 The Compound by <a href="https://app.sessions.blue/browse/track/245649">Blue Dot Sessions</a> 
+
+
+Unity Asset Store Credits: 
+
+URP Stylized Water Shader - Proto Series -- by BitGem on Unity Asset Store -- https://assetstore.unity.com/packages/vfx/shaders/urp-stylized-water-shader-proto-series-187485 
+
+URP Toon Shader -- by Ciro Continsio on Unity Asset Store -- https://assetstore.unity.com/packages/vfx/shaders/urp-toon-shader-259777 

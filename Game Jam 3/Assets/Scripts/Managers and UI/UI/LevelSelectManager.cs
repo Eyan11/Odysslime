@@ -70,7 +70,12 @@ public class LevelSelectManager : MonoBehaviour
             covenSlimeText.text = saveScript.GetIslandSlimeStats('C');
             engineerSlimeText.text = saveScript.GetIslandSlimeStats('E');
             oozeSlimeText.text = saveScript.GetIslandSlimeStats('O');
+        }
+    }
 
+    private void OnEnable() {
+        //do this in enable so cheat code can be used without having to reload entire scene
+        if(saveScript != null) {
             //Sets island lock/unlock state for all islands
             frostbiteButton.interactable = saveScript.IsIslandUnlocked('F');
             covenButton.interactable = saveScript.IsIslandUnlocked('C');

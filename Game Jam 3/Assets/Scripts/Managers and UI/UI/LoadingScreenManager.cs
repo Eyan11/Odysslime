@@ -8,13 +8,17 @@ public class LoadingScreenManager : MonoBehaviour
     [Header ("Loading Screen Images")]
     [SerializeField] private List<GameObject> imageList;
 
-    [Header ("References (Ignore For Cannon Loading Screen)")]
+    [Header ("References")]
     [SerializeField] private MainMenuManager mainMenuScript;
+    [SerializeField] private LoadingTextUI loadTextScript;
 
     [Header ("Settings")]
+    private bool isCannonLoadingScreen;
     [SerializeField] private string sceneNameToLoad;
     [SerializeField] private float timePerImage;
     private SaveManager saveScript;
+    private InputMap inputMap;
+    private bool continueInput = false;
     private AsyncOperation asyncOperation;
     private bool isSceneLoaded = false;
     private bool hasWatchedLoadingScreen = false;
@@ -23,35 +27,58 @@ public class LoadingScreenManager : MonoBehaviour
 
     private void Awake() {
         saveScript = GameObject.FindWithTag("Save Manager").GetComponent<SaveManager>();
+
+        //create a new Input Map object and enable the King Slime input
+        inputMap = new InputMap();
+        inputMap.UI.Enable();
     }
 
     private void Update() {
-        LoadingScreenController();
+        //if haven't finished watching loading screen
+        if(!hasWatchedLoadingScreen)
+            LoadingScreenController();
+        //if finished watching loading screen and scene is loaded
+        else if(hasWatchedLoadingScreen && isSceneLoaded)
+            FinishedLoadingController();
     }
 
     private void LoadingScreenController() {
 
-        //if haven't finished watching loading screen
-        if(hasWatchedLoadingScreen == false) {
-            //counts down even when paused
-            imageCountdown -= Time.unscaledDeltaTime;
+        //counts down even when paused
+        imageCountdown -= Time.unscaledDeltaTime;
 
-            //if done watching image and on final image
-            if(imageCountdown < 0 && imageIndex >= imageList.Count - 1)
-                hasWatchedLoadingScreen = true;
-            
-            //if done watching image and NOT on final image
-            else if(imageCountdown < 0) {
-                imageCountdown = timePerImage;
+        //if done watching image and on final image
+        if(imageCountdown < 0 && imageIndex >= imageList.Count - 1)
+            hasWatchedLoadingScreen = true;
+        
+        //if done watching image and NOT on final image
+        else if(imageCountdown < 0) {
+            imageCountdown = timePerImage;
 
-                //enable next cutscene, disable previous cutscene
-                imageIndex++;
-                imageList[imageIndex].SetActive(true);
-                imageList[imageIndex - 1].SetActive(false);
-            }
+            //enable next cutscene, disable previous cutscene
+            imageIndex++;
+            imageList[imageIndex].SetActive(true);
+            imageList[imageIndex - 1].SetActive(false);
         }
-        //if on finished watching loading screen AND scene finsihed loading, play next scene
-        else if(isSceneLoaded)
+    }
+
+    private void FinishedLoadingController() {
+
+        //if island loading screen
+        if(!isCannonLoadingScreen) {
+
+            //display contrinue input text
+            loadTextScript.FinishedLoading();
+            //get input
+            continueInput = inputMap.UI.CutsceneNext.triggered;
+
+            //if pressing continue input, play next scene
+            if(continueInput)
+                asyncOperation.allowSceneActivation = true;
+
+        }
+        //if cannon loading screen, automatically load next scene
+        else
             asyncOperation.allowSceneActivation = true;
     }
 
@@ -76,6 +103,7 @@ public class LoadingScreenManager : MonoBehaviour
 
         //scene is done loading when progress is at 90%
         isSceneLoaded = true;
+
         //don't pause coroutine
         yield return null;
     }

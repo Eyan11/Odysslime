@@ -63,6 +63,9 @@ public class MainMenuManager : MonoBehaviour
         Cursor.lockState = CursorLockMode.Confined;
         //make cursor visible
         Cursor.visible = true;
+
+        //cap FPS at 60
+        Application.targetFrameRate = 60;
     }
 
     private void Update() {

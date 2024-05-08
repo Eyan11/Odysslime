@@ -1,15 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class CutsceneManager : MonoBehaviour
 {
     [SerializeField] private List<GameObject> imageList;
     [SerializeField] private CutsceneType cutsceneType = CutsceneType.None;
-    [Header("Only For Volcano Cutscene")]
+    [Header("References")]
     [SerializeField] private MainMenuManager mainMenuScript;
-    [Header ("Sounds")]
     [SerializeField] private AudioClip nextImageSFX;
+    [SerializeField] private TMP_Text inputText;
     private SoundManager soundScript;
     //only for jester cutscene
     private PauseMenuManager pauseScript;
@@ -27,9 +28,11 @@ public class CutsceneManager : MonoBehaviour
         //references
         saveScript = GameObject.FindWithTag("Save Manager").GetComponent<SaveManager>();
         soundScript = GameObject.FindWithTag("Sound Manager").GetComponent<SoundManager>();
-
         if(cutsceneType == CutsceneType.Jester)
             pauseScript = GameObject.FindWithTag("Pause Menu Manager").GetComponent<PauseMenuManager>();
+
+        //start checking for controllers
+        StartCoroutine(UpdateInputText());
     }
 
     private void Update() {
@@ -128,5 +131,34 @@ public class CutsceneManager : MonoBehaviour
             //disable pause input
             pauseScript.DisableInput();
         }
+    }
+
+    //Checks which input is plugges in every 1 second
+    private IEnumerator UpdateInputText() {
+
+        Debug.Log("Start Coroutine");
+
+        //if there are any input devices connected
+        if(Input.GetJoystickNames().Length != 0) {
+            Debug.Log("IF 1");
+
+            //if using Keyboard (empty string is KBM name)
+            if (Input.GetJoystickNames()[0] == "") {
+                inputText.text = "Press Space to continue";
+                Debug.Log("IF 2");
+            }
+            //if using gamepad
+            else {
+                inputText.text = "Press A to continue";
+                Debug.Log("IF 3");
+            }
+        }
+        //display keyboard by default
+        else
+            inputText.text = "Press Space to continue";
+
+        //wait 1 seconds before checking input again
+        yield return new WaitForSecondsRealtime(1f);
+        StartCoroutine(UpdateInputText());
     }
 }

@@ -415,6 +415,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "Cheat",
+                    "type": "Button",
+                    "id": "4b5a7c6d-6bf3-4208-ab5c-7985a01e3c8d",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -602,6 +611,28 @@
                     "processors": "",
                     "groups": "",
                     "action": "Cutscene Previous",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "df90205b-ae78-4fe7-85a8-d8252ed0fb3e",
+                    "path": "<Keyboard>/o",
+                    "interactions": "Hold(duration=5)",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Cheat",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "66dce7d9-8a3f-4cd0-a663-3d12f57e573e",
+                    "path": "<Gamepad>/leftShoulder",
+                    "interactions": "Hold(duration=5)",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Cheat",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

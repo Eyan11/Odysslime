@@ -10,9 +10,16 @@ public class LoadingTextUI : MonoBehaviour
     [SerializeField] private TMP_Text loadingText;
     private float changeTextTimer = 0;
     private int textIndex = 0;
+    private bool isLoading = true;
+    private bool isUsingKBM = true;
 
 
     private void Update() {
+        if(isLoading)
+            TextController();
+    }
+
+    private void TextController() {
         changeTextTimer -= Time.unscaledDeltaTime;
 
         //when timer finishes, update text and reset timer
@@ -37,5 +44,36 @@ public class LoadingTextUI : MonoBehaviour
             loadingText.text = "Loading . .";
         else if(textIndex == 2)
             loadingText.text = "Loading . . .";
+    }
+
+    public void FinishedLoading() {
+        isLoading = false;
+
+        //Check for input device
+        CheckForControllers();
+
+        //displays text depending on KBM or gamepad input
+        if(isUsingKBM)
+            loadingText.text = "Press Space to play";
+        else
+            loadingText.text = "Press A to play";
+    }
+
+
+    //Checks which input is plugged in
+    private void CheckForControllers() {
+
+        //if there are any input devices connected
+        if(Input.GetJoystickNames().Length != 0) {
+
+            //if NOT using keyboard and input name is "" (empty string is KBM name), switch to KBM
+            if (!isUsingKBM && Input.GetJoystickNames()[0] == "") 
+                isUsingKBM = true;
+            
+            //if using keyboard and input name is NOT "" (empty string is KBM name), switch to gamepad
+            else if (isUsingKBM && Input.GetJoystickNames()[0] != "") 
+                isUsingKBM = false;
+            
+        }
     }
 }

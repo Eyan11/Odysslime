@@ -437,6 +437,15 @@ public partial class @InputMap: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Cheat"",
+                    ""type"": ""Button"",
+                    ""id"": ""4b5a7c6d-6bf3-4208-ab5c-7985a01e3c8d"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -626,6 +635,28 @@ public partial class @InputMap: IInputActionCollection2, IDisposable
                     ""action"": ""Cutscene Previous"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""df90205b-ae78-4fe7-85a8-d8252ed0fb3e"",
+                    ""path"": ""<Keyboard>/o"",
+                    ""interactions"": ""Hold(duration=5)"",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Cheat"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""66dce7d9-8a3f-4cd0-a663-3d12f57e573e"",
+                    ""path"": ""<Gamepad>/leftShoulder"",
+                    ""interactions"": ""Hold(duration=5)"",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Cheat"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -649,6 +680,7 @@ public partial class @InputMap: IInputActionCollection2, IDisposable
         m_UI_Back = m_UI.FindAction("Back", throwIfNotFound: true);
         m_UI_CutsceneNext = m_UI.FindAction("Cutscene Next", throwIfNotFound: true);
         m_UI_CutscenePrevious = m_UI.FindAction("Cutscene Previous", throwIfNotFound: true);
+        m_UI_Cheat = m_UI.FindAction("Cheat", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -824,6 +856,7 @@ public partial class @InputMap: IInputActionCollection2, IDisposable
     private readonly InputAction m_UI_Back;
     private readonly InputAction m_UI_CutsceneNext;
     private readonly InputAction m_UI_CutscenePrevious;
+    private readonly InputAction m_UI_Cheat;
     public struct UIActions
     {
         private @InputMap m_Wrapper;
@@ -832,6 +865,7 @@ public partial class @InputMap: IInputActionCollection2, IDisposable
         public InputAction @Back => m_Wrapper.m_UI_Back;
         public InputAction @CutsceneNext => m_Wrapper.m_UI_CutsceneNext;
         public InputAction @CutscenePrevious => m_Wrapper.m_UI_CutscenePrevious;
+        public InputAction @Cheat => m_Wrapper.m_UI_Cheat;
         public InputActionMap Get() { return m_Wrapper.m_UI; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -853,6 +887,9 @@ public partial class @InputMap: IInputActionCollection2, IDisposable
             @CutscenePrevious.started += instance.OnCutscenePrevious;
             @CutscenePrevious.performed += instance.OnCutscenePrevious;
             @CutscenePrevious.canceled += instance.OnCutscenePrevious;
+            @Cheat.started += instance.OnCheat;
+            @Cheat.performed += instance.OnCheat;
+            @Cheat.canceled += instance.OnCheat;
         }
 
         private void UnregisterCallbacks(IUIActions instance)
@@ -869,6 +906,9 @@ public partial class @InputMap: IInputActionCollection2, IDisposable
             @CutscenePrevious.started -= instance.OnCutscenePrevious;
             @CutscenePrevious.performed -= instance.OnCutscenePrevious;
             @CutscenePrevious.canceled -= instance.OnCutscenePrevious;
+            @Cheat.started -= instance.OnCheat;
+            @Cheat.performed -= instance.OnCheat;
+            @Cheat.canceled -= instance.OnCheat;
         }
 
         public void RemoveCallbacks(IUIActions instance)
@@ -904,5 +944,6 @@ public partial class @InputMap: IInputActionCollection2, IDisposable
         void OnBack(InputAction.CallbackContext context);
         void OnCutsceneNext(InputAction.CallbackContext context);
         void OnCutscenePrevious(InputAction.CallbackContext context);
+        void OnCheat(InputAction.CallbackContext context);
     }
 }
